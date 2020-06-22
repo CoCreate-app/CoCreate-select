@@ -1,0 +1,24 @@
+{
+  "name": "CoCreate-select",
+  "version": "1.0.0",
+  "description": "",
+  "main": "CoCreate-select.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoCreate-app/Cocreate-select.js.git"
+  },
+  "keywords": [
+    "Select",
+    "Awesome"
+  ],
+  "author": "Frank Pagan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CoCreate-app/Cocreate-select.js/issues"
+  },
+  "homepage": "https://github.com/CoCreate-app/Cocreate-select.js#readme"
+}

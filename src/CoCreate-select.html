@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Select | CoCreate</title>
+  
+    <link rel="stylesheet" href="https://server.cocreate.app/css/CoCreateUI.min.css" type="text/css" />
+    <!--<link rel="stylesheet" href="https://cdn.cocreate.app/CoCreate.min.css" type="text/css" />-->
+    <link rel="stylesheet" href="https://server.cocreate.app/CoCreate-components/CoCreate-select/CoCreate-select.css" type="text/css" />
+    <link rel="stylesheet" href="https://server.cocreate.app/CoCreate-components/CoCreate-floating-label/CoCreate-floating-label.css" type="text/css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" crossorigin="anonymous" />    
+  
+  </head>
+  <body>
+
+  <form class="margin-20px" data-collection="module_activities">
+     
+  ------------ single Document ------------
+  
+      <cocreate-select class="floating-label sortable" multiple 
+        data-collection="test" 
+        data-document_id="5e9531b3a762440eed55c2ed" 
+        name="selectField0"
+        data-limit_selectable="3"
+        placeholder="Single Document">
+        
+        <input class="template-search" placeholder="Search" data-template_id="selectable0">
+        
+        <ul data-fetch_collection="users" 
+            data-template_id="selectable0" 
+            data-pass_to="me1234"
+            class="template-wrapper selectable--list cocreate-scroll">
+  				<li class="selectable template" data-pass_id="me1234">
+  				  <h3 data-collection="users" data-document_id="" name="name" data-pass_id="me1234">First name</h3>
+  				  <h5 data-collection="users" data-document_id="" name="_id" data-pass_id="me1234"></h5>
+  				</li>
+        </ul>
+        
+      </cocreate-select>
+  
+  ------------ Multiple Documents ------------
+  
+      <cocreate-select class="floating-label sortable" multiple
+        data-realtime="false" 
+        data-collection="test" 
+        data-document_id="5e9531b3a762440eed55c2ed"  
+        name="selectField1" 
+        placeholder="Multiple Documents" 
+        data-limit_selectable="3">
+        
+        <input class="template-search" placeholder="Search" data-template_id="selectable1">
+         
+        <ul data-fetch_collection="users" 
+          data-template_id="selectable1" 
+          data-pass_to="me1234" 
+          class="template-wrapper selectable--list cocreate-scroll">
+  				<li class="selectable template" data-pass_id="me1234">
+  				  <h3 data-collection="users" data-document_id="" name="name" data-pass_id="me1234">First name</h3>
+  				  <h5 data-collection="users" data-document_id="" name="_id" data-pass_id="me1234"></h5>
+  				</li>
+        </ul>
+        
+      </cocreate-select>
+  
+  ------------ Single Options ------------
+      <cocreate-select class="sortable floating-label" 
+        data-collection="test" 
+        data-document_id="5e8ff00e8c3af32574df80cb" 
+        name="selectField4" 
+        placeholder="Single Options">
+       
+        <input class="option-search" placeholder="Search">
+       
+        <ul class="selectable--list  cocreate-scroll">
+  				<li class="selectable"  data-value="value 1">
+  				  <h3 >value 1</h3>
+  				</li>
+  				<li class="selectable"  data-value="value 2">
+  				  <h3 >value 2</h3>
+  				</li>
+  				<li class="selectable"  data-value="value 3">
+  				  <h3 >value 3</h3>
+  				</li>
+        </ul>
+        
+      </cocreate-select>
+  
+  ------------ Multiple Options ------------
+      <cocreate-select class="floating-label sortable" multiple
+        data-realtime="false" 
+        data-collection="test" 
+        data-document_id="5e9531b3a762440eed55c2ed"  
+        name="selectField2"
+        placeholder="Multiple Options">
+        
+        <input class="option-search" placeholder="Search">
+        
+        <ul class="selectable--list cocreate-scroll">
+  				<li class="selectable" data-value="value 1">
+  				  <h3 >value 1</h3>
+  				</li>
+  				<li class="selectable" data-value="value 2">
+  				  <h3 >value 2</h3>
+  				</li>
+  				<li class="selectable" data-value="value 3">
+  				  <h3 >value 3</h3>
+  				</li>
+        </ul>
+        
+      </cocreate-select>
+  
+  ------------ Fetch array string ------------
+      <cocreate-select class="sortable floating-label" name="selectField5" data-collection="test" data-document_id="5e8ff00e8c3af32574df80cb"  placeholder="Fetch array string" data-limit_selectable="3" multiple>
+       
+        <input class="option-search" placeholder="Search" data-template_id="tempplate5">
+        
+        <ul class="template-wrapper-array selectable--list cocreate-scroll"
+          data-fetch_collection="test" 
+          data-fetch_document_id="5e8ff00e8c3af32574df80cb" 
+          data-fetch_name="selectField2" 
+          id="array01"
+          data-template_id="template5" 
+          data-pass_to="me1234">
+    			<li class="template selectable" data-pass_id="me1234">
+    			  <h3 data-pass_id="me1234" raw>Organization Name</h3>
+    			</li>
+        </ul>
+      </cocreate-select>
+  
+  ------------ Fetch array _id ------------
+      <cocreate-select class="sortable floating-label" 
+        name="selectField6" data-collection="test" 
+        data-document_id="5e8ff00e8c3af32574df80cb"  
+        placeholder="Fetch array _id" 
+        data-limit_selectable="3" multiple>
+        
+        <input class="option-search" placeholder="Search" data-template_id="tempplate6">
+        
+        <ul data-fetch_collection="test" 
+          data-fetch_document_id="5e8ff00e8c3af32574df80cb" 
+          data-fetch_name="selectField1" 
+          id="array02"
+          data-template_id="template6" 
+          data-pass_to="me1234" 
+          class="template-wrapper-array selectable--list cocreate-scroll">
+    			<li class="template selectable" data-pass_id="me1234">
+    			  <h3 data-collection="users" data-document_id="" name="name" data-pass_id="me1234" >Organization Name</h3>
+    			  <h5 data-collection="users" data-document_id="" name="_id" data-pass_id="me1234" >id</h5>
+    			</li>
+        </ul>
+      </cocreate-select>
+  
+  ------------ Collection Select ------------
+      <cocreate-select class="sortable floating-label" data-collection="test" data-document_id="5e8ff00e8c3af32574df80cb" name="selectField7" placeholder="Collection Select" multiple>
+        <input class="option-search" placeholder="Search">
+        <ul data-fetch_collection_list="true" data-template_id="collection-list" class="template-wrapper selectable--list cocreate-scroll" data-pass_to="me1234">
+  				<li class="selectable template" data-template_id="collection-list" data-value="" data-pass_id="me1234" >
+  				  <a data-pass_to="document-select" data-pass_collection="" data-pass_id="me1234" >
+  				    <h5 name="name" data-pass_id="me1234" raw></h5>
+  				  </a>
+  				</li>
+        </ul>
+      </cocreate-select>
+      
+      <div style="margin-top: 30px"><button class="submitBtn">Test button</button></div>
+  
+    </form>
+
+    <script>
+      var config = {
+        apiKey: 'c2b08663-06e3-440c-ef6f-13978b42883a',
+        securityKey: 'f26baf68-e3a9-45fc-effe-502e47116265',
+        organization_Id: '5de0387b12e200ea63204d6c'
+      }
+    </script>
+   
+    <!--<script src="https://cdn.cocreate.app/CoCreate.min.js"></script>-->
+  
+    <!--<script src="https://server.cocreate.app/CoCreateJS/dist/CoCreate.min.js"></script>-->
+    <script src="https://server.cocreate.app/CoCreateJS/src/CoCreate-socket.js"></script>
+    <script src="https://server.cocreate.app/CoCreate-components/CoCreate-init/CoCreate-init.js"></script>
+    <!--<script src="https://server.cocreate.app/CoCreate-components/CoCreate-logic/CoCreate-logic.js"></script>-->
+    <script src="https://server.cocreate.app/CoCreateJS/src/CoCreate-utils.js"></script>
+    <script src="https://server.cocreate.app/CoCreateJS/src/CoCreate.js"></script>
+  
+    <!--<script src="https://server.cocreate.app/CoCreate-components/CoCreate-y/y-client/dist/CoCreate-crdt.js"></script>-->
+  
+    <script src="https://server.cocreate.app/CoCreate-components/CoCreate-document_id/CoCreate-document_id.js"></script>
+    <script src="https://server.cocreate.app/CoCreate-components/CoCreate-form/CoCreate-form.js"></script>
+    <script src="https://server.cocreate.app/CoCreate-components/CoCreate-filter/CoCreate-filter.js"></script> 
+    <script src="https://server.cocreate.app/CoCreate-components/CoCreate-templating/CoCreate-templating.js"></script>
+    
+    <!--<script src="https://server.cocreate.app/CoCreate-components/CoCreate-savefetch/CoCreate-savefetch.js"></script>-->
+    <!--<script src="https://server.cocreate.app/CoCreate-components/CoCreate-clone/CoCreate-clone.js"></script>-->
+    <!--<script src="https://server.cocreate.app/CoCreate-components/CoCreate-dom/CoCreate-dom.js"></script>-->
+    
+    <script src="https://server.cocreate.app/CoCreate-components/CoCreate-htmltags/CoCreate-htmltags.js"></script>
+    <!--<script src="https://server.cocreate.app/CoCreate-components/CoCreate-input/CoCreate-input.js"></script>-->
+  
+    <!--<script src="https://server.cocreate.app/CoCreate-components/CoCreate-cursors/CoCreate-cursors.js"></script>-->
+    <!--<script src="https://server.cocreate.app/CoCreate-components/CoCreate-text/CoCreate-text.js"></script>-->
+  
+    
+  
+    <!--<script src="https://cdn.cocreate.app/CoCreateUI.min.js"></script>-->
+    <!--<script src="https://server.cocreate.app/CoCreateUI/dist/CoCreateUI.min.js"></script>-->
+    <script src="https://server.cocreate.app/CoCreate-components/CoCreate-select/CoCreate-select.js"></script>
+    <script src="https://server.cocreate.app/CoCreate-components/CoCreate-floating-label/CoCreate-floating-label.js"></script>
+  
+  </body>
+</html>
