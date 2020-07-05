@@ -126,7 +126,8 @@ function initSelect(selectContainer) {
     
     input.addEventListener('focusout', function(evt) {
       setTimeout(() => {
-        closeSelectDropDown(selectContainer);
+        if(evt.target!=document.activeElement || !selectContainer.hasAttribute('multiple'))
+          closeSelectDropDown(selectContainer);
       }, 200)
     })
   }
@@ -143,7 +144,7 @@ function initSelect(selectContainer) {
   ul_selector.addEventListener('click', function (e) {
     if (!e.target.matches('li')) {
       let li = e.target;
-      console.log(li)
+      console.log("click",li)
       while(typeof li.tagName != 'undefined' && li.tagName.toLowerCase() != 'li') {
         li = li.parentNode;
       }
@@ -178,8 +179,9 @@ function initSelect(selectContainer) {
     }
     if (!ul_selector.classList.contains('open')) {
       openSelectDropDown(selectContainer)
-      
     }
+    let input = selectContainer.querySelector('input');
+    input.focus()
     
   }, true);
     
@@ -247,19 +249,24 @@ function openSelectDropDown(selectContainer) {
 }
 
 function closeSelectDropDown(selectContainer) {
-  let input = selectContainer.querySelector('input');
-  let ul_selector = selectContainer.querySelector('ul.selectable--list');
-  
-  if (input) {
-    input.classList.remove('open');
-  }
-  
-  if (ul_selector) {
-    ul_selector.classList.remove('open');
-  }
-  
-  let evt = new CustomEvent('close');
-  selectContainer.dispatchEvent(evt);
+  /*let type = selectContainer.hasAttribute('multiple') ? 'multiple' : 'single';
+  console.log("close ",type)
+  if (type == 'single') {
+  */
+    let input = selectContainer.querySelector('input');
+    let ul_selector = selectContainer.querySelector('ul.selectable--list');
+    
+    if (input) {
+      input.classList.remove('open');
+    }
+    
+    if (ul_selector) {
+      ul_selector.classList.remove('open');
+    }
+    
+    let evt = new CustomEvent('close');
+    selectContainer.dispatchEvent(evt);
+  /*}*/
 }
 
 function fetchValuesForSelect(selectContainer) {
@@ -483,14 +490,19 @@ function getSelectItemTemplate(template, id, passTo, tempate_collection) {
 
 function selectItemForSelect(li, selectContainer) {
   let type = selectContainer.hasAttribute('multiple') ? 'multiple' : 'single';
+  let searchInput = selectContainer.querySelector('input');
   if (type == 'single') {
     let selectedItems = selectContainer.querySelectorAll('.selected');
     selectedItems.forEach(function(item) {
       item.remove();
     })
+    searchInput.value='';
+  }else if(type=='multiple'){
+    setTimeout(function(){
+      openSelectDropDown(selectContainer)  
+    },150)
   }
-  
-  let searchInput = selectContainer.querySelector('input');
+
   let span = document.createElement('span');
   span.innerHTML='x';
   span.classList.add('remove');
