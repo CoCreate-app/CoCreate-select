@@ -2,7 +2,7 @@
   display: none;
 }
 
-cocreate-select, .select--field {
+cocreate-select {
   display: flex;
   flex-wrap: wrap;
   min-height: 40px;
@@ -11,12 +11,12 @@ cocreate-select, .select--field {
   padding:2px;
 
 }
-cocreate-select[multiple], .select--field[multiple] {
+cocreate-select[multiple] {
   padding:2px;
   padding-bottom: 6px;
 }
 
-cocreate-select input, .select--field input {
+cocreate-select input {
   border: 0;
   outline: 0;
   min-height:30px;
@@ -26,11 +26,11 @@ cocreate-select input, .select--field input {
   display: none;
 }
 
-cocreate-select[multiple] input, .select--field[multiple] input {
+cocreate-select[multiple] input {
   width:auto;
 }
 
-cocreate-select input.open, .select--field input.open {
+cocreate-select input.open {
   display: inherit;
 }
 
@@ -46,7 +46,7 @@ cocreate-select input.open, .select--field input.open {
   margin:6px;
 }
 
-cocreate-select[multiple] .selected, .select--field[multiple] .selected {
+cocreate-select[multiple] .selected {
   margin: 6px 0px 0px 6px;
   border-radius: 5px;
   width:auto;
@@ -60,7 +60,7 @@ cocreate-select[multiple] .selected, .select--field[multiple] .selected {
   overflow: hidden;
 }
 
-cocreate-select .selected:last-child, .select--field .selected:last-child {
+cocreate-select .selected:last-child {
   margin-right: 20px!important;
 }
 

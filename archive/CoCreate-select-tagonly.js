@@ -1,4 +1,4 @@
-registerModuleSelector('div.select--field')
+//registerModuleSelector('cocreate-select')
 
 
 initCoCreateSelectSockets();
@@ -13,8 +13,8 @@ function initCoCreateSelects(container) {
     return;
   }
 
-  let containerList = mainContainer.querySelectorAll('div.select--field');
-  
+  let containerList = mainContainer.querySelectorAll('cocreate-select');
+  console.log("Init Select ",containerList)
   // if (containerList.length == 0 && 
   //   mainContainer.classList.contains('select--field') &&
   //   mainContainer.tagName === 'DIV') 
@@ -23,7 +23,6 @@ function initCoCreateSelects(container) {
   // }
   
   for(let i = 0 ; i < containerList.length ; i++){
-  
     let selectContainer = containerList[i];
     initSelect(selectContainer);
   }
@@ -54,7 +53,9 @@ function initSortForSelect() {
         
         Sortable.utils.on(sortableObj.el, 'sort', function(e) {
 
-          if (e.to.classList.contains('select--field')) saveSelect(e.to);
+          //if (e.to.classList.contains('select--field')) saveSelect(e.to);
+          //console.log("e",e,"e.to",e.to,"e.to.tagName",e.to.tagName)
+          if (typeof e.to.tagName != 'undefined' && e.to.tagName.toLowerCase() == 'cocreate-select') saveSelect(e.to);
           
           /// here emit event
           let evt = new CustomEvent('selectedValue');
@@ -74,8 +75,9 @@ function initSelect(selectContainer) {
 	}
 	CoCreateUtils.setInitialized(selectContainer)
 	
-			
+  
   let input = selectContainer.querySelector('input');
+  console.log("InitSelect",input)			
   let ul_selector = selectContainer.querySelector('ul.selectable--list');
   let templateWrappers = selectContainer.querySelectorAll('.template-wrapper');
   let faTemplateWrappers = selectContainer.querySelectorAll('.template-wrapper-array');
@@ -124,7 +126,8 @@ function initSelect(selectContainer) {
     
     input.addEventListener('focusout', function(evt) {
       setTimeout(() => {
-        closeSelectDropDown(selectContainer);
+        if(evt.target!=document.activeElement || !selectContainer.hasAttribute('multiple'))
+          closeSelectDropDown(selectContainer);
       }, 200)
     })
   }
@@ -141,7 +144,8 @@ function initSelect(selectContainer) {
   ul_selector.addEventListener('click', function (e) {
     if (!e.target.matches('li')) {
       let li = e.target;
-      while(li.tagName.toLowerCase() != 'li') {
+      console.log("click",li)
+      while(typeof li.tagName != 'undefined' && li.tagName.toLowerCase() != 'li') {
         li = li.parentNode;
       }
       
@@ -175,8 +179,9 @@ function initSelect(selectContainer) {
     }
     if (!ul_selector.classList.contains('open')) {
       openSelectDropDown(selectContainer)
-      
     }
+    let input = selectContainer.querySelector('input');
+    input.focus()
     
   }, true);
     
@@ -244,19 +249,24 @@ function openSelectDropDown(selectContainer) {
 }
 
 function closeSelectDropDown(selectContainer) {
-  let input = selectContainer.querySelector('input');
-  let ul_selector = selectContainer.querySelector('ul.selectable--list');
-  
-  if (input) {
-    input.classList.remove('open');
-  }
-  
-  if (ul_selector) {
-    ul_selector.classList.remove('open');
-  }
-  
-  let evt = new CustomEvent('close');
-  selectContainer.dispatchEvent(evt);
+  /*let type = selectContainer.hasAttribute('multiple') ? 'multiple' : 'single';
+  console.log("close ",type)
+  if (type == 'single') {
+  */
+    let input = selectContainer.querySelector('input');
+    let ul_selector = selectContainer.querySelector('ul.selectable--list');
+    
+    if (input) {
+      input.classList.remove('open');
+    }
+    
+    if (ul_selector) {
+      ul_selector.classList.remove('open');
+    }
+    
+    let evt = new CustomEvent('close');
+    selectContainer.dispatchEvent(evt);
+  /*}*/
 }
 
 function fetchValuesForSelect(selectContainer) {
@@ -351,7 +361,7 @@ function saveSelect(selectEle) {  /// this function will save select value
 
 function fetchedCoCreateSelectData(data, isUpdate) {
   
-  let selectContainers = document.querySelectorAll('.select--field');
+  let selectContainers = document.querySelectorAll('cocreate-select');
   let status = false;
   
   let fetchInfos = [];
@@ -480,14 +490,19 @@ function getSelectItemTemplate(template, id, passTo, tempate_collection) {
 
 function selectItemForSelect(li, selectContainer) {
   let type = selectContainer.hasAttribute('multiple') ? 'multiple' : 'single';
+  let searchInput = selectContainer.querySelector('input');
   if (type == 'single') {
     let selectedItems = selectContainer.querySelectorAll('.selected');
     selectedItems.forEach(function(item) {
       item.remove();
     })
+    searchInput.value='';
+  }else if(type=='multiple'){
+    setTimeout(function(){
+      openSelectDropDown(selectContainer)  
+    },150)
   }
-  
-  let searchInput = selectContainer.querySelector('input');
+
   let span = document.createElement('span');
   span.innerHTML='x';
   span.classList.add('remove');
@@ -700,12 +715,11 @@ function filterSelectorOptions(options, value){
   
   for(let option of options){
     var textContent = option.innerText;
-
     if(textContent.includes(value))
       option.classList.remove('hidden');
     else
       option.classList.add('hidden');
   }
 }
-
-CoCreateInit.register('CoCreateSelect', window, initCoCreateSelects);
+initCoCreateSelects(document)
+//CoCreateInit.register('CoCreateSelect', window, initCoCreateSelects);

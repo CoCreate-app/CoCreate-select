@@ -13,7 +13,7 @@ function initCoCreateSelects(container) {
     return;
   }
 
-  let containerList = mainContainer.querySelectorAll('cocreate-select');
+  let containerList = mainContainer.querySelectorAll('cocreate-select,div.select--field');
   console.log("Init Select ",containerList)
   // if (containerList.length == 0 && 
   //   mainContainer.classList.contains('select--field') &&
@@ -30,9 +30,9 @@ function initCoCreateSelects(container) {
 
 
 function initCoCreateSelectSockets() {
-  CoCreateSocket.listen('getDocument', function(data) {
-    fetchedCoCreateSelectData(data);
-  })
+  // CoCreateSocket.listen('readDocument', function(data) {
+  //   fetchedCoCreateSelectData(data);
+  // })
   
   CoCreateSocket.listen('readDocument', function(data) {
     fetchedCoCreateSelectData(data);
@@ -55,7 +55,11 @@ function initSortForSelect() {
 
           //if (e.to.classList.contains('select--field')) saveSelect(e.to);
           //console.log("e",e,"e.to",e.to,"e.to.tagName",e.to.tagName)
-          if (typeof e.to.tagName != 'undefined' && e.to.tagName.toLowerCase() == 'cocreate-select') saveSelect(e.to);
+          if (
+                (typeof e.to.tagName != 'undefined' && e.to.tagName.toLowerCase() == 'cocreate-select') 
+                || e.to.classList.contains('select--field')
+              ) 
+                saveSelect(e.to);
           
           /// here emit event
           let evt = new CustomEvent('selectedValue');
@@ -275,7 +279,7 @@ function fetchValuesForSelect(selectContainer) {
   let id = selectContainer.getAttribute('data-document_id');
   
   if (collection && id) {
-    CoCreate.getDocument({
+    CoCreate.readDocument({
       'collection': collection, 
       'document_id': id
     })
@@ -361,7 +365,7 @@ function saveSelect(selectEle) {  /// this function will save select value
 
 function fetchedCoCreateSelectData(data, isUpdate) {
   
-  let selectContainers = document.querySelectorAll('cocreate-select');
+  let selectContainers = document.querySelectorAll('cocreate-select,.select--field');
   let status = false;
   
   let fetchInfos = [];
@@ -391,7 +395,7 @@ function fetchedCoCreateSelectData(data, isUpdate) {
       if (!result_fetch.includes[fetchInfos[i]]) {
         result_fetch.push(fetchInfos[i]);
 
-        CoCreate.getDocument({
+        CoCreate.readDocument({
           'collection': fetchInfos[i]['collection'], 
           'document_id': fetchInfos[i]['id']
         })
@@ -568,7 +572,7 @@ initSocketsForFetchArray();
 initFetchArrays();
 
 function initSocketsForFetchArray() {
-  CoCreateSocket.listen('getDocument', function(data) {
+  CoCreateSocket.listen('readDocument', function(data) {
     fetchedFA(data);
   })
 }
@@ -606,7 +610,7 @@ function initFetchArrays() {
 
 function fetchFA(faObj) {
   let id = faObj.fetch_module_id
-  CoCreate.getDocument({
+  CoCreate.readDocument({
     'collection': faObj.fetch_collection, 
     'document_id': id
   })
