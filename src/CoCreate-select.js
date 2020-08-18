@@ -1,6 +1,3 @@
-//registerModuleSelector('cocreate-select')
-
-
 initCoCreateSelectSockets();
 initSortForSelect();
 
@@ -74,10 +71,10 @@ function initSortForSelect() {
 
 function initSelect(selectContainer) {
   
-	if (CoCreateUtils.getInitialized(selectContainer)) {
+	if (CoCreateInit.getInitialized(selectContainer)) {
 		return;
 	}
-	CoCreateUtils.setInitialized(selectContainer)
+	CoCreateInit.setInitialized(selectContainer)
 	
   
   let input = selectContainer.querySelector('input');
@@ -148,7 +145,6 @@ function initSelect(selectContainer) {
   ul_selector.addEventListener('click', function (e) {
     if (!e.target.matches('li')) {
       let li = e.target;
-      console.log("click",li)
       while(typeof li.tagName != 'undefined' && li.tagName.toLowerCase() != 'li') {
         li = li.parentNode;
       }
@@ -235,13 +231,15 @@ function initSelect(selectContainer) {
 
 
 
-function openSelectDropDown(selectContainer) {
+function openSelectDropDown(selectContainer,focus=true) {
   let input = selectContainer.querySelector('input');
   let ul_selector = selectContainer.querySelector('ul.selectable--list');
   
   if (input) {
     input.classList.add('open');
+    if(focus){
     input.focus();  
+    }
   }
   
   if (ul_selector) {
@@ -429,13 +427,13 @@ function showValueInSelect(selectContainer, values) {
         let collection = ul_selector.getAttribute('data-fetch_collection')
         let result = getSelectItemTemplate(template, value, passTo, collection);
         selectItemForSelect(result, selectContainer);
-        
+
         fetchInfo.push({id: value, collection: collection});
       } else if (ul_selector.querySelector("li[data-value='" + value + "']")){
         let li = ul_selector.querySelector("li[data-value='" + value + "']");
-        selectItemForSelect(li, selectContainer);
+        selectItemForSelect(li, selectContainer,false);
       } else {
-        selectValueForSelect(value, selectContainer)
+        selectValueForSelect(value, selectContainer,false)
       }
     }
   } else if (values) {
@@ -445,11 +443,12 @@ function showValueInSelect(selectContainer, values) {
       let collection = ul_selector.getAttribute('data-fetch_collection')
       let result = getSelectItemTemplate(template, values, passTo, collection); 
       selectItemForSelect(result, selectContainer);
-      
+    
       fetchInfo.push({id: values, collection: collection});
     } else if (ul_selector.querySelector("li[data-value='" + values + "']")){
       let li = ul_selector.querySelector("li[data-value='" + values + "']");
-      selectItemForSelect(li, selectContainer);
+      selectItemForSelect(li, selectContainer,false);
+
     } else {
       selectValueForSelect(values, selectContainer);
     }
@@ -492,7 +491,10 @@ function getSelectItemTemplate(template, id, passTo, tempate_collection) {
   return template;
 }
 
-function selectItemForSelect(li, selectContainer) {
+
+
+function selectItemForSelect(li, selectContainer,focus=true) {
+  console.log("Focus ",focus)
   let type = selectContainer.hasAttribute('multiple') ? 'multiple' : 'single';
   let searchInput = selectContainer.querySelector('input');
   if (type == 'single') {
@@ -503,7 +505,7 @@ function selectItemForSelect(li, selectContainer) {
     searchInput.value='';
   }else if(type=='multiple'){
     setTimeout(function(){
-      openSelectDropDown(selectContainer)  
+      openSelectDropDown(selectContainer,focus)  
     },150)
   }
 

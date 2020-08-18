@@ -69,10 +69,10 @@ function initSortForSelect() {
 
 function initSelect(selectContainer) {
   
-	if (CoCreateUtils.getInitialized(selectContainer)) {
+	if (CoCreateInit.getInitialized(selectContainer)) {
 		return;
 	}
-	CoCreateUtils.setInitialized(selectContainer)
+	CoCreateInit.setInitialized(selectContainer)
 	
 			
   let input = selectContainer.querySelector('input');
