@@ -59,7 +59,7 @@
         <ul data-fetch_collection="users" 
           data-template_id="selectable1" 
           data-pass_to="me1234" 
-          class="template-wrapper selectable--list cocreate-scroll">
+          class="selectable--list cocreate-scroll">
   				<li class="selectable template" data-pass_id="me1234">
   				  <h3 data-collection="users" data-document_id="" name="name" data-pass_id="me1234">First name</h3>
   				  <h5 data-collection="users" data-document_id="" name="_id" data-pass_id="me1234"></h5>
@@ -75,9 +75,9 @@
         name="selectField4" 
         placeholder="Single Options">
        
-        <input class="option-search" placeholder="Search">
+        <input class="search-options" placeholder="Search" data-search_id="search_01" data-item_selector=".selectable">
        
-        <ul class="selectable--list  cocreate-scroll">
+        <ul class="selectable--list  cocreate-scroll" data-search_id="search_01">
   				<li class="selectable"  data-value="value 1">
   				  <h3 >value 1</h3>
   				</li>
@@ -102,9 +102,9 @@
         name="selectField2"
         placeholder="Multiple Options">
         
-        <input class="option-search" placeholder="Search">
+        <input class="search-options" placeholder="Search" data-search_id="search_02" data-item_selector=".selectable">
         
-        <ul class="selectable--list cocreate-scroll">
+        <ul class="selectable--list cocreate-scroll" data-search_id="search_02">
   				<li class="selectable" data-value="value 1">
   				  <h3 >value 1</h3>
   				</li>
@@ -121,7 +121,7 @@
   ------------ Fetch array string ------------
       <cocreate-select class="sortable floating-label" name="selectField5" data-collection="test" data-document_id="5e8ff00e8c3af32574df80cb"  placeholder="Fetch array string" data-limit_selectable="3" multiple>
        
-        <input class="option-search" placeholder="Search" data-template_id="tempplate5">
+        <input class="search-options" placeholder="Search" data-search_id="search_03" data-item_selector=".selectable">
         
         <ul class="template-wrapper-array selectable--list cocreate-scroll"
           data-fetch_collection="test" 
@@ -129,6 +129,7 @@
           data-fetch_name="selectField2" 
           id="array01"
           data-template_id="template5" 
+          data-search_id="search_03"
           data-pass_to="me1234">
     			<li class="template selectable" data-pass_id="me1234">
     			  <h3 data-pass_id="me1234" raw>Organization Name</h3>
@@ -138,12 +139,13 @@
   
   ------------ Fetch array _id ------------
       <cocreate-select class="sortable floating-label" 
-        name="selectField6" data-collection="test" 
+        name="selectField6" 
+        data-collection="test" 
         data-document_id="5e8ff00e8c3af32574df80cb"  
         placeholder="Fetch array _id" 
         data-limit_selectable="3" multiple>
         
-        <input class="option-search" placeholder="Search" data-template_id="tempplate6">
+        <input class="search-options" placeholder="Search" data-search_id="search_04" data-item_selector=".selectable">
         
         <ul data-fetch_collection="test" 
           data-fetch_document_id="5e8ff00e8c3af32574df80cb" 
@@ -151,7 +153,8 @@
           id="array02"
           data-template_id="template6" 
           data-pass_to="me1234" 
-          class="template-wrapper-array selectable--list cocreate-scroll">
+          class="template-wrapper-array selectable--list cocreate-scroll"
+          data-search_id="search_04">
     			<li class="template selectable" data-pass_id="me1234">
     			  <h3 data-collection="users" data-document_id="" name="name" data-pass_id="me1234" >Organization Name</h3>
     			  <h5 data-collection="users" data-document_id="" name="_id" data-pass_id="me1234" >id</h5>
@@ -161,11 +164,16 @@
   
   ------------ Collection Select ------------
       <cocreate-select class="sortable floating-label" data-collection="test" data-document_id="5e8ff00e8c3af32574df80cb" name="selectField7" placeholder="Collection Select" multiple>
-        <input class="option-search" placeholder="Search">
-        <ul data-fetch_collection_list="true" data-template_id="collection-list" class="template-wrapper selectable--list cocreate-scroll" data-pass_to="me1234">
-  				<li class="selectable template" data-template_id="collection-list" data-value="" data-pass_id="me1234" >
+        <input class="search-options" placeholder="Search" data-search_id="search_05" data-item_selector=".selectable">
+        <ul data-fetch_collection_list="true" 
+          data-fetch_collection="" 
+          data-template_id="collection-list" 
+          class="template-wrapper selectable--list cocreate-scroll" 
+          data-pass_to="me1234"
+          data-search_id="search_05">
+  				<li class="selectable template" data-template_id="collection-list" data-value="" data-pass_id="me1234" data-value='{"name":"name"}'>
   				  <a data-pass_to="document-select" data-pass_collection="" data-pass_id="me1234" >
-  				    <h5 name="name" data-pass_id="me1234" raw></h5>
+  				    <h5 name="name" data-pass_id="me1234" value=""></h5>
   				  </a>
   				</li>
         </ul>
@@ -183,14 +191,8 @@
       }
     </script>
    
-    <!--<script src="https://server.cocreate.app/js/CoCreate.min.js"></script>-->
-  
-    <script src="https://server.cocreate.app/js/CoCreate.min.js"></script>
-
-    <!--<script src="https://cdn.cocreate.app/CoCreateUI.min.js"></script>-->
-    <script src="https://server.cocreate.app/CoCreateUI/dist/CoCreateUI.min.js"></script>
-    <script src="https://server.cocreate.app/CoCreate-components/CoCreate-select/src/CoCreate-select.js"></script>
-    <script src="https://server.cocreate.app/CoCreate-components/CoCreate-floating-label/src/CoCreate-floating-label.js"></script>
+  <script src="https://server.cocreate.app/js/CoCreate.min.js"></script>
+  <script src="https://server.cocreate.app/CoCreate-components/CoCreate-search/src/CoCreate-search.js"></script>
   
   </body>
 </html>
