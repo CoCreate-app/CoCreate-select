@@ -34,7 +34,7 @@ cocreate-select input.open, .select--field input.open {
   display: inherit;
 }
 
-.selected {
+[selected] {
   display: flex;
   align-items: center;
   min-height: 30px;
@@ -46,13 +46,13 @@ cocreate-select input.open, .select--field input.open {
   margin:6px;
 }
 
-cocreate-select[multiple] .selected, .select--field[multiple] .selected {
+cocreate-select[multiple] [selected], .select--field[multiple] [selected] {
   margin: 6px 0px 0px 6px;
   border-radius: 5px;
   width:auto;
 }
 
-.selected .remove {
+[selected] .remove {
   display: inline-block;
   margin-left: 0;
   width: 0;
@@ -60,15 +60,15 @@ cocreate-select[multiple] .selected, .select--field[multiple] .selected {
   overflow: hidden;
 }
 
-cocreate-select .selected:last-child, .select--field .selected:last-child {
+cocreate-select [selected]:last-child, .select--field [selected]:last-child {
   margin-right: 20px!important;
 }
 
-.selected:hover .remove {
+[selected]:hover .remove {
   margin-left: 10px;
   width: 10px;
 }
-.remove-none .selected:hover .remove {
+.remove-none [selected]:hover .remove {
   margin-left: 0px;
   width: 0px;
 }

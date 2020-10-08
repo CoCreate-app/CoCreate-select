@@ -47,12 +47,7 @@ const CoCreateSelect = {
     const self = this;
     
     if (input) {
-      // input.addEventListener('click', function (evt) {
-      //   if(!ul_selector.classList.contains("open")){
-      //     self.__openDropDown(selectContainer);
-      //   }
-      // });
-      
+
       input.addEventListener('keydown', function(e) {
         let keyCode = e.keyCode;
         
@@ -62,7 +57,7 @@ const CoCreateSelect = {
           selectContainer.dispatchEvent(new CustomEvent('selectedValue'));
           this.value = '';
         } else if (keyCode == 8 && !this.value.length) {
-          let selectedItems = selectContainer.querySelectorAll('.selected');
+          let selectedItems = selectContainer.querySelectorAll('[selected]');
           if (selectedItems.length > 0) {
             selectedItems[selectedItems.length -1].remove();
             self.save(selectContainer)
@@ -89,7 +84,7 @@ const CoCreateSelect = {
         
         if (li.classList && li.classList.contains('selectable')) {
           // check if data exist
-          let value = li.getAttribute('data-value');
+          let value = li.getAttribute('value');
           let selectValue = self.getValue(selectContainer);
           
           if (value == selectValue || selectValue.indexOf(value) > -1) return;
@@ -168,7 +163,7 @@ const CoCreateSelect = {
     if (!values) {
       return;
     }
-    let selectedItems = selectContainer.querySelectorAll('.selected');
+    let selectedItems = selectContainer.querySelectorAll('[selected]');
     selectedItems.forEach((item) => item.remove())
 
     let ul_selector = selectContainer.querySelector('ul.selectable--list');
@@ -177,7 +172,7 @@ const CoCreateSelect = {
     }
 
     for (let i = 0; i < values.length; i++) {
-      const selectedItem = ul_selector.querySelector("li[data-value='" + values[i] + "']");
+      const selectedItem = ul_selector.querySelector("li[value='" + values[i] + "']");
       if (selectedItem){
         this.__selectItem(selectedItem, selectContainer,false);
       } else {
@@ -205,10 +200,11 @@ const CoCreateSelect = {
     span.innerHTML='x';
     span.classList.add('remove');
     let li = document.createElement('li');
-    li.setAttribute('data-value', value);
+    li.setAttribute('value', value);
     li.innerHTML = value;
 
-    li.classList.add('selected');
+    li.setAttribute('selected', "");
+    // li.classList.add('selected');
     li.classList.remove('selectable');
     li.appendChild(span);
 
@@ -222,7 +218,7 @@ const CoCreateSelect = {
     let ul_selector = selectContainer.querySelector('ul.selectable--list');
     
     if (type == 'single') {
-      let selectedItems = selectContainer.querySelectorAll('.selected');
+      let selectedItems = selectContainer.querySelectorAll('[selected]');
       selectedItems.forEach((item) => item.remove())
       if (searchInput) {
         searchInput.value = '';
@@ -233,7 +229,8 @@ const CoCreateSelect = {
     span.classList.add('remove');
     let selectedItem = li.cloneNode(true);
     
-    selectedItem.classList.add('selected');
+    // selectedItem.classList.add('selected');
+    selectedItem.setAttribute("selected", "");
     selectedItem.classList.remove('selectable');
     selectedItem.appendChild(span);
     selectContainer.insertBefore(selectedItem, searchInput ? searchInput : ul_selector);
@@ -245,11 +242,11 @@ const CoCreateSelect = {
   
   getValue:function(node) {
     let type = node.hasAttribute('multiple') ? 'multiple' :'single'
-    let selectedItems = node.querySelectorAll('.selected');
+    let selectedItems = node.querySelectorAll('[selected]');
     
     let value = [];
     if (selectedItems.length > 0) {
-      selectedItems.forEach((item) => value.push(item.getAttribute('data-value')))
+      selectedItems.forEach((item) => value.push(item.getAttribute('value')))
     } 
     value = (type === 'multiple') ? value : (value[0] || '')
     return value;
