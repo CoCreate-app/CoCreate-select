@@ -29,6 +29,8 @@ const CoCreateSelect = {
       {
         self.save(dropedEl)
         dropedEl.dispatchEvent(new CustomEvent('selectedValue'));
+        dropedEl.dispatchEvent(new CustomEvent('input',{ bubbles: true}));
+        
       }
 		})
   },
@@ -55,6 +57,7 @@ const CoCreateSelect = {
           self.__selectValue(this.value, selectContainer);
           self.save(selectContainer)
           selectContainer.dispatchEvent(new CustomEvent('selectedValue'));
+          selectContainer.dispatchEvent(new CustomEvent('input',{ bubbles: true}));
           this.value = '';
         } else if (keyCode == 8 && !this.value.length) {
           let selectedItems = selectContainer.querySelectorAll('[selected]');
@@ -62,6 +65,7 @@ const CoCreateSelect = {
             selectedItems[selectedItems.length -1].remove();
             self.save(selectContainer)
             selectContainer.dispatchEvent(new CustomEvent('selectedValue'));
+            selectContainer.dispatchEvent(new CustomEvent('input',{ bubbles: true}));
 
           }
         }
@@ -93,6 +97,7 @@ const CoCreateSelect = {
           self.__selectItem(li, selectContainer)
           self.save(selectContainer)
           selectContainer.dispatchEvent(new CustomEvent('selectedValue'));
+          selectContainer.dispatchEvent(new CustomEvent('input',{ bubbles: true}));
         }
       }
     });
@@ -102,6 +107,7 @@ const CoCreateSelect = {
         e.target.parentNode.remove();
         self.save(selectContainer)
         selectContainer.dispatchEvent(new CustomEvent('selectedValue'));
+        selectContainer.dispatchEvent(new CustomEvent('input',{ bubbles: true}));
         return;
       }
       if (!ul_selector.classList.contains('open')) {
