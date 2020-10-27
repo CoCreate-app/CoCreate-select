@@ -207,6 +207,7 @@ const CoCreateSelect = {
     span.classList.add('remove');
     let li = document.createElement('li');
     li.setAttribute('value', value);
+    li.setAttribute('data-value', value);
     li.innerHTML = value;
 
     li.setAttribute('selected', "");

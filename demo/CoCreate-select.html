@@ -33,11 +33,10 @@
         
         <ul data-fetch_collection="users" 
             data-template_id="selectable0" 
-            data-pass_to="me1234"
             class="selectable--list cocreate-scroll">
-  				<li class="selectable template" data-template_id="selectable0"  data-pass_id="me1234" value='{{data._id}}' data-document_id="{{data._id}}" data-render_array="data">
-  				  <h3 name="name" data-pass_id="me1234" value="{{data.name}}">No Name</h3>
-  				  <h5 name="_id" data-pass_id="me1234" value="{{data._id}}"></h5>
+  				<li class="selectable template" data-template_id="selectable0" value='{{data._id}}' data-document_id="{{data._id}}" data-render_array="data">
+  				  <h3 name="name" value="{{data.name}}">No Name</h3>
+  				  <h5 name="_id" value="{{data._id}}"></h5>
   				</li>
         </ul>
         
@@ -45,23 +44,21 @@
   
   ------------ Multiple Documents ------------
   
-      <cocreate-select class="floating-label sortable" multiple
-        data-realtime="false" 
+      <cocreate-select class="floating-label sortable" multiple 
         data-collection="test" 
-        data-document_id="5e9531b3a762440eed55c2ed"  
-        name="selectField1" 
-        placeholder="Multiple Documents" 
-        data-limit_selectable="3">
+        data-document_id="5e9531b3a762440eed55c2ed" 
+        name="selectField1"
+        data-limit_selectable="3"
+        placeholder="multiple Document">
         
-        <input class="template-search" placeholder="Search" data-template_id="selectable1"> 
-         
+        <input class="template-search" placeholder="Search" data-template_id="selectable1">
+        
         <ul data-fetch_collection="users" 
-          data-template_id="selectable1" 
-          data-pass_to="me1234"
-          class="selectable--list cocreate-scroll">
-  				<li class="selectable template" data-template_id="selectable1"  data-pass_id="me1234" value='{{data._id}}' data-render_array="data">
-  				  <h3 name="name" data-pass_id="me1234" value="{{data.name}}">--</h3>
-  				  <h5 name="_id" data-pass_id="me1234" value="{{data._id}}"></h5>
+            data-template_id="selectable1" 
+            class="selectable--list cocreate-scroll">
+  				<li class="selectable template" data-template_id="selectable1" value='{{data._id}}' data-document_id="{{data._id}}" data-render_array="data">
+  				  <h3 name="name" value="{{data.name}}">No Name</h3>
+  				  <h5 name="_id" value="{{data._id}}"></h5>
   				</li>
         </ul>
         
@@ -152,16 +149,15 @@
         
         <input class="search-options" placeholder="Search" data-search_id="search_04" data-item_selector=".selectable">
         
-        <ul class="template-wrapper-array selectable--list cocreate-scroll"
+        <ul class="selectable--list cocreate-scroll"
           data-fetch_collection="test" 
           data-filter_value="5e9531b3a762440eed55c2ed" 
           data-filter_name="_id"
           data-filter_operator="$eq"
           data-fetch_name="selectField1"
           data-template_id="template6" 
-          data-pass_to="me1234" 
           data-search_id="search_04">
-    			<li class="template selectable" data-template_id="template6" data-pass_id="me1234" data-value="{{selectField1.--}}">
+    			<li class="template selectable" data-template_id="template6" value="{{selectField1.--}}" data-document_id="{{selectField1.--}}" >
     			  <h3 data-collection="users" data-document_id="{{selectField1.--}}" name="name" data-pass_id="me1234" >Organization Name</h3>
     			  <h5 data-collection="users" data-document_id="{{selectField1.--}}" name="_id" data-pass_id="me1234" >id</h5>
     			</li>
