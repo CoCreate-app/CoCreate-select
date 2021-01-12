@@ -46,6 +46,12 @@ const CoCreateSelectAdapter = {
 		CoCreateSocket.listen('updateDocument', function(data) {
 		  CoCreateSelect.setValue(data);
 		})
+		
+		document.addEventListener('CoCreate-selected', function(e){
+		  const {detail: {element, value}} = e;
+		  console.log(e.detail)
+		  
+		})
   },
   
   __initElementEvent: function(selectContainer) {

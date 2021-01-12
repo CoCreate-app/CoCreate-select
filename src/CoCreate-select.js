@@ -28,19 +28,17 @@ const CoCreateSelect = {
           || dropedEl.classList.contains('select--field')) 
       {
         self.save(dropedEl)
-        dropedEl.dispatchEvent(new CustomEvent('selectedValue'));
-        dropedEl.dispatchEvent(new CustomEvent('input',{ bubbles: true}));
-        
+        self.__fireSelectedEvent(dropedEl, )
       }
 		})
   },
 
   __initSelect: function(selectContainer) {
   
-  	if (CoCreateInit.getInitialized(selectContainer)) {
+  	if (CoCreateInit.getInitialized(selectContainer, "cocreate-select")) {
   		return;
   	}
-  	CoCreateInit.setInitialized(selectContainer)
+  	CoCreateInit.setInitialized(selectContainer, "cocreate-select")
   	
     
     let input = selectContainer.querySelector('input');
@@ -52,21 +50,21 @@ const CoCreateSelect = {
 
       input.addEventListener('keydown', function(e) {
         let keyCode = e.keyCode;
+        if (keyCode == 13) {
+          e.preventDefault()
+        }
         
         if (keyCode == 13 && this.value.length > 0) {
           self.__selectValue(this.value, selectContainer);
           self.save(selectContainer)
-          selectContainer.dispatchEvent(new CustomEvent('selectedValue'));
-          selectContainer.dispatchEvent(new CustomEvent('input',{ bubbles: true}));
+          self.__fireSelectedEvent(selectContainer)
           this.value = '';
         } else if (keyCode == 8 && !this.value.length) {
           let selectedItems = selectContainer.querySelectorAll('[selected]');
           if (selectedItems.length > 0) {
             selectedItems[selectedItems.length -1].remove();
             self.save(selectContainer)
-            selectContainer.dispatchEvent(new CustomEvent('selectedValue'));
-            selectContainer.dispatchEvent(new CustomEvent('input',{ bubbles: true}));
-
+            self.__fireSelectedEvent(selectContainer)
           }
         }
       })
@@ -96,8 +94,7 @@ const CoCreateSelect = {
           /// here emit event
           self.__selectItem(li, selectContainer)
           self.save(selectContainer)
-          selectContainer.dispatchEvent(new CustomEvent('selectedValue'));
-          selectContainer.dispatchEvent(new CustomEvent('input',{ bubbles: true}));
+          self.__fireSelectedEvent(selectContainer)
         }
       }
     });
@@ -106,8 +103,7 @@ const CoCreateSelect = {
       if (e.target.matches('.remove')) {
         e.target.parentNode.remove();
         self.save(selectContainer)
-        selectContainer.dispatchEvent(new CustomEvent('selectedValue'));
-        selectContainer.dispatchEvent(new CustomEvent('input',{ bubbles: true}));
+        self.__fireSelectedEvent(selectContainer)
         return;
       }
       if (!ul_selector.classList.contains('open')) {
@@ -130,7 +126,7 @@ const CoCreateSelect = {
         input.focus();
       }
       
-      if (ul_selector) {
+      if (ul_selector && ul_selector) {
         ul_selector.classList.add('open');
       }
       selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-open'));
@@ -140,16 +136,14 @@ const CoCreateSelect = {
   __closeDropDown: function(selectContainer) {
       let input = selectContainer.querySelector('input');
       let ul_selector = selectContainer.querySelector('ul.selectable--list');
-      
-      if (input) {
+      if (input && input.classList.contains('open')) {
         input.classList.remove('open');
       }
       
-      if (ul_selector) {
+      if (ul_selector && ul_selector.classList.contains('open')) {
         ul_selector.classList.remove('open');
+        selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-close'));
       }
-      
-      selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-close'));
   },
 
   setValue: function(data) {
@@ -164,6 +158,10 @@ const CoCreateSelect = {
       } 
     })
   },
+  
+  renderValue: function(target, value) {
+    this.__renderValue(target, value);
+  }, 
   
   __renderValue: function(selectContainer, values) {
     if (!values) {
@@ -207,7 +205,7 @@ const CoCreateSelect = {
     span.classList.add('remove');
     let li = document.createElement('li');
     li.setAttribute('value', value);
-    li.setAttribute('data-value', value);
+    // li.setAttribute('data-value', value);
     li.innerHTML = value;
 
     li.setAttribute('selected', "");
@@ -270,7 +268,20 @@ const CoCreateSelect = {
     })
     
     document.dispatchEvent(event);
+  },
+  
+  __fireSelectedEvent: function(element) {
+    element.dispatchEvent(new CustomEvent('selectedValue'));
+    element.dispatchEvent(new CustomEvent('input',{ bubbles: true}));
+    let value = this.getValue(element)
+    document.dispatchEvent(new CustomEvent('CoCreate-selected', {
+      detail: {
+        element: element,
+        value: value
+      }
+    }));
   }
 }
 
 CoCreateSelect.init();
+CoCreateInit.register('CoCreateSelect', CoCreateSelect, CoCreateSelect.initElement);

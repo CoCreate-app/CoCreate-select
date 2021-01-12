@@ -34,16 +34,18 @@ cocreate-select input.open, .select--field input.open {
   display: inherit;
 }
 
-[selected] {
-  display: flex;
+cocreate-select [selected], .select--field [selected] {
+  /*display: flex;*/
   align-items: center;
-  min-height: 30px;
+  /*min-height: 30px;*/
   cursor: pointer;
-  color: #fff;
+  /*color: #fff;*/
   padding: 0px 8px;
   background: #dcdcdc;
   width:100%;
   margin:6px;
+  list-style-type: none;
+  overflow:hidden;
 }
 
 cocreate-select[multiple] [selected], .select--field[multiple] [selected] {
@@ -52,8 +54,11 @@ cocreate-select[multiple] [selected], .select--field[multiple] [selected] {
   width:auto;
 }
 
-[selected] .remove {
+cocreate-select [selected] .remove, .select--field [selected] .remove {
   display: inline-block;
+  position: absolute;
+  top:7px;
+  right:15px;
   margin-left: 0;
   width: 0;
   transition: 0.2s all;
@@ -64,13 +69,12 @@ cocreate-select [selected]:last-child, .select--field [selected]:last-child {
   margin-right: 20px!important;
 }
 
-[selected]:hover .remove {
+cocreate-select [selected]:hover .remove, .select--field [selected]:hover .remove {
   margin-left: 10px;
   width: 10px;
 }
-.remove-none [selected]:hover .remove {
-  margin-left: 0px;
-  width: 0px;
+cocreate-select.remove-none [selected]:hover .remove, .select--field.remove-none [selected]:hover .remove {
+  display:none;
 }
 
 /* Dropdown */
@@ -104,7 +108,7 @@ cocreate-select [selected]:last-child, .select--field [selected]:last-child {
 }
 .selectable--list.open {
   max-height: 50vh;
-  margin-top:10px;
+  /*margin-top:10px;*/
   display: block;
   -moz-transform: scaleY(1);
   -ms-transform: scaleY(1);

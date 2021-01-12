@@ -21,13 +21,14 @@
   <form class="margin:20px" data-collection="module_activities">
      
   ------------ single Document ------------
-  
+
       <cocreate-select class="floating-label sortable" 
         data-collection="test" 
+        data-collection="module_activities"
         data-document_id="5e9531b3a762440eed55c2ed" 
         name="selectField0"
         data-limit_selectable="3"
-        placeholder="Single Document">
+        placeholder="Single Document" active>
         
         <input class="template-search" placeholder="Search" data-template_id="selectable0">
         
@@ -41,7 +42,6 @@
         </ul>
         
       </cocreate-select>
-  
   ------------ Multiple Documents ------------
   
       <cocreate-select class="floating-label sortable" multiple 
@@ -69,21 +69,21 @@
         data-collection="test" 
         data-document_id="5e8ff00e8c3af32574df80cb" 
         name="selectField4" 
-        placeholder="Single Options">
+        placeholder="Single Options" active>
        
         <input class="search-options" placeholder="Search" data-search_id="search_01" data-item_selector=".selectable">
        
         <ul class="selectable--list  cocreate-scroll" data-search_id="search_01">
-  				<li class="selectable"  data-value="value 1">
+  				<li class="selectable"  value="value 1">
   				  <h3 >value 1</h3>
   				</li>
-  				<li class="selectable"  data-value="value 2">
+  				<li class="selectable"  value="value 2">
   				  <h3 >value 2</h3>
   				</li>
-  				<li class="selectable"  data-value="value 3">
+  				<li class="selectable"  value="value 3">
   				  <h3 >sss</h3>
   				</li>
-  				<li class="selectable"  data-value="value 3">
+  				<li class="selectable"  value="value 3">
   				  <h3 >value 3</h3>
   				</li>
         </ul>
@@ -96,18 +96,19 @@
         data-collection="test" 
         data-document_id="5e9531b3a762440eed55c2ed"  
         name="selectField2"
-        placeholder="Multiple Options">
+        placeholder="Multiple Options"
+        dats-selectable_limit="5">
         
         <input class="search-options" placeholder="Search" data-search_id="search_02" data-item_selector=".selectable">
         
         <ul class="selectable--list cocreate-scroll" data-search_id="search_02">
-  				<li class="selectable" data-value="value 1">
+  				<li class="selectable" value="value 1">
   				  <h3 >value 1</h3>
   				</li>
-  				<li class="selectable" data-value="value 2">
+  				<li class="selectable" value="value 2">
   				  <h3 >value 2</h3>
-  				</li>
-  				<li class="selectable" data-value="value 3">
+  				</li> 
+  				<li class="selectable" value="value 3">
   				  <h3 >value 3</h3>
   				</li>
         </ul>
@@ -124,7 +125,7 @@
        
         <input class="search-options" placeholder="Search" data-search_id="search_03" data-item_selector=".selectable">
         
-        <ul class="template-wrapper-array selectable--list cocreate-scroll"
+        <ul class="selectable--list cocreate-scroll"
           data-fetch_collection="test" 
           data-filter_value="5e9531b3a762440eed55c2ed" 
           data-filter_name="_id"
@@ -181,6 +182,22 @@
   				</li>
         </ul>
       </cocreate-select>
+
+      <cocreate-select class="floating-label" placeholder="Collection Select" multiple id="set_testing">
+        <input class="search-options" placeholder="Search" data-search_id="search_05" data-item_selector=".selectable">
+        <ul class="selectable--list cocreate-scroll" data-search_id="search_02">
+  				<li class="selectable" value="value1">
+  				  <h3>value 1</h3>
+  				</li>
+  				<li class="selectable" value="value2">
+  				  <h3 >value 2</h3>
+  				</li>
+  				<li class="selectable" value="value3">
+  				  <h3 >value 3</h3>
+  				</li>
+        </ul>
+      </cocreate-select>
+
       
       <div style="margin-top: 30px"><button class="submitBtn">Test button</button></div>
   
@@ -195,6 +212,9 @@
 			  <li class="selectable margin:0 padding:0 height:25px min-height:25px" value="vh"><span class="margin:auto">vw</span></li>
 			</ul>
     </cocreate-select>
+
+    
+
     </form>
 
     <script>
@@ -205,9 +225,14 @@
       }
     </script>
    
-  <script src="https://server.cocreate.app/js/CoCreate.min.js"></script>
-  <script src="https://server.cocreate.app/CoCreate-components/CoCreate-select/src/CoCreate-select.js"></script>
-  <script src="https://server.cocreate.app/CoCreate-components/CoCreate-select/src/CoCreate-adapter.js"></script>
+  <script src="https://server.cocreate.app/CoCreateJS/dist/CoCreate.min.js"></script>
+  
+  <script>
+    let elemens = document.getElementById('set_testing')
+    CoCreateSelect.renderValue(elemens, ["value1"])
+  </script>
+  <!--<script src="https://server.cocreate.app/CoCreate-components/CoCreate-select/src/CoCreate-select.js"></script>-->
+  <!--<script src="https://server.cocreate.app/CoCreate-components/CoCreate-select/src/CoCreate-adapter.js"></script>-->
   <!--<script src="https://server.cocreate.app/CoCreate-components/CoCreate-search/src/CoCreate-search.js"></script>-->
   
   </body>
