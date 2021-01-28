@@ -13,6 +13,7 @@ const CoCreateSelectAdapter = {
   
     let containerList = mainContainer.querySelectorAll('cocreate-select, div.select--field');
     for(let i = 0 ; i < containerList.length ; i++){
+      CoCreateSelect.__initSelect(containerList[i]);
       this.__initElementEvent(containerList[i]);
     }
   },
@@ -40,11 +41,15 @@ const CoCreateSelectAdapter = {
 		})
 		
 		CoCreateSocket.listen('readDocument', function(data) {
-		  CoCreateSelect.setValue(data);
+		  if (data.metadata == 'cocreate-select') {
+  		  CoCreateSelect.setValue(data);
+		  }
 		})
 		
 		CoCreateSocket.listen('updateDocument', function(data) {
-		  CoCreateSelect.setValue(data);
+		  if (data.metadata == 'cocreate-select') {
+  		  CoCreateSelect.setValue(data);
+		  }
 		})
 		
 		document.addEventListener('CoCreate-selected', function(e){
@@ -71,7 +76,21 @@ const CoCreateSelectAdapter = {
     if (collection && id) {
       CoCreate.readDocument({
         'collection': collection, 
-        'document_id': id
+        'document_id': id,
+        'metadata': 'cocreate-select'
+      })
+    }
+  },
+  
+  __sendRequest: function(selectContainer) {
+    let collection = selectContainer.getAttribute('data-collection') || 'module_activity';
+    let id = selectContainer.getAttribute('data-document_id');
+    
+    if (collection && id) {
+      CoCreate.readDocument({
+        'collection': collection, 
+        'document_id': id,
+        'metadata': 'cocreate-select'
       })
     }
   },
@@ -104,7 +123,7 @@ const CoCreateSelectAdapter = {
           [name] : value 
         },
         'upsert': true,
-        'metadata': ''
+        'metadata': 'cocreate-select'
       })
     }
     
@@ -112,3 +131,23 @@ const CoCreateSelectAdapter = {
 }
 
 CoCreateSelectAdapter.init();
+
+
+CoCreateObserver.add({ 
+	name: 'CoCreateSelectAttributes', 
+	observe: ['attributes'],
+	attributes: ['data-document_id'],
+	include: 'cocreate-select', 
+	task: function(mutation) {
+		CoCreateSelectAdapter.__sendRequest(mutation.target)
+	}
+})
+
+CoCreateObserver.add({ 
+	name: 'CoCreateSelect', 
+	observe: ['subtree', 'childList'],
+	include: 'cocreate-select', 
+	task: function(mutation) {
+		CoCreateSelectAdapter.initElement(mutation.target)
+	}
+})

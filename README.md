@@ -1,15 +1,14 @@
+# CoCreate-select
+A simple select component in vanilla javascript. Easily configured using HTML5 data-attributes and/or JavaScript API. Take it for a spin in our [playground!](https://cocreate.app/docs/select)
+
 ![GitHub file size in bytes](https://img.shields.io/github/size/CoCreate-app/CoCreate-select/dist/CoCreate-select.min.js?label=minified%20size&style=for-the-badge) 
-![GitHub package.json version](https://img.shields.io/github/package-json/v/CoCreate-app/CoCreate-select?style=for-the-badge)
+![GitHub latest release](https://img.shields.io/github/v/release/CoCreate-app/CoCreate-select?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/CoCreate-app/CoCreate-select?style=for-the-badge) 
 ![GitHub labels](https://img.shields.io/github/labels/CoCreate-app/CoCreate-select/help%20wanted?style=for-the-badge)
 
-# CoCreate-select
-A simple HTML5 and pure javascript component. Easy configuration using data-attributes and highly styleable.
-
 ![CoCreate](https://cdn.cocreate.app/logo.png)
 
-[CoCreate Docs](https://cocreate.app/documentation/CoCreate-select)
-
+[CoCreate Docs](https://cocreate.app/docs/select)
 
 We want this library to be community-driven, and CoCreate led. We need your help to realize this goal. To help make sure we are building the right things in the right order, we ask that you create [issues](https://github.com/CoCreate-app/Realtime_Admin_CRM_and_CMS/issues) and [pull requests](https://github.com/CoCreate-app/Realtime_Admin_CRM_and_CMS/pulls) or merely upvote or comment on existing issues or pull requests.
 
@@ -27,12 +26,12 @@ We appreciate your continued support, thank you!
 <a name="announcements"></a>
 # Announcements
 
-All updates to this library are documented in our [CHANGELOG](https://github.com/CoCreate-app/Cocreate-select/blob/master/CHANGELOG.md) and [releases](https://github.com/CoCreate-app/CoCreate-select/releases). You may also subscribe to email for releases and breaking changes. 
+All updates to this library are documented in our [CHANGELOG](https://github.com/CoCreate-app/CoCreate-select/blob/master/CHANGELOG.md) and [releases](https://github.com/CoCreate-app/CoCreate-select/releases). You may also subscribe to email for releases and breaking changes. 
 
 <a name="roadmap"></a>
 # Roadmap
 
-If you are interested in the future direction of this project, please take a look at our open [issues](https://github.com/CoCreate-app/Cocreate-select/issues) and [pull requests](https://github.com/CoCreate-app/Cocreate-select/pulls). We would love to hear your feedback.
+If you are interested in the future direction of this project, please take a look at our open [issues](https://github.com/CoCreate-app/CoCreate-select/issues) and [pull requests](https://github.com/CoCreate-app/CoCreate-select/pulls). We would love to hear your feedback.
 
 
 <a name="about"></a>
@@ -47,7 +46,8 @@ CoCreate-select is maintained and funded by CoCreate. The names and logos for Co
 <a name="contribute"></a>
 # How to Contribute
 
-We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING](https://github.com/CoCreate-app/Cocreate-select/blob/master/CONTRIBUTING.md) guide for details.
+We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING](https://github.com/CoCreate-app/CoCreate-select/blob/master/CONTRIBUTING.md) guide for details.
 
 # License
-[The MIT License (MIT)](https://github.com/CoCreate-app/Cocreate-select/blob/master/LICENSE)
+[The MIT License (MIT)](https://github.com/CoCreate-app/CoCreate-select/blob/master/LICENSE)
+

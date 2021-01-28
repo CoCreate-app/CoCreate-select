@@ -35,10 +35,10 @@ const CoCreateSelect = {
 
   __initSelect: function(selectContainer) {
   
-  	if (CoCreateInit.getInitialized(selectContainer, "cocreate-select")) {
+  	if (CoCreateObserver.getInitialized(selectContainer, "cocreate-select")) {
   		return;
   	}
-  	CoCreateInit.setInitialized(selectContainer, "cocreate-select")
+  	CoCreateObserver.setInitialized(selectContainer, "cocreate-select")
   	
     
     let input = selectContainer.querySelector('input');
@@ -283,5 +283,8 @@ const CoCreateSelect = {
   }
 }
 
-CoCreateSelect.init();
-CoCreateInit.register('CoCreateSelect', CoCreateSelect, CoCreateSelect.initElement);
+// CoCreateSelect.init();
+// CoCreateInit.register('CoCreateSelect', CoCreateSelect, CoCreateSelect.initElement);
+
+
+
