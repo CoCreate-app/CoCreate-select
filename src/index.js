@@ -22,4 +22,12 @@ CoCreate.observer.add({
 		SelectAdapter.initElement(mutation.target)
 	}
 });
+
+CoCreate.form.init({
+	name: 'CoCreateSelect',
+	selector: "cocreate-select",
+	callback: function(el) {
+		CoCreate.select.adapter.save(el);
+	}
+});
 export default CoCreateSelect;

@@ -3,8 +3,6 @@ import CoCreateSelect from "./select.js"
 const SelectAdapter = {
 	
 	init: function() {
-		CoCreate.form.add({selector: 'cocreate-select'});
-		
 		this.initElement();
 		this.__initEvents()
 	},
@@ -65,10 +63,7 @@ const SelectAdapter = {
 	
 	__initElementEvent: function(selectContainer) {
 		const self = this;
-		selectContainer.addEventListener('clicked-submitBtn', function() {
-			self.save(this)
-		})
-		
+
 		selectContainer.addEventListener('set-document_id', function() {
 			self.save(this)
 		})
