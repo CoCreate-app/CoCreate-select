@@ -4,7 +4,7 @@ import SelectAdapter from "./adapter.js"
 SelectAdapter.init();
 CoCreateSelect.adapter = SelectAdapter;
 
-CoCreate.observer.add({ 
+CoCreate.observer.init({ 
 	name: 'CoCreateSelectAttributes', 
 	observe: ['attributes'],
 	attributes: ['data-document_id'],
@@ -14,7 +14,7 @@ CoCreate.observer.add({
 	}
 });
 
-CoCreate.observer.add({ 
+CoCreate.observer.init({ 
 	name: 'CoCreateSelect', 
 	observe: ['subtree', 'childList'],
 	include: 'cocreate-select', 

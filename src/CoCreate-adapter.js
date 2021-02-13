@@ -132,7 +132,7 @@ const CoCreateSelectAdapter = {
 
 CoCreateSelectAdapter.init();
 
-CoCreate.observer.add({ 
+CoCreate.observer.init({ 
 	name: 'CoCreateSelectAttributes', 
 	observe: ['attributes'],
 	attributes: ['data-document_id'],
@@ -142,7 +142,7 @@ CoCreate.observer.add({
 	}
 });
 
-CoCreate.observer.add({ 
+CoCreate.observer.init({ 
 	name: 'CoCreateSelect', 
 	observe: ['subtree', 'childList'],
 	include: 'cocreate-select', 
