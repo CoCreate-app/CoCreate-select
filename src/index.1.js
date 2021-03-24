@@ -1,13 +1,10 @@
 import CoCreateSelect from "./select.js"
 import SelectAdapter from "./adapter.js"
-import CoCreateObserver from '../../CoCreate-observer/src';
-import form from '../../CoCreate-form/src'
-import './CoCreate-select.css';
 
 SelectAdapter.init();
 CoCreateSelect.adapter = SelectAdapter;
 
-CoCreateObserver.init({ 
+CoCreate.observer.init({ 
 	name: 'CoCreateSelectAttributes', 
 	observe: ['attributes'],
 	attributes: ['data-document_id'],
@@ -17,7 +14,7 @@ CoCreateObserver.init({
 	}
 });
 
-CoCreateObserver.init({ 
+CoCreate.observer.init({ 
 	name: 'CoCreateSelect', 
 	observe: ['subtree', 'childList'],
 	include: 'cocreate-select', 
@@ -26,11 +23,11 @@ CoCreateObserver.init({
 	}
 });
 
-form.init({
+CoCreate.form.init({
 	name: 'CoCreateSelect',
 	selector: "cocreate-select",
 	callback: function(el) {
-		SelectAdapter.save(el);
+		CoCreate.select.adapter.save(el);
 	}
 });
 export default CoCreateSelect;

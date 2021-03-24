@@ -1,3 +1,5 @@
+import CoCreateObserver from '../../CoCreate-observer/src';
+
 const CoCreateSelect = {
   
   init: function() {
@@ -35,10 +37,10 @@ const CoCreateSelect = {
 
   __initSelect: function(selectContainer) {
   
-  	if (CoCreate.observer.getInitialized(selectContainer, "cocreate-select")) {
+  	if (CoCreateObserver.getInitialized(selectContainer, "cocreate-select")) {
   		return;
   	}
-  	CoCreate.observer.setInitialized(selectContainer, "cocreate-select")
+  	CoCreateObserver.setInitialized(selectContainer, "cocreate-select")
   	
     
     let input = selectContainer.querySelector('input');

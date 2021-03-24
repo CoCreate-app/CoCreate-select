@@ -112,8 +112,8 @@ const CoCreateSelectAdapter = {
       return;
     }
     
-    if (!CoCreate.document_id.checkID(element)) {
-      CoCreate.document_id.request({element, value, nameAttr: "name"});
+    if (!CoCreate.form.checkID(element)) {
+      CoCreate.form.request({element, value, nameAttr: "name"});
       element.setAttribute('data-document_id', 'pending');
     } else if (id) {
       CoCreate.crud.updateDocument({

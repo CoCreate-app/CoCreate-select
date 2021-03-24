@@ -1,4 +1,6 @@
 import CoCreateSelect from "./select.js"
+import {socket, crud} from '../../../CoCreateJS/src';
+import form from '../../CoCreate-form/src'
 
 const SelectAdapter = {
 	
@@ -42,13 +44,13 @@ const SelectAdapter = {
 			self.save(element);
 		})
 		
-		CoCreate.socket.listen('readDocument', function(data) {
+		socket.listen('readDocument', function(data) {
 			if (data.metadata == 'cocreate-select') {
 				CoCreateSelect.setValue(data);
 			}
 		})
 		
-		CoCreate.socket.listen('updateDocument', function(data) {
+		socket.listen('updateDocument', function(data) {
 			if (data.metadata == 'cocreate-select') {
 				CoCreateSelect.setValue(data);
 			}
@@ -73,7 +75,7 @@ const SelectAdapter = {
 		let id = selectContainer.getAttribute('data-document_id');
 		
 		if (collection && id) {
-			CoCreate.crud.readDocument({
+			crud.readDocument({
 				'collection': collection, 
 				'document_id': id,
 				'metadata': 'cocreate-select'
@@ -86,7 +88,7 @@ const SelectAdapter = {
 		let id = selectContainer.getAttribute('data-document_id');
 		
 		if (collection && id) {
-			CoCreate.crud.readDocument({
+			crud.readDocument({
 				'collection': collection, 
 				'document_id': id,
 				'metadata': 'cocreate-select'
@@ -111,11 +113,11 @@ const SelectAdapter = {
 			return;
 		}
 		
-		if (!CoCreate.document_id.checkID(element)) {
-			CoCreate.document_id.request({element, value, nameAttr: "name"});
+		if (!form.checkID(element)) {
+			form.request({element, value, nameAttr: "name"});
 			element.setAttribute('data-document_id', 'pending');
 		} else if (id) {
-			CoCreate.crud.updateDocument({
+			crud.updateDocument({
 				'collection': collection, 
 				'document_id': id, 
 				'data' : { 
