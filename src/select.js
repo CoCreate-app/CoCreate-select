@@ -1,4 +1,4 @@
-import CoCreateObserver from '../../CoCreate-observer/src';
+import CoCreateObserver from '@cocreate/observer';
 
 const CoCreateSelect = {
   

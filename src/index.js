@@ -1,7 +1,7 @@
 import CoCreateSelect from "./select.js"
 import SelectAdapter from "./adapter.js"
-import CoCreateObserver from '../../CoCreate-observer/src';
-import form from '../../CoCreate-form/src'
+import CoCreateObserver from '@cocreate/observer';
+import form from '@cocreate/form'
 import './CoCreate-select.css';
 
 SelectAdapter.init();

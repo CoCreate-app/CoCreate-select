@@ -1,6 +1,13 @@
 import CoCreateSelect from "./select.js"
 import {socket, crud} from '../../../CoCreateJS/src';
-import form from '../../CoCreate-form/src'
+
+// import CoCreateSocket from '@cocreate/socket';
+// import CoCreateCrud from '@cocreate/crud';
+import crudUtils from '@cocreate/crud/src/utils.crud.js'
+import form from '@cocreate/form'
+
+// let socket = new CoCreateSocket('ws');
+// let crud = CoCreateCrud(socket);
 
 const SelectAdapter = {
 	
