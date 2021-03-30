@@ -1,13 +1,7 @@
 import CoCreateSelect from "./select.js"
-import {socket, crud} from '@cocreate/cocreatejs';
-
-// import CoCreateSocket from '@cocreate/socket';
-// import CoCreateCrud from '@cocreate/crud';
-import crudUtils from '@cocreate/crud/src/utils.crud.js'
+import crud from '@cocreate/crud';
 import form from '@cocreate/form'
 
-// let socket = new CoCreateSocket('ws');
-// let crud = CoCreateCrud(socket);
 
 const SelectAdapter = {
 	
@@ -51,13 +45,13 @@ const SelectAdapter = {
 			self.save(element);
 		})
 		
-		socket.listen('readDocument', function(data) {
+		crud.listen('readDocument', function(data) {
 			if (data.metadata == 'cocreate-select') {
 				CoCreateSelect.setValue(data);
 			}
 		})
 		
-		socket.listen('updateDocument', function(data) {
+		crud.listen('updateDocument', function(data) {
 			if (data.metadata == 'cocreate-select') {
 				CoCreateSelect.setValue(data);
 			}
