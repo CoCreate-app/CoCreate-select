@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.2...v1.0.3) (2021-03-30)
+
+
+### Bug Fixes
+
+* import paths using npm ([f94ead6](https://github.com/CoCreate-app/CoCreate-select/commit/f94ead64852bed12c7a56165bed687a2e0840c57))
+
 ## [1.0.2](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.1...v1.0.2) (2021-03-30)
 
 
