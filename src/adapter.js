@@ -1,5 +1,5 @@
 import CoCreateSelect from "./select.js"
-import {socket, crud} from '../../../CoCreateJS/src';
+import {socket, crud} from '@cocreate/cocreatejs';
 
 // import CoCreateSocket from '@cocreate/socket';
 // import CoCreateCrud from '@cocreate/crud';
