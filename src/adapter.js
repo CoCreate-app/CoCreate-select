@@ -1,5 +1,5 @@
 import CoCreateSelect from "./select.js"
-import crud from '@cocreate/crud';
+import crud from '@cocreate/crud-client';
 import form from '@cocreate/form'
 
 
