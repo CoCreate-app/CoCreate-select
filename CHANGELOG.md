@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.4...v1.0.5) (2021-04-16)
+
+
+### Bug Fixes
+
+* update to add actve on select element when focused ([ed3ceec](https://github.com/CoCreate-app/CoCreate-select/commit/ed3ceec7116f4f40e73c57fe995ca4f68bbac644))
+
 ## [1.0.4](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.3...v1.0.4) (2021-04-04)
 
 
