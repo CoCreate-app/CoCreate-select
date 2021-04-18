@@ -1,5 +1,4 @@
 import CoCreateObserver from '@cocreate/observer';
-
 const CoCreateSelect = {
   
   init: function() {
@@ -129,7 +128,12 @@ const CoCreateSelect = {
       }
       
       if (ul_selector && ul_selector) {
-        ul_selector.classList.add('open');
+        //ul_selector.classList.add('open');
+      }
+      //floating label
+      let floating_label_field = selectContainer.closest(".floating-label_field");
+      if(floating_label_field){
+        floating_label_field.classList.add('active');
       }
       selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-open'));
     }
@@ -142,9 +146,20 @@ const CoCreateSelect = {
         input.classList.remove('open');
       }
       
+      /*delete active floating label*/
+      let value = input.value;
+      let floating_label_field = selectContainer.closest(".floating-label_field");
+      const active = floating_label_field.hasAttribute('active')
+      if (!active && (!value || value.length == 0)) 
+        floating_label_field.classList.remove('active');
+      /*_End floating label*/
+      
       if (ul_selector && ul_selector.classList.contains('open')) {
         ul_selector.classList.remove('open');
         selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-close'));
+        
+        
+      
       }
   },
 
