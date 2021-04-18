@@ -128,13 +128,15 @@ const CoCreateSelect = {
       }
       
       if (ul_selector && ul_selector) {
-        //ul_selector.classList.add('open');
+        ul_selector.classList.add('open');
       }
       //floating label
+      /*console.log("selectContainer ",selectContainer)
       let floating_label_field = selectContainer.closest(".floating-label_field");
       if(floating_label_field){
-        floating_label_field.classList.add('active');
-      }
+        */
+        selectContainer.classList.add('active');
+      //}
       selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-open'));
     }
   },
@@ -148,10 +150,10 @@ const CoCreateSelect = {
       
       /*delete active floating label*/
       let value = input.value;
-      let floating_label_field = selectContainer.closest(".floating-label_field");
-      const active = floating_label_field.hasAttribute('active')
+      //let floating_label_field = selectContainer.closest(".floating-label_field");
+      const active = selectContainer.hasAttribute('active')
       if (!active && (!value || value.length == 0)) 
-        floating_label_field.classList.remove('active');
+        selectContainer.classList.remove('active');
       /*_End floating label*/
       
       if (ul_selector && ul_selector.classList.contains('open')) {
