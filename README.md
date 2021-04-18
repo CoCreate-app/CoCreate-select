@@ -9,7 +9,7 @@ A simple select component in vanilla javascript. Easily configured using HTML5 d
 
 ![CoCreate-select](https://cdn.cocreate.app/docs/CoCreate-select.gif)
 
-## [Docs & Demo](https://cocreate.app/docs/clone)
+## [Docs & Demo](https://cocreate.app/docs/select)
 
 For a complete guide and working demo refer to the [doumentation](https://cocreate.app/docs/select)
 
