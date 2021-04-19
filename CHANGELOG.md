@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.6...v1.0.7) (2021-04-19)
+
+
+### Bug Fixes
+
+* add missing packages ([d796f0d](https://github.com/CoCreate-app/CoCreate-select/commit/d796f0d23c883e3ab95762ffac1aabbdbf9ab1e4))
+
 ## [1.0.6](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.5...v1.0.6) (2021-04-19)
 
 
