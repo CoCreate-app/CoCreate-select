@@ -1,56 +1,58 @@
 import CoCreateObserver from '@cocreate/observer';
-const isInit = new Map()
-const CoCreateSelect = {
+// options
+let containerSelector = 'cocreate-select, div.select--field';
+let inputSelector = 'input';
+let ulSeletablesSelector = 'ul.selectable--list';
+let onOpenName = 'CoCreateSelect-open';
+const isInit = new Map();
+
+
   
-  init: function() {
-    this.initElement();
-    // this.__initEvents()
-  },
-  
-  initElement: function(container) {
+  function CoCreateSelect(container) {
     const mainContainer = container || document;
     
-    if (!mainContainer.querySelectorAll) {
-      return;
-    }
-  
-    let containerList = mainContainer.querySelectorAll('cocreate-select, div.select--field');
+    let containerList = mainContainer.querySelectorAll(containerSelector);
     
-    for(let i = 0 ; i < containerList.length ; i++){
-      let selectContainer = containerList[i];
-      this.__initSelect(selectContainer);
-    }
-  },
-  
-  __initEvents: function() {
-    const self = this;
-    document.addEventListener('dndsuccess', function(e) {
-			const {dropedEl, dragedEl} = e.detail;
-      if ((typeof dropedEl.tagName != 'undefined' && dropedEl.tagName.toLowerCase() == 'cocreate-select') 
-          || dropedEl.classList.contains('select--field')) 
-      {
-        self.save(dropedEl)
-        self.__fireSelectedEvent(dropedEl, )
-      }
-		})
-  },
+    for(let i = 0 ; i < containerList.length ; i++)
+      this.__initSelect(containerList[i]);
+    
+  }
 
-  __initSelect: function(selectContainer) {
+
+CoCreateSelect.prototype = {
   
+  
+// map from container to class  
+  // __initEvents: function() {
+  //   const self = this;
+  //   document.addEventListener('dndsuccess', function(e) {
+		// 	const {dropedEl, dragedEl} = e.detail;
+  //     if ( dropedEl.tagName.toLowerCase() == 'cocreate-select'
+  //         || dropedEl.classList.contains('select--field')) 
+  //     {
+  //       self.save(dropedEl)
+  //       self.__fireSelectedEvent(dropedEl, )
+  //     }
+		// })
+  // },
+
+  init: function(selectContainer) {
+  
+    this.selectContainer = selectContainer;
+    this.input = selectContainer.querySelector(inputSelector);
+    this.ulelectables = selectContainer.querySelector(ulSeletablesSelector);
+    this.type = selectContainer.hasAttribute('multiple') ? 'multiple' :'single';
     if(isInit.has(selectContainer)) 
       return;
-      
     isInit.set(selectContainer, true)
 
-    
-    let input = selectContainer.querySelector('input');
-    let ul_selector = selectContainer.querySelector('ul.selectable--list');
+
 
     const self = this;
     
-    if (input) {
+    if (this.input) {
 
-      input.addEventListener('keydown', function(e) {
+      this.input.addEventListener('keydown', function(e) {
         let keyCode = e.keyCode;
         if (keyCode == 13) {
           e.preventDefault()
@@ -79,21 +81,21 @@ const CoCreateSelect = {
       }
     });
     
-    ul_selector.addEventListener('click', function (e) {
+    this.ulSelectables.addEventListener('click', function (e) {
       if (!e.target.matches('li')) {
         let li = e.target;
-        while(typeof li.tagName != 'undefined' && li.tagName.toLowerCase() != 'li') {
-          li = li.parentNode;
+        while(li && li.tagName != 'LI') {
+          li = li.parentElement;
         }
         
-        if (li.classList && li.classList.contains('selectable')) {
+        if ( li.classList.contains('selectable')) {
           // check if data exist
           let value = li.getAttribute('value');
           let selectValue = self.getValue(selectContainer);
           
-          if (value == selectValue || selectValue.indexOf(value) > -1) return;
+          if (value == selectValue || selectValue.indexOf(value) !== -1) return;
           
-          /// here emit event
+
           self.__selectItem(li, selectContainer)
           self.save(selectContainer)
           self.__fireSelectedEvent(selectContainer)
@@ -108,7 +110,7 @@ const CoCreateSelect = {
         self.__fireSelectedEvent(selectContainer)
         return;
       }
-      if (!ul_selector.classList.contains('open')) {
+      if (!this.ulSelectables.classList.contains('open')) {
         self.__openDropDown(selectContainer)
       }
       let input = selectContainer.querySelector('input');
@@ -118,28 +120,26 @@ const CoCreateSelect = {
     }, true);
   },
   
-  __openDropDown: function(selectContainer, focus=true) {
-    if(focus){
-      let input = selectContainer.querySelector('input');
-      let ul_selector = selectContainer.querySelector('ul.selectable--list');
-      
-      if (input) {
-        input.classList.add('open');
-        input.focus();
+  // todo: add focus parameter
+  __openDropDown: function(selectContainer) {
+
+
+      if (this.input) {
+        this.input.classList.add('open');
+        this.input.focus();
       }
       
-      if (ul_selector && ul_selector) {
-        ul_selector.classList.add('open');
+      if (this.ulelectables && this.ulelectables) {
+        this.ulelectables.classList.add('open');
       }
       selectContainer.classList.add('active');
       
-      selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-open'));
-    }
+      selectContainer.dispatchEvent(new CustomEvent(onOpenName));
+    
   },
   
   __closeDropDown: function(selectContainer) {
-      let input = selectContainer.querySelector('input');
-      let ul_selector = selectContainer.querySelector('ul.selectable--list');
+
       if (input && input.classList.contains('open')) {
         input.classList.remove('open');
       }
@@ -150,81 +150,56 @@ const CoCreateSelect = {
       if (!active && (!value || value.length == 0)) 
         selectContainer.classList.remove('active');
 
-      if (ul_selector && ul_selector.classList.contains('open')) {
-        ul_selector.classList.remove('open');
+      if (this.ulelectables && this.ulelectables.classList.contains('open')) {
+        this.ulelectables.classList.remove('open');
         selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-close'));
       
       }
   },
 
-  setValue: function(data) {
-    const self = this;
-    let selectContainers = document.querySelectorAll('cocreate-select,.select--field');
-    selectContainers.forEach((selectEl) => {
-      const collection = selectEl.getAttribute('data-collection') || 'module_activity';
-      const id = selectEl.getAttribute('data-document_id');
-      const name = selectEl.getAttribute('name');
-      if (data['collection'] == collection && data['document_id'] == id && name) {
-        self.__renderValue(selectEl, data['data'][name]);
-      } 
-    })
-  },
+
   
-  renderValue: function(target, value) {
-    this.__renderValue(target, value);
-  }, 
+
   
-  __renderValue: function(selectContainer, values) {
-    if (!values) {
+  renderValue: function(selectContainer, values) {
+    if (!values) 
       return;
-    }
+    else if(typeof values === 'string')
+      values = [values];
+    
     let selectedItems = selectContainer.querySelectorAll('[selected]');
     selectedItems.forEach((item) => item.remove())
 
-    let ul_selector = selectContainer.querySelector('ul.selectable--list');
-    if (values && typeof values === 'string') {
-      values = [values];
-    }
 
-    for (let i = 0; i < values.length; i++) {
-      const selectedItem = ul_selector.querySelector("li[value='" + values[i] + "']");
+    for (let value of values) {
+
       if (selectedItem){
-        this.__selectItem(selectedItem, selectContainer,false);
+        this.__selectItem(selectedItem, selectContainer);
       } else {
-        this.__selectValue(values[i], selectContainer,false)
+        this.__selectValue(values[i], selectContainer)
       }
     }
 
-    try {
-      if (CoCreateFloatLabel) {
-        CoCreateFloatLabel.update(selectContainer, values && values.length > 0)
-      }
-    } catch (err) {
-      
-    }
+
   },
   
   __selectValue: function(value, selectContainer) {
     let currentValue = this.getValue(selectContainer);
     if (currentValue == value || currentValue.indexOf(value) > -1) return;
     
-    let searchInput = selectContainer.querySelector('input');
-    let ul_selector = selectContainer.querySelector('ul.selectable--list');
-    
+
     let span = document.createElement('span');
-    span.innerHTML='x';
+    span.innerText='x';
     span.classList.add('remove');
     let li = document.createElement('li');
     li.setAttribute('value', value);
-    // li.setAttribute('data-value', value);
-    li.innerHTML = value;
+    li.innerText = value;
 
     li.setAttribute('selected', "");
-    // li.classList.add('selected');
     li.classList.remove('selectable');
     li.appendChild(span);
 
-    selectContainer.insertBefore(li, searchInput ? searchInput : ul_selector);
+    selectContainer.insertBefore(li, this.input ? this.input : this.ulelectables);
 
   },
   
@@ -249,25 +224,23 @@ const CoCreateSelect = {
     selectedItem.setAttribute("selected", "");
     selectedItem.classList.remove('selectable');
     selectedItem.appendChild(span);
-    selectContainer.insertBefore(selectedItem, searchInput ? searchInput : ul_selector);
+    selectContainer.insertBefore(selectedItem, searchInput ? searchInput : this.ulelectables);
     
     if (type == 'single') {
       this.__closeDropDown(selectContainer);
     }
   },
   
+  // gets all value 
   getValue:function(node) {
-    let type = node.hasAttribute('multiple') ? 'multiple' :'single'
-    let selectedItems = node.querySelectorAll('[selected]');
-    
-    let value = [];
-    if (selectedItems.length > 0) {
-      selectedItems.forEach((item) => value.push(item.getAttribute('value')))
-    } 
-    value = (type === 'multiple') ? value : (value[0] || '')
-    return value;
+    let values = node.querySelectorAll('[selected]')
+      .map((item) => item.getAttribute('value'))
+  
+    return this.type === 'multiple' ? values : (values[0] || '')
   },
   
+  
+  // for crdt
   save: function(selectEl) {
     if (!selectEl) {
       return;
@@ -280,6 +253,20 @@ const CoCreateSelect = {
     
     document.dispatchEvent(event);
   },
+  // for crdt and outsider call
+  setValue: function(data) {
+    const self = this;
+    let selectContainers = document.querySelectorAll('cocreate-select,.select--field');
+    selectContainers.forEach((selectEl) => {
+      const collection = selectEl.getAttribute('data-collection') || 'module_activity';
+      const id = selectEl.getAttribute('data-document_id');
+      const name = selectEl.getAttribute('name');
+      if (data['collection'] == collection && data['document_id'] == id && name) {
+        self.__renderValue(selectEl, data['data'][name]);
+      } 
+    })
+  },
+  
   
   __fireSelectedEvent: function(element) {
     element.dispatchEvent(new CustomEvent('selectedValue'));
