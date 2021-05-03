@@ -1,4 +1,5 @@
 import CoCreateObserver from '@cocreate/observer';
+const isInit = new Map()
 const CoCreateSelect = {
   
   init: function() {
@@ -36,11 +37,11 @@ const CoCreateSelect = {
 
   __initSelect: function(selectContainer) {
   
-  	if (CoCreateObserver.getInitialized(selectContainer, "cocreate-select")) {
-  		return;
-  	}
-  	CoCreateObserver.setInitialized(selectContainer, "cocreate-select")
-  	
+    if(isInit.has(selectContainer)) 
+      return;
+      
+    isInit.set(selectContainer, true)
+
     
     let input = selectContainer.querySelector('input');
     let ul_selector = selectContainer.querySelector('ul.selectable--list');
