@@ -30,12 +30,13 @@ cocreate-select[multiple] input, .select--field[multiple] input {
   width:auto;
 }
 
-cocreate-select input.open, .select--field input.open {
+cocreate-select input.open, .select--field input.open, cocreate-select.open input {
   display: inherit;
 }
 
 cocreate-select [selected], .select--field [selected] {
   /*display: flex;*/
+  position: relative;
   align-items: center;
   /*min-height: 30px;*/
   cursor: pointer;
@@ -106,7 +107,7 @@ cocreate-select.remove-none [selected]:hover .remove, .select--field.remove-none
 .selectable--list li {
   padding: 0;
 }
-.selectable--list.open {
+.selectable--list.open, .open .selectable--list{
   max-height: 50vh;
   /*margin-top:10px;*/
   display: block;
