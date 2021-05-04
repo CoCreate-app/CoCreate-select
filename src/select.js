@@ -35,13 +35,13 @@ CoCreateSelect.prototype = {
   //     }
 		// })
   // },
-
+  isMultiple: ()=> selectContainer.hasAttribute('multiple') ? true : false,
   init: function(selectContainer) {
   
     this.selectContainer = selectContainer;
     this.input = selectContainer.querySelector(inputSelector);
     this.ulelectables = selectContainer.querySelector(ulSeletablesSelector);
-    this.type = selectContainer.hasAttribute('multiple') ? 'multiple' :'single';
+    
     if(isInit.has(selectContainer)) 
       return;
     isInit.set(selectContainer, true)
@@ -182,7 +182,7 @@ CoCreateSelect.prototype = {
 
 
   },
-  
+
   __selectValue: function(value, selectContainer) {
     let currentValue = this.getValue(selectContainer);
     if (currentValue == value || currentValue.indexOf(value) > -1) return;
@@ -204,7 +204,7 @@ CoCreateSelect.prototype = {
   },
   
   __selectItem: function(li, selectContainer, focus=true) {
-    let type = selectContainer.hasAttribute('multiple') ? 'multiple' : 'single';
+    let type = 
     let searchInput = selectContainer.querySelector('input');
     let ul_selector = selectContainer.querySelector('ul.selectable--list');
     
@@ -236,7 +236,7 @@ CoCreateSelect.prototype = {
     let values = node.querySelectorAll('[selected]')
       .map((item) => item.getAttribute('value'))
   
-    return this.type === 'multiple' ? values : (values[0] || '')
+    return this.isMultiple()  ? values : (values[0] || '')
   },
   
   
