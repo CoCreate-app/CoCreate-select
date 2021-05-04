@@ -18,7 +18,8 @@ const SelectAdapter = {
 	
 		let containerList = mainContainer.querySelectorAll('cocreate-select, div.select--field');
 		for(let i = 0 ; i < containerList.length ; i++){
-			CoCreateSelect.__initSelect(containerList[i]);
+			// CoCreateSelect.__initSelect(containerList[i]);
+			new CoCreateSelect.init(containerList[i]);
 			this.__initElementEvent(containerList[i]);
 		}
 	},
