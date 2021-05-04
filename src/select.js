@@ -26,24 +26,24 @@ function CoCreateSelect(c) {
 
 
 function getValue(node) {
-    let values = Array.from(node.querySelectorAll('[selected]')).map((item) => item.getAttribute('value'))
-    
-    return node.getAttribute('multiple') ? values : (values[0] || '')
-  }
-   function setValue(data) {
-   
-    //      [name="${data['name']}"]\
-    let selector = addAttribute(containerSelector,
-      `[data-collection="${data['collection']}"][data-document_id="${data['document_id']}"]`);
+  let values = Array.from(node.querySelectorAll('[selected]')).map((item) => item.getAttribute('value'))
 
-    for (let el of document.querySelectorAll(selector))
-    {
-       const name = el.getAttribute('name');
-      container.get(el).renderValue(data['data'][name]);
-    }
+  return node.getAttribute('multiple') ? values : (values[0] || '')
+}
 
+function setValue(data) {
+
+  //      [name="${data['name']}"]\
+  let selector = addAttribute(containerSelector,
+    `[data-collection="${data['collection']}"][data-document_id="${data['document_id']}"]`);
+
+  for (let el of document.querySelectorAll(selector)) {
+    const name = el.getAttribute('name');
+    container.get(el).renderValue(data['data'][name]);
   }
-  
+
+}
+
 CoCreateSelect.getValue = getValue;
 CoCreateSelect.setValue = setValue;
 
@@ -159,12 +159,15 @@ CoCreateSelect.prototype = {
 
 
   renderValue: function(value) {
-      let seletable = this.ulSelectables.querySelector(`li[value="${value}"]`)
-      seletable ? this.addValue(seletable.value, seletable.innerText) : this.addValue(value);
 
-  
+    let selectedItems = this.selectContainer.querySelectorAll('[selected]');
+    selectedItems.forEach((item) => item.remove())
+    let seletable = this.ulSelectables.querySelector(`li[value="${value}"]`)
+    seletable ? this.addValue(seletable.value, seletable.innerText) : this.addValue(value);
+
+
   },
-  
+
 
   addValue: function(value, text) {
 
@@ -241,4 +244,4 @@ else
 
 
 
-export default {init: CoCreateSelect, ...CoCreateSelect};
+export default { init: CoCreateSelect, ...CoCreateSelect };
