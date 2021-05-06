@@ -83,8 +83,8 @@ CoCreateSelect.prototype = {
           if (!selectedItems.length) return;
           selectedItems[selectedItems.length - 1].remove();
           self.save(selectContainer)
-    self.__fireSelectedEvent(selectContainer)
-  
+          self.__fireSelectedEvent(selectContainer)
+
         }
       })
     }
@@ -113,9 +113,9 @@ CoCreateSelect.prototype = {
       // check if data exist
       let value = el.getAttribute('value');
 
-
-
-      self.addValue(value, el.innerText ? el.innerText : value)
+      if (!this.isMultiple())
+        this.removeValues()
+        self.addValue(value, el.innerText ? el.innerText : value)
       self.save(selectContainer)
       self.__fireSelectedEvent(selectContainer)
 
@@ -153,12 +153,14 @@ CoCreateSelect.prototype = {
   },
 
 
-
+  removeValues: function() {
+    this.selectContainer.querySelectorAll('[selected]')
+      .forEach((item) => item.remove())
+  },
   __renderValue: function(depricatedSelectContainer, value) {
     if (!value) return;
 
-    this.selectContainer.querySelectorAll('[selected]')
-      .forEach((item) => item.remove())
+    this.removeValues();
     let seletable = this.ulSelectables.querySelector(`li[value="${value}"]`)
     if (seletable) {
       let li = seletable.cloneNode(true)
