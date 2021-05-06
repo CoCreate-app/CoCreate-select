@@ -158,8 +158,9 @@ CoCreateSelect.prototype = {
 
 
 
-  renderValue: function(value) {
-
+  renderValue: function(depricatedSelectContainer, value) {
+    if(!value) return;
+    
     this.selectContainer.querySelectorAll('[selected]')
       .forEach((item) => item.remove())
     let seletable = this.ulSelectables.querySelector(`li[value="${value}"]`)
