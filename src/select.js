@@ -91,7 +91,7 @@ CoCreateSelect.prototype = {
 
     document.addEventListener('click', function(event) {
       var isClickInside = self.selectContainer.contains(event.target);
-      if (!isClickInside || self.selectContainer != event.target)
+      if (!isClickInside)
         self.__closeDropDown();
 
     });
@@ -113,9 +113,9 @@ CoCreateSelect.prototype = {
       // check if data exist
       let value = el.getAttribute('value');
 
-      if (!this.isMultiple())
-        this.removeValues()
-        self.addValue(value, el.innerText ? el.innerText : value)
+      if (!self.isMultiple())
+        self.removeValues()
+      self.addValue(value, el.innerText ? el.innerText : value)
       self.save(selectContainer)
       self.__fireSelectedEvent(selectContainer)
 
@@ -238,6 +238,15 @@ CoCreateSelect.prototype = {
 
 function init(container) {
   // const mainContainer = container || document;
+  // init dnd
+  document.addEventListener('dndsuccess', function(e) {
+    const { dropedEl, dragedEl } = e.detail;
+    if ((typeof dropedEl.tagName != 'undefined' && dropedEl.tagName.toLowerCase() == 'cocreate-select') ||
+      dropedEl.classList.contains('select--field')) {
+      dropedEl.save(dropedEl)
+      dropedEl.__fireSelectedEvent(dropedEl, )
+    }
+  })
 
   let containerList = document.querySelectorAll(containerSelector);
 
