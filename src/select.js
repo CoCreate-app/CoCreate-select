@@ -35,11 +35,11 @@ function setValue(data) {
 
   //      [name="${data['name']}"]\
   let selector = addAttribute(containerSelector,
-    `[data-collection="${data['collection']}"][data-document_id="${data['document_id']}"]`);
+    `[data-collection="${data['collection']}"][data-document_id="${data['document_id']}"][name]`);
 
   for (let el of document.querySelectorAll(selector)) {
     const name = el.getAttribute('name');
-    container.get(el).renderValue(data['data'][name]);
+    container.get(el).renderValue(null, data['data'][name]);
   }
 
 }
@@ -159,38 +159,37 @@ CoCreateSelect.prototype = {
 
 
   renderValue: function(depricatedSelectContainer, value) {
-    if(!value) return;
-    
+    if (!value) return;
+
     this.selectContainer.querySelectorAll('[selected]')
       .forEach((item) => item.remove())
     let seletable = this.ulSelectables.querySelector(`li[value="${value}"]`)
-    if(seletable)
-    {
+    if (seletable) {
       let li = seletable.cloneNode(true)
-      li.classList.remove('selected');
-      this.addValue( li)
-    } else
-   this.addValue(null, value);
+      li.classList.remove('selectable');
+      this.addValue(li)
+    }
+    else
+      this.addValue(null, value);
 
 
   },
 
 
-  addValue: function( li, value) {
+  addValue: function(li, value) {
 
     let span = document.createElement('span');
     span.innerText = 'x';
     span.classList.add('remove');
     let con;
-    if(!li)
-    {
-        con = document.createElement('li');
-        con.setAttribute('value', value);
-        con.innerText = value;
+    if (!li) {
+      con = document.createElement('li');
+      con.setAttribute('value', value);
+      con.innerText = value;
     }
-
+    else
+      con = li
     con.setAttribute('selected', "");
-    con.classList.remove('selectable');
     con.appendChild(span);
 
     if (!this.isMultiple()) {
