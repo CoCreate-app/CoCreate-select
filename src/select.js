@@ -14,14 +14,30 @@ const container = new Map();
 
 // alterSelector.prototype.addAttribute =
 
+
+
 function addAttribute(containerSelector, att) {
   return containerSelector.split(',').map(s => s.trim() + att).join(', ')
 }
 
 
+  function initDnd() {
+    const self = this;
+    document.addEventListener('dndsuccess', function(e) {
+			const {dropedEl, dragedEl} = e.detail;
+      if ((typeof dropedEl.tagName != 'undefined' && dropedEl.tagName.toLowerCase() == 'cocreate-select') 
+          || dropedEl.classList.contains('select--field')) 
+      {
+        dropedEl.save(dropedEl)
+        dropedEl.__fireSelectedEvent( )
+      }
+		})
+  }
+
 
 function CoCreateSelect(c) {
   this.init(c);
+  
 }
 
 
@@ -39,16 +55,13 @@ function setValue(data) {
 
   for (let el of document.querySelectorAll(selector)) {
     const name = el.getAttribute('name');
-    container.get(el).renderValue(null, data['data'][name]);
+    container.get(el).__renderValue(null, data['data'][name]);
   }
 
 }
 
 CoCreateSelect.getValue = getValue;
 CoCreateSelect.setValue = setValue;
-
-
-
 
 CoCreateSelect.prototype = {
 
@@ -78,7 +91,7 @@ CoCreateSelect.prototype = {
         if (keyCode == 13 && this.value.length > 0) {
           self.addValue(this.value);
           self.save(selectContainer)
-          self.__fireSelectedEvent(selectContainer)
+
           this.value = '';
         }
         else if (keyCode == 8 && !this.value.length) {
@@ -86,7 +99,7 @@ CoCreateSelect.prototype = {
           if (!selectedItems.length) return;
           selectedItems[selectedItems.length - 1].remove();
           self.save(selectContainer)
-          self.__fireSelectedEvent(selectContainer)
+       
 
         }
       })
@@ -102,11 +115,10 @@ CoCreateSelect.prototype = {
     this.ulSelectables.addEventListener('click', function(e) {
       // select an li from ul selectable
       let el = e.target;
-      if (!self.ulSelectables.contains(el))
+      if (!self.ulSelectables.contains(el.parentElement))
         return;
 
       if (!el.matches('li'))
-
         while (el && el.tagName != 'LI') {
           el = el.parentElement;
         }
@@ -116,12 +128,12 @@ CoCreateSelect.prototype = {
 
       // check if data exist
       let value = el.getAttribute('value');
-      let text = el.innerText;
 
 
-      self.addValue(value, text)
+
+      self.addValue(value, el.innerText ? el.innerText : value)
       self.save(selectContainer)
-      self.__fireSelectedEvent(selectContainer)
+
 
     });
 
@@ -130,7 +142,7 @@ CoCreateSelect.prototype = {
       if (e.target.matches('.remove')) {
         e.target.parentNode.remove();
         self.save(selectContainer)
-        self.__fireSelectedEvent(selectContainer)
+ 
 
       }
       else if (!self.ulSelectables.classList.contains('open')) {
@@ -158,7 +170,7 @@ CoCreateSelect.prototype = {
 
 
 
-  renderValue: function(depricatedSelectContainer, value) {
+  __renderValue: function(depricatedSelectContainer, value) {
     if (!value) return;
 
     this.selectContainer.querySelectorAll('[selected]')
@@ -167,30 +179,35 @@ CoCreateSelect.prototype = {
     if (seletable) {
       let li = seletable.cloneNode(true)
       li.classList.remove('selectable');
-      this.addValue(li)
+      this.addByLi(li)
     }
     else
-      this.addValue(null, value);
+      this.addValue(value);
 
 
   },
 
+  renderValue: function(target, value) {
+    if (container.has(target))
+      container.get(target).addValue(value)
+  },
 
-  addValue: function(li, value) {
+  addValue: function(value, text) {
+    let li = document.createElement('li');
+    li.setAttribute('value', value);
+    li.innerText = text ? text : value;
+    this.addByLi(li)
+  },
+  // todo: implement
+  // selectOption: function(){},
+  addByLi: function(li) {
 
     let span = document.createElement('span');
     span.innerText = 'x';
     span.classList.add('remove');
-    let con;
-    if (!li) {
-      con = document.createElement('li');
-      con.setAttribute('value', value);
-      con.innerText = value;
-    }
-    else
-      con = li
-    con.setAttribute('selected', "");
-    con.appendChild(span);
+
+    li.setAttribute('selected', "");
+    li.appendChild(span);
 
     if (!this.isMultiple()) {
       this.__closeDropDown();
@@ -204,28 +221,27 @@ CoCreateSelect.prototype = {
 
   // for crdt
   save: function(selectEl) {
-    if (!selectEl) {
+    if (!selectEl) 
       return;
-    }
-    let event = new CustomEvent('CoCreateSelect-save', {
+
+    document.dispatchEvent(new CustomEvent('CoCreateSelect-save', {
       detail: {
         element: selectEl,
       }
-    })
-
-    document.dispatchEvent(event);
+    }));
+    this.__fireSelectedEvent()
   },
   // for crdt and outsider call
 
 
 
-  __fireSelectedEvent: function(element) {
-    element.dispatchEvent(new CustomEvent('selectedValue'));
-    element.dispatchEvent(new CustomEvent('input', { bubbles: true }));
-    let value = this.getValue(element)
+  __fireSelectedEvent: function() {
+    this.selectContainer.dispatchEvent(new CustomEvent('selectedValue'));
+    this.selectContainer.dispatchEvent(new CustomEvent('input', { bubbles: true }));
+    let value = this.getValue(this.selectContainer)
     document.dispatchEvent(new CustomEvent('CoCreate-selected', {
       detail: {
-        element: element,
+        element: this.selectContainer,
         value: value
       }
     }));
@@ -234,7 +250,7 @@ CoCreateSelect.prototype = {
 
 function init(container) {
   // const mainContainer = container || document;
-
+  initDnd()
   let containerList = document.querySelectorAll(containerSelector);
 
   for (let selectCon of containerList)
