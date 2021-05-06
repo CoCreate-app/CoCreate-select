@@ -1,18 +1,14 @@
 import CoCreateObserver from '@cocreate/observer';
 // options
-let containerSelector = 'cocreate-select, div.select--field';
-let inputSelector = 'input';
-let ulSeletablesSelector = 'ul.selectable--list';
+const containerSelector = 'cocreate-select, div.select--field';
+const inputSelector = 'input';
+const ulSeletablesSelector = 'ul.selectable--list';
+const optionSelector = ".option";
 
+
+
+// const optionTagNameUpper = optionTagName.toUpperCase();
 const container = new Map();
-
-
-
-// function alterSelector(){
-
-// }
-
-// alterSelector.prototype.addAttribute =
 
 function addAttribute(containerSelector, att) {
   return containerSelector.split(',').map(s => s.trim() + att).join(', ')
@@ -102,8 +98,8 @@ CoCreateSelect.prototype = {
       if (!self.ulSelectables.contains(el.parentElement))
         return;
 
-      if (!el.matches('li'))
-        while (el && el.tagName != 'LI') {
+      if (!el.matches(optionSelector))
+        while (el && el.matches(optionSelector)) {
           el = el.parentElement;
         }
 
@@ -161,11 +157,11 @@ CoCreateSelect.prototype = {
     if (!value) return;
 
     this.removeValues();
-    let seletable = this.ulSelectables.querySelector(`li[value="${value}"]`)
+    let seletable = this.ulSelectables.querySelector(`${optionSelector}[value="${value}"]`)
     if (seletable) {
-      let li = seletable.cloneNode(true)
-      li.classList.remove('selectable');
-      this.addByLi(li)
+      let option = seletable.cloneNode(true)
+      option.classList.remove('selectable');
+      this.addByOption(option)
     }
     else
       this.addValue(value);
@@ -179,26 +175,27 @@ CoCreateSelect.prototype = {
   },
 
   addValue: function(value, text) {
-    let li = document.createElement('li');
-    li.setAttribute('value', value);
-    li.innerText = text ? text : value;
-    this.addByLi(li)
+    let option = document.createElement('li');
+    option.classList.add('option')
+    option.setAttribute('value', value);
+    option.innerText = text ? text : value;
+    this.addByOption(option)
   },
   // todo: implement
   // selectOption: function(){},
-  addByLi: function(li) {
+  addByOption: function(option) {
 
     let span = document.createElement('span');
     span.innerText = 'x';
     span.classList.add('remove');
 
-    li.setAttribute('selected', "");
-    li.appendChild(span);
+    option.setAttribute('selected', "");
+    option.appendChild(span);
 
     if (!this.isMultiple()) {
       this.__closeDropDown();
     }
-    this.selectContainer.insertBefore(li, this.input ? this.input : this.ulSelectables);
+    this.selectContainer.insertBefore(option, this.input ? this.input : this.ulSelectables);
   },
 
   // gets all value 
