@@ -160,32 +160,37 @@ CoCreateSelect.prototype = {
 
   renderValue: function(value) {
 
-    let selectedItems = this.selectContainer.querySelectorAll('[selected]');
-    selectedItems.forEach((item) => item.remove())
+    this.selectContainer.querySelectorAll('[selected]')
+      .forEach((item) => item.remove())
     let seletable = this.ulSelectables.querySelector(`li[value="${value}"]`)
-    seletable ? this.addValue(seletable.value, seletable.innerText) : this.addValue(value);
+    if(seletable)
+    {
+      let li = seletable.cloneNode(true)
+      li.classList.remove('selected');
+      this.addValue( li)
+    } else
+   this.addValue(null, value);
 
 
   },
 
 
-  addValue: function(value, text) {
+  addValue: function( li, value) {
 
     let span = document.createElement('span');
     span.innerText = 'x';
     span.classList.add('remove');
-    let li = document.createElement('li');
+    let con;
+    if(!li)
+    {
+        con = document.createElement('li');
+        con.setAttribute('value', value);
+        con.innerText = value;
+    }
 
-    li.setAttribute('value', value);
-    li.innerText = text ? text : value;
-
-
-
-    li.setAttribute('selected', "");
-    li.classList.remove('selectable');
-    li.appendChild(span);
-
-
+    con.setAttribute('selected', "");
+    con.classList.remove('selectable');
+    con.appendChild(span);
 
     if (!this.isMultiple()) {
       this.__closeDropDown();
