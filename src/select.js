@@ -99,7 +99,7 @@ CoCreateSelect.prototype = {
         return;
 
       if (!el.matches(optionSelector))
-        while (el && el.matches(optionSelector)) {
+        while (el && !el.matches(optionSelector)) {
           el = el.parentElement;
         }
 

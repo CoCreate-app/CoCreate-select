@@ -79,7 +79,7 @@ cocreate-select.remove-none [selected]:hover .remove, .select--field.remove-none
 }
 
 /* Dropdown */
-.selectable--list {
+.selectable--list, .options {
   max-height: 0;
   width:100%;
   position: relative;
@@ -104,10 +104,10 @@ cocreate-select.remove-none [selected]:hover .remove, .select--field.remove-none
   -moz-animation: hideAnimation 0.4s ease-out;
   -webkit-animation: hideAnimation 0.4s ease-out;
 }
-.selectable--list li {
+.selectable--list li, .options .option {
   padding: 0;
 }
-.selectable--list.open, .open .selectable--list{
+.selectable--list.open, .open .selectable--list, .options.open, .open .options{
   max-height: 50vh;
   /*margin-top:10px;*/
   display: block;
