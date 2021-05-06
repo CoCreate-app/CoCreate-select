@@ -28,7 +28,7 @@ function CoCreateSelect(c) {
 function getValue(node) {
   let values = Array.from(node.querySelectorAll('[selected]')).map((item) => item.getAttribute('value'))
 
-  return node.getAttribute('multiple') ? values : (values[0] || '')
+  return node.getAttribute('multiple') !== null ? values : (values[0] || '')
 }
 
 function setValue(data) {
@@ -75,7 +75,7 @@ CoCreateSelect.prototype = {
         if (keyCode == 13 && this.value.length > 0) {
           self.addValue(this.value);
           self.save(selectContainer)
-          self.__fireSelectedEvent(selectContainer)
+          // self.__fireSelectedEvent(selectContainer)
           this.value = '';
         }
         else if (keyCode == 8 && !this.value.length) {
