@@ -75,7 +75,7 @@ CoCreateSelect.prototype = {
         if (keyCode == 13 && this.value.length > 0) {
           self.addValue(this.value);
           self.save(selectContainer)
-          // self.__fireSelectedEvent(selectContainer)
+          self.__fireSelectedEvent(selectContainer)
           this.value = '';
         }
         else if (keyCode == 8 && !this.value.length) {
