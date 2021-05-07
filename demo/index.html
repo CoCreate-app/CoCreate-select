@@ -18,13 +18,13 @@
         data-collection="test" 
         data-document_id="5e8ff00e8c3af32574df80cb" 
         name="selectField0"
-        data-limit_selectable="3"
+        data-limit_option="3"
         placeholder="Single Document" multiple>
         
-        <input class="template-search" placeholder="Search" data-template_id="selectable0">
+        <input class="template-search" placeholder="Search" data-template_id="option0">
         
-        <ul data-fetch_collection="users" data-template_id="selectable0" class="selectable--list overflow:auto">
-  				<li class="selectable template" data-template_id="selectable0" value='{{data._id}}' data-document_id="{{data._id}}" data-render_array="data">
+        <ul data-fetch_collection="users" data-template_id="option0" class="options overflow:auto">
+  				<li class="option template" data-template_id="option0" value='{{data._id}}' data-document_id="{{data._id}}" data-render_array="data">
   				  <h3 name="name" value="{{data.name}}">No Name</h3>
   				  <h5 name="_id" value="{{data._id}}"></h5>
   				</li>
@@ -37,15 +37,15 @@
   <!--      data-collection="test" -->
   <!--      data-document_id="5e9531b3a762440eed55c2ed" -->
   <!--      name="selectField1"-->
-  <!--      data-limit_selectable="3"-->
+  <!--      data-limit_option="3"-->
   <!--      placeholder="multiple Document">-->
         
-  <!--      <input class="template-search" placeholder="Search" data-template_id="selectable1">-->
+  <!--      <input class="template-search" placeholder="Search" data-template_id="option1">-->
         
   <!--      <ul data-fetch_collection="users" -->
-  <!--          data-template_id="selectable1" -->
-  <!--          class="selectable--list cocreate-scroll">-->
-  <!--				<li class="selectable template" data-template_id="selectable1" value='{{data._id}}' data-document_id="{{data._id}}" data-render_array="data">-->
+  <!--          data-template_id="option1" -->
+  <!--          class="options cocreate-scroll">-->
+  <!--				<li class="option template" data-template_id="option1" value='{{data._id}}' data-document_id="{{data._id}}" data-render_array="data">-->
   <!--				  <h3 name="name" value="{{data.name}}">No Name</h3>-->
   <!--				  <h5 name="_id" value="{{data._id}}"></h5>-->
   <!--				</li>-->
@@ -60,19 +60,19 @@
         name="selectField4" 
         placeholder="Single Options" active>
        
-        <input class="search-options" placeholder="Search" data-search_id="search_01" data-item_selector=".selectable">
+        <input class="search-options" placeholder="Search" data-search_id="search_01" data-item_selector=".option">
        
-        <ul class="selectable--list  cocreate-scroll" data-search_id="search_01">
-  				<li class="selectable"  value="value 1">
+        <ul class="options options cocreate-scroll" data-search_id="search_01">
+  				<li class="option option"  value="value 1">
   				  <h3 >value 1</h3>
   				</li>
-  				<li class="selectable"  value="value 2">
+  				<li class="option option"  value="value 2">
   				  <h3 >value 2</h3>
   				</li>
-  				<li class="selectable"  value="value 3">
+  				<li class="option option"  value="value 3">
   				  <h3 >sss</h3>
   				</li>
-  				<li class="selectable"  value="value 3">
+  				<li class="option option"  value="value 3">
   				  <h3 >value 3</h3>
   				</li>
         </ul>
@@ -86,18 +86,18 @@
   <!--      data-document_id="5e9531b3a762440eed55c2ed"  -->
   <!--      name="selectField2"-->
   <!--      placeholder="Multiple Options"-->
-  <!--      dats-selectable_limit="5">-->
+  <!--      dats-option_limit="5">-->
         
-  <!--      <input class="search-options" placeholder="Search" data-search_id="search_02" data-item_selector=".selectable">-->
+  <!--      <input class="search-options" placeholder="Search" data-search_id="search_02" data-item_selector=".option">-->
         
-  <!--      <ul class="selectable--list cocreate-scroll" data-search_id="search_02">-->
-  <!--				<li class="selectable" value="value 1">-->
+  <!--      <ul class="options cocreate-scroll" data-search_id="search_02">-->
+  <!--				<li class="option" value="value 1">-->
   <!--				  <h3 >value 1</h3>-->
   <!--				</li>-->
-  <!--				<li class="selectable" value="value 2">-->
+  <!--				<li class="option" value="value 2">-->
   <!--				  <h3 >value 2</h3>-->
   <!--				</li> -->
-  <!--				<li class="selectable" value="value 3">-->
+  <!--				<li class="option" value="value 3">-->
   <!--				  <h3 >value 3</h3>-->
   <!--				</li>-->
   <!--      </ul>-->
@@ -110,11 +110,11 @@
   <!--      data-collection="test" -->
   <!--      data-document_id="5e8ff00e8c3af32574df80cb"  -->
   <!--      placeholder="Fetch array string" -->
-  <!--      data-limit_selectable="3" multiple>-->
+  <!--      data-limit_option="3" multiple>-->
        
-  <!--      <input class="search-options" placeholder="Search" data-search_id="search_03" data-item_selector=".selectable">-->
+  <!--      <input class="search-options" placeholder="Search" data-search_id="search_03" data-item_selector=".option">-->
         
-  <!--      <ul class="selectable--list cocreate-scroll"-->
+  <!--      <ul class="options cocreate-scroll"-->
   <!--        data-fetch_collection="test" -->
   <!--        data-filter_value="5e9531b3a762440eed55c2ed" -->
   <!--        data-filter_name="_id"-->
@@ -123,7 +123,7 @@
   <!--        data-template_id="template5" -->
   <!--        data-search_id="search_03"-->
   <!--        data-pass_to="me1234">-->
-  <!--  			<li class="template selectable" data-template_id="template5"  data-pass_id="me1234" data-value="{{selectField2.--}}">-->
+  <!--  			<li class="template option" data-template_id="template5"  data-pass_id="me1234" data-value="{{selectField2.--}}">-->
   <!--  			  <h3 data-pass_id="me1234" value="{{selectField2.--}}">Organization Name</h3>-->
   <!--  			</li>-->
   <!--      </ul>-->
@@ -135,11 +135,11 @@
   <!--      data-collection="test" -->
   <!--      data-document_id="5e8ff00e8c3af32574df80cb"-->
   <!--      placeholder="Fetch array _id" -->
-  <!--      data-limit_selectable="3" multiple>-->
+  <!--      data-limit_option="3" multiple>-->
         
-  <!--      <input class="search-options" placeholder="Search" data-search_id="search_04" data-item_selector=".selectable">-->
+  <!--      <input class="search-options" placeholder="Search" data-search_id="search_04" data-item_selector=".option">-->
         
-  <!--      <ul class="selectable--list cocreate-scroll"-->
+  <!--      <ul class="options cocreate-scroll"-->
   <!--        data-fetch_collection="test" -->
   <!--        data-filter_value="5e9531b3a762440eed55c2ed" -->
   <!--        data-filter_name="_id"-->
@@ -147,7 +147,7 @@
   <!--        data-fetch_name="selectField1"-->
   <!--        data-template_id="template6" -->
   <!--        data-search_id="search_04">-->
-  <!--  			<li class="template selectable" data-template_id="template6" value="{{selectField1.--}}" data-document_id="{{selectField1.--}}" >-->
+  <!--  			<li class="template option" data-template_id="template6" value="{{selectField1.--}}" data-document_id="{{selectField1.--}}" >-->
   <!--  			  <h3 data-collection="users" data-document_id="{{selectField1.--}}" name="name" data-pass_id="me1234" >Organization Name</h3>-->
   <!--  			  <h5 data-collection="users" data-document_id="{{selectField1.--}}" name="_id" data-pass_id="me1234" >id</h5>-->
   <!--  			</li>-->
@@ -156,15 +156,15 @@
   
   <!-------------- Collection Select -------------->
   <!--    <cocreate-select class="floating-label" data-collection="test" data-document_id="5e8ff00e8c3af32574df80cb" name="selectField7" placeholder="Collection Select" multiple>-->
-  <!--      <input class="search-options" placeholder="Search" data-search_id="search_05" data-item_selector=".selectable">-->
+  <!--      <input class="search-options" placeholder="Search" data-search_id="search_05" data-item_selector=".option">-->
   <!--      <ul -->
   <!--        data-fetch_collection="" -->
   <!--        data-fetch_value_type="collection"-->
   <!--        data-template_id="collection-list" -->
-  <!--        class="template-wrapper selectable--list cocreate-scroll" -->
+  <!--        class="template-wrapper options cocreate-scroll" -->
   <!--        data-pass_to="me1234"-->
   <!--        data-search_id="search_05">-->
-  <!--				<li class="selectable template" data-template_id="collection-list" data-value="{{data.name}}" data-pass_id="me1234" data-render_array="data">-->
+  <!--				<li class="option template" data-template_id="collection-list" data-value="{{data.name}}" data-pass_id="me1234" data-render_array="data">-->
   <!--				  <a data-pass_to="document-select" data-pass_id="me1234">-->
   <!--				    <h5 name="name" data-pass_id="me1234" value="{{data.name}}"></h5>-->
   <!--				  </a>-->
@@ -173,15 +173,15 @@
   <!--    </cocreate-select>-->
 
   <!--    <cocreate-select class="floating-label" placeholder="Collection Select" multiple id="set_testing">-->
-  <!--      <input class="search-options" placeholder="Search" data-search_id="search_05" data-item_selector=".selectable">-->
-  <!--      <ul class="selectable--list cocreate-scroll" data-search_id="search_02">-->
-  <!--				<li class="selectable" value="value1">-->
+  <!--      <input class="search-options" placeholder="Search" data-search_id="search_05" data-item_selector=".option">-->
+  <!--      <ul class="options cocreate-scroll" data-search_id="search_02">-->
+  <!--				<li class="option" value="value1">-->
   <!--				  <h3>value 1</h3>-->
   <!--				</li>-->
-  <!--				<li class="selectable" value="value2">-->
+  <!--				<li class="option" value="value2">-->
   <!--				  <h3 >value 2</h3>-->
   <!--				</li>-->
-  <!--				<li class="selectable" value="value3">-->
+  <!--				<li class="option" value="value3">-->
   <!--				  <h3 >value 3</h3>-->
   <!--				</li>-->
   <!--      </ul>-->
@@ -195,10 +195,10 @@
 		<!--	<li class="margin:0 padding:0 height:25px min-height:25px align-items:center selected" value="px"><span class="margin:auto">px</span><span class="remove">x</span></li>		        	-->
   <!--  	<input>-->
 
-		<!--	<ul class="selectable--list z-index:10 width:30px">-->
-		<!--	  <li class="selectable margin:0 padding:0 height:25px min-height:25px align-items:center" value="px"><span class="margin:auto">px</span></li>-->
-		<!--	  <li class="selectable margin:0 padding:0 height:25px min-height:25px" value="%"><span class="margin:auto">%</span></li>-->
-		<!--	  <li class="selectable margin:0 padding:0 height:25px min-height:25px" value="vh"><span class="margin:auto">vw</span></li>-->
+		<!--	<ul class="options z-index:10 width:30px">-->
+		<!--	  <li class="option margin:0 padding:0 height:25px min-height:25px align-items:center" value="px"><span class="margin:auto">px</span></li>-->
+		<!--	  <li class="option margin:0 padding:0 height:25px min-height:25px" value="%"><span class="margin:auto">%</span></li>-->
+		<!--	  <li class="option margin:0 padding:0 height:25px min-height:25px" value="vh"><span class="margin:auto">vw</span></li>-->
 		<!--	</ul>-->
   <!--  </cocreate-select>-->
 
