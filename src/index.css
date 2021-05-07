@@ -107,7 +107,7 @@ cocreate-select.remove-none [selected]:hover .remove, .select--field.remove-none
 .selectable--list li, .options .option {
   padding: 0;
 }
-.selectable--list.open, .open .selectable--list, .options.open, .open .options{
+.selectable--list.open, .open .selectable--list, .open .options{
   max-height: 50vh;
   /*margin-top:10px;*/
   display: block;

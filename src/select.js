@@ -1,8 +1,9 @@
-import CoCreateObserver from '@cocreate/observer';
+import observer from '@cocreate/observer';
+
 // options
 const containerSelector = 'cocreate-select, div.select--field';
 const inputSelector = 'input';
-const ulSeletablesSelector = 'ul.selectable--list';
+const optionsSelector = '.options';
 const optionSelector = ".option";
 
 
@@ -55,7 +56,7 @@ CoCreateSelect.prototype = {
 
     this.selectContainer = selectContainer;
     this.input = selectContainer.querySelector(inputSelector);
-    this.ulSelectables = selectContainer.querySelector(ulSeletablesSelector);
+    this.selectOptions = selectContainer.querySelector(optionsSelector);
 
 
     const self = this;
@@ -75,9 +76,9 @@ CoCreateSelect.prototype = {
           this.value = '';
         }
         else if (keyCode == 8 && !this.value.length) {
-          let selectedItems = selectContainer.querySelectorAll('[selected]');
-          if (!selectedItems.length) return;
-          selectedItems[selectedItems.length - 1].remove();
+          let selectedOptions = selectContainer.querySelectorAll('[selected]');
+          if (!selectedOptions.length) return;
+          selectedOptions[selectedOptions.length - 1].remove();
           self.save(selectContainer)
           self.__fireSelectedEvent(selectContainer)
 
@@ -92,10 +93,9 @@ CoCreateSelect.prototype = {
 
     });
 
-    this.ulSelectables.addEventListener('click', function(e) {
-      // select an li from ul selectable
+    this.selectOptions.addEventListener('click', function(e) {
       let el = e.target;
-      if (!self.ulSelectables.contains(el.parentElement))
+      if (!self.selectOptions.contains(el.parentElement))
         return;
 
       if (!el.matches(optionSelector))
@@ -103,7 +103,7 @@ CoCreateSelect.prototype = {
           el = el.parentElement;
         }
 
-      if (!el.classList.contains('selectable'))
+      if (!el.classList.contains('option'))
         return;
 
       // check if data exist
@@ -125,7 +125,7 @@ CoCreateSelect.prototype = {
         self.__fireSelectedEvent(selectContainer)
 
       }
-      else if (!self.ulSelectables.classList.contains('open')) {
+      else if (!self.selectOptions.classList.contains('open')) {
         self.__openDropDown(selectContainer)
       }
 
@@ -134,16 +134,14 @@ CoCreateSelect.prototype = {
 
   // todo: add focus parameter
   __openDropDown: function() {
-    this.input.classList.add('open');
     this.input.focus();
-    this.ulSelectables.classList.add('open');
+    this.selectContainer.classList.add('open');
     this.selectContainer.classList.add('active');
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-open'));
   },
 
   __closeDropDown: function() {
-    this.input.classList.remove('open');
-    this.ulSelectables.classList.remove('open');
+    this.selectContainer.classList.remove('open');
     this.selectContainer.classList.remove('active');
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-close'));
   },
@@ -157,15 +155,14 @@ CoCreateSelect.prototype = {
     if (!value) return;
 
     this.removeValues();
-    let seletable = this.ulSelectables.querySelector(`${optionSelector}[value="${value}"]`)
-    if (seletable) {
-      let option = seletable.cloneNode(true)
-      option.classList.remove('selectable');
-      this.addByOption(option)
+    let option = this.selectOptions.querySelector(`${optionSelector}[value="${value}"]`)
+    if (option) {
+      let selectedOption = option.cloneNode(true)
+      selectedOption.classList.remove('option');
+      this.addByOption(selectedOption)
     }
     else
       this.addValue(value);
-
 
   },
 
@@ -175,11 +172,11 @@ CoCreateSelect.prototype = {
   },
 
   addValue: function(value, text) {
-    let option = document.createElement('li');
-    option.classList.add('option')
-    option.setAttribute('value', value);
-    option.innerText = text ? text : value;
-    this.addByOption(option)
+    let selectedOption = document.createElement('li');
+    selectedOption.classList.add('option')
+    selectedOption.setAttribute('value', value);
+    selectedOption.innerText = text ? text : value;
+    this.addByOption(selectedOption)
   },
   // todo: implement
   // selectOption: function(){},
@@ -195,7 +192,7 @@ CoCreateSelect.prototype = {
     if (!this.isMultiple()) {
       this.__closeDropDown();
     }
-    this.selectContainer.insertBefore(option, this.input ? this.input : this.ulSelectables);
+    this.selectContainer.insertBefore(option, this.input ? this.input : this.selectOptions);
   },
 
   // gets all value 
@@ -235,6 +232,20 @@ CoCreateSelect.prototype = {
 
 function init(container) {
   // const mainContainer = container || document;
+
+
+  observer.init({
+    name: 'CoCreateSelect',
+    observe: ['subtree', 'childList'],
+    include: containerSelector,
+    callback: function(mutation) {
+      // console.log(mutation)
+      new CoCreateSelect.init(mutation.target)
+    }
+  })
+
+
+
   // init dnd
   document.addEventListener('dndsuccess', function(e) {
     const { dropedEl, dragedEl } = e.detail;
@@ -256,6 +267,9 @@ if (document.readyState == 'complete')
   init();
 else
   window.addEventListener('load', init)
+
+
+
 
 
 
