@@ -9,18 +9,18 @@ const inputSelector = 'input';
 const optionsSelector = 'cc-options';
 const optionSelector = "cc-option";
 const optionTagName = "cc-option";
-const selectedTagName = "selected"; 
+const selectedTagName = "selected";
 const removeMarkup = '<span class="remove">x</span>'
 
 
 
-selectedAtt((el)=>{
-  return el.matches(`${optionsSelector} > ${optionSelector}, ${addAttribute(containerSelector, '>' + optionSelector)}` )
+selectedAtt((el) => {
+  return el.matches(`${optionsSelector} > ${optionSelector}, ${addAttribute(containerSelector, '>' + optionSelector)}`)
 })
 
-optionsAtt((el)=> el.matches(containerSelector))
+optionsAtt((el) => el.matches(containerSelector))
 
-selectedOptionsAtt((el)=> el.matches(containerSelector))
+selectedOptionsAtt((el) => el.matches(containerSelector))
 
 
 
@@ -40,27 +40,6 @@ function CoCreateSelect(c) {
 }
 
 
-function getValue(node) {
-  let values = Array.from(node.querySelectorAll('[selected]')).map((item) => item.getAttribute('value'))
-
-  return node.getAttribute('multiple') !== null ? values : (values[0] || '')
-}
-
-function setValue(data) {
-
-  //      [name="${data['name']}"]\
-  let selector = addAttribute(containerSelector,
-    `[data-collection="${data['collection']}"][data-document_id="${data['document_id']}"][name]`);
-
-  for (let el of document.querySelectorAll(selector)) {
-    const name = el.getAttribute('name');
-    container.get(el).__renderValue(null, data['data'][name]);
-  }
-
-}
-
-CoCreateSelect.getValue = getValue;
-CoCreateSelect.setValue = setValue;
 
 CoCreateSelect.prototype = {
 
@@ -74,24 +53,23 @@ CoCreateSelect.prototype = {
 
     this.selectContainer = selectContainer;
     this.selectedContainer = selectContainer.querySelector(selectedTagName);
-    if(!this.selectedContainer)
-    {
+    if (!this.selectedContainer) {
       this.selectedContainer = document.createElement(selectedTagName)
       selectContainer.prepend(this.selectedContainer)
     }
     this.input = selectContainer.querySelector(inputSelector);
     this.optionsContainer = selectContainer.querySelector(optionsSelector);
-    if(!this.optionsContainer){
+    if (!this.optionsContainer) {
       this.optionsContainer = this.selectContainer;
-      this.getOptions = function(){
+      this.getOptions = function() {
         return this.selectContainer.querySelectorAll('input~*');
       }
     }
     else
-      this.getOptions = function(){
+      this.getOptions = function() {
         return this.optionsContainer.children;
       }
-      
+
     const self = this;
 
     if (this.input) {
@@ -143,8 +121,8 @@ CoCreateSelect.prototype = {
       let value = el.getAttribute('value');
 
       // todo: hide selected options
-      el.setAttribute('selected','');
-      
+      el.setAttribute('selected', '');
+
       self.addValue(value, el.innerText ? el.innerText : value)
       self.save(selectContainer)
       self.__fireSelectedEvent(selectContainer)
@@ -209,7 +187,7 @@ CoCreateSelect.prototype = {
     let selectedOption = document.createElement(optionTagName);
     selectedOption.setAttribute('value', value);
     selectedOption.innerText = text ? text : value;
-    this.addByOption(selectedOption)
+    this.selectOption(selectedOption)
   },
   // todo: implement
   // selectOption: function(){},
@@ -223,7 +201,11 @@ CoCreateSelect.prototype = {
   },
 
   // gets all value 
-  getValue,
+  getValue: function(node) {
+    let values = Array.from(node.querySelectorAll('[selected]')).map((item) => item.getAttribute('value'))
+
+    return node.getAttribute('multiple') !== null ? values : (values[0] || '')
+  },
 
 
   // for crdt
@@ -298,6 +280,17 @@ else
 
 
 
+function setValue(data) {
 
+  //      [name="${data['name']}"]\
+  let selector = addAttribute(containerSelector,
+    `[data-collection="${data['collection']}"][data-document_id="${data['document_id']}"][name]`);
 
-export default { init: CoCreateSelect, ...CoCreateSelect };
+  for (let el of document.querySelectorAll(selector)) {
+    const name = el.getAttribute('name');
+    container.get(el).__renderValue(null, data['data'][name]);
+  }
+
+}
+
+export default { init: (el) => new CoCreateSelect(el), setValue };
