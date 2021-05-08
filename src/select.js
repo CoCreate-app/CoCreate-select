@@ -7,7 +7,7 @@ const inputSelector = 'input';
 const optionsSelector = 'cc-options';
 const optionSelector = "cc-option";
 const optionTagName = "cc-option";
-const selectedSelector = "seleccted";
+const selectedSelector = "selected";
 const removeMarkup = '<span class="remove">x</span>'
 
 
