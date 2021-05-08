@@ -100,7 +100,7 @@ CoCreateSelect.prototype = {
     document.addEventListener('click', function(event) {
       var isClickInside = self.selectContainer.contains(event.target);
       if (!isClickInside)
-        self.__closeDropDown();
+        self.close();
 
     });
 
@@ -136,7 +136,7 @@ CoCreateSelect.prototype = {
 
       }
       else if (!self.optionsContainer.classList.contains('open')) {
-        self.__openDropDown(selectContainer)
+        self.open(selectContainer)
       }
 
     }, true);
@@ -190,7 +190,7 @@ CoCreateSelect.prototype = {
     selectedToOption.set(newOption, option);
     newOption.appendChild(removeElement.cloneNode(true));
     if (!this.isMultiple()) {
-      this.__closeDropDown();
+      this.close();
       this.unselectAll();
     }
     this.selectedContainer.appendChild(newOption);
