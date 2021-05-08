@@ -3,13 +3,16 @@ import selectedAtt from './selectedAtt';
 import optionsAtt from './optionsAtt';
 import selectedOptionsAtt from './selectedOptionsAtt';
 import { parse, addAttribute } from './utils'
-import {containerSelector,
+import {
+  containerSelector,
   inputSelector,
   optionsSelector,
   optionSelector,
-  optionTagName, 
+  optionTagName,
   selectedTagName,
-  removeMarkup} from './config';
+  removeMarkup
+}
+from './config';
 
 selectedAtt((el) => {
   return el.matches(`${optionsSelector} > ${optionSelector}, ${addAttribute(containerSelector, '>' + optionSelector)}`)
@@ -25,6 +28,8 @@ selectedOptionsAtt((el) => el.matches(containerSelector))
 
 // const optionTagNameUpper = optionTagName.toUpperCase();
 export const container = new Map();
+export const optionToSelected = new Map();
+export const selectedToOption = new Map();
 const removeElement = parse(removeMarkup);
 
 
@@ -150,20 +155,16 @@ CoCreateSelect.prototype = {
   },
 
 
-  removeValues: function() {
-    this.selectContainer.querySelectorAll('[selected]')
-      .forEach((item) => item.remove())
-  },
   __renderValue: function(depricatedSelectContainer, value) {
     if (!value) return;
 
-    this.removeValues();
+    for (let el of this.selectedContainer.children)
+      if (selectedToOption.has(el))
+        this.unselectOption(selectedToOption.get(el));
+
     let option = this.optionsContainer.querySelector(`${optionSelector}[value="${value}"]`)
-    if (option) {
-      let selectedOption = option.cloneNode(true)
-      selectedOption.classList.remove('option');
-      this.selectOption(selectedOption)
-    }
+    if (option)
+      this.selectOption(option)
     else
       this.addValue(value);
 
@@ -181,19 +182,23 @@ CoCreateSelect.prototype = {
   selectOption: function(option) {
     option.setAttribute('selected', "");
     let newOption = option.cloneNode(true);
+    optionToSelected.set(option, newOption);
+    selectedToOption.set(newOption, option);
     newOption.appendChild(removeElement.cloneNode(true));
     if (!this.isMultiple()) {
       this.__closeDropDown();
     }
     this.selectedContainer.appendChild(newOption);
   },
-  unselectOption: function(option)
-  {
+  unselectOption: function(option) {
     option.removeAttribute('selected');
     let value = option.getAttribute('value');
     let selectedOption = this.selectedContainer.querySelector(`[value="${value}"]`);
-    if(selectedOption)
+    if (selectedOption) {
+      optionToSelected.delete(option);
+      selectedToOption.delete(selectedOption);
       selectedOption.remove();
+    }
   },
 
 
@@ -259,7 +264,7 @@ else
 
 
 
-function template({collection, document_id, ...data}) {
+function template({ collection, document_id, ...data }) {
 
   let selector = addAttribute(containerSelector,
     `[data-collection="${collection}"][data-document_id="${document_id}"][name]`);
