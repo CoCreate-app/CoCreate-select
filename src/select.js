@@ -132,8 +132,6 @@ CoCreateSelect.prototype = {
       // check if data exist
       let value = el.getAttribute('value');
 
-      if (!self.isMultiple())
-        self.removeValues()
       self.addValue(value, el.innerText ? el.innerText : value)
       self.save(selectContainer)
       self.__fireSelectedEvent(selectContainer)
