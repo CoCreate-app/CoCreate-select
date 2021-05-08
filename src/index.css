@@ -2,6 +2,10 @@
   display: none;
 }
 
+cocreate-select>input ~ * *[selected] {
+display:none;
+}
+
 cocreate-select, .select--field {
   display: flex;
   flex-wrap: wrap;
