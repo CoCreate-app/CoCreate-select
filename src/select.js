@@ -2,7 +2,7 @@ import observer from '@cocreate/observer';
 import selectedAtt from './selectedAtt';
 import optionsAtt from './optionsAtt';
 import selectedOptionsAtt from './selectedOptionsAtt';
-import { parse } from './utils'
+import { parse, addAttribute } from './utils'
 // options
 const containerSelector = 'cocreate-select, div.select--field';
 const inputSelector = 'input';
@@ -30,9 +30,7 @@ selectedOptionsAtt((el) => el.matches(containerSelector))
 export const container = new Map();
 const removeElement = parse(removeMarkup);
 
-function addAttribute(containerSelector, att) {
-  return containerSelector.split(',').map(s => s.trim() + att).join(', ')
-}
+
 
 
 function CoCreateSelect(c) {
