@@ -1,12 +1,14 @@
 import observer from '@cocreate/observer';
 import selectedAtt from './selectedAtt';
+import { parse } from './utils'
 // options
 const containerSelector = 'cocreate-select, div.select--field';
 const inputSelector = 'input';
 const optionsSelector = 'cc-options';
 const optionSelector = "cc-option";
+const optionTagName = "cc-option";
 const selectedSelector = "seleccted";
-
+const removeMarkup = '<span class="remove">x</span>'
 
 
 
@@ -21,6 +23,7 @@ selectedAtt((el)=>{
 
 // const optionTagNameUpper = optionTagName.toUpperCase();
 const container = new Map();
+const removeElement = parse(removeMarkup);
 
 function addAttribute(containerSelector, att) {
   return containerSelector.split(',').map(s => s.trim() + att).join(', ')
@@ -182,8 +185,7 @@ CoCreateSelect.prototype = {
   },
 
   addValue: function(value, text) {
-    let selectedOption = document.createElement('li');
-    selectedOption.classList.add('option')
+    let selectedOption = document.createElement(optionTagName);
     selectedOption.setAttribute('value', value);
     selectedOption.innerText = text ? text : value;
     this.addByOption(selectedOption)
@@ -191,14 +193,8 @@ CoCreateSelect.prototype = {
   // todo: implement
   // selectOption: function(){},
   addByOption: function(option) {
-
-    let span = document.createElement('span');
-    span.innerText = 'x';
-    span.classList.add('remove');
-
     option.setAttribute('selected', "");
-    option.appendChild(span);
-
+    option.appendChild(removeElement.cloneNode(true));
     if (!this.isMultiple()) {
       this.__closeDropDown();
     }
