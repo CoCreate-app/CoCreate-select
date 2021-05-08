@@ -1,5 +1,5 @@
 import { getInstance } from './utils';
-import { selectedToOption } from 'select';
+import { selectedToOption } from './select';
 
 export default function(cond) {
     Object.defineProperty(window.HTMLElement.prototype, 'selectedIndex', {
