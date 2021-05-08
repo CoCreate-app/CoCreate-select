@@ -200,13 +200,6 @@ CoCreateSelect.prototype = {
       selectedOption.remove();
   },
 
-  // gets all value 
-  getValue: function(node) {
-    let values = Array.from(node.querySelectorAll('[selected]')).map((item) => item.getAttribute('value'))
-
-    return node.getAttribute('multiple') !== null ? values : (values[0] || '')
-  },
-
 
   // for crdt and outsider cal
   __fireSelectedEvent: function(element) {
@@ -220,11 +213,10 @@ CoCreateSelect.prototype = {
     }));
     element.dispatchEvent(new CustomEvent('selectedValue'));
     element.dispatchEvent(new CustomEvent('input', { bubbles: true }));
-    let value = this.getValue(element)
     document.dispatchEvent(new CustomEvent('CoCreate-selected', {
       detail: {
         element,
-        value
+        value: element.selectedOptions
       }
     }));
   }
