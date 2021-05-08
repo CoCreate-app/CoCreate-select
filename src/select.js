@@ -7,45 +7,6 @@ const optionsSelector = 'cc-options';
 const optionSelector = "cc-option";
 const selectedSelector = "seleccted";
 
-let pp = new Proxy({}, {
-    get: function (oTarget, sKey) {
-    return oTarget[sKey] || oTarget.getItem(sKey) || undefined;
-  },
-  set: function (oTarget, sKey, vValue) {
-    if (sKey in oTarget) { return false; }
-    return oTarget.setItem(sKey, vValue);
-  },
-});
-
-
-(function () {
-    const oldAdoptedStyleSheetsGetter = Object.getOwnPropertyDescriptor(window.HTMLElement.prototype, 'adoptedStyleSheets');
-
-    Object.defineProperty(ShadowRoot.prototype, "adoptedStyleSheets", {
-        get: function () {
-            console.log('adoptedStyleSheets was accessed!');
-            return oldAdoptedStyleSheetsGetter.get.call(this)
-        },
-    });
-})();
-
-customElements.define('web-component', class extends HTMLElement {
-  connectedCallback() {
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot.innerHTML = `Hi I'm a web component`;
-    console.log('this.shadowRoot.adoptedStyleSheets:', this.shadowRoot.adoptedStyleSheets);
-  }
-});
-
-
-
-Object.defineProperty(window.HTMLElement.prototype, 'zzzzzz', {
-  get: function(){
-    // console.log(arguments)
-    return pp;
-  }
-})
-
 
 // const optionTagNameUpper = optionTagName.toUpperCase();
 const container = new Map();
