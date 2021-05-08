@@ -132,6 +132,9 @@ CoCreateSelect.prototype = {
       // check if data exist
       let value = el.getAttribute('value');
 
+      // todo: hide selected options
+      el.setAttribute('selected','');
+      
       self.addValue(value, el.innerText ? el.innerText : value)
       self.save(selectContainer)
       self.__fireSelectedEvent(selectContainer)
