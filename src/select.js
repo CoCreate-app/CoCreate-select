@@ -81,8 +81,17 @@ CoCreateSelect.prototype = {
     }
     this.input = selectContainer.querySelector(inputSelector);
     this.optionsContainer = selectContainer.querySelector(optionsSelector);
-
-
+    if(!this.optionsContainer){
+      this.optionsContainer = this.selectContainer;
+      this.getOptions = function(){
+        return this.selectContainer.querySelectorAll('input~*');
+      }
+    }
+    else
+      this.getOptions = function(){
+        return this.optionsContainer.children;
+      }
+      
     const self = this;
 
     if (this.input) {
