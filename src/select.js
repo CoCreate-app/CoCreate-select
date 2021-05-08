@@ -80,7 +80,7 @@ CoCreateSelect.prototype = {
       selectContainer.prepend(this.selectedContainer)
     }
     this.input = selectContainer.querySelector(inputSelector);
-    this.selectOptions = selectContainer.querySelector(optionsSelector);
+    this.optionsContainer = selectContainer.querySelector(optionsSelector);
 
 
     const self = this;
@@ -117,9 +117,9 @@ CoCreateSelect.prototype = {
 
     });
 
-    this.selectOptions.addEventListener('click', function(e) {
+    this.optionsContainer.addEventListener('click', function(e) {
       let el = e.target;
-      if (!self.selectOptions.contains(el.parentElement))
+      if (!self.optionsContainer.contains(el.parentElement))
         return;
 
       if (!el.matches(optionSelector))
@@ -150,7 +150,7 @@ CoCreateSelect.prototype = {
         self.__fireSelectedEvent(selectContainer)
 
       }
-      else if (!self.selectOptions.classList.contains('open')) {
+      else if (!self.optionsContainer.classList.contains('open')) {
         self.__openDropDown(selectContainer)
       }
 
@@ -180,7 +180,7 @@ CoCreateSelect.prototype = {
     if (!value) return;
 
     this.removeValues();
-    let option = this.selectOptions.querySelector(`${optionSelector}[value="${value}"]`)
+    let option = this.optionsContainer.querySelector(`${optionSelector}[value="${value}"]`)
     if (option) {
       let selectedOption = option.cloneNode(true)
       selectedOption.classList.remove('option');
