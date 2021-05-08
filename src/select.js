@@ -169,10 +169,6 @@ CoCreateSelect.prototype = {
 
   },
 
-  renderValue: function(target, value) {
-    if (container.has(target))
-      container.get(target).addValue(value)
-  },
 
   addValue: function(value, text) {
     let selectedOption = document.createElement(optionTagName);
