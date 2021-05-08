@@ -44,7 +44,7 @@
         
   <!--      <ul data-fetch_collection="users" -->
   <!--          data-template_id="option1" -->
-  <!--          class="options cocreate-scroll">-->
+  <!--          class="options overflow:overlay">-->
   <!--				<li class="option template" data-template_id="option1" value='{{data._id}}' data-document_id="{{data._id}}" data-render_array="data">-->
   <!--				  <h3 name="name" value="{{data.name}}">No Name</h3>-->
   <!--				  <h5 name="_id" value="{{data._id}}"></h5>-->
@@ -62,7 +62,7 @@
        
         <input class="search-options" placeholder="Search" data-search_id="search_01" data-item_selector=".option">
        
-        <ul class="options options cocreate-scroll" data-search_id="search_01">
+        <ul class="options overflow:overlay" data-search_id="search_01">
   				<li class="option option"  value="value 1">
   				  <h3 >value 1</h3>
   				</li>
@@ -79,7 +79,54 @@
         
       </cocreate-select>
   
-  <!-------------- Multiple Options -------------->
+  
+  
+        <cocreate-select class="sortable floating-label" 
+        data-collection="test" 
+        data-document_id="5e8ff00e8c3af32574df80cb" 
+        name="selectField4" 
+        placeholder="Single Options" active>
+       
+        <input class="search-options" placeholder="Search" data-search_id="search_01" data-item_selector=".option">
+       
+  
+  				<Option   value="value 1">
+  				  <h3 >value 1</h3> <span class="remove">x</span></li>	
+  				</Option>
+  				<Option   value="value 2">
+  				  <h3 >value 2</h3> <span class="remove">x</span></li>	
+  				</Option>
+  				<option  value="value 3">
+  				 sss <span class="remove">x</span></li>	
+  				</option>
+  				<option  value="value 3">
+  				 value 3 <span class="remove">x</span></li>	
+  				</option>
+      
+        
+      </cocreate-select>
+  
+      <cocreate-select class="sortable floating-label" 
+        data-collection="test" 
+        data-document_id="5e8ff00e8c3af32574df80cb" 
+        name="selectField4" 
+        placeholder="Single Options" active>
+       
+        <input class="search-options" placeholder="Search" data-search_id="search_01" data-item_selector=".option">
+       
+        <ul class="options height:0" data-fetch_collection="test" data-template_id="newtest">
+  				
+  				<ccoption class="template" data-template_id="newtest" value="{data.value}">
+  				  <h3>{data.value}</h3>
+  				  <div >sssssssss</div>
+  				</ccoption>
+  				
+        </ul>
+        
+      </cocreate-select>
+  
+  
+  <!-------------- Multiples -------------->
   <!--    <cocreate-select class="floating-label sortable" multiple-->
   <!--      data-realtime="false" -->
   <!--      data-collection="test" -->
@@ -90,7 +137,7 @@
         
   <!--      <input class="search-options" placeholder="Search" data-search_id="search_02" data-item_selector=".option">-->
         
-  <!--      <ul class="options cocreate-scroll" data-search_id="search_02">-->
+  <!--      <ul class="options overflow:overlay" data-search_id="search_02">-->
   <!--				<li class="option" value="value 1">-->
   <!--				  <h3 >value 1</h3>-->
   <!--				</li>-->
@@ -114,7 +161,7 @@
        
   <!--      <input class="search-options" placeholder="Search" data-search_id="search_03" data-item_selector=".option">-->
         
-  <!--      <ul class="options cocreate-scroll"-->
+  <!--      <ul class="options overflow:overlay"-->
   <!--        data-fetch_collection="test" -->
   <!--        data-filter_value="5e9531b3a762440eed55c2ed" -->
   <!--        data-filter_name="_id"-->
@@ -139,7 +186,7 @@
         
   <!--      <input class="search-options" placeholder="Search" data-search_id="search_04" data-item_selector=".option">-->
         
-  <!--      <ul class="options cocreate-scroll"-->
+  <!--      <ul class="options overflow:overlay"-->
   <!--        data-fetch_collection="test" -->
   <!--        data-filter_value="5e9531b3a762440eed55c2ed" -->
   <!--        data-filter_name="_id"-->
@@ -161,7 +208,7 @@
   <!--        data-fetch_collection="" -->
   <!--        data-fetch_value_type="collection"-->
   <!--        data-template_id="collection-list" -->
-  <!--        class="template-wrapper options cocreate-scroll" -->
+  <!--        class="template-wrapper options overflow:overlay" -->
   <!--        data-pass_to="me1234"-->
   <!--        data-search_id="search_05">-->
   <!--				<li class="option template" data-template_id="collection-list" data-value="{{data.name}}" data-pass_id="me1234" data-render_array="data">-->
@@ -174,7 +221,7 @@
 
   <!--    <cocreate-select class="floating-label" placeholder="Collection Select" multiple id="set_testing">-->
   <!--      <input class="search-options" placeholder="Search" data-search_id="search_05" data-item_selector=".option">-->
-  <!--      <ul class="options cocreate-scroll" data-search_id="search_02">-->
+  <!--      <ul class="options overflow:overlay" data-search_id="search_02">-->
   <!--				<li class="option" value="value1">-->
   <!--				  <h3>value 1</h3>-->
   <!--				</li>-->
