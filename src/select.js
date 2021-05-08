@@ -259,7 +259,7 @@ else
 
 
 
-function setValue({collection, document_id, ...data}) {
+function template({collection, document_id, ...data}) {
 
   let selector = addAttribute(containerSelector,
     `[data-collection="${collection}"][data-document_id="${document_id}"][name]`);
@@ -271,4 +271,4 @@ function setValue({collection, document_id, ...data}) {
 
 }
 
-export default { init: (el) => new CoCreateSelect(el), setValue };
+export default { init: (el) => new CoCreateSelect(el), template };
