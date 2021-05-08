@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Select | CoCreateJS</title>
-  
-    <!-- CoCreate Favicon -->
-    <link rel="icon" href="https://cdn.cocreate.app/favicon.ico" type="image/ico" sizes="16x16">
-    <!-- CoCreate CSS CDN -->
-    <!--<link rel="stylesheet" href="https://cdn.cocreate.app/select/latest/CoCreate-select.min.css" type="text/css" />-->
-  </head>
-  <body>
+
+<head>
+  <title>Select | CoCreateJS</title>
+
+  <!-- CoCreate Favicon -->
+  <link rel="icon" href="https://cdn.cocreate.app/favicon.ico" type="image/ico" sizes="16x16">
+  <!-- CoCreate CSS CDN -->
+  <!--<link rel="stylesheet" href="https://cdn.cocreate.app/select/latest/CoCreate-select.min.css" type="text/css" />-->
+</head>
+
+<body>
 
   <form class="margin:20px" data-collection="module_activities">
-     
-  <!-------------- single Document -------------->
 
       <cocreate-select class="floating-label sortable" 
         data-collection="test" 
@@ -221,48 +221,28 @@
   <!--      </ul>-->
   <!--    </cocreate-select>-->
 
-  <!--    <cocreate-select class="floating-label" placeholder="Collection Select" multiple id="set_testing">-->
-  <!--      <input class="search-options" placeholder="Search" data-search_id="search_05" data-item_selector=".option">-->
-  <!--      <ul class="options overflow:overlay" data-search_id="search_02">-->
-  <!--				<li class="option" value="value1">-->
-  <!--				  <h3>value 1</h3>-->
-  <!--				</li>-->
-  <!--				<li class="option" value="value2">-->
-  <!--				  <h3 >value 2</h3>-->
-  <!--				</li>-->
-  <!--				<li class="option" value="value3">-->
-  <!--				  <h3 >value 3</h3>-->
-  <!--				</li>-->
-  <!--      </ul>-->
-  <!--    </cocreate-select>-->
+      <ul data-fetch_collection="users" data-template_id="option0" class="options overflow:auto">
+        <li class="option template" data-template_id="option0" value='{{data._id}}' data-document_id="{{data._id}}" data-render_array="data">
+          <h3 name="name" value="{{data.name}}">No Name</h3>
+          <h5 name="_id" value="{{data._id}}"></h5>
+        </li>
+      </ul>
 
-      
-  <!--    <div style="margin-top: 30px"><button class="submitBtn">Test button</button></div>-->
-  
-  
-  <!--  <cocreate-select class="remove-none border:none border-radius:4px padding:0 width:27px">-->
-		<!--	<li class="margin:0 padding:0 height:25px min-height:25px align-items:center selected" value="px"><span class="margin:auto">px</span><span class="remove">x</span></li>		        	-->
-  <!--  	<input>-->
+  <cc-option>asdas</cc-option>
+    </cocreate-select>
 
-		<!--	<ul class="options z-index:10 width:30px">-->
-		<!--	  <li class="option margin:0 padding:0 height:25px min-height:25px align-items:center" value="px"><span class="margin:auto">px</span></li>-->
-		<!--	  <li class="option margin:0 padding:0 height:25px min-height:25px" value="%"><span class="margin:auto">%</span></li>-->
-		<!--	  <li class="option margin:0 padding:0 height:25px min-height:25px" value="vh"><span class="margin:auto">vw</span></li>-->
-		<!--	</ul>-->
-  <!--  </cocreate-select>-->
 
-    
+  </form>
 
-    </form>
+  <script>
+    var config = {
+      apiKey: 'c2b08663-06e3-440c-ef6f-13978b42883a',
+      organization_Id: '5de0387b12e200ea63204d6c'
+    }
+  </script>
 
-    <script>
-      var config = {
-        apiKey: 'c2b08663-06e3-440c-ef6f-13978b42883a',
-        organization_Id: '5de0387b12e200ea63204d6c'
-      }
-    </script>
+  <!-- CoCreate JS CDN -->
+  <script src="../dist/CoCreate-select.js"></script>
+</body>
 
-    <!-- CoCreate JS CDN -->
-    <script src="../dist/CoCreate-select.js" ></script>
-  </body>
 </html>

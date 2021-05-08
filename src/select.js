@@ -3,9 +3,48 @@ import observer from '@cocreate/observer';
 // options
 const containerSelector = 'cocreate-select, div.select--field';
 const inputSelector = 'input';
-const optionsSelector = '.options';
-const optionSelector = ".option";
+const optionsTagName = 'cc-options';
+const optionTagName = "cc-option";
+const selectedTagName = "seleccted";
 
+let pp = new Proxy({}, {
+    get: function (oTarget, sKey) {
+    return oTarget[sKey] || oTarget.getItem(sKey) || undefined;
+  },
+  set: function (oTarget, sKey, vValue) {
+    if (sKey in oTarget) { return false; }
+    return oTarget.setItem(sKey, vValue);
+  },
+});
+
+
+(function () {
+    const oldAdoptedStyleSheetsGetter = Object.getOwnPropertyDescriptor(window.HTMLElement.prototype, 'adoptedStyleSheets');
+
+    Object.defineProperty(ShadowRoot.prototype, "adoptedStyleSheets", {
+        get: function () {
+            console.log('adoptedStyleSheets was accessed!');
+            return oldAdoptedStyleSheetsGetter.get.call(this)
+        },
+    });
+})();
+
+customElements.define('web-component', class extends HTMLElement {
+  connectedCallback() {
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.innerHTML = `Hi I'm a web component`;
+    console.log('this.shadowRoot.adoptedStyleSheets:', this.shadowRoot.adoptedStyleSheets);
+  }
+});
+
+
+
+Object.defineProperty(window.HTMLElement.prototype, 'zzzzzz', {
+  get: function(){
+    // console.log(arguments)
+    return pp;
+  }
+})
 
 
 // const optionTagNameUpper = optionTagName.toUpperCase();
