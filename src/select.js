@@ -80,7 +80,6 @@ CoCreateSelect.prototype = {
 
         if (keyCode == 13 && this.value.length > 0) {
           self.addValue(this.value);
-          self.save(selectContainer)
           self.__fireSelectedEvent(selectContainer)
           this.value = '';
         }
@@ -88,7 +87,6 @@ CoCreateSelect.prototype = {
           let selectedOptions = selectContainer.querySelectorAll('[selected]');
           if (!selectedOptions.length) return;
           selectedOptions[selectedOptions.length - 1].remove();
-          self.save(selectContainer)
           self.__fireSelectedEvent(selectContainer)
 
         }
@@ -122,7 +120,6 @@ CoCreateSelect.prototype = {
       el.setAttribute('selected', '');
 
       self.addValue(value, el.innerText ? el.innerText : value)
-      self.save(selectContainer)
       self.__fireSelectedEvent(selectContainer)
 
     });
@@ -131,7 +128,6 @@ CoCreateSelect.prototype = {
       // remove seletec item or open dropdown
       if (e.target.matches('.remove')) {
         e.target.parentNode.remove();
-        self.save(selectContainer)
         self.__fireSelectedEvent(selectContainer)
 
       }
@@ -206,32 +202,23 @@ CoCreateSelect.prototype = {
   },
 
 
-  // for crdt
-  save: function(selectEl) {
-    if (!selectEl) {
-      return;
-    }
-    let event = new CustomEvent('CoCreateSelect-save', {
-      detail: {
-        element: selectEl,
-      }
-    })
-
-    document.dispatchEvent(event);
-
-  },
-  // for crdt and outsider call
-
-
-
+  // for crdt and outsider cal
   __fireSelectedEvent: function(element) {
+    if (!element)
+      return;
+
+    document.dispatchEvent(new CustomEvent('CoCreateSelect-save', {
+      detail: {
+        element,
+      }
+    }));
     element.dispatchEvent(new CustomEvent('selectedValue'));
     element.dispatchEvent(new CustomEvent('input', { bubbles: true }));
     let value = this.getValue(element)
     document.dispatchEvent(new CustomEvent('CoCreate-selected', {
       detail: {
-        element: element,
-        value: value
+        element,
+        value
       }
     }));
   }
