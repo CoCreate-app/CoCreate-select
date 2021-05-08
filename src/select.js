@@ -2,6 +2,7 @@ import observer from '@cocreate/observer';
 import selectedAtt from './selectedAtt';
 import optionsAtt from './optionsAtt';
 import selectedOptionsAtt from './selectedOptionsAtt';
+import selectedIndexAtt from './selectedIndexAtt';
 import { parse, addAttribute } from './utils'
 import {
   containerSelector,
@@ -21,6 +22,7 @@ selectedAtt((el) => {
 optionsAtt((el) => el.matches(containerSelector))
 
 selectedOptionsAtt((el) => el.matches(containerSelector))
+selectedIndexAtt((el) => el.matches(containerSelector))
 
 
 

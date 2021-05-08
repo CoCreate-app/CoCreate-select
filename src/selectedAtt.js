@@ -1,5 +1,4 @@
-import { container } from './select';
-import * as config from './config';
+import {getInstance} from './utils';
 export default function(cond) {
     Object.defineProperty(window.HTMLElement.prototype, 'selected', {
         get: function() {
@@ -8,12 +7,8 @@ export default function(cond) {
         },
         set: function(value) {
             if (cond(this)) {
-                let select = this;
-                while (select.parentElement && !select.matches(config.containerSelector)) {
-                    select = select.parentElement;
-                 }
         
-                let instance = container.get(select);
+                let instance = getInstance(this);
                 if (value) {
                     this.setAttribute('selected', '')
                     instance.selectOption(this)
