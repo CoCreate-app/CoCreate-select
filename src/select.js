@@ -1,6 +1,7 @@
 import observer from '@cocreate/observer';
 import selectedAtt from './selectedAtt';
 import optionsAtt from './optionsAtt';
+import selectedOptionsAtt from './selectedOptionsAtt';
 import { parse } from './utils'
 // options
 const containerSelector = 'cocreate-select, div.select--field';
@@ -19,7 +20,7 @@ selectedAtt((el)=>{
 
 optionsAtt((el)=> el.matches(containerSelector))
 
-
+selectedOptionsAtt((el)=> el.matches(containerSelector))
 
 
 
