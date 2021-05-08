@@ -3,16 +3,13 @@ import selectedAtt from './selectedAtt';
 import optionsAtt from './optionsAtt';
 import selectedOptionsAtt from './selectedOptionsAtt';
 import { parse, addAttribute } from './utils'
-// options
-const containerSelector = 'cocreate-select, div.select--field';
-const inputSelector = 'input';
-const optionsSelector = 'cc-options';
-const optionSelector = "cc-option";
-const optionTagName = "cc-option";
-const selectedTagName = "selected";
-const removeMarkup = '<span class="remove">x</span>'
-
-
+import {containerSelector,
+  inputSelector,
+  optionsSelector,
+  optionSelector,
+  optionTagName, 
+  selectedTagName,
+  removeMarkup} from './config';
 
 selectedAtt((el) => {
   return el.matches(`${optionsSelector} > ${optionSelector}, ${addAttribute(containerSelector, '>' + optionSelector)}`)
@@ -187,11 +184,20 @@ CoCreateSelect.prototype = {
   // selectOption: function(){},
   selectOption: function(option) {
     option.setAttribute('selected', "");
-    option.appendChild(removeElement.cloneNode(true));
+    let newOption = option.cloneNode(true);
+    newOption.appendChild(removeElement.cloneNode(true));
     if (!this.isMultiple()) {
       this.__closeDropDown();
     }
-    this.selectedContainer.appendChild(option);
+    this.selectedContainer.appendChild(newOption);
+  },
+  unselectOption: function(option)
+  {
+    option.removeAttribute('selected');
+    let value = option.getAttribute('value');
+    let selectedOption = this.selectedContainer.querySelector(`[value="${value}"]`);
+    if(selectedOption)
+      selectedOption.remove();
   },
 
   // gets all value 
