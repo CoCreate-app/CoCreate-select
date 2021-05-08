@@ -1,5 +1,5 @@
 import observer from '@cocreate/observer';
-
+import selectedAtt from './selectedAtt';
 // options
 const containerSelector = 'cocreate-select, div.select--field';
 const inputSelector = 'input';
@@ -8,13 +8,23 @@ const optionSelector = "cc-option";
 const selectedSelector = "seleccted";
 
 
+
+
+selectedAtt((el)=>{
+  return el.matches(`${optionsSelector} > ${optionSelector}, ${addAttribute(containerSelector, '>' + optionSelector)}` )
+})
+
+
+
+
+
+
 // const optionTagNameUpper = optionTagName.toUpperCase();
 const container = new Map();
 
 function addAttribute(containerSelector, att) {
   return containerSelector.split(',').map(s => s.trim() + att).join(', ')
 }
-
 
 
 function CoCreateSelect(c) {
