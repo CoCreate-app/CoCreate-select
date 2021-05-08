@@ -114,7 +114,7 @@ CoCreateSelect.prototype = {
           el = el.parentElement;
         }
 
-      self.selectOption(el)
+      self.selectOption(el, true)
       self.__fireSelectedEvent(selectContainer)
 
     });
@@ -159,7 +159,7 @@ CoCreateSelect.prototype = {
     this.unselectAll();
     let option = this.optionsContainer.querySelector(`${optionSelector}[value="${value}"]`)
     if (option)
-      this.selectOption(option)
+      this.selectOption(option, false)
     else
       this.addValue(value);
 
@@ -170,18 +170,18 @@ CoCreateSelect.prototype = {
     let selectedOption = document.createElement(optionTagName);
     selectedOption.setAttribute('value', value);
     selectedOption.innerText = text ? text : value;
-    this.selectOption(selectedOption)
+    this.selectOption(selectedOption, true)
   },
   // todo: implement
   // selectOption: function(){},
-  selectOption: function(option) {
+  selectOption: function(option, closeOnMultiple) {
     option.setAttribute('selected', "");
     let newOption = option.cloneNode(true);
     optionToSelected.set(option, newOption);
     selectedToOption.set(newOption, option);
     newOption.appendChild(removeElement.cloneNode(true));
     if (!this.isMultiple()) {
-      this.close();
+      closeOnMultiple && this.close();
       this.unselectAll();
     }
     this.selectedContainer.appendChild(newOption);

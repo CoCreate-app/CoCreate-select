@@ -20,7 +20,7 @@ export default function(cond) {
                 let instance = getInstance(this);
                 if (isFinite(value)) {
                     let option = instance.optionsContainer.children[value];
-                    instance.selectOption(option);
+                    instance.selectOption(option, false);
                 }
             }
         }

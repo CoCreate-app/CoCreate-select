@@ -11,7 +11,7 @@ export default function(cond) {
                 let instance = getInstance(this);
                 if (value) {
                     this.setAttribute('selected', '')
-                    instance.selectOption(this)
+                    instance.selectOption(this, false)
                 }
                 else {
                     this.removeAttribute('selected')
