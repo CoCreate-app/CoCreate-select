@@ -1,5 +1,6 @@
 import observer from '@cocreate/observer';
 import selectedAtt from './selectedAtt';
+import optionsAtt from './optionsAtt';
 import { parse } from './utils'
 // options
 const containerSelector = 'cocreate-select, div.select--field';
@@ -16,13 +17,16 @@ selectedAtt((el)=>{
   return el.matches(`${optionsSelector} > ${optionSelector}, ${addAttribute(containerSelector, '>' + optionSelector)}` )
 })
 
+optionsAtt((el)=> el.matches(containerSelector))
+
+
 
 
 
 
 
 // const optionTagNameUpper = optionTagName.toUpperCase();
-const container = new Map();
+export const container = new Map();
 const removeElement = parse(removeMarkup);
 
 function addAttribute(containerSelector, att) {
