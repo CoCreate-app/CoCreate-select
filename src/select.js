@@ -259,11 +259,10 @@ else
 
 
 
-function setValue(data) {
+function setValue({collection, document_id, ...data}) {
 
-  //      [name="${data['name']}"]\
   let selector = addAttribute(containerSelector,
-    `[data-collection="${data['collection']}"][data-document_id="${data['document_id']}"][name]`);
+    `[data-collection="${collection}"][data-document_id="${document_id}"][name]`);
 
   for (let el of document.querySelectorAll(selector)) {
     const name = el.getAttribute('name');
