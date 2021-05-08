@@ -8,7 +8,7 @@ const inputSelector = 'input';
 const optionsSelector = 'cc-options';
 const optionSelector = "cc-option";
 const optionTagName = "cc-option";
-const selectedSelector = "selected";
+const selectedTagName = "selected"; 
 const removeMarkup = '<span class="remove">x</span>'
 
 
@@ -72,6 +72,12 @@ CoCreateSelect.prototype = {
     container.set(selectContainer, this)
 
     this.selectContainer = selectContainer;
+    this.selectedContainer = selectContainer.querySelector(selectedTagName);
+    if(!this.selectedContainer)
+    {
+      this.selectedContainer = document.createElement(selectedTagName)
+      selectContainer.prepend(this.selectedContainer)
+    }
     this.input = selectContainer.querySelector(inputSelector);
     this.selectOptions = selectContainer.querySelector(optionsSelector);
 
@@ -202,7 +208,7 @@ CoCreateSelect.prototype = {
     if (!this.isMultiple()) {
       this.__closeDropDown();
     }
-    this.selectContainer.insertBefore(option, this.input ? this.input : this.selectOptions);
+    this.selectedContainer.appendChild(option);
   },
 
   // gets all value 
