@@ -184,7 +184,7 @@ CoCreateSelect.prototype = {
     if (option) {
       let selectedOption = option.cloneNode(true)
       selectedOption.classList.remove('option');
-      this.addByOption(selectedOption)
+      this.selectOption(selectedOption)
     }
     else
       this.addValue(value);
@@ -204,7 +204,7 @@ CoCreateSelect.prototype = {
   },
   // todo: implement
   // selectOption: function(){},
-  addByOption: function(option) {
+  selectOption: function(option) {
     option.setAttribute('selected', "");
     option.appendChild(removeElement.cloneNode(true));
     if (!this.isMultiple()) {
