@@ -156,14 +156,16 @@ CoCreateSelect.prototype = {
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-close'));
   },
 
-
-  __renderValue: function(depricatedSelectContainer, value) {
-    if (!value) return;
-
+  unselectAll: function() {
     for (let el of this.selectedContainer.children)
       if (selectedToOption.has(el))
         this.unselectOption(selectedToOption.get(el));
 
+  },
+  __renderValue: function(depricatedSelectContainer, value) {
+    if (!value) return;
+
+    this.unselectAll();
     let option = this.optionsContainer.querySelector(`${optionSelector}[value="${value}"]`)
     if (option)
       this.selectOption(option)
@@ -189,6 +191,7 @@ CoCreateSelect.prototype = {
     newOption.appendChild(removeElement.cloneNode(true));
     if (!this.isMultiple()) {
       this.__closeDropDown();
+      this.unselectAll();
     }
     this.selectedContainer.appendChild(newOption);
   },
