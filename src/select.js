@@ -3,9 +3,9 @@ import observer from '@cocreate/observer';
 // options
 const containerSelector = 'cocreate-select, div.select--field';
 const inputSelector = 'input';
-const optionsTagName = 'cc-options';
-const optionTagName = "cc-option";
-const selectedTagName = "seleccted";
+const optionsSelector = 'cc-options';
+const optionSelector = "cc-option";
+const selectedSelector = "seleccted";
 
 let pp = new Proxy({}, {
     get: function (oTarget, sKey) {
