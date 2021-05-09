@@ -1,3 +1,4 @@
+/*global CustomEvent*/
 import observer from '@cocreate/observer';
 import selectedAtt from './selectedAtt';
 import optionsAtt from './optionsAtt';
@@ -28,7 +29,7 @@ selectedIndexAtt((el) => el.matches(containerSelector))
 
 
 
-// const optionTagNameUpper = optionTagName.toUpperCase();
+
 export const container = new Map();
 export const optionToSelected = new Map();
 export const selectedToOption = new Map();
@@ -133,7 +134,7 @@ CoCreateSelect.prototype = {
     }, true);
   },
 
-  // todo: add focus parameter
+
   open: function() {
     this.input.focus();
     this.selectContainer.classList.add('open');
