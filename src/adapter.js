@@ -6,17 +6,7 @@ import { container } from './select';
 
 const SelectAdapter = {
 
-
 	init: function() {
-
-
-
-
-
-
-
-
-		this.__initEvents()
 
 		let containerList = document.querySelectorAll(config.containerSelector);
 
@@ -24,6 +14,7 @@ const SelectAdapter = {
 			new CoCreateSelect(selectCon);
 			this.dbToSelects(selectCon)
 		}
+		this.__initEvents()
 	},
 
 	__initEvents: function() {
@@ -35,7 +26,6 @@ const SelectAdapter = {
 				container.get(dropedEl).__fireSelectedEvent({ selectContainer: dropedEl })
 			}
 		})
-
 
 		document.addEventListener('input', function(e) {
 			if (e.target.matches(config.containerSelector))
@@ -76,18 +66,6 @@ const SelectAdapter = {
 		}
 	},
 
-	// __sendRequest: function(selectContainer) {
-	// 	let collection = selectContainer.getAttribute('data-collection') || 'module_activity';
-	// 	let id = selectContainer.getAttribute('data-document_id');
-
-	// 	if (collection && id) {
-	// 		crud.readDocument({
-	// 			'collection': collection,
-	// 			'document_id': id,
-	// 			'metadata': 'cocreate-select'
-	// 		})
-	// 	}
-	// },
 	getCrudCred: function(el) {
 		const collection = el.getAttribute('data-collection') || 'module_activity';
 		const id = el.getAttribute('data-document_id');
