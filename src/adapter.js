@@ -15,13 +15,15 @@ const SelectAdapter = {
 
 
 
-		this.initElement();
+
 		this.__initEvents()
 
 		let containerList = document.querySelectorAll(config.containerSelector);
 
-		for (let selectCon of containerList)
+		for (let selectCon of containerList) {
 			new CoCreateSelect(selectCon);
+			this.dbToSelects(selectCon)
+		}
 	},
 
 	__initEvents: function() {
@@ -37,31 +39,31 @@ const SelectAdapter = {
 
 		document.addEventListener('input', function(e) {
 			if (e.target.matches(config.containerSelector))
-				self.save(e.target);
+				self.saveSelect(e.target);
 		})
 
 		crud.listen('readDocument', function(data) {
 			if (data.metadata == 'cocreate-select') {
-				CoCreateSelect.template(data);
+				self.template(data);
 			}
 		})
 
 		crud.listen('updateDocument', function(data) {
 			if (data.metadata == 'cocreate-select') {
-				CoCreateSelect.template(data);
+				self.template(data);
 			}
 		})
 
 	},
 
-	__initElementEvent: function(selectContainer) {
+	dbToSelects: function(selectContainer) {
 		const self = this;
 
 		selectContainer.addEventListener('set-document_id', function() {
-			self.save(this)
+			self.saveSelect(this)
 		})
 
-		//. fetch logic
+
 		let collection = selectContainer.getAttribute('data-collection') || 'module_activity';
 		let id = selectContainer.getAttribute('data-document_id');
 
@@ -74,35 +76,43 @@ const SelectAdapter = {
 		}
 	},
 
-	__sendRequest: function(selectContainer) {
-		let collection = selectContainer.getAttribute('data-collection') || 'module_activity';
-		let id = selectContainer.getAttribute('data-document_id');
+	// __sendRequest: function(selectContainer) {
+	// 	let collection = selectContainer.getAttribute('data-collection') || 'module_activity';
+	// 	let id = selectContainer.getAttribute('data-document_id');
 
-		if (collection && id) {
-			crud.readDocument({
-				'collection': collection,
-				'document_id': id,
-				'metadata': 'cocreate-select'
-			})
-		}
+	// 	if (collection && id) {
+	// 		crud.readDocument({
+	// 			'collection': collection,
+	// 			'document_id': id,
+	// 			'metadata': 'cocreate-select'
+	// 		})
+	// 	}
+	// },
+	getCrudCred: function(el) {
+		const collection = el.getAttribute('data-collection') || 'module_activity';
+		const id = el.getAttribute('data-document_id');
+		const name = el.getAttribute('name');
+		let realtime = el.getAttribute('data-realtime') || "true";
+		return { name, id, collection, realtime };
 	},
+	writeSelect: function({ collection, document_id, ...data }) {
 
-	save: function(element, isStore = true) {
+
+		for (let [el, instance] of this.container) {
+			let { name, id, collection } = this.getCrudCred(el);
+			if (data['collection'] == collection && data['document_id'] == id && name) {
+				instance.selectOption(data['data'][name]);
+			}
+		}
+
+	},
+	saveSelect: function(element, isStore = true) {
 
 		let value = Array.from(element.options);
 
-		let collection = element.getAttribute('data-collection') || 'module_activity';
+		let { name, id, collection, realtime } = this.getCrudCred(el);
+		if (!name || !isStore || realtime != "true" || element.getAttribute('data-save_value') == 'false') return;
 
-		let id = element.getAttribute('data-document_id');
-		let name = element.getAttribute('name');
-		let realtime = element.getAttribute('data-realtime') || "true";
-		if (!name) return;
-
-		if (realtime != "true" && !isStore) return;
-
-		if (element.getAttribute('data-save_value') == 'false') {
-			return;
-		}
 
 		if (!form.checkID(element)) {
 			form.request({ element, value, nameAttr: "name" });

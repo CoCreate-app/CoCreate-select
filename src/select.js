@@ -236,18 +236,6 @@ CoCreateSelect.prototype = {
 
 
 
-function template({ collection, document_id, ...data }) {
 
 
-  for (let [el, instance] of this.container) {
-    const collection = el.getAttribute('data-collection') || 'module_activity';
-    const id = el.getAttribute('data-document_id');
-    const name = el.getAttribute('name');
-    if (data['collection'] == collection && data['document_id'] == id && name) {
-      instance.selectOption(data['data'][name]);
-    }
-  }
-
-}
-
-export default { init: (el) => new CoCreateSelect(el), template };
+export default { init: (el) => new CoCreateSelect(el) };
