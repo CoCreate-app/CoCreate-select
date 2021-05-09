@@ -143,13 +143,11 @@ CoCreateSelect.prototype = {
   open: function() {
     this.input.focus();
     this.selectContainer.classList.add('open');
-    this.selectContainer.classList.add('active');
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-open'));
   },
 
   close: function() {
     this.selectContainer.classList.remove('open');
-    this.selectContainer.classList.remove('active');
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-close'));
   },
 
