@@ -44,13 +44,13 @@ const SelectAdapter = {
 		
 		crud.listen('readDocument', function(data) {
 			if (data.metadata == 'cocreate-select') {
-				CoCreateSelect.setValue(data);
+				CoCreateSelect.template(data);
 			}
 		})
 		
 		crud.listen('updateDocument', function(data) {
 			if (data.metadata == 'cocreate-select') {
-				CoCreateSelect.setValue(data);
+				CoCreateSelect.template(data);
 			}
 		})
 		
