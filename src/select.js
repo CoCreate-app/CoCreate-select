@@ -73,6 +73,10 @@ CoCreateSelect.prototype = {
         return this.optionsContainer.children;
       }
 
+    for (let option of this.optionsContainer.children)
+      if (option.getAttribute('selected'))
+        this.selectOption(option)
+
     const self = this;
 
     if (this.input) {
