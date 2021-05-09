@@ -88,8 +88,8 @@ CoCreateSelect.prototype = {
         }
 
         if (keyCode == 13 && this.value.length > 0) {
-          self.addValue(this.value);
-          self.__fireSelectedEvent({ selectContainer })
+          self.selectOption(this.value);
+
           this.value = '';
         }
         else if (keyCode == 8 && !this.value.length) {
@@ -97,7 +97,7 @@ CoCreateSelect.prototype = {
           if (!selectedContainer.length) return;
           let option = selectedToOption.get(selectedContainer[selectedContainer.length - 1])
           self.unselectOption(option)
-          self.__fireSelectedEvent({ selectContainer })
+
 
         }
       })
@@ -121,16 +121,15 @@ CoCreateSelect.prototype = {
         }
       if (!el) return;
       self.selectOption(el, true)
-      self.__fireSelectedEvent({ selectContainer })
+
 
     });
 
     selectContainer.addEventListener('click', function(e) {
       // remove seletec item or open dropdown
       if (e.target.matches('.remove')) {
-        // todo: search for cc-option
-        e.target.parentNode.remove();
-        self.__fireSelectedEvent({ selectContainer })
+        this.unselectOption(e.target.parentNode);
+
 
       }
       else if (!self.optionsContainer.classList.contains('open')) {
@@ -171,15 +170,9 @@ CoCreateSelect.prototype = {
   },
 
 
-  addValue: function(value, text) {
-    let selectedOption = document.createElement(optionTagName);
-    selectedOption.setAttribute('value', value);
-    selectedOption.innerText = text ? text : value;
-    this.selectOption(selectedOption, true);
-    return selectedOption;
-  },
+  selectOption: function(option, closeOnMultiple = true, innerText) {
 
-  selectOption: function(option, closeOnMultiple) {
+
     if (this.isMultiple()) {
       let limit = this.selectContainer.getAttribute('data-limit_option');
       if (this.selectedContainer.children.length >= limit)
@@ -189,16 +182,29 @@ CoCreateSelect.prototype = {
     else if (this.selectedContainer.children.length)
       this.unselectAll();
 
-    option.setAttribute('selected', "");
-    let newOption = option.cloneNode(true);
-    optionToSelected.set(option, newOption);
-    selectedToOption.set(newOption, option);
-    newOption.appendChild(removeElement.cloneNode(true));
-    if (!this.isMultiple()) {
-      closeOnMultiple && this.close();
-      this.unselectAll();
+    let selectedOption, value;
+    if (typeof option == 'string') {
+      selectedOption = document.createElement(optionTagName);
+      selectedOption.setAttribute('value', option);
+      value = option;
+      selectedOption.innerText = innerText ? innerText : option;
     }
-    this.selectedContainer.appendChild(newOption);
+    else {
+      option.setAttribute('selected', "");
+      value = option.getAttribute('value');
+      selectedOption = option.cloneNode(true);
+      optionToSelected.set(option, selectedOption);
+      selectedToOption.set(selectedOption, option);
+    }
+
+
+
+    selectedOption.appendChild(removeElement.cloneNode(true));
+    if (!this.isMultiple() && closeOnMultiple)
+      this.close();
+
+    this.selectedContainer.appendChild(selectedOption);
+    this.__fireSelectedEvent({ unselectOption: value })
   },
   /**
    * unselect a cc-select option
@@ -222,19 +228,20 @@ CoCreateSelect.prototype = {
       optionToSelected.delete(option);
       selectedToOption.delete(selectedOption);
       selectedOption.remove();
+      this.__fireSelectedEvent({ unselectOption: value })
     }
   },
 
 
   // for crdt and outsider cal
-  __fireSelectedEvent: function({ selectContainer, detail = {} }) {
+  __fireSelectedEvent: function(detail) {
 
     let event = new CustomEvent('input', {
       bubbles: true,
       detail,
     });
-    Object.defineProperty(event, 'target', { writable: false, value: selectContainer });
-    selectContainer.dispatchEvent(event);
+    Object.defineProperty(event, 'target', { writable: false, value: this.selectContainer });
+    this.selectContainer.dispatchEvent(event);
 
   }
 }
