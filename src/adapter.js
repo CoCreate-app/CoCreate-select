@@ -32,11 +32,6 @@ const SelectAdapter = {
 				self.saveSelect(e.target);
 		})
 
-		crud.listen('readDocument', function(data) {
-			if (data.metadata == 'cocreate-select') {
-				self.template(data);
-			}
-		})
 
 		crud.listen('updateDocument', function(data) {
 			if (data.metadata == 'cocreate-select') {
@@ -46,7 +41,7 @@ const SelectAdapter = {
 
 	},
 
-	dbToSelects: function(selectContainer) {
+	dbToSelects: async function(selectContainer) {
 		const self = this;
 
 		selectContainer.addEventListener('set-document_id', function() {
@@ -58,11 +53,16 @@ const SelectAdapter = {
 		let id = selectContainer.getAttribute('data-document_id');
 
 		if (collection && id) {
+
+			let unique = Date.now();
 			crud.readDocument({
 				'collection': collection,
 				'document_id': id,
-				'metadata': 'cocreate-select'
+				event: unique
+
 			})
+			let { data: responseData, metadata } = await crud.listenAsync(unique);
+			self.template(responseData);
 		}
 	},
 
@@ -92,9 +92,9 @@ const SelectAdapter = {
 		if (!name || !isStore || realtime != "true" || element.getAttribute('data-save_value') == 'false') return;
 
 		let value = Array.from(element.options).map(selOption => selOption.value);
-		value = value.length <= 1 ? value[0] : value;   
-		
-		
+		value = value.length <= 1 ? value[0] : value;
+
+
 		if (!form.checkID(element)) {
 			form.request({ element, value, nameAttr: "name" });
 			element.setAttribute('data-document_id', 'pending');
