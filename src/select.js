@@ -73,7 +73,7 @@ CoCreateSelect.prototype = {
         return this.optionsContainer.children;
       }
 
-    for (let option of this.optionsContainer.children)
+    for (let option of this.getOptions())
       if (option.getAttribute('selected'))
         this.selectOption(option)
 
@@ -89,7 +89,7 @@ CoCreateSelect.prototype = {
 
         if (keyCode == 13 && this.value.length > 0) {
           self.addValue(this.value);
-          self.__fireSelectedEvent({selectContainer})
+          self.__fireSelectedEvent({ selectContainer })
           this.value = '';
         }
         else if (keyCode == 8 && !this.value.length) {
@@ -97,7 +97,7 @@ CoCreateSelect.prototype = {
           if (!selectedContainer.length) return;
           let option = selectedToOption.get(selectedContainer[selectedContainer.length - 1])
           self.unselectOption(option)
-          self.__fireSelectedEvent({selectContainer})
+          self.__fireSelectedEvent({ selectContainer })
 
         }
       })
@@ -119,23 +119,23 @@ CoCreateSelect.prototype = {
         while (el && !el.matches(optionSelector)) {
           el = el.parentElement;
         }
-
+    
       self.selectOption(el, true)
-      self.__fireSelectedEvent({selectContainer})
+      self.__fireSelectedEvent({ selectContainer })
 
     });
 
     selectContainer.addEventListener('click', function(e) {
       // remove seletec item or open dropdown
       if (e.target.matches('.remove')) {
+        // todo: search for cc-option
         e.target.parentNode.remove();
-        self.__fireSelectedEvent({selectContainer})
+        self.__fireSelectedEvent({ selectContainer })
 
       }
       else if (!self.optionsContainer.classList.contains('open')) {
         self.open(selectContainer)
       }
-
     }, true);
   },
 
@@ -163,7 +163,8 @@ CoCreateSelect.prototype = {
     if (!value) return;
 
     this.unselectAll();
-    let option = this.optionsContainer.querySelector(`${optionSelector}[value="${value}"]`)
+
+    let option = this.getOptions().find(el => el.getAttribute('value') == value);
     if (option)
       this.selectOption(option, false)
     else
@@ -252,7 +253,7 @@ function init(container) {
     const { dropedEl, dragedEl } = e.detail;
     if ((typeof dropedEl.tagName != 'undefined' && dropedEl.tagName.toLowerCase() == 'cocreate-select') ||
       dropedEl.classList.contains('select--field')) {
-      dropedEl.__fireSelectedEvent({selectContainer: dropedEl})
+      dropedEl.__fireSelectedEvent({ selectContainer: dropedEl })
     }
   })
 
