@@ -174,8 +174,7 @@ CoCreateSelect.prototype = {
     selectedOption.innerText = text ? text : value;
     this.selectOption(selectedOption, true)
   },
-  // todo: implement
-  // selectOption: function(){},
+
   selectOption: function(option, closeOnMultiple) {
     option.setAttribute('selected', "");
     let newOption = option.cloneNode(true);
