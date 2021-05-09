@@ -252,7 +252,6 @@ function init(container) {
     const { dropedEl, dragedEl } = e.detail;
     if ((typeof dropedEl.tagName != 'undefined' && dropedEl.tagName.toLowerCase() == 'cocreate-select') ||
       dropedEl.classList.contains('select--field')) {
-      dropedEl.save(dropedEl)
       dropedEl.__fireSelectedEvent({selectContainer: dropedEl})
     }
   })
