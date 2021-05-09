@@ -156,18 +156,6 @@ CoCreateSelect.prototype = {
         this.unselectOption(selectedToOption.get(el));
 
   },
-  __renderValue: function(value) {
-    if (!value) return;
-
-    this.unselectAll();
-
-    let option = this.getOptions().find(el => el.getAttribute('value') == value);
-    if (option)
-      this.selectOption(option, false)
-    else
-      this.addValue(value);
-
-  },
 
 
   selectOption: function(option, closeOnMultiple = true, innerText) {
@@ -256,7 +244,7 @@ function template({ collection, document_id, ...data }) {
     const id = el.getAttribute('data-document_id');
     const name = el.getAttribute('name');
     if (data['collection'] == collection && data['document_id'] == id && name) {
-      instance.__renderValue(data['data'][name]);
+      instance.selectOption(data['data'][name]);
     }
   }
 
