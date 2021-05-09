@@ -19,30 +19,18 @@ from './config';
 selectedAtt((el) => {
   return el.matches(`${optionsSelector} > ${optionSelector}, ${addAttribute(containerSelector, '>' + optionSelector)}`)
 })
-
 optionsAtt((el) => el.matches(containerSelector))
-
 selectedOptionsAtt((el) => el.matches(containerSelector))
 selectedIndexAtt((el) => el.matches(containerSelector))
-
-
-
-
-
 
 export const container = new Map();
 export const optionToSelected = new Map();
 export const selectedToOption = new Map();
 const removeElement = parse(removeMarkup);
 
-
-
-
 function CoCreateSelect(c) {
   this.init(c);
 }
-
-
 
 CoCreateSelect.prototype = {
 
@@ -121,23 +109,15 @@ CoCreateSelect.prototype = {
         }
       if (!el) return;
       self.selectOption(el, true)
-
-
     });
 
     selectContainer.addEventListener('click', function(e) {
-      // remove seletec item or open dropdown
-      if (e.target.matches('.remove')) {
+      if (e.target.matches('.remove')) 
         this.unselectOption(e.target.parentNode);
-
-
-      }
-      else if (!self.optionsContainer.classList.contains('open')) {
+      else if (!self.optionsContainer.classList.contains('open')) 
         self.open(selectContainer)
-      }
     }, true);
   },
-
 
   open: function() {
     this.input.focus();
@@ -154,12 +134,9 @@ CoCreateSelect.prototype = {
     for (let el of this.selectedContainer.children)
       if (selectedToOption.has(el))
         this.unselectOption(selectedToOption.get(el));
-
   },
 
-
   selectOption: function(option, closeOnMultiple = true, innerText) {
-
 
     if (this.isMultiple()) {
       let limit = this.selectContainer.getAttribute('data-limit_option');
@@ -184,8 +161,6 @@ CoCreateSelect.prototype = {
       optionToSelected.set(option, selectedOption);
       selectedToOption.set(selectedOption, option);
     }
-
-
 
     selectedOption.appendChild(removeElement.cloneNode(true));
     if (!this.isMultiple() && closeOnMultiple)
@@ -220,10 +195,8 @@ CoCreateSelect.prototype = {
     }
   },
 
-
   // for crdt and outsider cal
   __fireSelectedEvent: function(detail) {
-
     let event = new CustomEvent('input', {
       bubbles: true,
       detail,
@@ -233,9 +206,6 @@ CoCreateSelect.prototype = {
 
   }
 }
-
-
-
 
 
 export default { init: (el) => new CoCreateSelect(el) };

@@ -86,12 +86,15 @@ const SelectAdapter = {
 	},
 	saveSelect: function(element, isStore = true) {
 
-		let value = Array.from(element.options);
 
-		let { name, id, collection, realtime } = this.getCrudCred(el);
+
+		let { name, id, collection, realtime } = this.getCrudCred(element);
 		if (!name || !isStore || realtime != "true" || element.getAttribute('data-save_value') == 'false') return;
 
-
+		let value = Array.from(element.options).map(selOption => selOption.value);
+		value = value.length <= 1 ? value[0] : value;   
+		
+		
 		if (!form.checkID(element)) {
 			form.request({ element, value, nameAttr: "name" });
 			element.setAttribute('data-document_id', 'pending');
