@@ -5,6 +5,11 @@
 cocreate-select>input~* *[selected] {
   display: none;
 }
+cocreate-select:not([open]) > input~*,
+.select--field:not([open]) > input~*
+{
+  display: none;
+}
 
 cocreate-select,
 .select--field {
