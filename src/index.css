@@ -8,14 +8,11 @@ cocreate-select>input~* *[selected] {
   display: none;
 }
 /* hide level 0 cc-option */
-cocreate-select:not(.open) > input~*,
-.select--field:not(.open) > input~*
-{
+cocreate-select:not(.open) > input~* {
     display: none;
 }
 
-cocreate-select,
-.select--field {
+cocreate-select {
   display: flex;
   flex-wrap: wrap;
   min-height: 40px;
@@ -25,14 +22,12 @@ cocreate-select,
 
 }
 
-cocreate-select[multiple],
-.select--field[multiple] {
+cocreate-select[multiple] {
   padding: 2px;
   padding-bottom: 6px;
 }
 
-cocreate-select input,
-.select--field input {
+cocreate-select input {
   border: 0;
   outline: 0;
   min-height: 30px;
@@ -42,19 +37,15 @@ cocreate-select input,
   display: none;
 }
 
-cocreate-select[multiple] input,
-.select--field[multiple] input {
+cocreate-select[multiple] input {
   width: auto;
 }
 
-cocreate-select input.open,
-.select--field input.open,
 cocreate-select.open input {
   display: inherit;
 }
 
-cocreate-select [selected],
-.select--field [selected] {
+cocreate-select [selected] {
   /*display: flex;*/
   position: relative;
   align-items: center;
@@ -69,15 +60,13 @@ cocreate-select [selected],
   overflow: hidden;
 }
 
-cocreate-select[multiple] [selected],
-.select--field[multiple] [selected] {
+cocreate-select[multiple] [selected] {
   margin: 6px 0px 0px 6px;
   border-radius: 5px;
   width: auto;
 }
 
-cocreate-select [selected] .remove,
-.select--field [selected] .remove {
+cocreate-select [selected] .remove {
   display: inline-block;
   position: absolute;
   top: 7px;
@@ -88,26 +77,21 @@ cocreate-select [selected] .remove,
   overflow: hidden;
 }
 
-cocreate-select [selected]:last-child,
-.select--field [selected]:last-child {
+cocreate-select [selected]:last-child {
   margin-right: 20px!important;
 }
 
-cocreate-select [selected]:hover .remove,
-.select--field [selected]:hover .remove {
+cocreate-select [selected]:hover .remove {
   margin-left: 10px;
   width: 10px;
 }
 
-cocreate-select.remove-none [selected]:hover .remove,
-.select--field.remove-none [selected]:hover .remove {
+cocreate-select.remove-none [selected]:hover .remove {
   display: none;
 }
 
 /* Dropdown */
-
-.selectable--list,
-.options {
+cc-options, .options {
   max-height: 0;
   width: 100%;
   position: relative;
@@ -134,7 +118,8 @@ cocreate-select.remove-none [selected]:hover .remove,
 }
 
 .selectable--list li,
-.options .option {
+.options .option,
+cc-option{
   padding: 0;
 }
 
