@@ -22,7 +22,7 @@ CoCreateObserver.init({
 	observe: ['subtree', 'childList'],
 	include: 'cocreate-select', 
 	callback: function(mutation) {
-		SelectAdapter.initElement(mutation.target)
+		CoCreateSelect.init(mutation.target)
 	}
 });
 
