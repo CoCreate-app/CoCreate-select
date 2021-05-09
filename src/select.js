@@ -210,7 +210,7 @@ CoCreateSelect.prototype = {
    * */
   unselectOption: function(option) {
     let value;
-    if (typeof option != 'string')
+    if (typeof option == 'string')
       value = option
     else {
       option.removeAttribute('selected');
