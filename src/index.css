@@ -1,14 +1,17 @@
 .hidden {
   display: none;
 }
+/** cc-option mean any element considered as an option */
 
+/* hide selected cc-option */
 cocreate-select>input~* *[selected] {
   display: none;
 }
-cocreate-select:not([open]) > input~*,
-.select--field:not([open]) > input~*
+/* hide level 0 cc-option */
+cocreate-select:not(.open) > input~*,
+.select--field:not(.open) > input~*
 {
-  display: none;
+    display: none;
 }
 
 cocreate-select,
