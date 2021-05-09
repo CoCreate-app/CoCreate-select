@@ -188,9 +188,23 @@ CoCreateSelect.prototype = {
     }
     this.selectedContainer.appendChild(newOption);
   },
+  /**
+   * unselect a cc-select option
+   * 
+   * @param [HTMLElement|String] option the element to unselect or a string with value attribute, 
+   *  if it's an element, the element should be from where cc-options container 
+   * 
+   * @return undefined
+   * */
   unselectOption: function(option) {
-    option.removeAttribute('selected');
-    let value = option.getAttribute('value');
+    let value;
+    if (typeof option != 'string')
+      value = option
+    else {
+      option.removeAttribute('selected');
+      value = option.getAttribute('value');
+    }
+
     let selectedOption = this.selectedContainer.querySelector(`[value="${value}"]`);
     if (selectedOption) {
       optionToSelected.delete(option);
