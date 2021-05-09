@@ -157,7 +157,7 @@ CoCreateSelect.prototype = {
         this.unselectOption(selectedToOption.get(el));
 
   },
-  __renderValue: function(depricatedSelectContainer, value) {
+  __renderValue: function(value) {
     if (!value) return;
 
     this.unselectAll();
@@ -278,15 +278,16 @@ else
 
 
 
-
 function template({ collection, document_id, ...data }) {
 
-  let selector = addAttribute(containerSelector,
-    `[data-collection="${collection}"][data-document_id="${document_id}"][name]`);
 
-  for (let el of document.querySelectorAll(selector)) {
+  for (let [el, instance] of this.container) {
+    const collection = el.getAttribute('data-collection') || 'module_activity';
+    const id = el.getAttribute('data-document_id');
     const name = el.getAttribute('name');
-    container.get(el).__renderValue(null, data['data'][name]);
+    if (data['collection'] == collection && data['document_id'] == id && name) {
+      instance.__renderValue(data['data'][name]);
+    }
   }
 
 }
