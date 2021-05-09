@@ -1,6 +1,7 @@
 import CoCreateSelect from "./select.js"
 import crud from '@cocreate/crud-client';
-import form from '@cocreate/form'
+import form from '@cocreate/form';
+import config from './config';
 import {container} from './select';
 
 const SelectAdapter = {
@@ -37,6 +38,7 @@ const SelectAdapter = {
 		
 		
 		document.addEventListener('input', function(e) {
+			if(e.target.matches(config.selectContainer))
 			self.save(e.target);
 		})
 		

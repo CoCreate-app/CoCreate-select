@@ -119,7 +119,7 @@ CoCreateSelect.prototype = {
         while (el && !el.matches(optionSelector)) {
           el = el.parentElement;
         }
-      if(!el) return;
+      if (!el) return;
       self.selectOption(el, true)
       self.__fireSelectedEvent({ selectContainer })
 
