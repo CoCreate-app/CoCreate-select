@@ -180,9 +180,15 @@ CoCreateSelect.prototype = {
   },
 
   selectOption: function(option, closeOnMultiple) {
-    let limit = this.selectContainer.getAttribute('data-limit_option');
-    if(this.selectedContainer.children.length >= limit)
-      return console.warn('limit for select is reached')
+    if (this.isMultiple()) {
+      let limit = this.selectContainer.getAttribute('data-limit_option');
+      if (this.selectedContainer.children.length >= limit)
+        return console.warn('limit for select is reached')
+
+    }
+    else if (this.selectedContainer.children.length)
+      this.unselectAll();
+
     option.setAttribute('selected', "");
     let newOption = option.cloneNode(true);
     optionToSelected.set(option, newOption);

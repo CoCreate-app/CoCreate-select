@@ -28,9 +28,11 @@ cocreate-select[multiple] {
 }
 
 cocreate-select selected {
-  display:block;
+  display:flex;
+  width:100%;
 }
 cocreate-select[multiple] selected {
+  display:flex;
   width:auto;
 }
 
@@ -81,7 +83,7 @@ cocreate-select selected [selected] .remove {
   overflow: hidden;
 }
 
-cocreate-select selected [selected]:last-child {
+cocreate-select[multiple] selected [selected]:last-child {
   margin-right: 20px!important;
 }
 
