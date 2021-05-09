@@ -89,7 +89,7 @@ CoCreateSelect.prototype = {
 
         if (keyCode == 13 && this.value.length > 0) {
           self.addValue(this.value);
-          self.__fireSelectedEvent(selectContainer)
+          self.__fireSelectedEvent({selectContainer})
           this.value = '';
         }
         else if (keyCode == 8 && !this.value.length) {
@@ -97,7 +97,7 @@ CoCreateSelect.prototype = {
           if (!selectedContainer.length) return;
           let option = selectedToOption.get(selectedContainer[selectedContainer.length - 1])
           self.unselectOption(option)
-          self.__fireSelectedEvent(selectContainer)
+          self.__fireSelectedEvent({selectContainer})
 
         }
       })
@@ -121,7 +121,7 @@ CoCreateSelect.prototype = {
         }
 
       self.selectOption(el, true)
-      self.__fireSelectedEvent(selectContainer)
+      self.__fireSelectedEvent({selectContainer})
 
     });
 
@@ -129,7 +129,7 @@ CoCreateSelect.prototype = {
       // remove seletec item or open dropdown
       if (e.target.matches('.remove')) {
         e.target.parentNode.remove();
-        self.__fireSelectedEvent(selectContainer)
+        self.__fireSelectedEvent({selectContainer})
 
       }
       else if (!self.optionsContainer.classList.contains('open')) {
@@ -219,23 +219,15 @@ CoCreateSelect.prototype = {
 
 
   // for crdt and outsider cal
-  __fireSelectedEvent: function(element) {
-    if (!element)
-      return;
+  __fireSelectedEvent: function({ selectContainer, detail = {} }) {
 
-    document.dispatchEvent(new CustomEvent('CoCreateSelect-save', {
-      detail: {
-        element,
-      }
-    }));
-    element.dispatchEvent(new CustomEvent('selectedValue'));
-    element.dispatchEvent(new CustomEvent('input', { bubbles: true }));
-    document.dispatchEvent(new CustomEvent('CoCreate-selected', {
-      detail: {
-        element,
-        value: element.selectedOptions
-      }
-    }));
+    let event = new CustomEvent('input', {
+      bubbles: true,
+      detail,
+    });
+    Object.defineProperty(event, 'target', { writable: false, value: selectContainer });
+    selectContainer.dispatchEvent(event);
+
   }
 }
 
@@ -261,7 +253,7 @@ function init(container) {
     if ((typeof dropedEl.tagName != 'undefined' && dropedEl.tagName.toLowerCase() == 'cocreate-select') ||
       dropedEl.classList.contains('select--field')) {
       dropedEl.save(dropedEl)
-      dropedEl.__fireSelectedEvent(dropedEl, )
+      dropedEl.__fireSelectedEvent({selectContainer: dropedEl})
     }
   })
 
