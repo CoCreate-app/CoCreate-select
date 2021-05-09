@@ -176,7 +176,8 @@ CoCreateSelect.prototype = {
     let selectedOption = document.createElement(optionTagName);
     selectedOption.setAttribute('value', value);
     selectedOption.innerText = text ? text : value;
-    this.selectOption(selectedOption, true)
+    this.selectOption(selectedOption, true);
+    return selectedOption;
   },
 
   selectOption: function(option, closeOnMultiple) {
