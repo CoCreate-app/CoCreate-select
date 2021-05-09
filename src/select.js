@@ -89,9 +89,10 @@ CoCreateSelect.prototype = {
           this.value = '';
         }
         else if (keyCode == 8 && !this.value.length) {
-          let selectedOptions = selectContainer.querySelectorAll('[selected]');
-          if (!selectedOptions.length) return;
-          selectedOptions[selectedOptions.length - 1].remove();
+          let selectedContainer = self.selectedContainer.children;
+          if (!selectedContainer.length) return;
+          let option = selectedToOption.get(selectedContainer[selectedContainer.length - 1])
+          self.unselectOption(option)
           self.__fireSelectedEvent(selectContainer)
 
         }
