@@ -1,30 +1,33 @@
 import CoCreateSelect from "./select.js"
 import SelectAdapter from "./adapter.js"
-import CoCreateObserver from '@cocreate/observer';
+import observer from '@cocreate/observer';
+import { containerSelector } from './config';
 import form from '@cocreate/form'
 import './index.css';
 
 SelectAdapter.init();
 CoCreateSelect.adapter = SelectAdapter;
 
-CoCreateObserver.init({ 
-	name: 'CoCreateSelectAttributes', 
+
+observer.init({
+	name: 'CoCreateSelectAttributes',
 	observe: ['attributes'],
 	attributes: ['data-document_id'],
-	include: 'cocreate-select', 
+	include: 'cocreate-select',
 	callback: function(mutation) {
 		SelectAdapter.__sendRequest(mutation.target)
 	}
 });
 
-CoCreateObserver.init({ 
-	name: 'CoCreateSelect', 
+observer.init({
+	name: 'CoCreateSelect',
 	observe: ['subtree', 'childList'],
-	include: 'cocreate-select', 
+	include: containerSelector,
 	callback: function(mutation) {
-		CoCreateSelect.init(mutation.target)
+		// console.log(mutation)
+		new CoCreateSelect.init(mutation.target)
 	}
-});
+})
 
 form.init({
 	name: 'CoCreateSelect',

@@ -239,43 +239,6 @@ CoCreateSelect.prototype = {
   }
 }
 
-function init(container) {
-  // const mainContainer = container || document;
-
-
-  observer.init({
-    name: 'CoCreateSelect',
-    observe: ['subtree', 'childList'],
-    include: containerSelector,
-    callback: function(mutation) {
-      // console.log(mutation)
-      new CoCreateSelect.init(mutation.target)
-    }
-  })
-
-
-
-  // init dnd
-  document.addEventListener('dndsuccess', function(e) {
-    const { dropedEl, dragedEl } = e.detail;
-    if ((typeof dropedEl.tagName != 'undefined' && dropedEl.tagName.toLowerCase() == 'cocreate-select') ||
-      dropedEl.classList.contains('select--field')) {
-      dropedEl.__fireSelectedEvent({ selectContainer: dropedEl })
-    }
-  })
-
-  let containerList = document.querySelectorAll(containerSelector);
-
-  for (let selectCon of containerList)
-    new CoCreateSelect(selectCon);
-}
-
-
-if (document.readyState == 'complete')
-  init();
-else
-  window.addEventListener('load', init)
-
 
 
 function template({ collection, document_id, ...data }) {
