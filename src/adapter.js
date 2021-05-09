@@ -1,7 +1,7 @@
 import CoCreateSelect from "./select.js"
 import crud from '@cocreate/crud-client';
 import form from '@cocreate/form'
-
+import {container} from './select';
 
 const SelectAdapter = {
 	
@@ -18,8 +18,7 @@ const SelectAdapter = {
 	
 		let containerList = mainContainer.querySelectorAll('cocreate-select, div.select--field');
 		for(let i = 0 ; i < containerList.length ; i++){
-			// CoCreateSelect.__initSelect(containerList[i]);
-			new CoCreateSelect.init(containerList[i]);
+			CoCreateSelect.init(containerList[i]);
 			this.__initElementEvent(containerList[i]);
 		}
 	},
@@ -32,18 +31,13 @@ const SelectAdapter = {
 					|| dropedEl.classList.contains('select--field')) 
 			{
 				self.save(dropedEl)
-				dropedEl.dispatchEvent(new CustomEvent('selectedValue'));
+				dropedEl.dispatchEvent(new CustomEvent('input'));
 			}
 		})
 		
 		
-		document.addEventListener('CoCreateSelect-save', function(e) {
-			const {detail: {element}} = e;
-			if (!element) {
-				return;
-			}
-			
-			self.save(element);
+		document.addEventListener('input', function(e) {
+			self.save(e.target);
 		})
 		
 		crud.listen('readDocument', function(data) {
@@ -58,11 +52,6 @@ const SelectAdapter = {
 			}
 		})
 		
-		document.addEventListener('CoCreate-selected', function(e){
-			const {detail: {element, value}} = e;
-			console.log(e.detail)
-			
-		})
 	},
 	
 	__initElementEvent: function(selectContainer) {
@@ -100,7 +89,7 @@ const SelectAdapter = {
 
 	save: function(element, isStore = true) {
 	
-		let value = CoCreateSelect.getValue(element);
+		let value = Array.from(element.options);
 		
 		let collection = element.getAttribute('data-collection') || 'module_activity';
 		
