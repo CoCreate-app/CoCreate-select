@@ -27,6 +27,31 @@ export const container = new Map();
 export const optionToSelected = new Map();
 export const selectedToOption = new Map();
 const removeElement = parse(removeMarkup);
+let openSelect;
+
+document.addEventListener('click', function(e) {
+  let target = e.target;
+  let isOpened;
+  for (let [el, instance] of container) {
+    if (el.contains(target)) {
+      if (target.matches('.remove'))
+        instance.unselectOption(target.parentNode);
+      else if (!el.classList.contains('open') )
+        if(instance.avoidOpen)
+        instance.avoidOpen = false;
+        else
+        instance.open()
+
+    }
+    else if (el.classList.contains('open'))
+      instance.close()
+  }
+
+
+
+
+});
+
 
 function CoCreateSelect(c) {
   this.init(c);
@@ -91,38 +116,28 @@ CoCreateSelect.prototype = {
       })
     }
 
-    document.addEventListener('click', function(event) {
-      var isClickInside = self.selectContainer.contains(event.target);
-      if (!isClickInside)
-        self.close();
-
-    });
-
     this.optionsContainer.addEventListener('click', function(e) {
       let el = e.target;
-      if (!self.optionsContainer.contains(el.parentElement))
-        return;
+
 
       if (!el.matches(optionSelector))
         while (el && !el.matches(optionSelector)) {
           el = el.parentElement;
         }
       if (!el) return;
+
+      if (!self.optionsContainer.contains(el) || self.selectedContainer.contains(el))
+        return;
+
       self.selectOption(el, true)
     });
-
-    selectContainer.addEventListener('click', function(e) {
-      if (e.target.matches('.remove')) 
-        this.unselectOption(e.target.parentNode);
-      else if (!self.optionsContainer.classList.contains('open')) 
-        self.open(selectContainer)
-    }, true);
   },
 
   open: function() {
     this.input.focus();
     this.selectContainer.classList.add('open');
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-open'));
+    openSelect = this;
   },
 
   close: function() {
@@ -164,7 +179,10 @@ CoCreateSelect.prototype = {
 
     selectedOption.appendChild(removeElement.cloneNode(true));
     if (!this.isMultiple() && closeOnMultiple)
+    {
       this.close();
+      this.avoidOpen = true;
+    }
 
     this.selectedContainer.appendChild(selectedOption);
     this.__fireSelectedEvent({ unselectOption: value })
