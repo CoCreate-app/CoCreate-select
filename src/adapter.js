@@ -11,7 +11,7 @@ const SelectAdapter = {
 		let containerList = document.querySelectorAll(config.containerSelector);
 
 		for (let selectCon of containerList) {
-			new CoCreateSelect(selectCon);
+			CoCreateSelect.init(selectCon);
 			this.dbToSelects(selectCon)
 		}
 		this.__initEvents()
