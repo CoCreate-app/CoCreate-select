@@ -35,7 +35,7 @@ const SelectAdapter = {
 
 		crud.listen('updateDocument', function(data) {
 			if (data.metadata == 'cocreate-select') {
-				self.template(data);
+				self.writeSelect(data);
 			}
 		})
 
@@ -62,7 +62,7 @@ const SelectAdapter = {
 
 			})
 			let { data: responseData, metadata } = await crud.listenAsync(unique);
-			self.template(responseData);
+			self.writeSelect(responseData);
 		}
 	},
 
@@ -76,7 +76,7 @@ const SelectAdapter = {
 	writeSelect: function({ collection, document_id, ...data }) {
 
 
-		for (let [el, instance] of this.container) {
+		for (let [el, instance] of container) {
 			let { name, id, collection } = this.getCrudCred(el);
 			if (data['collection'] == collection && data['document_id'] == id && name) {
 				instance.selectOption(data['data'][name]);
