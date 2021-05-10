@@ -61,8 +61,8 @@ const SelectAdapter = {
 				event: unique
 
 			})
-			let { data: responseData, metadata } = await crud.listenAsync(unique);
-			self.writeSelect(responseData);
+			let data = await crud.listenAsync(unique);
+			self.writeSelect(data);
 		}
 	},
 
@@ -73,7 +73,7 @@ const SelectAdapter = {
 		let realtime = el.getAttribute('data-realtime') || "true";
 		return { name, id, collection, realtime };
 	},
-	writeSelect: function({ collection, document_id, ...data }) {
+	writeSelect: function(data) {
 
 
 		for (let [el, instance] of container) {
