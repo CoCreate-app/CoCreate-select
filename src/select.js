@@ -36,11 +36,11 @@ document.addEventListener('click', function(e) {
     if (el.contains(target)) {
       if (target.matches('.remove'))
         instance.unselectOption(target.parentNode);
-      else if (!el.classList.contains('open') )
-        if(instance.avoidOpen)
-        instance.avoidOpen = false;
+      else if (!el.classList.contains('open'))
+        if (instance.avoidOpen)
+          instance.avoidOpen = false;
         else
-        instance.open()
+          instance.open()
 
     }
     else if (el.classList.contains('open'))
@@ -146,9 +146,10 @@ CoCreateSelect.prototype = {
   },
 
   unselectAll: function() {
-    for (let el of this.selectedContainer.children)
-      if (selectedToOption.has(el))
-        this.unselectOption(selectedToOption.get(el));
+    if (this.selectedContainer.children.length)
+      for (let el of this.selectedContainer.children)
+        if (selectedToOption.has(el))
+          this.unselectOption(selectedToOption.get(el));
   },
 
   selectOption: function(option, closeOnMultiple = true, innerText) {
@@ -178,8 +179,7 @@ CoCreateSelect.prototype = {
     }
 
     selectedOption.appendChild(removeElement.cloneNode(true));
-    if (!this.isMultiple() && closeOnMultiple)
-    {
+    if (!this.isMultiple() && closeOnMultiple) {
       this.close();
       this.avoidOpen = true;
     }

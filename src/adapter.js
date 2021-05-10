@@ -91,7 +91,7 @@ const SelectAdapter = {
 		let { name, id, collection, realtime } = this.getCrudCred(element);
 		if (!name || !isStore || realtime != "true" || element.getAttribute('data-save_value') == 'false') return;
 
-		let value = Array.from(element.options).map(selOption => selOption.value);
+		let value = Array.from(element.options).map(selOption => selOption.getAttribute('value'));
 		value = value.length <= 1 ? value[0] : value;
 
 

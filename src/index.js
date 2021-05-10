@@ -25,7 +25,7 @@ observer.init({
 	include: containerSelector,
 	callback: function(mutation) {
 		// console.log(mutation)
-		new CoCreateSelect.init(mutation.target)
+		CoCreateSelect.init(mutation.target)
 	}
 })
 
