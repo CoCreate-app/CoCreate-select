@@ -1,10 +1,15 @@
-import {container} from './select';
+import { container } from './select';
 
 export default function(cond) {
     Object.defineProperty(window.HTMLElement.prototype, 'options', {
         get: function() {
-            if (cond(this) && container.has(this))
-                return container.get(this).optionsContainer.children;
+            if (cond(this) && container.has(this)) {
+                let instance = container.get(this);
+                if (instance.optionsContainer == this)
+                    return instance.optionsContainer.querySelectorAll('input~*[selected]')
+                else
+                    return instance.optionsContainer.children;
+            }
         },
     })
 }
