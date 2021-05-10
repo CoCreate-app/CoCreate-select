@@ -3,7 +3,7 @@ export const containerSelector = 'cocreate-select, div.select--field';
 
 export const inputSelector = 'input';
 export const selectedTagName = "selected";
-export const optionsSelector = 'cc-options';
+export const optionsSelector = 'input~*:not(cc-option)';
 
 // anything matches optionSelector considered as option even if not the same as optionTagName
 export const optionSelector = "cc-option";

@@ -2,7 +2,7 @@ import CoCreateSelect from "./select.js"
 import crud from '@cocreate/crud-client';
 import form from '@cocreate/form';
 import * as config from './config';
-import { container } from './select';
+import { container,selectedToOption } from './select';
 
 const SelectAdapter = {
 
@@ -11,8 +11,8 @@ const SelectAdapter = {
 		let containerList = document.querySelectorAll(config.containerSelector);
 
 		for (let selectCon of containerList) {
-			CoCreateSelect.init(selectCon);
-			this.dbToSelects(selectCon)
+			let instance = CoCreateSelect.init(selectCon);
+			this.dbToSelects(selectCon, instance)
 		}
 		this.__initEvents()
 	},
@@ -41,28 +41,27 @@ const SelectAdapter = {
 
 	},
 
-	dbToSelects: async function(selectContainer) {
+	dbToSelects: async function(selectContainer, instance) {
 		const self = this;
 
 		selectContainer.addEventListener('set-document_id', function() {
 			self.saveSelect(this)
 		})
 
-
-		let collection = selectContainer.getAttribute('data-collection') || 'module_activity';
-		let id = selectContainer.getAttribute('data-document_id');
-
+		let { name, id, collection } = this.getCrudCred(selectContainer);
 		if (collection && id) {
 
 			let unique = Date.now();
 			crud.readDocument({
-				'collection': collection,
-				'document_id': id,
+				collection: collection,
+				document_id: id,
 				event: unique
-
 			})
 			let data = await crud.listenAsync(unique);
-			self.writeSelect(data);
+			let options = data['data'][name];
+			options = Array.isArray(options) ? options : [options];
+			options.forEach(op => instance.selectOption(op, true, undefined, false))
+
 		}
 	},
 
@@ -74,15 +73,19 @@ const SelectAdapter = {
 		return { name, id, collection, realtime };
 	},
 	writeSelect: function(data) {
-
-
 		for (let [el, instance] of container) {
 			let { name, id, collection } = this.getCrudCred(el);
-			if (data['collection'] == collection && data['document_id'] == id && name) {
-				instance.selectOption(data['data'][name]);
+			if (data['collection'] == collection && data['document_id'] == id) {
+				
+				if (data['data'][name]) {
+					let options = data['data'][name];
+					options = Array.isArray(options) ? options : [options];
+					options.forEach(op => instance.selectOption(op, true, undefined, false))
+				}
+				else if (data['data'][name] === '')
+				instance.unselectAll();
 			}
 		}
-
 	},
 	saveSelect: function(element, isStore = true) {
 
@@ -91,9 +94,10 @@ const SelectAdapter = {
 		let { name, id, collection, realtime } = this.getCrudCred(element);
 		if (!name || !isStore || realtime != "true" || element.getAttribute('data-save_value') == 'false') return;
 
-		let value = Array.from(element.options).map(selOption => selOption.getAttribute('value'));
+		let value = Array.from(element.selectedOptions)
+		.map(selOption =>  selectedToOption.has(selOption) ? selectedToOption.get(selOption).getAttribute('value'): '');
 		value = value.length <= 1 ? value[0] : value;
-
+		value = value ? value : '';
 
 		if (!form.checkID(element)) {
 			form.request({ element, value, nameAttr: "name" });
@@ -107,7 +111,8 @@ const SelectAdapter = {
 					[name]: value
 				},
 				'upsert': true,
-				'metadata': 'cocreate-select'
+				'metadata': 'cocreate-select',
+				broadcast_sender: false
 			})
 		}
 

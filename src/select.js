@@ -27,7 +27,7 @@ export const container = new Map();
 export const optionToSelected = new Map();
 export const selectedToOption = new Map();
 const removeElement = parse(removeMarkup);
-let openSelect;
+
 
 document.addEventListener('click', function(e) {
   let target = e.target;
@@ -36,11 +36,10 @@ document.addEventListener('click', function(e) {
     if (el.contains(target)) {
       if (target.matches('.remove'))
         instance.unselectOption(target.parentNode);
-      else if (!el.classList.contains('open'))
-        if (instance.avoidOpen)
-          instance.avoidOpen = false;
-        else
-          instance.open()
+      else if (el.classList.contains('open'))
+        instance.close()
+      else
+        instance.open()
 
     }
     else if (el.classList.contains('open'))
@@ -63,6 +62,7 @@ CoCreateSelect.prototype = {
     return this.selectContainer.hasAttribute('multiple') ? true : false;
   },
   init: function(selectContainer) {
+
     if (container.has(selectContainer))
       return;
     container.set(selectContainer, this)
@@ -87,7 +87,7 @@ CoCreateSelect.prototype = {
       }
 
     for (let option of this.getOptions())
-      if (option.getAttribute('selected'))
+      if (option.hasAttribute('selected'))
         this.selectOption(option)
 
     const self = this;
@@ -134,13 +134,13 @@ CoCreateSelect.prototype = {
   },
 
   open: function() {
-    this.input.focus();
     this.selectContainer.classList.add('open');
+    this.input.focus();
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-open'));
-    openSelect = this;
   },
 
   close: function() {
+    this.input.value = ""
     this.selectContainer.classList.remove('open');
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-close'));
   },
@@ -152,8 +152,8 @@ CoCreateSelect.prototype = {
           this.unselectOption(selectedToOption.get(el));
   },
 
-  selectOption: function(option, closeOnMultiple = true, innerText) {
-
+  selectOption: function(option, closeOnMultiple = true, innerText, doEvent = true) {
+    if (!option) return;
     if (this.isMultiple()) {
       let limit = this.selectContainer.getAttribute('data-limit_option');
       if (this.selectedContainer.children.length >= limit)
@@ -169,23 +169,24 @@ CoCreateSelect.prototype = {
       selectedOption.setAttribute('value', option);
       value = option;
       selectedOption.innerText = innerText ? innerText : option;
+      // todo: when an option is not found. just use option itself and remvove these lines
+      optionToSelected.set(selectedOption, selectedOption);
+      selectedToOption.set(selectedOption, selectedOption);
     }
     else {
-      option.setAttribute('selected', "");
       value = option.getAttribute('value');
       selectedOption = option.cloneNode(true);
+      option.setAttribute('selected', "");
       optionToSelected.set(option, selectedOption);
       selectedToOption.set(selectedOption, option);
     }
 
+
+
     selectedOption.appendChild(removeElement.cloneNode(true));
-    if (!this.isMultiple() && closeOnMultiple) {
-      this.close();
-      this.avoidOpen = true;
-    }
 
     this.selectedContainer.appendChild(selectedOption);
-    this.__fireSelectedEvent({ unselectOption: value })
+    doEvent && this.__fireSelectedEvent({ unselectOption: value })
   },
   /**
    * unselect a cc-select option
@@ -200,6 +201,8 @@ CoCreateSelect.prototype = {
     if (typeof option == 'string')
       value = option
     else {
+      if (selectedToOption.has(option))
+        option = selectedToOption.get(option);
       option.removeAttribute('selected');
       value = option.getAttribute('value');
     }

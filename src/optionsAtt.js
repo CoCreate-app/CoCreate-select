@@ -6,7 +6,7 @@ export default function(cond) {
             if (cond(this) && container.has(this)) {
                 let instance = container.get(this);
                 if (instance.optionsContainer == this)
-                    return instance.optionsContainer.querySelectorAll('input~*[selected]')
+                    return instance.optionsContainer.querySelectorAll('input~*')
                 else
                     return instance.optionsContainer.children;
             }
