@@ -2,7 +2,7 @@ import CoCreateSelect from "./select.js"
 import crud from '@cocreate/crud-client';
 import form from '@cocreate/form';
 import * as config from './config';
-import { container,selectedToOption } from './select';
+import { container, selectedToOption } from './select';
 
 const SelectAdapter = {
 
@@ -35,7 +35,11 @@ const SelectAdapter = {
 
 		crud.listen('updateDocument', function(data) {
 			if (data.metadata == 'cocreate-select') {
-				self.writeSelect(data);
+				for(let key of Object.keys(data['data']))
+				{
+						self.writeSelect(data, key);
+				}
+			
 			}
 		})
 
@@ -61,6 +65,7 @@ const SelectAdapter = {
 			let options = data['data'][name];
 			options = Array.isArray(options) ? options : [options];
 			options.forEach(op => instance.selectOption(op, true, undefined, false))
+			
 
 		}
 	},
@@ -72,18 +77,20 @@ const SelectAdapter = {
 		let realtime = el.getAttribute('data-realtime') || "true";
 		return { name, id, collection, realtime };
 	},
-	writeSelect: function(data) {
+	writeSelect: function(data, nameInDb) {
 		for (let [el, instance] of container) {
 			let { name, id, collection } = this.getCrudCred(el);
-			if (data['collection'] == collection && data['document_id'] == id) {
-				
+			if (data['collection'] == collection && data['document_id'] == id && nameInDb == name) {
+
 				if (data['data'][name]) {
 					let options = data['data'][name];
 					options = Array.isArray(options) ? options : [options];
 					options.forEach(op => instance.selectOption(op, true, undefined, false))
 				}
 				else if (data['data'][name] === '')
-				instance.unselectAll();
+					instance.unselectAll();
+					
+					break;
 			}
 		}
 	},
@@ -95,7 +102,7 @@ const SelectAdapter = {
 		if (!name || !isStore || realtime != "true" || element.getAttribute('data-save_value') == 'false') return;
 
 		let value = Array.from(element.selectedOptions)
-		.map(selOption =>  selectedToOption.has(selOption) ? selectedToOption.get(selOption).getAttribute('value'): '');
+			.map(selOption => selectedToOption.has(selOption) ? selectedToOption.get(selOption).getAttribute('value') : '');
 		value = value.length <= 1 ? value[0] : value;
 		value = value ? value : '';
 
