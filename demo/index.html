@@ -7,7 +7,7 @@
   <!-- CoCreate Favicon -->
   <link rel="icon" href="https://cdn.cocreate.app/favicon.ico" type="image/ico" sizes="16x16">
   <!-- CoCreate CSS CDN -->
-  <!--<link rel="stylesheet" href="https://cdn.cocreate.app/select/latest/CoCreate-select.min.css" type="text/css" />-->
+  <!--<link rel="stylesheet" href="https://cdn.cocreate.app/latest/CoCreate.min.css" type="text/css"/>-->
 </head>
 
 <body>
@@ -18,7 +18,6 @@
         data-collection="test" 
         data-document_id="5e8ff00e8c3af32574df80cb" 
         name="selectField0"
-        data-limit_option="1"
         placeholder="Single Document">
         
         <input class="template-search" placeholder="Search" data-template_id="option0">
@@ -39,7 +38,8 @@
         
         <cc-options data-fetch_collection="users" data-template_id="option0" class="options overflow:auto">
   				<cc-option class="option template" value='option1' data-template_id="option0">
-  			    option 1
+  			    <h3 name="name" value="{{data.name}}">No Name</h3>
+  				  <h5 name="_id" value="{{data._id}}">id</h5>
   				</cc-option>
         </cc-options>
         

@@ -36,6 +36,51 @@ cocreate-select[multiple] selected {
   width:auto;
 }
 
+cocreate-select selected cc-option {
+  /*display:block;*/
+  position: relative;
+  align-items: center;
+  cursor: pointer;
+  padding: 0px 8px;
+  background: #dcdcdc;
+  width: 100%;
+  margin: 6px;
+  overflow: hidden;
+}
+
+cocreate-select[multiple] selected cc-option {
+  margin: 6px 0px 0px 6px;
+  border-radius: 5px;
+  width: auto;
+}
+cocreate-select[multiple] selected cc-option:last-child {
+  margin-right: 20px!important;
+}
+
+cocreate-select selected cc-option .remove {
+  display: inline-block;
+  position: absolute;
+  top: 7px;
+  right: 15px;
+  margin-left: 0;
+  width: 0;
+  transition: 0.2s all;
+  overflow: hidden;
+}
+
+cocreate-select selected cc-option:hover .remove {
+  margin-left: 10px;
+  width: 10px;
+}
+
+cocreate-select.remove-none selected cc-option:hover .remove {
+  display: none;
+}
+
+cocreate-select[multiple] selected cc-option .remove {
+  position: unset;
+}
+
 cocreate-select input {
   border: 0;
   outline: 0;
@@ -52,54 +97,6 @@ cocreate-select[multiple] input {
 
 cocreate-select.open input {
   display: inherit;
-}
-
-cocreate-select selected [selected] {
-  display:block;
-  position: relative;
-  align-items: center;
-  cursor: pointer;
-  padding: 0px 8px;
-  background: #dcdcdc;
-  width: 100%;
-  margin: 6px;
-  overflow: hidden;
-}
-
-cocreate-select[multiple] selected [selected] {
-  margin: 6px 0px 0px 6px;
-  border-radius: 5px;
-  width: auto;
-}
-
-cocreate-select selected [selected] .remove {
-  display: inline-block;
-  position: absolute;
-  top: 7px;
-  right: 15px;
-  margin-left: 0;
-  width: 0;
-  transition: 0.2s all;
-  overflow: hidden;
-}
-
-cocreate-select[multiple] selected [selected]:last-child {
-  margin-right: 20px!important;
-}
-
-cocreate-select selected [selected]:hover .remove {
-  margin-left: 10px;
-  width: 10px;
-}
-
-cocreate-select.remove-none selected [selected]:hover .remove {
-  display: none;
-}
-
-cc-option, .option {
-  width: 100%;
-  position: relative;
-  background: #EEE;
 }
 
 cc-option, .option {
