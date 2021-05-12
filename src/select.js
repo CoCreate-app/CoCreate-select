@@ -32,6 +32,11 @@ const removeElement = parse(removeMarkup);
 document.addEventListener('click', function(e) {
   let target = e.target;
   let isOpened;
+  //todo:
+  // go up until you reach containerSelector or add same function to every element matches containerSelector: this way click event buble up and whenever 
+  // the difference is the first one little ram improve and second one a little cpu improve
+  // and check if it's in container
+  // also save last open element to close
   for (let [el, instance] of container) {
     if (el.contains(target)) {
       if (target.matches('.remove'))
