@@ -62,29 +62,35 @@ CoCreateSelect.prototype = {
     return this.selectContainer.hasAttribute('multiple') ? true : false;
   },
   init: function(selectContainer) {
-  
+    if (!selectContainer.matches(containerSelector))
+      return false;
     if (container.has(selectContainer))
       return;
     container.set(selectContainer, this)
 
     this.selectContainer = selectContainer;
-    this.selectedContainer = selectContainer.querySelector(selectedTagName);
+    this.selectedContainer = selectContainer.querySelector(`:scope > ${selectedTagName}`);
     if (!this.selectedContainer) {
       this.selectedContainer = document.createElement(selectedTagName)
       selectContainer.prepend(this.selectedContainer)
     }
-    this.input = selectContainer.querySelector(inputSelector);
-    this.optionsContainer = selectContainer.querySelector(optionsSelector);
-    if (!this.optionsContainer) {
+    this.input = selectContainer.querySelector(` :scope > ${inputSelector}`);
+    let lastEl = selectContainer.children[selectContainer.children.length - 1];
+    if (lastEl.matches(optionSelector)) {
       this.optionsContainer = this.selectContainer;
+      optionsSelector = this.input ? 'input~*' : 'selected~*';
       this.getOptions = function() {
-        return this.selectContainer.querySelectorAll('input~*');
+        return this.selectContainer.querySelectorAll(optionsSelector);
       }
+
     }
-    else
+    else {
+      this.optionsContainer = lastEl;
       this.getOptions = function() {
         return this.optionsContainer.children;
       }
+    }
+
 
     for (let option of this.getOptions())
       if (option.hasAttribute('selected'))
@@ -135,12 +141,14 @@ CoCreateSelect.prototype = {
 
   open: function() {
     this.selectContainer.classList.add('open');
-    this.input.focus();
+    if (this.input)
+      this.input.focus();
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-open'));
   },
 
   close: function() {
-    this.input.value = ""
+    if (this.input)
+      this.input.value = ""
     this.selectContainer.classList.remove('open');
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-close'));
   },
