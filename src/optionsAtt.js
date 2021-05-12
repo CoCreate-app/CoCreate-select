@@ -5,7 +5,7 @@ export default function(cond) {
         get: function() {
             if (cond(this) && container.has(this)) {
                 let instance = container.get(this);
-                    return instance.selectContainer.querySelectorAll(config.optionSelector)
+                    return instance.getOptions();
             }
         },
     })

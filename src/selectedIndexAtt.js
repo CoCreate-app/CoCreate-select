@@ -9,7 +9,7 @@ export default function(cond) {
                 let children = instance.selectedContainer.children;
                 if (children.length) {
                     let optionEl = selectedToOption.get(children[0]);
-                    return Array.prototype.indexOf.call(instance.optionsContainer.children, optionEl);
+                    return Array.prototype.indexOf.call(instance.getOptions(), optionEl);
                 }
                 return -1;
             }
@@ -19,7 +19,7 @@ export default function(cond) {
             if (cond(this)) {
                 let instance = getInstance(this);
                 if (isFinite(value)) {
-                    let option = instance.optionsContainer.children[value];
+                    let option = instance.getOptions()[value];
                     instance.selectOption(option, false);
                 }
             }

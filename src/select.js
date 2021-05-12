@@ -82,7 +82,7 @@ CoCreateSelect.prototype = {
     let lastEl = selectContainer.children[selectContainer.children.length - 1];
 
 
-    for (let option of selectContainer.options)
+    for (let option of this.getOptions())
       if (option.hasAttribute('selected'))
         this.selectOption(option)
 
@@ -122,7 +122,7 @@ CoCreateSelect.prototype = {
         }
       if (!el) return;
 
-      if (!self.optionsContainer.contains(el) || self.selectedContainer.contains(el))
+      if (!el.matches(optionSelector))
         return;
 
       self.selectOption(el, true)
@@ -143,7 +143,9 @@ CoCreateSelect.prototype = {
     this.selectContainer.classList.remove('open');
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-close'));
   },
-
+  getOptions: function(){
+    return this.selectContainer.querySelectorAll(optionSelector);
+  },
   unselectAll: function() {
     if (this.selectedContainer.children.length)
       for (let el of this.selectedContainer.children)
