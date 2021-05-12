@@ -68,14 +68,14 @@ CoCreateSelect.prototype = {
   },
   init: function(selectContainer) {
     if (!selectContainer.matches(containerSelector))
-      return console.warn('an element rejected to be identified as a cocreate-select: element does not match with '+ containerSelector, selectContainer)
-      
-    if(selectContainer.querySelector(containerSelector))
+      return console.warn('an element rejected to be identified as a cocreate-select: element does not match with ' + containerSelector, selectContainer)
+
+    if (selectContainer.querySelector(containerSelector))
       return console.warn('an element rejected to be identified as a cocreate-select: cocreate-select can not be nested another cocreate-select', selectContainer);
-      
+
     if (container.has(selectContainer))
       return;
-    
+
 
     this.selectContainer = selectContainer;
     this.selectedContainer = selectContainer.querySelector(`:scope > ${selectedTagName}`);
@@ -148,7 +148,7 @@ CoCreateSelect.prototype = {
     this.selectContainer.classList.remove('open');
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-close'));
   },
-  getOptions: function(){
+  getOptions: function() {
     return this.selectContainer.querySelectorAll(optionSelector);
   },
   unselectAll: function() {
