@@ -120,15 +120,10 @@ CoCreateSelect.prototype = {
     this.selectContainer.addEventListener('click', function(e) {
       let el = e.target;
 
-
-      if (!el.matches(optionSelector))
-        while (el && !el.matches(optionSelector)) {
-          el = el.parentElement;
-        }
-      if (!el) return;
-
-      if (!el.matches(optionSelector))
-        return;
+      while (!el.matches(optionSelector)) {
+        el = el.parentElement;
+        if (!el) return;
+      }
 
       self.selectOption(el, true)
     });
