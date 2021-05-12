@@ -80,28 +80,11 @@ CoCreateSelect.prototype = {
     }
     this.input = selectContainer.querySelector(` :scope > ${inputSelector}`);
     let lastEl = selectContainer.children[selectContainer.children.length - 1];
-    if (lastEl.matches(optionSelector)) {
-      this.optionsContainer = this.selectContainer;
-      optionsSelector = this.input ? 'input~*' : 'selected~*';
-      this.getOptions = function() {
-        return this.selectContainer.querySelectorAll(optionsSelector);
-      }
-
-    }
-    else {
-      this.optionsContainer = lastEl;
-      this.getOptions = function() {
-        return this.optionsContainer.children;
-      }
-    }
 
 
-    for (let option of this.getOptions())
+    for (let option of selectContainer.options)
       if (option.hasAttribute('selected'))
         this.selectOption(option)
-      // else if(!option.matches(optionSelector))
-      //   return console.warn('an element rejected to be identified as a cocreate-select: option is not cc-option', selectContainer)
-      
 
     const self = this;
 
