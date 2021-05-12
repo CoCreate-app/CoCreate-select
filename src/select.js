@@ -124,8 +124,9 @@ CoCreateSelect.prototype = {
         el = el.parentElement;
         if (!el) return;
       }
-
-      self.selectOption(el, true)
+      // if it's a real option and not a selected option also not a text option 
+      if (selectedToOption.has(el) && !optionToSelected.has(el))
+        self.selectOption(el, true)
     });
     container.set(selectContainer, this);
   },
