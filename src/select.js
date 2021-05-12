@@ -66,7 +66,7 @@ CoCreateSelect.prototype = {
       return false;
     if (container.has(selectContainer))
       return;
-    container.set(selectContainer, this)
+    
 
     this.selectContainer = selectContainer;
     this.selectedContainer = selectContainer.querySelector(`:scope > ${selectedTagName}`);
@@ -95,6 +95,10 @@ CoCreateSelect.prototype = {
     for (let option of this.getOptions())
       if (option.hasAttribute('selected'))
         this.selectOption(option)
+      else if(!option.matches(optionSelector))
+      {
+        return;
+      }
 
     const self = this;
 
@@ -137,6 +141,7 @@ CoCreateSelect.prototype = {
 
       self.selectOption(el, true)
     });
+    container.set(selectContainer, this);
   },
 
   open: function() {
