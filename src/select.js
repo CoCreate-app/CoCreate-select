@@ -64,6 +64,10 @@ CoCreateSelect.prototype = {
   init: function(selectContainer) {
     if (!selectContainer.matches(containerSelector))
       return console.warn('an element rejected to be identified as a cocreate-select: element does not match with '+ containerSelector, selectContainer)
+      
+    if(selectContainer.querySelector(containerSelector))
+      return console.warn('an element rejected to be identified as a cocreate-select: cocreate-select can not be nested another cocreate-select', selectContainer);
+      
     if (container.has(selectContainer))
       return;
     
@@ -95,8 +99,8 @@ CoCreateSelect.prototype = {
     for (let option of this.getOptions())
       if (option.hasAttribute('selected'))
         this.selectOption(option)
-      else if(!option.matches(optionSelector))
-        return console.warn('an element rejected to be identified as a cocreate-select: option is not cc-option', selectContainer)
+      // else if(!option.matches(optionSelector))
+      //   return console.warn('an element rejected to be identified as a cocreate-select: option is not cc-option', selectContainer)
       
 
     const self = this;
@@ -125,7 +129,7 @@ CoCreateSelect.prototype = {
       })
     }
 
-    this.optionsContainer.addEventListener('click', function(e) {
+    this.selectContainer.addEventListener('click', function(e) {
       let el = e.target;
 
 
