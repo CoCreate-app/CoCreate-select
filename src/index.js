@@ -36,4 +36,6 @@ form.init({
 		SelectAdapter.save(el);
 	}
 });
+
+export * from './select';
 export default CoCreateSelect;

@@ -62,7 +62,7 @@ CoCreateSelect.prototype = {
     return this.selectContainer.hasAttribute('multiple') ? true : false;
   },
   init: function(selectContainer) {
-
+  
     if (container.has(selectContainer))
       return;
     container.set(selectContainer, this)
