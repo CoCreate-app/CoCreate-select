@@ -125,7 +125,7 @@ CoCreateSelect.prototype = {
         if (!el) return;
       }
       // if it's a real option and not a selected option also not a text option 
-      if (selectedToOption.has(el) && !optionToSelected.has(el))
+      if (!selectedToOption.has(el) && !optionToSelected.has(el))
         self.selectOption(el, true)
     });
     container.set(selectContainer, this);
