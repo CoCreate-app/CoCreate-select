@@ -63,7 +63,7 @@ CoCreateSelect.prototype = {
   },
   init: function(selectContainer) {
     if (!selectContainer.matches(containerSelector))
-      return false;
+      return console.warn('an element rejected to be identified as a cocreate-select: element does not match with '+ containerSelector, selectContainer)
     if (container.has(selectContainer))
       return;
     
@@ -96,9 +96,8 @@ CoCreateSelect.prototype = {
       if (option.hasAttribute('selected'))
         this.selectOption(option)
       else if(!option.matches(optionSelector))
-      {
-        return;
-      }
+        return console.warn('an element rejected to be identified as a cocreate-select: option is not cc-option', selectContainer)
+      
 
     const self = this;
 
