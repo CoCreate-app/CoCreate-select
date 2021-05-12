@@ -2,7 +2,7 @@ import CoCreateSelect from "./select.js"
 import SelectAdapter from "./adapter.js"
 import observer from '@cocreate/observer';
 import { containerSelector } from './config';
-import form from '@cocreate/form'
+import form from '@cocreate/form';
 import './index.css';
 
 SelectAdapter.init();
@@ -24,8 +24,9 @@ observer.init({
 	observe: ['subtree', 'childList'],
 	include: containerSelector,
 	callback: function(mutation) {
-		// console.log(mutation)
-		CoCreateSelect.init(mutation.target)
+		mutation.target.querySelectorAll(containerSelector).forEach(el => {
+			CoCreateSelect.init(el)
+		})
 	}
 })
 
