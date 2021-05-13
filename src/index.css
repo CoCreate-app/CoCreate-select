@@ -134,9 +134,11 @@ cc-options, .options {
 
 
 cocreate-select.open .options {
+  /*display:flex;*/
+  flex-direction:column;
   max-height: 50vh;
   /*margin-top:10px;*/
-  display: block;
+  /*display: block;*/
   -moz-transform: scaleY(1);
   -ms-transform: scaleY(1);
   -webkit-transform: scaleY(1);
