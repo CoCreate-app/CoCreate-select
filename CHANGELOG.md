@@ -1,3 +1,18 @@
+## [1.0.11](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.10...v1.0.11) (2021-05-23)
+
+
+### Bug Fixes
+
+* add css auto parse and save to docs. ([6214900](https://github.com/CoCreate-app/CoCreate-select/commit/62149001b8e85faceac265ad20ab18369b1fb5a6))
+* check if element found on click ([170560c](https://github.com/CoCreate-app/CoCreate-select/commit/170560c90350f4f94eca0a88e490cec7b915348a))
+* exception ([4b25474](https://github.com/CoCreate-app/CoCreate-select/commit/4b25474b8b3846d8ef5d46089de1f9f2673e8f6a))
+* fix if condition for selecting and option or not on click ([393184d](https://github.com/CoCreate-app/CoCreate-select/commit/393184d6b6d36489239979d8694d7318233b2767))
+* mistype ([0aa1a86](https://github.com/CoCreate-app/CoCreate-select/commit/0aa1a869b2c31e29492f8840545107d8134c3938))
+* refactor ([7d2c0cf](https://github.com/CoCreate-app/CoCreate-select/commit/7d2c0cfece8c42d58f38aae543f3d58f44c0fa5d))
+* remove all options container; define getOptions ([34ec621](https://github.com/CoCreate-app/CoCreate-select/commit/34ec62117e83e281f9e58d7e481ca8b338e41164))
+* remove un-prototype functions from class ([38d769e](https://github.com/CoCreate-app/CoCreate-select/commit/38d769e1f41c625119faf9bab0b9d994caa46a54))
+* use unselectOption on backspace ([fb60064](https://github.com/CoCreate-app/CoCreate-select/commit/fb600641462f3f8238335e188238e5ebff1ef7c0))
+
 ## [1.0.10](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.9...v1.0.10) (2021-04-27)
 
 
