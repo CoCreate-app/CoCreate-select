@@ -153,20 +153,33 @@ CoCreateSelect.prototype = {
         if (selectedToOption.has(el))
           this.unselectOption(selectedToOption.get(el));
   },
-
-  selectOption: function(option, closeOnMultiple = true, innerText, doEvent = true) {
-    if (!option) return;
+  getOptionCounterpart: function(optionStr) {
+    return this.selectContainer.querySelector(`${optionSelector.trim()}[value="${optionStr}"]`);
+  },
+  isSelected: function(optionsStr) {
+    return this.selectedContainer.querySelector(`[value="${optionsStr}"]`)
+  },
+  validateSelect: function() {
     if (this.isMultiple()) {
       let limit = this.selectContainer.getAttribute('data-limit_option');
-      if (this.selectedContainer.children.length >= limit)
+      if (limit && this.selectedContainer.children.length >= limit)
         return console.warn('limit for select is reached')
 
     }
     else if (this.selectedContainer.children.length)
       this.unselectAll();
-
+  },
+  selectOption: function(option, closeOnMultiple = true, innerText, doEvent = true) {
+    if (!option) return;
     let selectedOption, value;
     if (typeof option == 'string') {
+      if (this.isSelected(option)) return;
+      this.validateSelect();
+
+      let optionC = this.getOptionCounterpart(option)
+      if (optionC)
+        return this.selectOption(optionC)
+
       selectedOption = document.createElement(optionTagName);
       selectedOption.setAttribute('value', option);
       value = option;
@@ -177,13 +190,14 @@ CoCreateSelect.prototype = {
     }
     else {
       value = option.getAttribute('value');
+      if (this.isSelected(value)) return;
+      this.validateSelect()
+
       selectedOption = option.cloneNode(true);
       option.setAttribute('selected', "");
       optionToSelected.set(option, selectedOption);
       selectedToOption.set(selectedOption, option);
     }
-
-
 
     selectedOption.appendChild(removeElement.cloneNode(true));
 
