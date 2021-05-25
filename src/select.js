@@ -151,7 +151,8 @@ CoCreateSelect.prototype = {
     if (this.selectedContainer.children.length)
       for (let el of this.selectedContainer.children)
         if (selectedToOption.has(el))
-          this.unselectOption(selectedToOption.get(el));
+          this.unselectOption(selectedToOption.get(el), false);
+    this.__fireSelectedEvent({ unselectOption: 'all' })
   },
   getOptionCounterpart: function(optionStr) {
     return this.selectContainer.querySelector(`${optionSelector.trim()}[value="${optionStr}"]`);
@@ -212,7 +213,7 @@ CoCreateSelect.prototype = {
    * 
    * @return undefined
    * */
-  unselectOption: function(option) {
+  unselectOption: function(option, doEvent = true) {
     let value;
     if (typeof option == 'string')
       value = option
@@ -228,7 +229,7 @@ CoCreateSelect.prototype = {
       optionToSelected.delete(option);
       selectedToOption.delete(selectedOption);
       selectedOption.remove();
-      this.__fireSelectedEvent({ unselectOption: value })
+      doEvent && this.__fireSelectedEvent({ unselectOption: value })
     }
   },
 
