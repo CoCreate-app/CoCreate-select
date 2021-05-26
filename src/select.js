@@ -38,10 +38,12 @@ document.addEventListener('click', function(e) {
   // and check if it's in container
   // also save last open element to close
   for (let [el, instance] of container) {
+
+
     if (el.contains(target)) {
       if (target.matches('.remove'))
         instance.unselectOption(target.parentNode);
-      else if (el.classList.contains('open'))
+      else if (el.classList.contains('open') && target.tagName !== "INPUT")
         instance.close()
       else
         instance.open()
