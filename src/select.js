@@ -149,12 +149,12 @@ CoCreateSelect.prototype = {
   getOptions: function() {
     return this.selectContainer.querySelectorAll(optionSelector);
   },
-  unselectAll: function() {
+  unselectAll: function(domEvent) {
     if (this.selectedContainer.children.length)
       for (let el of this.selectedContainer.children)
         if (selectedToOption.has(el))
           this.unselectOption(selectedToOption.get(el), false);
-    this.__fireSelectedEvent({ unselectOption: 'all' })
+    domEvent && this.__fireSelectedEvent({ unselectOption: 'all' })
   },
   getOptionCounterpart: function(optionStr) {
     return this.selectContainer.querySelector(`${optionSelector.trim()}[value="${optionStr}"]`);
