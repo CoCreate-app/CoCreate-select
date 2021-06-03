@@ -30,6 +30,7 @@ cocreate-select[multiple] {
 cocreate-select selected {
   display:flex;
   width:100%;
+  flex-wrap:wrap;
 }
 cocreate-select[multiple] selected {
   display:flex;

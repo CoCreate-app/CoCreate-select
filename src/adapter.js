@@ -35,11 +35,10 @@ const SelectAdapter = {
 
 		crud.listen('updateDocument', function(data) {
 			if (data.metadata == 'cocreate-select') {
-				for(let key of Object.keys(data['data']))
-				{
-						self.writeSelect(data, key);
+				for (let key of Object.keys(data['data'])) {
+					self.writeSelect(data, key);
 				}
-			
+
 			}
 		})
 
@@ -53,19 +52,20 @@ const SelectAdapter = {
 		})
 
 		let { name, id, collection } = this.getCrudCred(selectContainer);
-		if (collection && id) {
+		if (collection && id && id !== 'null') {
 
-			let unique = Date.now();
-			crud.readDocument({
+
+			let data = await crud.readDocument({
 				collection: collection,
 				document_id: id,
-				event: unique
+
 			})
-			let data = await crud.listenAsync(unique);
+			if (!data['data'][name])
+				return;
 			let options = data['data'][name];
 			options = Array.isArray(options) ? options : [options];
 			options.forEach(op => instance.selectOption(op, true, undefined, false))
-			
+
 
 		}
 	},
@@ -89,8 +89,8 @@ const SelectAdapter = {
 				}
 				else if (data['data'][name] === '')
 					instance.unselectAll();
-					
-					break;
+
+				break;
 			}
 		}
 	},
