@@ -3,6 +3,7 @@ import crud from '@cocreate/crud-client';
 import form from '@cocreate/form';
 import * as config from './config';
 import { container, selectedToOption } from './select';
+import messageClient from '@cocreate/message-client';
 
 const SelectAdapter = {
 
@@ -28,8 +29,19 @@ const SelectAdapter = {
 		})
 
 		document.addEventListener('input', function(e) {
-			if (e.target.matches(config.containerSelector))
+			let { name, id, collection } = this.getCrudCred(e.target);
+			if (e.target.matches(config.containerSelector)) {
 				self.saveSelect(e.target);
+				if (id === 'no')
+					messageClient.send({
+						broadcast_sender: false,
+						rooms: "",
+						emit: {
+							message: "dndNewElement",
+							data: self.getAllValue(e.target)
+						},
+					});
+			}
 		})
 
 
@@ -94,6 +106,11 @@ const SelectAdapter = {
 			}
 		}
 	},
+	getAllValue: function(element) {
+		let value = Array.from(element.selectedOptions)
+			.map(selOption => selectedToOption.has(selOption) ? selectedToOption.get(selOption).getAttribute('value') : '');
+		return value.length <= 1 ? value[0] : value;
+	},
 	saveSelect: function(element, isStore = true) {
 
 
@@ -101,9 +118,7 @@ const SelectAdapter = {
 		let { name, id, collection, realtime } = this.getCrudCred(element);
 		if (!name || !isStore || realtime != "true" || element.getAttribute('data-save_value') == 'false') return;
 
-		let value = Array.from(element.selectedOptions)
-			.map(selOption => selectedToOption.has(selOption) ? selectedToOption.get(selOption).getAttribute('value') : '');
-		value = value.length <= 1 ? value[0] : value;
+		let value = this.getAllValue(element)
 		value = value ? value : '';
 
 		if (!form.checkID(element)) {
