@@ -1,3 +1,10 @@
+## [1.0.12](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.11...v1.0.12) (2021-06-06)
+
+
+### Bug Fixes
+
+* Add send message for collaboration when crud not used ([8c16027](https://github.com/CoCreate-app/CoCreate-select/commit/8c16027a811ae0f1b3cfcb8d3576717389e705a8))
+
 ## [1.0.11](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.10...v1.0.11) (2021-05-23)
 
 
