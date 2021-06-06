@@ -181,7 +181,7 @@ CoCreateSelect.prototype = {
 
       let optionC = this.getOptionCounterpart(option)
       if (optionC)
-        return this.selectOption(optionC)
+        return this.selectOption(optionC,closeOnMultiple, innerText, doEvent)
 
       selectedOption = document.createElement(optionTagName);
       selectedOption.setAttribute('value', option);

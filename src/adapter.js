@@ -29,21 +29,35 @@ const SelectAdapter = {
 		})
 
 		document.addEventListener('input', function(e) {
-			let { name, id, collection } = this.getCrudCred(e.target);
+			let { name, id, collection } = self.getCrudCred(e.target);
 			if (e.target.matches(config.containerSelector)) {
-				self.saveSelect(e.target);
-				if (id === 'no')
+				// self.saveSelect(e.target);
+				if (id === 'null')
 					messageClient.send({
 						broadcast_sender: false,
 						rooms: "",
 						emit: {
-							message: "dndNewElement",
-							data: self.getAllValue(e.target)
+							message: "select",
+							data: {
+								name: e.target.getAttribute('name'),
+								values: self.getAllValue(e.target)
+							}
 						},
 					});
 			}
 		})
 
+		messageClient.listen('select', function(data) {
+			let { name, values } = data;
+
+			let select = document.querySelector(`[name="${name}"]`);
+
+			if (!select || !container.has(select)) return;
+			let instance = container.get(select);
+			instance.unselectAll(false)
+			values.forEach(value => instance.selectOption(value, true, value, false))
+
+		})
 
 		crud.listen('updateDocument', function(data) {
 			if (data.metadata == 'cocreate-select') {
@@ -109,7 +123,7 @@ const SelectAdapter = {
 	getAllValue: function(element) {
 		let value = Array.from(element.selectedOptions)
 			.map(selOption => selectedToOption.has(selOption) ? selectedToOption.get(selOption).getAttribute('value') : '');
-		return value.length <= 1 ? value[0] : value;
+		return value;
 	},
 	saveSelect: function(element, isStore = true) {
 
@@ -119,6 +133,7 @@ const SelectAdapter = {
 		if (!name || !isStore || realtime != "true" || element.getAttribute('data-save_value') == 'false') return;
 
 		let value = this.getAllValue(element)
+		value = value.length <= 1 ? value[0] : value;
 		value = value ? value : '';
 
 		if (!form.checkID(element)) {
