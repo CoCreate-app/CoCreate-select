@@ -1,3 +1,10 @@
+## [1.0.13](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.12...v1.0.13) (2021-06-06)
+
+
+### Bug Fixes
+
+* add message client ([5bf536b](https://github.com/CoCreate-app/CoCreate-select/commit/5bf536bae4e683df721e4f13875802e5f4ce930f))
+
 ## [1.0.12](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.11...v1.0.12) (2021-06-06)
 
 
