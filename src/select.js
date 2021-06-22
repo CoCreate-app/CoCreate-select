@@ -70,11 +70,9 @@ CoCreateSelect.prototype = {
   },
   init: function(selectContainer) {
     if (!selectContainer.matches(containerSelector))
-      return console.warn('an element rejected to be identified as a cocreate-select: element does not match with ' + containerSelector, selectContainer)
-
+      return false;
     if (selectContainer.querySelector(containerSelector))
-      return console.warn('an element rejected to be identified as a cocreate-select: cocreate-select can not be nested another cocreate-select', selectContainer);
-
+      return false;
     if (container.has(selectContainer))
       return;
 

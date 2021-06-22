@@ -9,24 +9,23 @@ SelectAdapter.init();
 CoCreateSelect.adapter = SelectAdapter;
 
 
-observer.init({
-	name: 'CoCreateSelectAttributes',
-	observe: ['attributes'],
-	attributes: ['data-document_id'],
-	include: 'cocreate-select',
-	callback: function(mutation) {
-		SelectAdapter.__sendRequest(mutation.target)
-	}
-});
+// observer.init({
+// 	name: 'CoCreateSelectAttributes',
+// 	observe: ['attributes'],
+// 	attributes: ['data-document_id'],
+// 	include: 'cocreate-select',
+// 	callback: function(mutation) {
+// 		SelectAdapter.__sendRequest(mutation.target)
+// 	}
+// });
 
 observer.init({
 	name: 'CoCreateSelect',
-	observe: ['subtree', 'childList'],
-	include: containerSelector,
+	observe: ['addedNodes'],
 	callback: function(mutation) {
-		mutation.target.querySelectorAll(containerSelector).forEach(el => {
-			CoCreateSelect.init(el)
-		})
+		
+			CoCreateSelect.init(mutation.target)
+		
 	}
 })
 
