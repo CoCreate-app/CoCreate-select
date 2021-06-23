@@ -70,7 +70,6 @@ const SelectAdapter = {
 				for (let key of Object.keys(data['data'])) {
 					self.writeSelect(data, key);
 				}
-
 			}
 		})
 
@@ -78,7 +77,7 @@ const SelectAdapter = {
 
 	// ToDo: Add directly to init
 	read: async function(selectContainer, instance) {
-		let data = await crud.read(selectContainer);
+		let data = await crud.read(selectContainer, false);
 		let name = selectContainer.getAttribute('name');
 		let options = data.data[name];
 		options = Array.isArray(options) ? options : [options];
