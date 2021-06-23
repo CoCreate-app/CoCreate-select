@@ -1,3 +1,10 @@
+## [1.0.15](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.14...v1.0.15) (2021-06-23)
+
+
+### Bug Fixes
+
+* render values using isflat:flase ([89dc3df](https://github.com/CoCreate-app/CoCreate-select/commit/89dc3df4759bdaa604a690545b8c0b53facdb876))
+
 ## [1.0.14](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.13...v1.0.14) (2021-06-23)
 
 
