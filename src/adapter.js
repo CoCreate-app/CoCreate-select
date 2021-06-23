@@ -13,7 +13,9 @@ const SelectAdapter = {
 
 		for (let selectCon of containerList) {
 			let instance = CoCreateSelect.init(selectCon);
-			this.read(selectCon, instance)
+			let { name, document_id, collection } = crud.getAttr(selectCon);
+			if (name && document_id && collection)
+				this.read(selectCon, instance)
 		}
 		this.__initEvents()
 	},
