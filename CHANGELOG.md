@@ -1,3 +1,10 @@
+## [1.0.14](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.13...v1.0.14) (2021-06-23)
+
+
+### Bug Fixes
+
+* update to new crud.save and crud.read ([992352c](https://github.com/CoCreate-app/CoCreate-select/commit/992352cb3227f1df0cc69aefa69da5d2527f7085))
+
 ## [1.0.13](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.12...v1.0.13) (2021-06-06)
 
 
