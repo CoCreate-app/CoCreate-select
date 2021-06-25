@@ -60,11 +60,11 @@
     "webpack-log": "^3.0.1"
   },
   "dependencies": {
-    "@cocreate/crud-client": "^1.0.0",
-    "@cocreate/docs": "^1.0.0",
-    "@cocreate/form": "^1.0.0",
-    "@cocreate/message-client": "^1.0.0",
-    "@cocreate/observer": "^1.0.0",
+    "@cocreate/crud-client": "^1.1.9",
+    "@cocreate/docs": "^1.1.14",
+    "@cocreate/form": "^1.0.23",
+    "@cocreate/message-client": "^1.0.9",
+    "@cocreate/observer": "^1.2.4",
     "mini-css-extract-plugin": "^1.5.0"
   }
 }
