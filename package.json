@@ -1,6 +1,6 @@
 {
   "name": "@cocreate/select",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "A simple select component in vanilla javascript. Easily configured using HTML5 data-attributes and/or JavaScript API.",
   "keywords": [
     "select",
@@ -52,7 +52,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.0",
-    "mini-css-extract-plugin": "^1.5.0",    
+    "mini-css-extract-plugin": "^1.5.0",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
