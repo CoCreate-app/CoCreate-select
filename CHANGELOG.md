@@ -1,3 +1,10 @@
+## [1.0.22](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.21...v1.0.22) (2021-07-09)
+
+
+### Bug Fixes
+
+* add active when an option is selected ([2eb086e](https://github.com/CoCreate-app/CoCreate-select/commit/2eb086e22998f68ff9dc74d86537c26f52615b9e))
+
 ## [1.0.21](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.20...v1.0.21) (2021-07-07)
 
 
