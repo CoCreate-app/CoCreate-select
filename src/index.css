@@ -133,8 +133,7 @@ cc-options, .options {
   -webkit-animation: hideAnimation 0.4s ease-out;
 }
 
-
-cocreate-select.open .options {
+cocreate-select.open .options, cocreate-select.open cc-options {
   /*display:flex;*/
   flex-direction:column;
   max-height: 50vh;

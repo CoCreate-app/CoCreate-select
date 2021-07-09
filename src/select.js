@@ -142,6 +142,8 @@ CoCreateSelect.prototype = {
     if (this.input)
       this.input.value = ""
     this.selectContainer.classList.remove('open');
+    if (!this.selectedContainer.children.length)
+      this.selectContainer.classList.remove('active');
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-close'));
   },
   getOptions: function() {
@@ -188,6 +190,7 @@ CoCreateSelect.prototype = {
       // todo: when an option is not found. just use option itself and remvove these lines
       optionToSelected.set(selectedOption, selectedOption);
       selectedToOption.set(selectedOption, selectedOption);
+      this.selectContainer.classList.add('active');
     }
     else {
       value = option.getAttribute('value');
@@ -198,6 +201,7 @@ CoCreateSelect.prototype = {
       option.setAttribute('selected', "");
       optionToSelected.set(option, selectedOption);
       selectedToOption.set(selectedOption, option);
+      this.selectContainer.classList.add('active');
     }
 
     selectedOption.appendChild(removeElement.cloneNode(true));
