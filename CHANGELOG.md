@@ -1,3 +1,10 @@
+## [1.0.23](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.22...v1.0.23) (2021-07-10)
+
+
+### Bug Fixes
+
+* gitignore all logs ([7673456](https://github.com/CoCreate-app/CoCreate-select/commit/7673456afc220abb2cef022d951237577236a90c))
+
 ## [1.0.22](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.21...v1.0.22) (2021-07-09)
 
 
