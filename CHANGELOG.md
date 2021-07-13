@@ -1,3 +1,10 @@
+## [1.0.24](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.23...v1.0.24) (2021-07-13)
+
+
+### Bug Fixes
+
+* background color of options ([46ed4b2](https://github.com/CoCreate-app/CoCreate-select/commit/46ed4b28a4b0ad7e66e121537f462be42473c091))
+
 ## [1.0.23](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.22...v1.0.23) (2021-07-10)
 
 
