@@ -103,15 +103,17 @@ cocreate-select.open input {
 cc-option, .option {
   width: 100%;
   position: relative;
-  background: #EEE;
+  background: whitesmoke;
 }
-
+/*cc-option:hover {*/
+/*  background: #eee;*/
+/*}*/
 /* Dropdown */
 cc-options, .options {
   max-height: 0;
   width: 100%;
   position: relative;
-  background: #EEE;
+  background: whitesmoke;
   overflow: auto;
   list-style: none;
   padding: 0px 5px 0px 5px;
