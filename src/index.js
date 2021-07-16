@@ -12,7 +12,7 @@ CoCreateSelect.adapter = SelectAdapter;
 // observer.init({
 // 	name: 'CoCreateSelectAttributes',
 // 	observe: ['attributes'],
-// 	attributes: ['data-document_id'],
+// 	attributeName: ['data-document_id'],
 // 	include: 'cocreate-select',
 // 	callback: function(mutation) {
 // 		SelectAdapter.__sendRequest(mutation.target)
@@ -22,6 +22,7 @@ CoCreateSelect.adapter = SelectAdapter;
 observer.init({
 	name: 'CoCreateSelect',
 	observe: ['addedNodes'],
+	target: 'cocreate-select',
 	callback: function(mutation) {
 		
 			CoCreateSelect.init(mutation.target)
