@@ -1,3 +1,25 @@
+## [1.0.26](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.25...v1.0.26) (2021-07-14)
+
+
+### Bug Fixes
+
+* upgrade all packages ([fd8fe58](https://github.com/CoCreate-app/CoCreate-select/commit/fd8fe5847005e52259df7a0852e40a69b00775ed))
+
+## [1.0.25](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.24...v1.0.25) (2021-07-13)
+
+
+### Bug Fixes
+
+* add yarn lockfile to git ignore ([b999716](https://github.com/CoCreate-app/CoCreate-select/commit/b999716cb2f3f8cd5693a6028efcd4d9e7cae6e5))
+* remove yarn.lock ([91e4ba1](https://github.com/CoCreate-app/CoCreate-select/commit/91e4ba1815fffc6a2201a386cf817899bc61ff15))
+
+## [1.0.24](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.23...v1.0.24) (2021-07-13)
+
+
+### Bug Fixes
+
+* background color of options ([46ed4b2](https://github.com/CoCreate-app/CoCreate-select/commit/46ed4b28a4b0ad7e66e121537f462be42473c091))
+
 ## [1.0.23](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.22...v1.0.23) (2021-07-10)
 
 
