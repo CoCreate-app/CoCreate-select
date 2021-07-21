@@ -30,6 +30,15 @@ observer.init({
 	}
 })
 
+// observer.init({
+// 	name: 'CoCreateSelect',
+// 	observe: ['childList'],
+// 	target: 'cc-option',
+// 	callback: function(mutation) {
+// 		CoCreateSelect.init(mutation.target)
+// 	}
+// })
+
 form.init({
 	name: 'CoCreateSelect',
 	selector: "cocreate-select",

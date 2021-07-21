@@ -12,8 +12,16 @@
 
 <body>
 
-  <form class="margin:20px" data-collection="module_activities">
-
+  <form class="margin:20px" data-collection="apples2">
+				<cocreate-select class="floating-label sortable" placeholder="Primary View" data-collection="test" data-document_id="5e8ff00e8c3af32574df80cb" name="test1">
+					<input class="template-search" placeholder="Search" data-template_id="test1">
+					<cc-options data-fetch_collection="files" data-template_id="test1" class="overflow:auto" data-fetch_count="10">
+						<cc-option class="template margin:40px" data-template_id="test1" value='{{data._id}}' data-document_id="{{data._id}}" data-render_array="data">
+							<h3 data-collection="{{collection}}" data-document_id="{{data._id}}" name="name" value="{{data.name}}">View Name</h3>
+							<h5>{{data._id}}</h5>
+						</cc-option>
+					</cc-options>
+				</cocreate-select>
     <cocreate-select class="floating-label sortable" tabindex="0" data-collection="test" data-document_id="5e8ff00e8c3af32574df80cb" name="selectField0" placeholder="Single Document">
 
       <input class="template-search" placeholder="Search">
@@ -29,6 +37,16 @@
 
       <cc-option value='option1' selected>option 1</cc-option>
       <cc-option value='option2'>option 2</cc-option>
+
+    </cocreate-select>
+    <cocreate-select class="floating-label sortable" tabindex="0" data-collection="test" data-document_id="5e8ff00e8c3af32574df80cb" name="selectField1" placeholder="Single Document" multiple>
+
+      <input class="template-search" placeholder="Search">
+
+      <cc-options>
+        <cc-option value='option1' selected>option 1</cc-option>
+        <cc-option value='option2'>option 2</cc-option>
+      </cc-options>
 
     </cocreate-select>
 
