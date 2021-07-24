@@ -2,7 +2,11 @@ import CoCreateSelect from "./select.js"
 import crud from '@cocreate/crud-client';
 import form from '@cocreate/form';
 import * as config from './config';
-import { container, selectedToOption } from './select';
+import {
+	container,
+	selectedToOption
+}
+from './select';
 import messageClient from '@cocreate/message-client';
 
 const SelectAdapter = {
@@ -13,7 +17,11 @@ const SelectAdapter = {
 
 		for (let selectCon of containerList) {
 			let instance = CoCreateSelect.init(selectCon);
-			let { name, document_id, collection } = crud.getAttr(selectCon);
+			let {
+				name,
+				document_id,
+				collection
+			} = crud.getAttr(selectCon);
 			if (name && document_id && collection)
 				this.read(selectCon, instance)
 		}
@@ -24,15 +32,24 @@ const SelectAdapter = {
 		const self = this;
 
 		document.addEventListener('dndsuccess', function(e) {
-			const { dropedEl, dragedEl } = e.detail;
+			const {
+				dropedEl,
+				dragedEl
+			} = e.detail;
 			if (dropedEl.matches(config.containerSelector)) {
-				container.get(dropedEl).__fireSelectedEvent({ selectContainer: dropedEl })
+				container.get(dropedEl).__fireSelectedEvent({
+					selectContainer: dropedEl
+				})
 			}
 		})
 
 		document.addEventListener('input', function(e) {
 
-			let { name, document_id, is_realtime } = crud.getAttr(e.target);
+			let {
+				name,
+				document_id,
+				is_realtime
+			} = crud.getAttr(e.target);
 
 			if (e.target.matches(config.containerSelector)) {
 
@@ -54,7 +71,10 @@ const SelectAdapter = {
 		})
 
 		messageClient.listen('select', function(data) {
-			let { name, values } = data;
+			let {
+				name,
+				values
+			} = data;
 
 			let select = document.querySelector(`[name="${name}"]`);
 
@@ -78,10 +98,19 @@ const SelectAdapter = {
 	// ToDo: Add directly to init
 	read: async function(selectContainer, instance) {
 		let data = await crud.read(selectContainer, false);
+		if (!data) return;
 		let name = selectContainer.getAttribute('name');
 		let options = data.data[name];
 		options = Array.isArray(options) ? options : [options];
-		options.forEach(op => instance.selectOption(op, true, undefined, false))
+		options.forEach(op => instance.selectOption(op, true, undefined, false));
+		// crud.read(selectContainer, false).then(data => {
+		// 	let name = selectContainer.getAttribute('name');
+		// 	let options = data.data[name];
+		// 	options = Array.isArray(options) ? options : [options];
+		// 	options.forEach(op => instance.selectOption(op, true, undefined, false));
+		// }).catch(err => {
+		// 	console.error(err)
+		// })
 	},
 
 
@@ -90,7 +119,12 @@ const SelectAdapter = {
 		for (let [el, instance] of container) {
 
 
-			let { name, document_id, collection, is_listen } = crud.getAttr(el)
+			let {
+				name,
+				document_id,
+				collection,
+				is_listen
+			} = crud.getAttr(el)
 
 			if (is_listen)
 				if (data['collection'] == collection && data['document_id'] == document_id && nameInDb == name) {

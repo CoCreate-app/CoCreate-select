@@ -61,7 +61,7 @@ cocreate-select[multiple] selected cc-option:last-child {
 cocreate-select selected cc-option .remove {
   display: inline-block;
   position: absolute;
-  top: 7px;
+  /*top: 7px;*/
   right: 15px;
   margin-left: 0;
   width: 0;
@@ -101,6 +101,7 @@ cocreate-select.open input {
 }
 
 cc-option, .option {
+  display:flex;
   width: 100%;
   position: relative;
   background: whitesmoke;
