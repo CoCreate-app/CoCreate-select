@@ -1,3 +1,10 @@
+## [1.0.28](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.27...v1.0.28) (2021-07-24)
+
+
+### Bug Fixes
+
+* if crud return null - return function ([c45934f](https://github.com/CoCreate-app/CoCreate-select/commit/c45934fa65e37025ad77dacebeb989b71d2c605c))
+
 ## [1.0.27](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.26...v1.0.27) (2021-07-17)
 
 
