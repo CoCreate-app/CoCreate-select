@@ -39,13 +39,7 @@ observer.init({
 // 	}
 // })
 
-form.init({
-	name: 'CoCreateSelect',
-	selector: "cocreate-select",
-	callback: function(el) {
-		SelectAdapter.save(el);
-	}
-});
+
 
 export * from './select';
 export default CoCreateSelect;

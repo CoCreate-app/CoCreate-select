@@ -141,7 +141,19 @@ const SelectAdapter = {
 				}
 		}
 	},
-
+	
+	getValues: function(form, collection, document_id = '') {
+		let data = {};
+		if (!collection) return {}
+		let selectors = `[data-collection='${collection}'][data-document_id='${document_id}']`
+		let elements = document.querySelectorAll(`cocreate-select${selectors}`);
+		for (let element of elements) {
+			let name = element.getAttribute('name')
+			data[name] = this.getAllValue(element);
+		}
+		return data;
+	},
+	
 	getAllValue: function(element) {
 		let value = Array.from(element.selectedOptions)
 			.map(selOption => selectedToOption.has(selOption) ? selectedToOption.get(selOption).getAttribute('value') : '');
@@ -161,16 +173,16 @@ const SelectAdapter = {
 	},
 
 
-
 }
 
 form.init({
 	name: 'CoCreateSelect',
-	callback: (form) => {
-		let elements = form.querySelectorAll('cocreate-select')
-		CoCreateSelect.save(elements)
+	selector: "cocreate-select",
+	callback: function(form, collection, document_id) {
+		return SelectAdapter.getValues(form, collection, document_id)
 	},
 });
+
 
 
 export default SelectAdapter;
