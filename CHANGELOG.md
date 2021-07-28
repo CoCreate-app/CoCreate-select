@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.28...v1.1.0) (2021-07-28)
+
+
+### Bug Fixes
+
+* update form.init ([3f94e98](https://github.com/CoCreate-app/CoCreate-select/commit/3f94e9825946c3561bf84133b8e77b466eafb395))
+
+
+### Features
+
+* add new is{attribute} system and remove data- from attributtes ([1d8c0f5](https://github.com/CoCreate-app/CoCreate-select/commit/1d8c0f5137848d1e5e164a9ff600149beb2b87cc))
+
 ## [1.0.28](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.27...v1.0.28) (2021-07-24)
 
 
