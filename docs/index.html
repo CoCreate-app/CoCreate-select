@@ -93,16 +93,16 @@
   document_id=&#x22;5e8ff00e8c3af32574df80cb&#x22;  
   placeholder=&#x22;Fetch array _id&#x22; 
   data-limit_option=&#x22;3&#x22; multiple&#x3E;
-  &#x3C;input class=&#x22;option-search&#x22; placeholder=&#x22;Search&#x22; data-template_id=&#x22;tempplate6&#x22;&#x3E;
-  &#x3C;ul data-fetch_collection=&#x22;test&#x22; 
-    data-fetch_document_id=&#x22;5e8ff00e8c3af32574df80cb&#x22; 
-    data-fetch_name=&#x22;selectField1&#x22; 
+  &#x3C;input class=&#x22;option-search&#x22; placeholder=&#x22;Search&#x22; template_id=&#x22;tempplate6&#x22;&#x3E;
+  &#x3C;ul fetch-collection=&#x22;test&#x22; 
+    fetch-document_id=&#x22;5e8ff00e8c3af32574df80cb&#x22; 
+    fetch-name=&#x22;selectField1&#x22; 
     id=&#x22;array02&#x22;
-    data-pass_to=&#x22;me1234&#x22; 
+    pass_to=&#x22;me1234&#x22; 
     class=&#x22;template-wrapper-array options overflow:overlay&#x22;&#x3E;
-    &#x3C;li class=&#x22;template option&#x22; data-pass_id=&#x22;me1234&#x22;&#x3E;
-      &#x3C;h3 collection=&#x22;users&#x22; document_id=&#x22;&#x22; name=&#x22;name&#x22; data-pass_id=&#x22;me1234&#x22; &#x3E;Organization Name&#x3C;/h3&#x3E;
-      &#x3C;h5 collection=&#x22;users&#x22; document_id=&#x22;&#x22; name=&#x22;_id&#x22; data-pass_id=&#x22;me1234&#x22; &#x3E;id&#x3C;/h5&#x3E;
+    &#x3C;li class=&#x22;template option&#x22; pass_id=&#x22;me1234&#x22;&#x3E;
+      &#x3C;h3 collection=&#x22;users&#x22; document_id=&#x22;&#x22; name=&#x22;name&#x22; pass_id=&#x22;me1234&#x22; &#x3E;Organization Name&#x3C;/h3&#x3E;
+      &#x3C;h5 collection=&#x22;users&#x22; document_id=&#x22;&#x22; name=&#x22;_id&#x22; pass_id=&#x22;me1234&#x22; &#x3E;id&#x3C;/h5&#x3E;
     &#x3C;/li&#x3E;
   &#x3C;/ul&#x3E;
 &#x3C;/cocreate-select&#x3E;
@@ -114,19 +114,19 @@
                     <h2 class="border-bottom:1px_solid_lightgrey padding:5px_0px">Attributes ul into select</h2>
                     <ul class="list-style-type:none ">
                         <li class="padding:15px_0px border-bottom:1px_solid_lightgrey">
-                            <h4><span>data-fetch_collection</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge danger">required</span></h4>
+                            <h4><span>fetch-collection</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge danger">required</span></h4>
                             <p>collection in db</p>
                         </li>
                         <li class="padding:15px_0px border-bottom:1px_solid_lightgrey">
-                            <h4><span>data-fetch_document_id</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge danger">required</span></h4>
+                            <h4><span>fetch-document_id</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge danger">required</span></h4>
                             <p>id in db</p>
                         </li>
                         <li class="padding:15px_0px border-bottom:1px_solid_lightgrey">
-                            <h4><span>data-fetch_name</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge danger">required</span></h4>
+                            <h4><span>fetch-name</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge danger">required</span></h4>
                             <p>attribute in collection in ours db</p>
                         </li>
                         <li class="padding:15px_0px border-bottom:1px_solid_lightgrey">
-                            <h4><span>data-pass_to</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge danger">required</span></h4>
+                            <h4><span>pass_to</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge danger">required</span></h4>
                             <p>Template to render response</p>
                         </li>
                     </ul>
@@ -147,15 +147,15 @@
     			        <a class="margin-right:10px hidden" id="code" data-show="code" data-hide="preview"><i class="fas fa-code"></i></a>
     			        <!--<a class="margin-right:10px"><i class="far fa-window-maximize"></i></a>-->
     					<a target="modal" href="module_activity_datatable.html"
-    				  	     data-pass_collection="modules"
-    				  	     data-pass_document_id=""
-    				  	     data-pass_fetch_value=""
-    				  	     data-pass_prefix=""
-    				  	     data-pass_to="render"
-    				  	     data-modal_width="600px"
-    				  	     data-modal_height="400px"
-    				  	     data-modal_color="#229954"
-    				  	     data-modal_header="false"
+    				  	     pass-collection="modules"
+    				  	     pass-document_id=""
+    				  	     pass-fetch_value=""
+    				  	     pass-prefix=""
+    				  	     pass_to="render"
+    				  	     modal-width="600px"
+    				  	     modal-height="400px"
+    				  	     modal-color="#229954"
+    				  	     modal-header="false"
     				  	     class="margin-right:10px">
     				  	    <i class="fas fa-external-link-alt"></i>
     				     </a>        
