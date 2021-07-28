@@ -48,7 +48,7 @@ const SelectAdapter = {
 			let {
 				name,
 				document_id,
-				is_realtime
+				isRealtime
 			} = crud.getAttr(e.target);
 
 			if (e.target.matches(config.containerSelector)) {
@@ -65,7 +65,7 @@ const SelectAdapter = {
 							}
 						},
 					});
-				else if (is_realtime)
+				else if (isRealtime == "true")
 					self.save(e.target);
 			}
 		})
@@ -123,29 +123,29 @@ const SelectAdapter = {
 				name,
 				document_id,
 				collection,
-				is_listen
+				isListen
 			} = crud.getAttr(el)
 
-			if (is_listen)
-				if (data['collection'] == collection && data['document_id'] == document_id && nameInDb == name) {
+			if (isListen == "false") return;
+			if (data['collection'] == collection && data['document_id'] == document_id && nameInDb == name) {
 
-					if (data['data'][name]) {
-						let options = data['data'][name];
-						options = Array.isArray(options) ? options : [options];
-						options.forEach(op => instance.selectOption(op, true, undefined, false))
-					}
-					else if (data['data'][name] === '')
-						instance.unselectAll();
-
-					break;
+				if (data['data'][name]) {
+					let options = data['data'][name];
+					options = Array.isArray(options) ? options : [options];
+					options.forEach(op => instance.selectOption(op, true, undefined, false))
 				}
+				else if (data['data'][name] === '')
+					instance.unselectAll();
+
+				break;
+			}
 		}
 	},
 	
 	getValues: function(form, collection, document_id = '') {
 		let data = {};
 		if (!collection) return {}
-		let selectors = `[data-collection='${collection}'][data-document_id='${document_id}']`
+		let selectors = `[collection='${collection}'][document_id='${document_id}']`
 		let elements = document.querySelectorAll(`cocreate-select${selectors}`);
 		for (let element of elements) {
 			let name = element.getAttribute('name')
