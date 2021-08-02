@@ -1,3 +1,12 @@
+## [1.1.1](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.0...v1.1.1) (2021-08-02)
+
+
+### Bug Fixes
+
+* remove data- from attributes ([1efb525](https://github.com/CoCreate-app/CoCreate-select/commit/1efb5250c490908e0a49d35a8ff4e08e3caa25ff))
+* remove data- from fetch, pass and filter ([323a93c](https://github.com/CoCreate-app/CoCreate-select/commit/323a93cf674a102bfe081fa4030d1c778baeb713))
+* update data-fullscreen to fullscreen ([b3f502b](https://github.com/CoCreate-app/CoCreate-select/commit/b3f502b4b2fc14cf23c0e113bf6ee18847c8d8c3))
+
 # [1.1.0](https://github.com/CoCreate-app/CoCreate-select/compare/v1.0.28...v1.1.0) (2021-07-28)
 
 
