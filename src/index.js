@@ -9,15 +9,15 @@ SelectAdapter.init();
 CoCreateSelect.adapter = SelectAdapter;
 
 
-// observer.init({
-// 	name: 'CoCreateSelectAttributes',
-// 	observe: ['attributes'],
-// 	attributeName: ['document_id'],
-// 	include: 'cocreate-select',
-// 	callback: function(mutation) {
-// 		SelectAdapter.__sendRequest(mutation.target)
-// 	}
-// });
+observer.init({
+	name: 'CoCreateSelectAttributes',
+	observe: ['attributes'],
+	attributeName: ['collection', 'document_id', 'name'],
+	target: 'cocreate-select',
+	callback: function(mutation) {
+		CoCreateSelect.init(mutation.target)
+	}
+});
 
 observer.init({
 	name: 'CoCreateSelect',
@@ -25,7 +25,7 @@ observer.init({
 	target: 'cocreate-select',
 	callback: function(mutation) {
 		
-			CoCreateSelect.init(mutation.target)
+		CoCreateSelect.init(mutation.target)
 		
 	}
 })
