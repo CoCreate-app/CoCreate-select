@@ -125,9 +125,9 @@
     <!--  name="selectField4" -->
     <!--  placeholder="Single Options" active>-->
 
-    <!--  <input class="search-options" placeholder="Search" data-search_id="search_01" data-item_selector=".option">-->
+    <!--  <input placeholder="Search" search_id="search_01" search-selector=".option">-->
 
-    <!--  <ul class="options overflow:overlay" data-search_id="search_01">-->
+    <!--  <ul class="options overflow:overlay" search_id="search_01">-->
     <!--<li class="option option"  value="value 1">-->
     <!--  <h3 >value 1</h3>-->
     <!--</li>-->
@@ -152,7 +152,7 @@
     <!--  name="selectField4" -->
     <!--  placeholder="Single Options" active>-->
 
-    <!--  <input class="search-options" placeholder="Search" data-search_id="search_01" data-item_selector=".option">-->
+    <!--  <input placeholder="Search" search_id="search_01" search-selector=".option">-->
 
 
     <!--<Option   value="value 1">-->
@@ -177,7 +177,7 @@
     <!--  name="selectField4" -->
     <!--  placeholder="Single Options" active>-->
 
-    <!--  <input class="search-options" placeholder="Search" data-search_id="search_01" data-item_selector=".option">-->
+    <!--  <input placeholder="Search" search_id="search_01" search-selector=".option">-->
 
     <!--  <ul class="options height:0" fetch-collection="test" template_id="newtest">-->
 
@@ -200,9 +200,9 @@
     <!--      placeholder="Multiple Options"-->
     <!--      dats-option_limit="5">-->
 
-    <!--      <input class="search-options" placeholder="Search" data-search_id="search_02" data-item_selector=".option">-->
+    <!--      <input placeholder="Search" search_id="search_02" search-selector=".option">-->
 
-    <!--      <ul class="options overflow:overlay" data-search_id="search_02">-->
+    <!--      <ul class="options overflow:overlay" search_id="search_02">-->
     <!--				<li class="option" value="value 1">-->
     <!--				  <h3 >value 1</h3>-->
     <!--				</li>-->
@@ -224,7 +224,7 @@
     <!--      placeholder="Fetch array string" -->
     <!--      data-limit_option="3" multiple>-->
 
-    <!--      <input class="search-options" placeholder="Search" data-search_id="search_03" data-item_selector=".option">-->
+    <!--      <input placeholder="Search" search_id="search_03" search-selector=".option">-->
 
     <!--      <ul class="options overflow:overlay"-->
     <!--        fetch-collection="test" -->
@@ -233,7 +233,7 @@
     <!--        filter-operator="$eq"-->
     <!--        fetch-name="selectField2" -->
     <!--        template_id="template5" -->
-    <!--        data-search_id="search_03"-->
+    <!--        search_id="search_03"-->
     <!--        pass_to="me1234">-->
     <!--  			<li class="template option" template_id="template5"  pass_id="me1234" data-value="{{selectField2.--}}">-->
     <!--  			  <h3 pass_id="me1234" value="{{selectField2.--}}">Organization Name</h3>-->
@@ -249,7 +249,7 @@
     <!--      placeholder="Fetch array _id" -->
     <!--      data-limit_option="3" multiple>-->
 
-    <!--      <input class="search-options" placeholder="Search" data-search_id="search_04" data-item_selector=".option">-->
+    <!--      <input placeholder="Search" search_id="search_04" search-selector=".option">-->
 
     <!--      <ul class="options overflow:overlay"-->
     <!--        fetch-collection="test" -->
@@ -258,7 +258,7 @@
     <!--        filter-operator="$eq"-->
     <!--        fetch-name="selectField1"-->
     <!--        template_id="template6" -->
-    <!--        data-search_id="search_04">-->
+    <!--        search_id="search_04">-->
     <!--  			<li class="template option" template_id="template6" value="{{selectField1.--}}" document_id="{{selectField1.--}}" >-->
     <!--  			  <h3 collection="users" document_id="{{selectField1.--}}" name="name" pass_id="me1234" >Organization Name</h3>-->
     <!--  			  <h5 collection="users" document_id="{{selectField1.--}}" name="_id" pass_id="me1234" >id</h5>-->
@@ -268,14 +268,14 @@
 
     <!-------------- Collection Select -------------->
     <!--    <cocreate-select class="floating-label" collection="test" document_id="5e8ff00e8c3af32574df80cb" name="selectField7" placeholder="Collection Select" multiple>-->
-    <!--      <input class="search-options" placeholder="Search" data-search_id="search_05" data-item_selector=".option">-->
+    <!--      <input placeholder="Search" search_id="search_05" search-selector=".option">-->
     <!--      <ul -->
     <!--        fetch-collection="" -->
     <!--        fetch-value_type="collection"-->
     <!--        template_id="collection-list" -->
     <!--        class="template-wrapper options overflow:overlay" -->
     <!--        pass_to="me1234"-->
-    <!--        data-search_id="search_05">-->
+    <!--        search_id="search_05">-->
     <!--				<li class="option template" template_id="collection-list" data-value="{{data.name}}" pass_id="me1234" render-array="data">-->
     <!--				  <a pass_to="document-select" pass_id="me1234">-->
     <!--				    <h5 name="name" pass_id="me1234" value="{{data.name}}"></h5>-->

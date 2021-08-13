@@ -65,7 +65,7 @@ const SelectAdapter = {
 							}
 						},
 					});
-				else if (isRealtime == "true")
+				else if (isRealtime != "false")
 					self.save(e.target);
 			}
 		})
