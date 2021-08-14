@@ -1,3 +1,11 @@
+## [1.1.3](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.2...v1.1.3) (2021-08-14)
+
+
+### Bug Fixes
+
+* if realtime false dont save on change ([ea47640](https://github.com/CoCreate-app/CoCreate-select/commit/ea4764088d671f71bdd57bd9d39d881432ace7dc))
+* rename data-element_id to element_id ([6d4ccf3](https://github.com/CoCreate-app/CoCreate-select/commit/6d4ccf31302418bfb6944564d5ff6c759c66f118))
+
 ## [1.1.2](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.1...v1.1.2) (2021-08-02)
 
 
