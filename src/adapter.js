@@ -165,11 +165,7 @@ const SelectAdapter = {
 		let value = this.getAllValue(element)
 		value = value.length <= 1 ? value[0] : value;
 		value = value ? value : '';
-		var data = [{
-			element,
-			value
-		}];
-		await crud.save(data)
+		await crud.save(element, value)
 	},
 
 
