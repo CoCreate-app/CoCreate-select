@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.3...v1.1.4) (2021-08-18)
+
+
+### Bug Fixes
+
+* refactor crud.save() ([f84424f](https://github.com/CoCreate-app/CoCreate-select/commit/f84424fceb58d0a1023e7d1bc24133350c9856bb))
+
 ## [1.1.3](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.2...v1.1.3) (2021-08-14)
 
 
