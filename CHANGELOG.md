@@ -1,3 +1,10 @@
+## [1.1.15](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.14...v1.1.15) (2021-09-09)
+
+
+### Bug Fixes
+
+* ci docs ([a837bfb](https://github.com/CoCreate-app/CoCreate-select/commit/a837bfbaae5befbe005b5f36d9b1a5fe847cd87c))
+
 ## [1.1.14](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.13...v1.1.14) (2021-09-09)
 
 
