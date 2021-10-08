@@ -1,13 +1,29 @@
 import CoCreateSelect from "./select.js"
-import SelectAdapter from "./adapter.js"
+import { initEvents } from "./adapter.js"
 import observer from '@cocreate/observer';
 import { containerSelector } from './config';
-import form from '@cocreate/form';
 import './index.css';
 
-SelectAdapter.init();
-CoCreateSelect.adapter = SelectAdapter;
 
+function init() {
+    let elements = document.querySelectorAll(containerSelector);
+    initElements(elements);
+    initEvents()
+}
+
+function initElements(elements) {
+    for(let element of elements)
+        initElement(element);
+}
+
+function initElement(element) {
+	CoCreateSelect.init(element);
+}
+
+
+// SelectAdapter.init();
+// CoCreateSelect.adapter = SelectAdapter;
+init()
 
 observer.init({
 	name: 'CoCreateSelectAttributes',

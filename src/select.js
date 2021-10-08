@@ -1,5 +1,6 @@
 /*global CustomEvent*/
 import observer from '@cocreate/observer';
+import SelectAdapter from "./adapter.js";
 import selectedAtt from './selectedAtt';
 import optionsAtt from './optionsAtt';
 import selectedOptionsAtt from './selectedOptionsAtt';
@@ -69,13 +70,14 @@ CoCreateSelect.prototype = {
     return this.selectContainer.hasAttribute('multiple') ? true : false;
   },
   init: function(selectContainer) {
-    if (!selectContainer.matches(containerSelector))
-      return false;
-    if (selectContainer.querySelector(containerSelector))
-      return false;
-    if (container.has(selectContainer))
+    // if (!selectContainer.matches(containerSelector))
+    //   return false;
+    // if (selectContainer.querySelector(containerSelector))
+    //   return false;
+    if (container.has(selectContainer)){
+		  SelectAdapter.read(selectContainer, selectContainer.select);
       return;
-
+    }
 
     this.selectContainer = selectContainer;
     this.selectedContainer = selectContainer.querySelector(`:scope > ${selectedTagName}`);
@@ -89,7 +91,7 @@ CoCreateSelect.prototype = {
 
     for (let option of this.getOptions())
       if (option.hasAttribute('selected'))
-        this.selectOption(option)
+        this.selectOption(option);
 
     const self = this;
 
@@ -129,6 +131,8 @@ CoCreateSelect.prototype = {
         self.selectOption(el, true)
     });
     container.set(selectContainer, this);
+    selectContainer.select = this;
+		SelectAdapter.read(selectContainer, this);
   },
 
   open: function() {
@@ -146,9 +150,11 @@ CoCreateSelect.prototype = {
       this.selectContainer.classList.remove('active');
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-close'));
   },
+  
   getOptions: function() {
     return this.selectContainer.querySelectorAll(optionSelector);
   },
+  
   unselectAll: function(domEvent) {
     if (this.selectedContainer.children.length)
       for (let el of this.selectedContainer.children)
@@ -156,12 +162,15 @@ CoCreateSelect.prototype = {
           this.unselectOption(selectedToOption.get(el), false);
     domEvent && this.__fireSelectedEvent({ unselectOption: 'all' })
   },
+  
   getOptionCounterpart: function(optionStr) {
     return this.selectContainer.querySelector(`${optionSelector.trim()}[value="${optionStr}"]`);
   },
+  
   isSelected: function(optionsStr) {
     return this.selectedContainer.querySelector(`[value="${optionsStr}"]`)
   },
+  
   validateSelect: function() {
     if (this.isMultiple()) {
       let limit = this.selectContainer.getAttribute('data-limit_option');
@@ -172,6 +181,7 @@ CoCreateSelect.prototype = {
     else if (this.selectedContainer.children.length)
       this.unselectAll();
   },
+  
   selectOption: function(option, closeOnMultiple = true, innerText, doEvent = true) {
     if (!option) return;
     let selectedOption, value;
@@ -181,13 +191,26 @@ CoCreateSelect.prototype = {
 
       let optionC = this.getOptionCounterpart(option)
       if (optionC)
-        return this.selectOption(optionC,closeOnMultiple, innerText, doEvent)
+        return this.selectOption(optionC,closeOnMultiple, innerText, doEvent);
+      else if (option.match(/^[0-9a-fA-F]{24}$/)) {
+        let template = this.selectContainer.querySelector('.template')
+        selectedOption = template.cloneNode(true);
+        selectedOption.setAttribute('value', option);
+        selectedOption.classList.remove('template');
 
-      selectedOption = document.createElement(optionTagName);
-      selectedOption.setAttribute('value', option);
-      value = option;
-      selectedOption.innerText = innerText ? innerText : option;
+        let els = selectedOption.querySelectorAll('[document_id]');
+        for (let el of els) {
+          el.setAttribute('document_id', option)
+        }
+        console.log('template found and option could not be found')
+      }
+      else {
+        selectedOption = document.createElement(optionTagName);
+        selectedOption.setAttribute('value', option);
+        selectedOption.innerText = innerText ? innerText : option;
+      }
       // todo: when an option is not found. just use option itself and remvove these lines
+      value = option;
       optionToSelected.set(selectedOption, selectedOption);
       selectedToOption.set(selectedOption, selectedOption);
       this.selectContainer.classList.add('active');
