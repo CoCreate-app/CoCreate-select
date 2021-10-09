@@ -1,3 +1,11 @@
+## [1.1.28](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.27...v1.1.28) (2021-10-09)
+
+
+### Bug Fixes
+
+* solved issue of rendering values ([f6cdd6b](https://github.com/CoCreate-app/CoCreate-select/commit/f6cdd6ba8a9675c4fb079810d37953054c543a3f))
+* use template to create option adds collection and document_id ([614c258](https://github.com/CoCreate-app/CoCreate-select/commit/614c258a813f77435c6506210234d3b6b0085a79))
+
 ## [1.1.27](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.26...v1.1.27) (2021-10-06)
 
 
