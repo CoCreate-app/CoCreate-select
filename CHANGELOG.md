@@ -1,3 +1,10 @@
+## [1.1.29](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.28...v1.1.29) (2021-10-09)
+
+
+### Bug Fixes
+
+* remove unused import ([1af3f53](https://github.com/CoCreate-app/CoCreate-select/commit/1af3f53c7d4af6968b32cc146db8761b05838b21))
+
 ## [1.1.28](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.27...v1.1.28) (2021-10-09)
 
 
