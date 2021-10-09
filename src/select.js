@@ -194,6 +194,9 @@ CoCreateSelect.prototype = {
         return this.selectOption(optionC,closeOnMultiple, innerText, doEvent);
       else if (option.match(/^[0-9a-fA-F]{24}$/)) {
         let template = this.selectContainer.querySelector('.template')
+        let optionsContainer = this.selectContainer.querySelector('[fetch-collection]')
+        let optionsCollection = optionsContainer.getAttribute('fetch-collection')
+
         selectedOption = template.cloneNode(true);
         selectedOption.setAttribute('value', option);
         selectedOption.classList.remove('template');
@@ -201,8 +204,11 @@ CoCreateSelect.prototype = {
         let els = selectedOption.querySelectorAll('[document_id]');
         for (let el of els) {
           el.setAttribute('document_id', option)
+          let collection = el.getAttribute('collection')
+          if (collection == '{{collection}}'){
+              el.setAttribute('collection', optionsCollection);
+          }
         }
-        console.log('template found and option could not be found')
       }
       else {
         selectedOption = document.createElement(optionTagName);

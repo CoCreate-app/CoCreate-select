@@ -1,20 +1,12 @@
-import CoCreateSelect from "./select.js"
 import crud from '@cocreate/crud-client';
 import form from '@cocreate/form';
 import * as config from './config';
-import {
-	container,
-	selectedToOption
-}
-from './select';
+import { container,	selectedToOption } from './select';
 import messageClient from '@cocreate/message-client';
 
 export function initEvents() {
 	document.addEventListener('dndsuccess', function(e) {
-		const {
-			dropedEl,
-			dragedEl
-		} = e.detail;
+		const { dropedEl, dragedEl } = e.detail;
 		if (dropedEl.matches(config.containerSelector)) {
 			container.get(dropedEl).__fireSelectedEvent({
 				selectContainer: dropedEl
@@ -23,13 +15,7 @@ export function initEvents() {
 	})
 
 	document.addEventListener('input', function(e) {
-
-		let {
-			name,
-			document_id,
-			isRealtime
-		} = crud.getAttr(e.target);
-
+		let {name, document_id,	isRealtime} = crud.getAttr(e.target);
 		if (e.target.matches(config.containerSelector)) {
 
 			if (document_id === 'null')
@@ -50,11 +36,7 @@ export function initEvents() {
 	})
 
 	messageClient.listen('select', function(data) {
-		let {
-			name,
-			values
-		} = data;
-
+		let { name,	values} = data;
 		let select = document.querySelector(`[name="${name}"]`);
 
 		if (!select || !container.has(select)) return;
@@ -75,63 +57,30 @@ export function initEvents() {
 
 const SelectAdapter = {
 
-	// init: function() {
-
-	// 	let containerList = document.querySelectorAll(config.containerSelector);
-
-	// 	for (let selectCon of containerList) {
-	// 		let instance = CoCreateSelect.init(selectCon);
-	// 		// let {collection, document_id, name} = crud.getAttr(selectCon);
-	// 		// if (name && document_id && collection)
-	// 		// 	this.read(selectCon, instance)
-	// 	}
-	// 	this.__initEvents()
-	// },
-
-	// __initEvents: function() {
-	// 	const self = this;
-
-
-	// },
-
-	// ToDo: Add directly to init
 	read: async function(selectContainer, instance) {
 		let data = await crud.read(selectContainer, false);
 		if (!data) return;
 		let name = selectContainer.getAttribute('name');
+		
 		let options = data.data[name];
 		options = Array.isArray(options) ? options : [options];
 		options.forEach(op => instance.selectOption(op, true, undefined, false));
-		// crud.read(selectContainer, false).then(data => {
-		// 	let name = selectContainer.getAttribute('name');
-		// 	let options = data.data[name];
-		// 	options = Array.isArray(options) ? options : [options];
-		// 	options.forEach(op => instance.selectOption(op, true, undefined, false));
-		// }).catch(err => {
-		// 	console.error(err)
-		// })
 	},
 
 
 
 	writeSelect: function(data, nameInDb) {
 		for (let [el, instance] of container) {
-
-
-			let {
-				name,
-				document_id,
-				collection,
-				isListen
-			} = crud.getAttr(el)
-
+			let {collection, document_id, name, isListen} = crud.getAttr(el)
 			if (isListen == "false") return;
 			if (data['collection'] == collection && data['document_id'] == document_id && nameInDb == name) {
 
 				if (data['data'][name]) {
+					
 					let options = data['data'][name];
 					options = Array.isArray(options) ? options : [options];
 					options.forEach(op => instance.selectOption(op, true, undefined, false))
+					
 				}
 				else if (data['data'][name] === '')
 					instance.unselectAll();
