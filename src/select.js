@@ -1,5 +1,4 @@
 /*global CustomEvent*/
-import observer from '@cocreate/observer';
 import SelectAdapter from "./adapter.js";
 import selectedAtt from './selectedAtt';
 import optionsAtt from './optionsAtt';
