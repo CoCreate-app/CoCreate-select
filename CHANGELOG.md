@@ -1,3 +1,10 @@
+## [1.1.40](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.39...v1.1.40) (2021-10-30)
+
+
+### Bug Fixes
+
+* loop when setting element.select ([95436b1](https://github.com/CoCreate-app/CoCreate-select/commit/95436b1a5f0965d31b1ea0dbedb064bbcb660a56))
+
 ## [1.1.39](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.38...v1.1.39) (2021-10-29)
 
 
