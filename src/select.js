@@ -68,6 +68,7 @@ CoCreateSelect.prototype = {
   isMultiple: function() {
     return this.selectContainer.hasAttribute('multiple') ? true : false;
   },
+  
   init: function(selectContainer) {
     // if (!selectContainer.matches(containerSelector))
     //   return false;
@@ -130,8 +131,12 @@ CoCreateSelect.prototype = {
         self.selectOption(el, true)
     });
     container.set(selectContainer, this);
-    selectContainer.select = this;
+    // selectContainer.select = selectContainer;
 		SelectAdapter.read(selectContainer, this);
+  
+    // selectContainer.setValue = this.setValue();
+    // selectContainer.getValue = this.getValue();
+		
   },
 
   open: function() {
@@ -150,6 +155,12 @@ CoCreateSelect.prototype = {
     this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-close'));
   },
   
+  // setValue: function(option, closeOnMultiple = true, innerText, doEvent = true) {
+  //   return this.selectOption(option, closeOnMultiple = true, innerText, doEvent = true);
+  // },
+  // getValue: function(option, closeOnMultiple = true, innerText, doEvent = true) {
+  //   return this.selectOption(option, closeOnMultiple = true, innerText, doEvent = true);
+  // },
   getOptions: function() {
     return this.selectContainer.querySelectorAll(optionSelector);
   },
