@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/CoCreate-app/CoCreate-select/compare/v1.2.1...v1.2.2) (2021-11-01)
+
+
+### Bug Fixes
+
+* error was being thrown for querying options containing  solved by using '' may cause an issue in the future ([516b527](https://github.com/CoCreate-app/CoCreate-select/commit/516b52770c5457451b96ed6f0e101ac625a6e980))
+
 ## [1.2.1](https://github.com/CoCreate-app/CoCreate-select/compare/v1.2.0...v1.2.1) (2021-11-01)
 
 
