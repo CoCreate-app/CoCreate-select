@@ -174,11 +174,11 @@ CoCreateSelect.prototype = {
   },
   
   getOptionCounterpart: function(optionStr) {
-    return this.selectContainer.querySelector(`${optionSelector.trim()}[value="${optionStr}"]`);
+    return this.selectContainer.querySelector(`${optionSelector.trim()}[value='${optionStr}']`);
   },
   
   isSelected: function(optionsStr) {
-    return this.selectedContainer.querySelector(`[value="${optionsStr}"]`)
+    return this.selectedContainer.querySelector(`[value='${optionsStr}']`)
   },
   
   validateSelect: function() {
