@@ -63,6 +63,8 @@ const SelectAdapter = {
 		let name = selectContainer.getAttribute('name');
 		
 		let options = data.data[name];
+    	selectContainer['getValue'] = options;
+
 		options = Array.isArray(options) ? options : [options];
 		options.forEach(op => instance.selectOption(op, true, undefined, false));
 	},
@@ -78,6 +80,7 @@ const SelectAdapter = {
 				if (data['data'][name]) {
 					
 					let options = data['data'][name];
+    				el['getValue'] = options;
 					options = Array.isArray(options) ? options : [options];
 					options.forEach(op => instance.selectOption(op, true, undefined, false))
 					
