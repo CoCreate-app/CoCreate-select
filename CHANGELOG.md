@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.40...v1.2.0) (2021-11-01)
+
+
+### Features
+
+* sets the value in the dom.element refrence as getValue all cocreate components are doing this making it a simple unified way to get an elements value regardless of the component ([b4c5ef8](https://github.com/CoCreate-app/CoCreate-select/commit/b4c5ef8d88c1cd9b3893d753c9762b2e94c32c34))
+
 ## [1.1.40](https://github.com/CoCreate-app/CoCreate-select/compare/v1.1.39...v1.1.40) (2021-10-30)
 
 
