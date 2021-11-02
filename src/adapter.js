@@ -1,5 +1,4 @@
 import crud from '@cocreate/crud-client';
-import form from '@cocreate/form';
 import * as config from './config';
 import { container,	selectedToOption } from './select';
 import messageClient from '@cocreate/message-client';
@@ -123,14 +122,6 @@ const SelectAdapter = {
 
 
 }
-
-form.init({
-	name: 'CoCreateSelect',
-	selector: "cocreate-select",
-	callback: function(form, collection, document_id) {
-		return SelectAdapter.getValues(form, collection, document_id)
-	},
-});
 
 
 
