@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/CoCreate-app/CoCreate-select/compare/v1.2.2...v1.3.0) (2021-11-02)
+
+
+### Features
+
+* now adds setValue and getValue function to the element ([ee81868](https://github.com/CoCreate-app/CoCreate-select/commit/ee81868e35781f3f749da8ce8ff2c2795dcfdbc2))
+
 ## [1.2.2](https://github.com/CoCreate-app/CoCreate-select/compare/v1.2.1...v1.2.2) (2021-11-01)
 
 
