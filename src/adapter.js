@@ -108,14 +108,16 @@ const SelectAdapter = {
 	getAllValue: function(element) {
 		let value = Array.from(element.selectedOptions)
 			.map(selOption => selectedToOption.has(selOption) ? selectedToOption.get(selOption).getAttribute('value') : '');
+		value = value.length <= 1 ? value[0] : value;
+		value = value ? value : '';
 		return value;
 	},
-
+	
 	save: async function(element, isStore = true) {
 		if (!isStore) return;
 		let value = this.getAllValue(element)
-		value = value.length <= 1 ? value[0] : value;
-		value = value ? value : '';
+		// value = value.length <= 1 ? value[0] : value;
+		// value = value ? value : '';
 		await crud.save(element, value)
 	},
 
