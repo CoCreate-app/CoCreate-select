@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/CoCreate-app/CoCreate-select/compare/v1.3.0...v1.3.1) (2021-11-02)
+
+
+### Bug Fixes
+
+* removed @cocreate/form ([a87f5e6](https://github.com/CoCreate-app/CoCreate-select/commit/a87f5e61d6681f0781bbe93f59048569fd351d28))
+
 # [1.3.0](https://github.com/CoCreate-app/CoCreate-select/compare/v1.2.2...v1.3.0) (2021-11-02)
 
 
