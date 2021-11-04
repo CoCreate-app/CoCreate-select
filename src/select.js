@@ -1,5 +1,5 @@
 /*global CustomEvent*/
-import SelectAdapter from "./adapter.js";
+import {read} from "./adapter.js";
 import selectedAtt from './selectedAtt';
 import optionsAtt from './optionsAtt';
 import selectedOptionsAtt from './selectedOptionsAtt';
@@ -75,7 +75,7 @@ CoCreateSelect.prototype = {
         // if (selectContainer.querySelector(containerSelector))
         //   return false;
         if (container.has(selectContainer)) {
-            SelectAdapter.read(selectContainer, selectContainer.select);
+            read(selectContainer, selectContainer.select);
             return;
         }
 
@@ -132,7 +132,7 @@ CoCreateSelect.prototype = {
         });
         container.set(selectContainer, this);
         // selectContainer.select = selectContainer;
-        SelectAdapter.read(selectContainer, this);
+        read(selectContainer, this);
 
         selectContainer.getValue = (element) => {
             let value = Array.from(element.selectedOptions)
