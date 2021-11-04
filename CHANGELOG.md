@@ -1,3 +1,11 @@
+## [1.3.2](https://github.com/CoCreate-app/CoCreate-select/compare/v1.3.1...v1.3.2) (2021-11-04)
+
+
+### Bug Fixes
+
+* renamed getAlValues to getValue ([d3f3dc8](https://github.com/CoCreate-app/CoCreate-select/commit/d3f3dc8e8c00c0b361eb7c2b9413d440b50359fa))
+* selected option sometimes did not render ([702942d](https://github.com/CoCreate-app/CoCreate-select/commit/702942d6665f35f017fada77fdbe14f1edfe175c))
+
 ## [1.3.1](https://github.com/CoCreate-app/CoCreate-select/compare/v1.3.0...v1.3.1) (2021-11-02)
 
 
