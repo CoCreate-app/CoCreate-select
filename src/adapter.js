@@ -54,7 +54,8 @@ export function initEvents() {
 	})
 }
 
-export async function read(selectContainer, instance) {
+export async function read(selectContainer) {
+	let instance = selectContainer.select;
 	let data = await crud.read(selectContainer, false);
 	if (!data) return;
 	let name = selectContainer.getAttribute('name');

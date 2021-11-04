@@ -31,7 +31,7 @@ const removeElement = parse(removeMarkup);
 
 document.addEventListener('click', function(e) {
     let target = e.target;
-    let isOpened;
+    // let isOpened;
     //todo:
     // go up until you reach containerSelector or add same function to every element matches containerSelector: this way click event buble up and whenever 
     // the difference is the first one little ram improve and second one a little cpu improve
@@ -70,24 +70,19 @@ CoCreateSelect.prototype = {
     },
 
     init: function(selectContainer) {
-        // if (!selectContainer.matches(containerSelector))
-        //   return false;
-        // if (selectContainer.querySelector(containerSelector))
-        //   return false;
         if (container.has(selectContainer)) {
             read(selectContainer, selectContainer.select);
             return;
         }
 
         this.selectContainer = selectContainer;
+        
         this.selectedContainer = selectContainer.querySelector(`:scope > ${selectedTagName}`);
         if (!this.selectedContainer) {
-            this.selectedContainer = document.createElement(selectedTagName)
-            selectContainer.prepend(this.selectedContainer)
+            this.selectedContainer = document.createElement(selectedTagName);
+            selectContainer.prepend(this.selectedContainer);
         }
         this.input = selectContainer.querySelector(` :scope > ${inputSelector}`);
-        let lastEl = selectContainer.children[selectContainer.children.length - 1];
-
 
         for (let option of this.getOptions())
             if (option.hasAttribute('selected'))
@@ -128,10 +123,11 @@ CoCreateSelect.prototype = {
             }
             // if it's a real option and not a selected option also not a text option 
             if (!selectedToOption.has(el) && !optionToSelected.has(el))
-                self.selectOption(el, true)
+                self.selectOption(el, true);
         });
+        
         container.set(selectContainer, this);
-        // selectContainer.select = selectContainer;
+        selectContainer.select = this;
         read(selectContainer, this);
 
         selectContainer.getValue = (element) => {
