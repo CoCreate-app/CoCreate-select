@@ -23,7 +23,6 @@ function initElement(element) {
 
 // SelectAdapter.init();
 // CoCreateSelect.adapter = SelectAdapter;
-init();
 
 observer.init({
 	name: 'CoCreateSelectAttributes',
@@ -53,7 +52,7 @@ observer.init({
 // 	}
 // })
 
-
+init();
 
 export * from './select';
 export default CoCreateSelect;
