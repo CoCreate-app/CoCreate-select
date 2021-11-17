@@ -1,3 +1,10 @@
+## [1.3.10](https://github.com/CoCreate-app/CoCreate-select/compare/v1.3.9...v1.3.10) (2021-11-17)
+
+
+### Bug Fixes
+
+* removed old version of getValue which applied as a string ([378a4e2](https://github.com/CoCreate-app/CoCreate-select/commit/378a4e21e97e0e0c48612eab4245a1fa80bc593b))
+
 ## [1.3.9](https://github.com/CoCreate-app/CoCreate-select/compare/v1.3.8...v1.3.9) (2021-11-16)
 
 
