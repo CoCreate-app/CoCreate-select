@@ -61,7 +61,6 @@ export async function read(selectContainer) {
 	let name = selectContainer.getAttribute('name');
 	
 	let options = data.data[name];
-	selectContainer['getValue'] = options;
 
 	options = Array.isArray(options) ? options : [options];
 	options.forEach(op => instance.selectOption(op, true, undefined, false));
@@ -76,7 +75,6 @@ export function writeSelect(data, nameInDb) {
 			if (data['data'][name]) {
 				
 				let options = data['data'][name];
-				el['getValue'] = options;
 				options = Array.isArray(options) ? options : [options];
 				options.forEach(op => instance.selectOption(op, true, undefined, false));
 				
