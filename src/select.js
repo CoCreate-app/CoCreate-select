@@ -95,10 +95,10 @@ CoCreateSelect.prototype = {
             this.input.addEventListener('keydown', function(e) {
                 let keyCode = e.keyCode;
                 if (keyCode == 13) {
-                    e.preventDefault()
+                    e.preventDefault();
                 }
-
-                if (keyCode == 13 && this.value.length > 0) {
+                let tags = this.getAttribute('tags');
+                if (tags == "true" && keyCode == 13 && this.value.length > 0) {
                     self.selectOption(this.value);
 
                     this.value = '';
