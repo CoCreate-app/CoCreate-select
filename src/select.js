@@ -133,7 +133,8 @@ CoCreateSelect.prototype = {
         selectContainer.getValue = (element) => {
             let value = Array.from(element.selectedOptions)
                 .map(selOption => selectedToOption.has(selOption) ? selectedToOption.get(selOption).getAttribute('value') : '');
-            value = value.length <= 1 ? value[0] : value;
+            if (value.length <= 1)
+                value = value.length <= 1 ? value[0] : value;
             value = value ? value : '';
             return value;
         }
