@@ -1,3 +1,10 @@
+## [1.4.15](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.14...v1.4.15) (2022-01-27)
+
+
+### Bug Fixes
+
+* remove margin 0 from options ([f8e454c](https://github.com/CoCreate-app/CoCreate-select/commit/f8e454ca3bd10bb5dedb0596c2430e9c5f2ecd94))
+
 ## [1.4.14](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.13...v1.4.14) (2022-01-16)
 
 
