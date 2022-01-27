@@ -118,7 +118,7 @@ cc-options, .options {
   overflow: auto;
   list-style: none;
   padding: 0px 5px 0px 5px;
-  margin: 0;
+  /*margin: 0;*/
   -moz-transform: scaleY(0);
   -ms-transform: scaleY(0);
   -webkit-transform: scaleY(0);
