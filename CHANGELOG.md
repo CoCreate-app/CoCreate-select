@@ -1,3 +1,10 @@
+## [1.4.16](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.15...v1.4.16) (2022-01-27)
+
+
+### Bug Fixes
+
+* remove commented css ([7903113](https://github.com/CoCreate-app/CoCreate-select/commit/79031138bcc27fe6915999e5140103aed04a498d))
+
 ## [1.4.15](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.14...v1.4.15) (2022-01-27)
 
 
