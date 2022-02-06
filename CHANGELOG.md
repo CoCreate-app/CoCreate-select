@@ -1,3 +1,10 @@
+## [1.4.19](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.18...v1.4.19) (2022-02-06)
+
+
+### Bug Fixes
+
+* dispatch input event after options are read and set from db ([6f819eb](https://github.com/CoCreate-app/CoCreate-select/commit/6f819ebdcbcda77546a3722fe437c033b49b3c6d))
+
 ## [1.4.18](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.17...v1.4.18) (2022-02-03)
 
 
