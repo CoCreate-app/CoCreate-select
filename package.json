@@ -61,9 +61,9 @@
     "webpack-log": "^3.0.1"
   },
   "dependencies": {
-    "@cocreate/crud-client": "^1.4.45",
-    "@cocreate/docs": "^1.2.67",
-    "@cocreate/message-client": "^1.1.62",
-    "@cocreate/observer": "^1.4.2"
+    "@cocreate/crud-client": "^1.4.46",
+    "@cocreate/docs": "^1.2.68",
+    "@cocreate/message-client": "^1.1.63",
+    "@cocreate/observer": "^1.4.3"
   }
 }
