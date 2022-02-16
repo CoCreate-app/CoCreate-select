@@ -1,3 +1,10 @@
+## [1.4.22](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.21...v1.4.22) (2022-02-16)
+
+
+### Bug Fixes
+
+* update dependencies ([a8e51ea](https://github.com/CoCreate-app/CoCreate-select/commit/a8e51ea398546613fd2a4e6ede4d5e3015f06ff6))
+
 ## [1.4.21](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.20...v1.4.21) (2022-02-10)
 
 
