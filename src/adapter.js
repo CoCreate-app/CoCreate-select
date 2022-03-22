@@ -21,20 +21,19 @@ export function initEvents() {
 				messageClient.send({
 					broadcast_sender: false,
 					rooms: "",
-					emit: {
-						message: "select",
-						data: {
-							name: e.target.getAttribute('name'),
-							values: self.getValue(e.target)
-						}
-					},
+					message: "select",
+					data: {
+						name: e.target.getAttribute('name'),
+						values: self.getValue(e.target)
+					}
 				});
 			else if (isRealtime != "false")
 				save(e.target);
 		}
 	})
 
-	messageClient.listen('select', function(data) {
+	messageClient.listen('select', function(response) {
+		let data = response.data
 		let { name,	values} = data;
 		let select = document.querySelector(`[name="${name}"]`);
 
