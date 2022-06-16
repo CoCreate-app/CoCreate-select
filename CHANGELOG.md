@@ -1,3 +1,10 @@
+## [1.4.29](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.28...v1.4.29) (2022-06-16)
+
+
+### Bug Fixes
+
+* selectOption doEvent false if called by read ([8e0efc4](https://github.com/CoCreate-app/CoCreate-select/commit/8e0efc40804b862d7c49f0050dede2d594293ec8))
+
 ## [1.4.28](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.27...v1.4.28) (2022-06-12)
 
 
