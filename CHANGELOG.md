@@ -1,3 +1,10 @@
+## [1.4.31](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.30...v1.4.31) (2022-06-18)
+
+
+### Bug Fixes
+
+* removed if condition that resulted in select not updating in realtime ([e03e896](https://github.com/CoCreate-app/CoCreate-select/commit/e03e89697fb39c31be9de6fbbc946852bb26ce1c))
+
 ## [1.4.30](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.29...v1.4.30) (2022-06-18)
 
 
