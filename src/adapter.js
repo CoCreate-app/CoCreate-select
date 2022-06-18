@@ -45,10 +45,10 @@ export function initEvents() {
 	})
 
 	crud.listen('updateDocument', function(data) {
-		if (data.metadata == 'cocreate-select') {
-			for (let key of Object.keys(data['data'])) {
-				writeSelect(data, key);
-			}
+		if (data.collection == 'crdt-transactions') 
+			return
+		for (let key of Object.keys(data['data'])) {
+			writeSelect(data, key);
 		}
 	})
 }
