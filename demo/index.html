@@ -28,7 +28,7 @@
 					<input placeholder="Search" template_id="test1">
 					<cc-options fetch-collection="files" template_id="test1" class="overflow:auto" fetch-count="10">
 						<cc-option class="template margin:40px" template_id="test1" value='{{data._id}}' document_id="{{data._id}}" render-array="data">
-							<h3 collection="{{collection}}" document_id="{{data._id}}" name="name" value="{{data.name}}">View Name</h3>
+							<h3>{{data.name}}</h3>
 							<h5>{{data._id}}</h5>
 						</cc-option>
 					</cc-options>
