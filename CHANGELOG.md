@@ -1,3 +1,10 @@
+## [1.4.32](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.31...v1.4.32) (2022-06-19)
+
+
+### Bug Fixes
+
+* update templates to use placeholder ([697245d](https://github.com/CoCreate-app/CoCreate-select/commit/697245dafa2cfd9c7c318b842e03065b8692cf1d))
+
 ## [1.4.31](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.30...v1.4.31) (2022-06-18)
 
 
