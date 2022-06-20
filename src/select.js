@@ -243,7 +243,7 @@ CoCreateSelect.prototype = {
             selectedToOption.set(selectedOption, selectedOption);
             this.selectContainer.classList.add('active');
         }
-        else {
+        else if (option instanceof Element && option.nodeType == 1){
             value = option.getAttribute('value');
             if (this.isSelected(value)) return;
             this.validateSelect()
@@ -253,6 +253,25 @@ CoCreateSelect.prototype = {
             optionToSelected.set(option, selectedOption);
             selectedToOption.set(selectedOption, option);
             this.selectContainer.classList.add('active');
+        } else {
+            let template = this.selectContainer.querySelector('.template')
+            if (template) {
+                selectedOption = template.cloneNode(true);
+                selectedOption.setAttribute('value', option);
+                selectedOption.classList.remove('template');
+                
+                value = JSON.stringify(option);
+                if (value) {
+                    let opt = this.selectContainer.querySelector(`[value='${value}']`)
+                    if (opt)
+                        opt.setAttribute('selected', "")
+                    selectedOption.setAttribute('value', value);
+                }
+                optionToSelected.set(selectedOption, selectedOption);
+                selectedToOption.set(selectedOption, selectedOption);
+                this.selectContainer.classList.add('active');
+    
+            }
         }
 
         selectedOption.appendChild(removeElement.cloneNode(true));
