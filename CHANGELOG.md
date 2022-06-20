@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.32...v1.5.0) (2022-06-20)
+
+
+### Features
+
+* handle value type object ([7c871d8](https://github.com/CoCreate-app/CoCreate-select/commit/7c871d8be3bdb9b8a133dfee87f47d37199b0c7f))
+
 ## [1.4.32](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.31...v1.4.32) (2022-06-19)
 
 
