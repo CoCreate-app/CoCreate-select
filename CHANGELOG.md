@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/CoCreate-app/CoCreate-select/compare/v1.5.0...v1.5.1) (2022-06-21)
+
+
+### Bug Fixes
+
+* bug rendering template for selected items on select read ([c22bb01](https://github.com/CoCreate-app/CoCreate-select/commit/c22bb016ea9dfb01ca640c07273e81d81f2970b1))
+
 # [1.5.0](https://github.com/CoCreate-app/CoCreate-select/compare/v1.4.32...v1.5.0) (2022-06-20)
 
 
