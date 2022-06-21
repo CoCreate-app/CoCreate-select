@@ -221,7 +221,7 @@ CoCreateSelect.prototype = {
 
                 selectedOption = template.cloneNode(true);
                 selectedOption.setAttribute('value', option);
-                selectedOption.classList.remove('template');
+                // selectedOption.classList.remove('template');
 
                 let els = selectedOption.querySelectorAll('[document_id]');
                 for (let el of els) {
@@ -254,19 +254,38 @@ CoCreateSelect.prototype = {
             selectedToOption.set(selectedOption, option);
             this.selectContainer.classList.add('active');
         } else {
+            value = JSON.stringify(option);
+
+            if (this.isSelected(value)) return;
             let template = this.selectContainer.querySelector('.template')
             if (template) {
                 selectedOption = template.cloneNode(true);
-                selectedOption.setAttribute('value', option);
                 selectedOption.classList.remove('template');
+                // if (!type) 
+                // let type = "data"; // get fetch name
+                // let renderId; // if render_id
+                // type = type || "data";
+		        // type = renderId ? `${renderId}.${type}` : type;
+                // if (!selectedOption.getAttribute('render-array')) {
+                //     selectedOption.setAttribute('render-array', type);
+                // }
+                // if (!selectedOption.getAttribute('render-key') && renderId) {
+                //     selectedOption.setAttribute('render-key', renderId);
+                // }
                 
-                value = JSON.stringify(option);
                 if (value) {
+                    value = decodeURIComponent(value)
                     let opt = this.selectContainer.querySelector(`[value='${value}']`)
                     if (opt)
                         opt.setAttribute('selected', "")
-                    selectedOption.setAttribute('value', value);
+                    // selectedOption.setAttribute('value', value);
                 }
+
+                CoCreate.render.data({
+                    elements: [selectedOption],
+                    data: {data: option}
+                });
+        
                 optionToSelected.set(selectedOption, selectedOption);
                 selectedToOption.set(selectedOption, selectedOption);
                 this.selectContainer.classList.add('active');
@@ -297,8 +316,8 @@ CoCreateSelect.prototype = {
             option.removeAttribute('selected');
             value = option.getAttribute('value');
         }
-
-        let selectedOption = this.selectedContainer.querySelector(`[value="${value}"]`);
+        value = decodeURIComponent(value)
+        let selectedOption = this.selectedContainer.querySelector(`[value='${value}']`);
         if (selectedOption) {
             optionToSelected.delete(option);
             selectedToOption.delete(selectedOption);
