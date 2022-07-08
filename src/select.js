@@ -221,7 +221,7 @@ CoCreateSelect.prototype = {
 
                 selectedOption = template.cloneNode(true);
                 selectedOption.setAttribute('value', option);
-                // selectedOption.classList.remove('template');
+                selectedOption.classList.remove('template');
 
                 let els = selectedOption.querySelectorAll('[document_id]');
                 for (let el of els) {
