@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/CoCreate-app/CoCreate-select/compare/v1.5.2...v1.5.3) (2022-07-25)
+
+
+### Bug Fixes
+
+* crud.read no longer needs param isFlat ([9aefd5d](https://github.com/CoCreate-app/CoCreate-select/commit/9aefd5d350ccfda5702b924b9fcda46bca9687fc))
+
 ## [1.5.2](https://github.com/CoCreate-app/CoCreate-select/compare/v1.5.1...v1.5.2) (2022-07-08)
 
 
