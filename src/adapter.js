@@ -19,7 +19,7 @@ export function initEvents() {
 
 			if (document_id === 'null')
 				messageClient.send({
-					broadcast_sender: false,
+					broadcastSender: false,
 					rooms: "",
 					message: "select",
 					data: {
