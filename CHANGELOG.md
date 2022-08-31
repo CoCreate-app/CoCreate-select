@@ -1,3 +1,11 @@
+## [1.5.4](https://github.com/CoCreate-app/CoCreate-select/compare/v1.5.3...v1.5.4) (2022-08-31)
+
+
+### Bug Fixes
+
+* getValue and setValue using HTMLElement.prototype ([8abee4e](https://github.com/CoCreate-app/CoCreate-select/commit/8abee4e32d645b514b9f88fca4248a887877db76))
+* rename variables isBroadcast and isBroadcastSender to broadcast and broadcastSender ([76dc1bd](https://github.com/CoCreate-app/CoCreate-select/commit/76dc1bd4da0028b3be20dce284096902f164bdb4))
+
 ## [1.5.3](https://github.com/CoCreate-app/CoCreate-select/compare/v1.5.2...v1.5.3) (2022-07-25)
 
 
