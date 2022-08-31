@@ -96,7 +96,7 @@ export function writeSelect(data, nameInDb) {
 
 export async function save(element, isStore = true) {
 	if (!isStore) return;
-	let value = element.getValue(element);
+	let value = element.getValue();
 	await crud.save(element, value);
 }
 
