@@ -131,6 +131,8 @@ CoCreateSelect.prototype = {
         read(selectContainer, this);
 
         selectContainer.getValue = (element) => {
+            if (!element)
+                element = this.selectContainer
             let value = Array.from(element.selectedOptions)
                 .map(selOption => selectedToOption.has(selOption) ? selectedToOption.get(selOption).getAttribute('value') : '');
             if (value.length <= 1)
