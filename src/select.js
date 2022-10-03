@@ -130,9 +130,8 @@ CoCreateSelect.prototype = {
         selectContainer.select = this;
         read(selectContainer, this);
 
-        selectContainer.getValue = (element) => {
-            if (!element)
-                element = this.selectContainer
+        selectContainer.getValue = () => {
+            let element = this.selectContainer
             let value = Array.from(element.selectedOptions)
                 .map(selOption => selectedToOption.has(selOption) ? selectedToOption.get(selOption).getAttribute('value') : '');
             if (value.length <= 1)
@@ -141,7 +140,8 @@ CoCreateSelect.prototype = {
             return value;
         }
 
-        selectContainer.setValue = (element, value) => {
+        selectContainer.setValue = (value) => {
+            let element = this.selectContainer
             let instance = container.get(element);
             if (Array.isArray(value))
                 value.forEach(option => instance.selectOption(option))
