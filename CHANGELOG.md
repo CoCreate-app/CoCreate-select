@@ -1,3 +1,11 @@
+## [1.5.15](https://github.com/CoCreate-app/CoCreate-select/compare/v1.5.14...v1.5.15) (2022-10-03)
+
+
+### Bug Fixes
+
+* getValue - if no element, element = this.selectContainer ([d13cdb0](https://github.com/CoCreate-app/CoCreate-select/commit/d13cdb0b8f818369ca6c971959b1bb6247e1c8b5))
+* getValue and setValue no longer require element ([9b419f1](https://github.com/CoCreate-app/CoCreate-select/commit/9b419f1daaf83fad48f4f901457996ff612957a1))
+
 ## [1.5.14](https://github.com/CoCreate-app/CoCreate-select/compare/v1.5.13...v1.5.14) (2022-10-02)
 
 
