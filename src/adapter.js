@@ -1,7 +1,13 @@
-import crud from '@cocreate/crud-client';
+import CRUD from '@cocreate/crud-client';
 import * as config from './config';
 import { container } from './select';
 import messageClient from '@cocreate/message-client';
+
+let crud
+if(CRUD && CRUD.default)
+	crud = CRUD.default
+else
+	crud = CRUD
 
 export function initEvents() {
 	document.addEventListener('dndsuccess', function(e) {
