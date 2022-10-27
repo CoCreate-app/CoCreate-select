@@ -51,10 +51,11 @@ export function initEvents() {
 	})
 
 	crud.listen('updateDocument', function(data) {
-		if (data.collection == 'crdt-transactions') 
+		let doc = data.data[0]
+		if (doc.collection == 'crdt-transactions') 
 			return
-		for (let key of Object.keys(data['data'])) {
-			writeSelect(data, key);
+		for (let key of Object.keys(doc)) {
+			writeSelect(doc, key);
 		}
 	})
 }
@@ -65,26 +66,27 @@ export async function read(selectContainer) {
 	if (!data) return;
 	let name = selectContainer.getAttribute('name');
 	
-	let options = data.data[name];
+	let options = data.data[0][name];
 
 	options = Array.isArray(options) ? options : [options];
 	options.forEach(op => instance.selectOption(op, true, undefined, false));
 }
 
-export function writeSelect(data, nameInDb) {
+export function writeSelect(doc, nameInDb) {
 	for (let [el, instance] of container) {
 		let {collection, document_id, name, isListen} = crud.getAttr(el);
 		if (isListen == "false") return;
-		if (data['collection'] == collection && data['document_id'] == document_id && nameInDb == name) {
+		
+		if (doc['collection'] == collection && doc['_id'] == document_id && nameInDb == name) {
 
-			if (data['data'][name]) {
+			if (doc[name]) {
 				
-				let options = data['data'][name];
+				let options = [name];
 				options = Array.isArray(options) ? options : [options];
 				options.forEach(op => instance.selectOption(op, true, undefined, false));
 				
 			}
-			else if (data['data'][name] === '')
+			else if (doc[name] === '')
 				instance.unselectAll();
 
 			break;
