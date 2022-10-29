@@ -51,7 +51,7 @@ export function initEvents() {
 	})
 
 	crud.listen('updateDocument', function(data) {
-		let doc = data.data[0]
+		let doc = data.document[0]
 		if (doc.collection == 'crdt-transactions') 
 			return
 		for (let key of Object.keys(doc)) {
@@ -66,7 +66,7 @@ export async function read(selectContainer) {
 	if (!data) return;
 	let name = selectContainer.getAttribute('name');
 	
-	let options = data.data[0][name];
+	let options = data.document[0][name];
 
 	options = Array.isArray(options) ? options : [options];
 	options.forEach(op => instance.selectOption(op, true, undefined, false));
