@@ -229,7 +229,7 @@ CoCreateSelect.prototype = {
                 for (let el of els) {
                     el.setAttribute('document_id', option)
                     let collection = el.getAttribute('collection')
-                    if (collection == '{{collection}}') {
+                    if (collection == '{{document.collection}}') {
                         el.setAttribute('collection', optionsCollection);
                     }
                 }
