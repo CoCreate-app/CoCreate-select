@@ -20,7 +20,7 @@ export function initEvents() {
 	})
 
 	document.addEventListener('input', function(e) {
-		let {name, document_id,	isRealtime} = crud.getAttr(e.target);
+		let {name, document_id,	isRealtime} = crud.getAttributes(e.target);
 		if (e.target.matches(config.containerSelector)) {
 
 			if (document_id === 'null')
@@ -74,7 +74,7 @@ export async function read(selectContainer) {
 
 export function writeSelect(doc, nameInDb) {
 	for (let [el, instance] of container) {
-		let {collection, document_id, name, isListen} = crud.getAttr(el);
+		let {collection, document_id, name, isListen} = crud.getAttributes(el);
 		if (isListen == "false") return;
 		
 		if (doc['collection'] == collection && doc['_id'] == document_id && nameInDb == name) {
