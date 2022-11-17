@@ -1,9 +1,15 @@
 import CoCreateSelect from "./select.js";
 import { initEvents } from "./adapter.js";
 import observer from '@cocreate/observer';
+import CRUD from '@cocreate/crud-client';
 import { containerSelector } from './config';
 import './index.css';
 
+let crud
+if(CRUD && CRUD.default)
+	crud = CRUD.default
+else
+	crud = CRUD
 
 function init() {
     let elements = document.querySelectorAll(containerSelector);
@@ -27,7 +33,7 @@ function initElement(element) {
 observer.init({
 	name: 'CoCreateSelectAttributes',
 	observe: ['attributes'],
-	attributeName: ['collection', 'document_id', 'name'],
+	attributeName: crud.getAttributeNames(['collection', 'document_id', 'name']),
 	target: 'cocreate-select',
 	callback: function(mutation) {
 		CoCreateSelect.init(mutation.target);
