@@ -1,3 +1,19 @@
+# [1.6.0](https://github.com/CoCreate-app/CoCreate-select/compare/v1.5.15...v1.6.0) (2022-11-21)
+
+
+### Bug Fixes
+
+* crud.getAttr renamed to crud.getAttributes ([c3fb8dc](https://github.com/CoCreate-app/CoCreate-select/commit/c3fb8dc89dc7ceadfaad0ffa63eb7b2699d72001))
+* data response from server is now an array of objects ([919fa84](https://github.com/CoCreate-app/CoCreate-select/commit/919fa84a997f3c6e8e27de58467c6b5659c9a1e8))
+* renamed {{data.key}} to {{document.key}} ([6922afa](https://github.com/CoCreate-app/CoCreate-select/commit/6922afacc07ba415e4e5c90e6fd206a45bfbfd39))
+* renamed data.data to data.document ([19e82c2](https://github.com/CoCreate-app/CoCreate-select/commit/19e82c236f4b85e4cbe0c1e03e29189bab88dc7a))
+* update crud functions to receive an array of objects as the response ([e9de33e](https://github.com/CoCreate-app/CoCreate-select/commit/e9de33e60c94c9638058c03fd41976f1e0d46064))
+
+
+### Features
+
+* added crud.getAttributeNames to observer attributeName param, this will allow observing custom attributes ([404aa81](https://github.com/CoCreate-app/CoCreate-select/commit/404aa81c177e8c76c412cc1eea9dba62697af08b))
+
 ## [1.5.15](https://github.com/CoCreate-app/CoCreate-select/compare/v1.5.14...v1.5.15) (2022-10-03)
 
 
