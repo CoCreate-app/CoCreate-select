@@ -1,3 +1,10 @@
+## [1.6.5](https://github.com/CoCreate-app/CoCreate-select/compare/v1.6.4...v1.6.5) (2022-11-22)
+
+
+### Bug Fixes
+
+* apply src: {{source}} to CoCreate.config ([0ae316e](https://github.com/CoCreate-app/CoCreate-select/commit/0ae316e362c5a6f8bff998724787868e07e732b3))
+
 ## [1.6.4](https://github.com/CoCreate-app/CoCreate-select/compare/v1.6.3...v1.6.4) (2022-11-21)
 
 
