@@ -1,3 +1,10 @@
+## [1.6.6](https://github.com/CoCreate-app/CoCreate-select/compare/v1.6.5...v1.6.6) (2022-11-22)
+
+
+### Bug Fixes
+
+* workflow docs ([c0e0c88](https://github.com/CoCreate-app/CoCreate-select/commit/c0e0c88ea7eae90844203728715b1172c61ab73d))
+
 ## [1.6.5](https://github.com/CoCreate-app/CoCreate-select/compare/v1.6.4...v1.6.5) (2022-11-22)
 
 
