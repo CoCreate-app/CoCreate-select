@@ -1,15 +1,9 @@
 import CoCreateSelect from "./select.js";
 import { initEvents } from "./adapter.js";
 import observer from '@cocreate/observer';
-import CRUD from '@cocreate/crud-client';
+import crud from '@cocreate/crud-client';
 import { containerSelector } from './config';
 import './index.css';
-
-let crud
-if (CRUD && CRUD.default)
-	crud = CRUD.default
-else
-	crud = CRUD
 
 function init() {
     let elements = document.querySelectorAll(containerSelector);
