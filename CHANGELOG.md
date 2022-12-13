@@ -1,3 +1,10 @@
+## [1.6.23](https://github.com/CoCreate-app/CoCreate-select/compare/v1.6.22...v1.6.23) (2022-12-13)
+
+
+### Bug Fixes
+
+* removed un used devDependencies ([f1ca5ae](https://github.com/CoCreate-app/CoCreate-select/commit/f1ca5aef469d04cccefbf6e3d3d5911727ef0208))
+
 ## [1.6.22](https://github.com/CoCreate-app/CoCreate-select/compare/v1.6.21...v1.6.22) (2022-12-13)
 
 
