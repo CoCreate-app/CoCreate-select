@@ -1,3 +1,10 @@
+## [1.6.24](https://github.com/CoCreate-app/CoCreate-select/compare/v1.6.23...v1.6.24) (2022-12-15)
+
+
+### Bug Fixes
+
+* add missing dev dependency style-loader ([a48a55f](https://github.com/CoCreate-app/CoCreate-select/commit/a48a55fd06e526da3bfe351d4399039d9c0a8bb5))
+
 ## [1.6.23](https://github.com/CoCreate-app/CoCreate-select/compare/v1.6.22...v1.6.23) (2022-12-13)
 
 

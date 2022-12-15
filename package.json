@@ -1,6 +1,6 @@
 {
   "name": "@cocreate/select",
-  "version": "1.6.23",
+  "version": "1.6.24",
   "description": "A simple select component in vanilla javascript. Easily configured using HTML5 attributes and/or JavaScript API.",
   "keywords": [
     "select",
