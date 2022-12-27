@@ -1,307 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>Select | CoCreateJS</title>
+    <head>
+        <title>Select | CoCreateJS</title>
 
-  <!-- CoCreate Favicon -->
-  <link rel="icon" href="https://cdn.cocreate.app/favicon.ico" type="image/ico" sizes="16x16">
-  <!-- CoCreate CSS CDN -->
-  <!--<link rel="stylesheet" href="https://cdn.cocreate.app/latest/CoCreate.min.css" type="text/css"/>-->
-</head>
+        <!-- CoCreate Favicon -->
+        <link rel="icon" href="https://cdn.cocreate.app/favicon.ico" type="image/ico" sizes="16x16">
+        <!-- CoCreate CSS CDN -->
+        <!--<link rel="stylesheet" href="https://cdn.cocreate.app/latest/CoCreate.min.css" type="text/css"/>-->
+    </head>
 
-<body>
-  
-  <select id="a">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-  </select>
-  <select id="b" multiple>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-  </select>
-  
-  <form class="margin:20px" collection="apples2">
-				<cocreate-select class="floating-label " sortable placeholder="Primary View" collection="test" document_id="5e8ff00e8c3af32574df80cb" name="test1">
-					<input placeholder="Search" template_id="test1">
-					<cc-options fetch-collection="files" template_id="test1" class="overflow:auto" fetch-limit="10">
-						<cc-option class="template margin:40px" template_id="test1" value='{{document._id}}' document_id="{{document._id}}" render-array="data">
-							<h3>{{document.name}}</h3>
-							<h5>{{document._id}}</h5>
-						</cc-option>
-					</cc-options>
-				</cocreate-select>
-    <cocreate-select class="floating-label " sortable tabindex="0" collection="test" document_id="5e8ff00e8c3af32574df80cb" name="selectField0" placeholder="Single Document">
-
-      <input placeholder="Search">
-
-      <cc-option value='option1' selected>option 1</cc-option>
-      <cc-option value='option2'>option 2</cc-option>
-
-    </cocreate-select>
+    <body>
     
-    <cocreate-select class="floating-label " sortable tabindex="0" collection="test" document_id="5e8ff00e8c3af32574df80cb" name="selectField1" placeholder="Single Document" multiple>
+    <select id="a">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <select id="b" multiple>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    
+    <form class="margin:20px" collection="apples2">
+        <cocreate-select class="floating-label " sortable placeholder="Primary View" collection="test" document_id="5e8ff00e8c3af32574df80cb" name="test1">
+            <input placeholder="Search" template_id="test1">
+            <cc-options fetch-collection="files" template_id="test1" class="overflow:auto" fetch-limit="10">
+                <cc-option class="template margin:40px" template_id="test1" value='{{document._id}}' document_id="{{document._id}}" render-array="data">
+                    <h3>{{document.name}}</h3>
+                    <h5>{{document._id}}</h5>
+                </cc-option>
+            </cc-options>
+        </cocreate-select>
 
-      <input placeholder="Search">
+        <cocreate-select class="floating-label " sortable tabindex="0" collection="test" document_id="5e8ff00e8c3af32574df80cb" name="selectField0" placeholder="Single Document">
+            <input placeholder="Search">
+            <cc-option value='option1' selected>option 1</cc-option>
+            <cc-option value='option2'>option 2</cc-option>
+        </cocreate-select>
+        
+        <cocreate-select class="floating-label " sortable tabindex="0" collection="test" document_id="5e8ff00e8c3af32574df80cb" name="selectField1" placeholder="Single Document" multiple>
 
-      <cc-option value='option1' selected>option 1</cc-option>
-      <cc-option value='option2'>option 2</cc-option>
+            <input placeholder="Search">
 
-    </cocreate-select>
-    <cocreate-select class="floating-label " sortable tabindex="0" collection="test" document_id="5e8ff00e8c3af32574df80cb" name="selectField1" placeholder="Single Document" multiple>
+            <cc-option value='option1' selected>option 1</cc-option>
+            <cc-option value='option2'>option 2</cc-option>
 
-      <input placeholder="Search">
+        </cocreate-select>
+        
+        <cocreate-select class="floating-label " sortable tabindex="0" collection="test" document_id="5e8ff00e8c3af32574df80cb" name="selectField1" placeholder="Single Document" multiple>
 
-      <cc-options>
-        <cc-option value='option1' selected>option 1</cc-option>
-        <cc-option value='option2'>option 2</cc-option>
-      </cc-options>
+            <input placeholder="Search">
 
-    </cocreate-select>
+            <cc-options>
+                <cc-option value='option1' selected>option 1</cc-option>
+                <cc-option value='option2'>option 2</cc-option>
+            </cc-options>
 
-<!--    <cocreate-select class="floating-label " sortable tabindex="0" collection="test" document_id="5e8ff00e8c3af32574df80cb" name="selectField1" data-limit_option="3" placeholder="Single Document" multiple>-->
+        </cocreate-select>
 
-<!--      <input placeholder="Search" template_id="option0">-->
+    </form>
 
-<!--      <cc-options fetch-collection="users" template_id="option0" class="options overflow:auto">-->
-<!--        <cc-option class="option template" value='option1' template_id="option0">-->
-<!--          <h3 name="name" value="{{document.name}}">No Name</h3>-->
-<!--          <h5 name="_id" value="{{document._id}}">id</h5>-->
-<!--        </cc-option>-->
-<!--      </cc-options>-->
-
-<!--    </cocreate-select>-->
-
-
-<!--    <div class="width:50% margin:0_5px">-->
-<!--      <div class="floating-label_field active"><input id="margin-left" class="floating-label z-index:0 text_color" placeholder="" attributes="classstyle" attributes_property="margin-left" collection="builder" document_id="null" active="" name="margin-left-null" attributes_target="#canvas;[eid=null]">-->
-<!--        <div-->
-<!--          class="floating-label_outline">-->
-<!--          <div class="floating-label_leading"></div>-->
-<!--          <div class="floating-label_notch"><label class="floating-label_label">margin-left:</label></div>-->
-<!--          <div class="floating-label_trailing"></div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="position:relative width:40px top:-28px right:8px float:right cursor:pointer" style="-->
-<!--  /* background: red; */-->
-<!--  /* width: 20px !important; */-->
-<!--  /* height: 20px !important; */-->
-<!--">-->
-<!--      <cocreate-select class="styleunit remove-none border:none padding:0 min-height:auto!important open" attributes="attributes_unit" attributes_target="#margin-left" style="-->
-<!--  background: red;-->
-<!--">-->
-<!--        <selected></selected>-->
-<!--        <ul class="options overflow:auto options z-index:7" fetch-collection="modules" filter-value="5f94ff945412e75f9b414a3e" filter-name="_id" filter-operator="$eq" fetch-name="units" template_id="units1">-->
-<!--          <cc-option class="option clone_units" template_id="units1" value="px" templateid="units1" render-array="units"><span value="px">px</span></cc-option>-->
-<!--          <cc-option class="option clone_units" template_id="units1" value="%" templateid="units1" render-array="units"><span value="%">%</span></cc-option>-->
-<!--          <cc-option class="option clone_units" template_id="units1" value="em" templateid="units1" render-array="units"><span value="em">em</span></cc-option>-->
-<!--          <cc-option class="option clone_units" template_id="units1" value="ch" templateid="units1" render-array="units"><span value="ch">ch</span></cc-option>-->
-<!--          <cc-option class="option clone_units" template_id="units1" value="vw" templateid="units1" render-array="units"><span value="vw">vw</span></cc-option>-->
-<!--          <cc-option class="option clone_units" template_id="units1" value="vh" templateid="units1" render-array="units"><span value="vh">vh</span></cc-option>-->
-<!--          <cc-option class="option clone_units" template_id="units1" value="auto" templateid="units1" render-array="units"><span value="auto">auto</span></cc-option>-->
-<!--          <cc-option class="template option" template_id="units1" value="{{units.--}}"><span value="{{units.--}}">Unit Name</span></cc-option>-->
-<!--        </ul>-->
-<!--      </cocreate-select>-->
-<!--    </div>-->
-<!--    </div>-->
-
-    <!-------------- Multiple Documents -------------->
-
-    <!--    <cocreate-select class="floating-label " sortable multiple -->
-    <!--      collection="test" -->
-    <!--      document_id="5e9531b3a762440eed55c2ed" -->
-    <!--      name="selectField1"-->
-    <!--      data-limit_option="3"-->
-    <!--      placeholder="multiple Document">-->
-
-    <!--      <input placeholder="Search" template_id="option1">-->
-
-    <!--      <ul fetch-collection="users" -->
-    <!--          template_id="option1" -->
-    <!--          class="options overflow:auto">-->
-    <!--				<li class="option template" template_id="option1" value='{{document._id}}' document_id="{{document._id}}" render-array="data">-->
-    <!--				  <h3 name="name" value="{{document.name}}">No Name</h3>-->
-    <!--				  <h5 name="_id" value="{{document._id}}"></h5>-->
-    <!--				</li>-->
-    <!--      </ul>-->
-
-    <!--    </cocreate-select>-->
-
-    <!-------------- Single Options -------------->
-    <!--<cocreate-select sortable class="floating-label" -->
-    <!--  collection="test" -->
-    <!--  document_id="5e8ff00e8c3af32574df80cb" -->
-    <!--  name="selectField4" -->
-    <!--  placeholder="Single Options" active>-->
-
-    <!--  <input placeholder="Search" search_id="search_01" search-selector=".option">-->
-
-    <!--  <ul class="options overflow:auto" search_id="search_01">-->
-    <!--<li class="option option"  value="value 1">-->
-    <!--  <h3 >value 1</h3>-->
-    <!--</li>-->
-    <!--<li class="option option"  value="value 2">-->
-    <!--  <h3 >value 2</h3>-->
-    <!--</li>-->
-    <!--<li class="option option"  value="value 3">-->
-    <!--  <h3 >sss</h3>-->
-    <!--</li>-->
-    <!--<li class="option option"  value="value 3">-->
-    <!--  <h3 >value 3</h3>-->
-    <!--</li>-->
-    <!--  </ul>-->
-
-    <!--</cocreate-select>-->
-
-
-
-    <!--  <cocreate-select sortable class="floating-label" -->
-    <!--  collection="test" -->
-    <!--  document_id="5e8ff00e8c3af32574df80cb" -->
-    <!--  name="selectField4" -->
-    <!--  placeholder="Single Options" active>-->
-
-    <!--  <input placeholder="Search" search_id="search_01" search-selector=".option">-->
-
-
-    <!--<Option   value="value 1">-->
-    <!--  <h3 >value 1</h3> <span class="remove">x</span></li>	-->
-    <!--</Option>-->
-    <!--<Option   value="value 2">-->
-    <!--  <h3 >value 2</h3> <span class="remove">x</span></li>	-->
-    <!--</Option>-->
-    <!--<option  value="value 3">-->
-    <!-- sss <span class="remove">x</span></li>	-->
-    <!--</option>-->
-    <!--<option  value="value 3">-->
-    <!-- value 3 <span class="remove">x</span></li>	-->
-    <!--</option>-->
-
-
-    <!--</cocreate-select>-->
-
-    <!--<cocreate-select sortable class="floating-label" -->
-    <!--  collection="test" -->
-    <!--  document_id="5e8ff00e8c3af32574df80cb" -->
-    <!--  name="selectField4" -->
-    <!--  placeholder="Single Options" active>-->
-
-    <!--  <input placeholder="Search" search_id="search_01" search-selector=".option">-->
-
-    <!--  <ul class="options height:0" fetch-collection="test" template_id="newtest">-->
-
-    <!--<ccoption class="template" template_id="newtest" value="{data.value}">-->
-    <!--  <h3>{data.value}</h3>-->
-    <!--  <div >sssssssss</div>-->
-    <!--</ccoption>-->
-
-    <!--  </ul>-->
-
-    <!--</cocreate-select>-->
-
-
-    <!-------------- Multiples -------------->
-    <!--    <cocreate-select class="floating-label " sortable multiple-->
-    <!--      realtime="false" -->
-    <!--      collection="test" -->
-    <!--      document_id="5e9531b3a762440eed55c2ed"  -->
-    <!--      name="selectField2"-->
-    <!--      placeholder="Multiple Options"-->
-    <!--      dats-option_limit="5">-->
-
-    <!--      <input placeholder="Search" search_id="search_02" search-selector=".option">-->
-
-    <!--      <ul class="options overflow:auto" search_id="search_02">-->
-    <!--				<li class="option" value="value 1">-->
-    <!--				  <h3 >value 1</h3>-->
-    <!--				</li>-->
-    <!--				<li class="option" value="value 2">-->
-    <!--				  <h3 >value 2</h3>-->
-    <!--				</li> -->
-    <!--				<li class="option" value="value 3">-->
-    <!--				  <h3 >value 3</h3>-->
-    <!--				</li>-->
-    <!--      </ul>-->
-
-    <!--    </cocreate-select>-->
-
-    <!-------------- Fetch array string -------------->
-    <!--    <cocreate-select sortable class="floating-label" -->
-    <!--      name="selectField5" -->
-    <!--      collection="test" -->
-    <!--      document_id="5e8ff00e8c3af32574df80cb"  -->
-    <!--      placeholder="Fetch array string" -->
-    <!--      data-limit_option="3" multiple>-->
-
-    <!--      <input placeholder="Search" search_id="search_03" search-selector=".option">-->
-
-    <!--      <ul class="options overflow:auto"-->
-    <!--        fetch-collection="test" -->
-    <!--        filter-value="5e9531b3a762440eed55c2ed" -->
-    <!--        filter-name="_id"-->
-    <!--        filter-operator="$eq"-->
-    <!--        fetch-name="selectField2" -->
-    <!--        template_id="template5" -->
-    <!--        search_id="search_03"-->
-    <!--        pass_to="me1234">-->
-    <!--  			<li class="template option" template_id="template5"  pass_id="me1234" value="{{selectField2.--}}">-->
-    <!--  			  <h3 pass_id="me1234" value="{{selectField2.--}}">Organization Name</h3>-->
-    <!--  			</li>-->
-    <!--      </ul>-->
-    <!--    </cocreate-select>-->
-
-    <!-------------- Fetch array id -------------->
-    <!--    <cocreate-select sortable class="floating-label" -->
-    <!--      name="selectField6" -->
-    <!--      collection="test" -->
-    <!--      document_id="5e8ff00e8c3af32574df80cb"-->
-    <!--      placeholder="Fetch array _id" -->
-    <!--      data-limit_option="3" multiple>-->
-
-    <!--      <input placeholder="Search" search_id="search_04" search-selector=".option">-->
-
-    <!--      <ul class="options overflow:auto"-->
-    <!--        fetch-collection="test" -->
-    <!--        filter-value="5e9531b3a762440eed55c2ed" -->
-    <!--        filter-name="_id"-->
-    <!--        filter-operator="$eq"-->
-    <!--        fetch-name="selectField1"-->
-    <!--        template_id="template6" -->
-    <!--        search_id="search_04">-->
-    <!--  			<li class="template option" template_id="template6" value="{{selectField1.--}}" document_id="{{selectField1.--}}" >-->
-    <!--  			  <h3 collection="users" document_id="{{selectField1.--}}" name="name" pass_id="me1234" >Organization Name</h3>-->
-    <!--  			  <h5 collection="users" document_id="{{selectField1.--}}" name="_id" pass_id="me1234" >id</h5>-->
-    <!--  			</li>-->
-    <!--      </ul>-->
-    <!--    </cocreate-select>-->
-
-    <!-------------- Collection Select -------------->
-    <!--    <cocreate-select class="floating-label" collection="test" document_id="5e8ff00e8c3af32574df80cb" name="selectField7" placeholder="Collection Select" multiple>-->
-    <!--      <input placeholder="Search" search_id="search_05" search-selector=".option">-->
-    <!--      <ul -->
-    <!--        fetch-collection="" -->
-    <!--        filter-value-type="collection"-->
-    <!--        template_id="collection-list" -->
-    <!--        class="template-wrapper options overflow:auto" -->
-    <!--        pass_to="me1234"-->
-    <!--        search_id="search_05">-->
-    <!--				<li class="option template" template_id="collection-list" value="{{document.name}}" pass_id="me1234" render-array="data">-->
-    <!--				  <a pass_to="document-select" pass_id="me1234">-->
-    <!--				    <h5 name="name" pass_id="me1234" value="{{document.name}}"></h5>-->
-    <!--				  </a>-->
-    <!--				</li>-->
-    <!--      </ul>-->
-    <!--    </cocreate-select>-->
-
-
-
-
-  </form>
-
-      <!--<script src="../dist/CoCreate-select.js"></script>-->
-	    <script src="https://cdn.cocreate.app/latest/CoCreate.min.js" ></script>
-</body>
+        <!--<script src="../dist/CoCreate-select.js"></script>-->
+        <script src="https://cdn.cocreate.app/latest/CoCreate.min.js" ></script>
+    </body>
 
 </html>
