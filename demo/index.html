@@ -27,7 +27,7 @@
         <cocreate-select class="floating-label " sortable placeholder="Primary View" collection="test" document_id="5e8ff00e8c3af32574df80cb" name="test1">
             <input placeholder="Search" template_id="test1">
             <cc-options fetch-collection="files" template_id="test1" class="overflow:auto" fetch-limit="10">
-                <cc-option class="template margin:40px" template_id="test1" value='{{document._id}}' document_id="{{document._id}}" render-array="data">
+                <cc-option template="test1" class="margin:40px" value='{{document._id}}' document_id="{{document._id}}" render-array="data">
                     <h3>{{document.name}}</h3>
                     <h5>{{document._id}}</h5>
                 </cc-option>
