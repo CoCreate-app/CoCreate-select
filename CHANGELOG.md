@@ -1,3 +1,11 @@
+## [1.8.2](https://github.com/CoCreate-app/CoCreate-select/compare/v1.8.1...v1.8.2) (2023-01-06)
+
+
+### Bug Fixes
+
+* bump dependencies, worklow [@v3](https://github.com/v3) ([2ccb1a9](https://github.com/CoCreate-app/CoCreate-select/commit/2ccb1a9bd8ffca16512b92ab9a9bfb2b0c5598b8))
+* edit in github btn styles ([2dbca90](https://github.com/CoCreate-app/CoCreate-select/commit/2dbca901446a5ab5c3d0e4c88bc814ce52352c01))
+
 ## [1.8.1](https://github.com/CoCreate-app/CoCreate-select/compare/v1.8.0...v1.8.1) (2023-01-05)
 
 
