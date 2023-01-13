@@ -1,3 +1,11 @@
+## [1.8.5](https://github.com/CoCreate-app/CoCreate-select/compare/v1.8.4...v1.8.5) (2023-01-13)
+
+
+### Bug Fixes
+
+* bump dependencies ([6e2bfa6](https://github.com/CoCreate-app/CoCreate-select/commit/6e2bfa694d76fa3939244c83235eb22b1c83923b))
+* updated draggedEl and droppedEl ([27c4579](https://github.com/CoCreate-app/CoCreate-select/commit/27c4579d46f91dbae460cd853e00248248573fbe))
+
 ## [1.8.4](https://github.com/CoCreate-app/CoCreate-select/compare/v1.8.3...v1.8.4) (2023-01-10)
 
 
