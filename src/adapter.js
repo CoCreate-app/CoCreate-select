@@ -5,10 +5,10 @@ import messageClient from '@cocreate/message-client';
 
 export function initEvents() {
 	document.addEventListener('dndsuccess', function(e) {
-		const { dropedEl, dragedEl } = e.detail;
-		if (dropedEl.matches(config.containerSelector)) {
-			container.get(dropedEl).__fireSelectedEvent({
-				selectContainer: dropedEl
+		const { droppedEl, draggedEl } = e.detail;
+		if (droppedEl.matches(config.containerSelector)) {
+			container.get(droppedEl).__fireSelectedEvent({
+				selectContainer: droppedEl
 			})
 		}
 	})
