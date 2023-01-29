@@ -1,6 +1,6 @@
 {
   "name": "@cocreate/select",
-  "version": "1.8.6",
+  "version": "1.8.7",
   "description": "A simple select component in vanilla javascript. Easily configured using HTML5 attributes and/or JavaScript API.",
   "keywords": [
     "select",
@@ -20,7 +20,9 @@
     "html5-framework",
     "javascript-framework"
   ],
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "npx webpack --config webpack.config.js",
     "build": "NODE_ENV=production npx webpack --config webpack.config.js",
@@ -34,7 +36,9 @@
   },
   "author": "CoCreate LLC",
   "license": "MIT",
-  "bugs": { "url": "https://github.com/CoCreate-app/CoCreate-select/issues" },
+  "bugs": {
+    "url": "https://github.com/CoCreate-app/CoCreate-select/issues"
+  },
   "homepage": "https://cocreate.app/docs/select",
   "funding": {
     "type": "GitHub Sponsors ❤",
