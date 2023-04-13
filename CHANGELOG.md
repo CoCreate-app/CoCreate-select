@@ -1,3 +1,10 @@
+## [1.9.7](https://github.com/CoCreate-app/CoCreate-select/compare/v1.9.6...v1.9.7) (2023-04-13)
+
+
+### Bug Fixes
+
+* if condition ([d6f17fa](https://github.com/CoCreate-app/CoCreate-select/commit/d6f17fa6554c8eb780f948afe5dfebbfd6cd2957))
+
 ## [1.9.6](https://github.com/CoCreate-app/CoCreate-select/compare/v1.9.5...v1.9.6) (2023-04-11)
 
 
