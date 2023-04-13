@@ -57,13 +57,14 @@ export function initEvents() {
 export async function read(selectContainer) {
 	let instance = selectContainer.select;
 	let data = await crud.read(selectContainer);
-	if (!data) return;
-	let name = selectContainer.getAttribute('name');
-	
-	let options = data.document[0][name];
+	if (data && data.document && data.document[0]) {
+		let name = selectContainer.getAttribute('name');
+		
+		let options = data.document[0][name];
 
-	options = Array.isArray(options) ? options : [options];
-	options.forEach(op => instance.selectOption(op, true, undefined, false));
+		options = Array.isArray(options) ? options : [options];
+		options.forEach(op => instance.selectOption(op, true, undefined, false));
+	}
 }
 
 export function writeSelect(doc, nameInDb) {
