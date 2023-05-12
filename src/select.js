@@ -32,7 +32,7 @@ const removeElement = parse(removeMarkup);
 document.addEventListener('click', function(e) {
     let target = e.target;
     // let isOpened;
-    //todo:
+    //TODO:
     // go up until you reach containerSelector or add same function to every element matches containerSelector: this way click event buble up and whenever 
     // the difference is the first one little ram improve and second one a little cpu improve
     // and check if it's in container
@@ -242,7 +242,7 @@ CoCreateSelect.prototype = {
                 selectedOption.setAttribute('value', option);
                 selectedOption.innerText = innerText ? innerText : option;
             }
-            // todo: when an option is not found. just use option itself and remvove these lines
+            // TODO: when an option is not found. just use option itself and remvove these lines
             value = option;
             optionToSelected.set(selectedOption, selectedOption);
             selectedToOption.set(selectedOption, selectedOption);
