@@ -1,3 +1,10 @@
+## [1.10.19](https://github.com/CoCreate-app/CoCreate-select/compare/v1.10.18...v1.10.19) (2023-06-11)
+
+
+### Bug Fixes
+
+* @cocreate/cli moved to dependencies ([aa50392](https://github.com/CoCreate-app/CoCreate-select/commit/aa5039205d283d5b3540215b9ca553a37fff989d))
+
 ## [1.10.18](https://github.com/CoCreate-app/CoCreate-select/compare/v1.10.17...v1.10.18) (2023-06-11)
 
 
