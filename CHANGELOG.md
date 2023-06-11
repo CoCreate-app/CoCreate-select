@@ -1,3 +1,10 @@
+## [1.10.17](https://github.com/CoCreate-app/CoCreate-select/compare/v1.10.16...v1.10.17) (2023-06-11)
+
+
+### Bug Fixes
+
+* renamed hosts to host. the value can be a string or an array of strings ([414b43a](https://github.com/CoCreate-app/CoCreate-select/commit/414b43a12b7dce6b5b9f6a25c4ae8a5c8a7abcf7))
+
 ## [1.10.16](https://github.com/CoCreate-app/CoCreate-select/compare/v1.10.15...v1.10.16) (2023-06-10)
 
 
