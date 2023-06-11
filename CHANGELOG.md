@@ -1,3 +1,10 @@
+## [1.10.25](https://github.com/CoCreate-app/CoCreate-select/compare/v1.10.24...v1.10.25) (2023-06-11)
+
+
+### Bug Fixes
+
+* testing workflow ([cfa8e88](https://github.com/CoCreate-app/CoCreate-select/commit/cfa8e8832ca8dd0dd66a7f07f2f1856cb54891bb))
+
 ## [1.10.24](https://github.com/CoCreate-app/CoCreate-select/compare/v1.10.23...v1.10.24) (2023-06-11)
 
 
