@@ -1,3 +1,10 @@
+## [1.10.20](https://github.com/CoCreate-app/CoCreate-select/compare/v1.10.19...v1.10.20) (2023-06-11)
+
+
+### Bug Fixes
+
+* postintall error ([2d907c1](https://github.com/CoCreate-app/CoCreate-select/commit/2d907c1ddf1f261efb97fbac24e062a93827bab7))
+
 ## [1.10.19](https://github.com/CoCreate-app/CoCreate-select/compare/v1.10.18...v1.10.19) (2023-06-11)
 
 
