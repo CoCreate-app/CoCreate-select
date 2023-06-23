@@ -1,5 +1,5 @@
 /*global CustomEvent*/
-import {read} from "./adapter.js";
+import { read } from "./adapter.js";
 import selectedAtt from './selectedAtt';
 import optionsAtt from './optionsAtt';
 import selectedOptionsAtt from './selectedOptionsAtt';
@@ -14,7 +14,7 @@ import {
     selectedTagName,
     removeMarkup
 }
-from './config';
+    from './config';
 
 selectedAtt((el) => {
     return el.matches(`${optionsSelector} > ${optionSelector}, ${addAttribute(containerSelector, '>' + optionSelector)}`)
@@ -29,7 +29,7 @@ export const selectedToOption = new Map();
 const removeElement = parse(removeMarkup);
 
 
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     let target = e.target;
     // let isOpened;
     //TODO:
@@ -65,18 +65,18 @@ function CoCreateSelect(c) {
 
 CoCreateSelect.prototype = {
 
-    isMultiple: function() {
+    isMultiple: function () {
         return this.selectContainer.hasAttribute('multiple') ? true : false;
     },
 
-    init: function(selectContainer) {
+    init: function (selectContainer) {
         if (container.has(selectContainer)) {
             read(selectContainer, selectContainer.select);
             return;
         }
 
         this.selectContainer = selectContainer;
-        
+
         this.selectedContainer = selectContainer.querySelector(`:scope > ${selectedTagName}`);
         if (!this.selectedContainer) {
             this.selectedContainer = document.createElement(selectedTagName);
@@ -92,7 +92,7 @@ CoCreateSelect.prototype = {
 
         if (this.input) {
 
-            this.input.addEventListener('keydown', function(e) {
+            this.input.addEventListener('keydown', function (e) {
                 let keyCode = e.keyCode;
                 if (keyCode == 13) {
                     e.preventDefault();
@@ -114,7 +114,7 @@ CoCreateSelect.prototype = {
             })
         }
 
-        this.selectContainer.addEventListener('click', function(e) {
+        this.selectContainer.addEventListener('click', function (e) {
             let el = e.target;
 
             while (!el.matches(optionSelector)) {
@@ -125,7 +125,7 @@ CoCreateSelect.prototype = {
             if (!selectedToOption.has(el) && !optionToSelected.has(el))
                 self.selectOption(el, true);
         });
-        
+
         container.set(selectContainer, this);
         selectContainer.select = this;
         read(selectContainer, this);
@@ -153,14 +153,14 @@ CoCreateSelect.prototype = {
 
     },
 
-    open: function() {
+    open: function () {
         this.selectContainer.classList.add('open');
         if (this.input)
             this.input.focus();
         this.selectContainer.dispatchEvent(new CustomEvent('CoCreateSelect-open'));
     },
 
-    close: function() {
+    close: function () {
         if (this.input)
             this.input.value = ""
         this.selectContainer.classList.remove('open');
@@ -175,11 +175,11 @@ CoCreateSelect.prototype = {
     // getValue: function(option, closeOnMultiple = true, innerText, doEvent = true) {
     //   return this.selectOption(option, closeOnMultiple = true, innerText, doEvent = true);
     // },
-    getOptions: function() {
+    getOptions: function () {
         return this.selectContainer.querySelectorAll(optionSelector);
     },
 
-    unselectAll: function(domEvent) {
+    unselectAll: function (domEvent) {
         if (this.selectedContainer.children.length)
             for (let el of this.selectedContainer.children)
                 if (selectedToOption.has(el))
@@ -187,15 +187,15 @@ CoCreateSelect.prototype = {
         domEvent && this.__fireSelectedEvent({ unselectOption: 'all' })
     },
 
-    getOptionCounterpart: function(optionStr) {
+    getOptionCounterpart: function (optionStr) {
         return this.selectContainer.querySelector(`${optionSelector.trim()}[value='${optionStr}']`);
     },
 
-    isSelected: function(optionsStr) {
+    isSelected: function (optionsStr) {
         return this.selectedContainer.querySelector(`[value='${optionsStr}']`)
     },
 
-    validateSelect: function() {
+    validateSelect: function () {
         if (this.isMultiple()) {
             let limit = this.selectContainer.getAttribute('data-limit_option');
             if (limit && this.selectedContainer.children.length >= limit)
@@ -206,7 +206,7 @@ CoCreateSelect.prototype = {
             this.unselectAll();
     },
 
-    selectOption: function(option, closeOnMultiple = true, innerText, doEvent = true) {
+    selectOption: function (option, closeOnMultiple = true, innerText, doEvent = true) {
         if (!option) return;
         let selectedOption, value;
         if (typeof option == 'string') {
@@ -227,7 +227,7 @@ CoCreateSelect.prototype = {
                     selectedOption.classList.remove('template');
                     selectedOption.removeAttribute('template');
                 }
-                
+
                 let els = selectedOption.querySelectorAll('[document_id]');
                 for (let el of els) {
                     el.setAttribute('document_id', option)
@@ -248,7 +248,7 @@ CoCreateSelect.prototype = {
             selectedToOption.set(selectedOption, selectedOption);
             this.selectContainer.classList.add('active');
         }
-        else if (option instanceof Element && option.nodeType == 1){
+        else if (option instanceof Element && option.nodeType == 1) {
             value = option.getAttribute('value');
             if (this.isSelected(value)) return;
             this.validateSelect()
@@ -271,14 +271,14 @@ CoCreateSelect.prototype = {
                 // let type = "data"; // get fetch name
                 // let renderId; // if render_id
                 // type = type || "data";
-		        // type = renderId ? `${renderId}.${type}` : type;
-                // if (!selectedOption.getAttribute('render-array')) {
-                //     selectedOption.setAttribute('render-array', type);
+                // type = renderId ? `${renderId}.${type}` : type;
+                // if (!selectedOption.getAttribute('render')) {
+                //     selectedOption.setAttribute('render', type);
                 // }
                 // if (!selectedOption.getAttribute('render-key') && renderId) {
                 //     selectedOption.setAttribute('render-key', renderId);
                 // }
-                
+
                 if (value) {
                     value = decodeURIComponent(value)
                     let opt = this.selectContainer.querySelector(`[value='${value}']`)
@@ -289,13 +289,13 @@ CoCreateSelect.prototype = {
 
                 CoCreate.render.data({
                     elements: [selectedOption],
-                    data: {data: option}
+                    data: { data: option }
                 });
-        
+
                 optionToSelected.set(selectedOption, selectedOption);
                 selectedToOption.set(selectedOption, selectedOption);
                 this.selectContainer.classList.add('active');
-    
+
             }
         }
 
@@ -312,7 +312,7 @@ CoCreateSelect.prototype = {
      * 
      * @return undefined
      * */
-    unselectOption: function(option, doEvent = true) {
+    unselectOption: function (option, doEvent = true) {
         let value;
         if (typeof option == 'string')
             value = option
@@ -333,7 +333,7 @@ CoCreateSelect.prototype = {
     },
 
     // for crdt and outsider cal
-    __fireSelectedEvent: function(detail) {
+    __fireSelectedEvent: function (detail) {
         let event = new CustomEvent('input', {
             bubbles: true,
             detail,
