@@ -34,14 +34,17 @@
                 collection="test"
                 document_id="5e8ff00e8c3af32574df80cb"
                 name="test1">
-                <input placeholder="Search" template_id="test1" />
+                <input
+                    placeholder="Search"
+                    filter-parent="collection"
+                    filter-search />
                 <cc-options
-                    fetch-collection="files"
-                    template_id="test1"
+                    collection="files"
                     class="overflow:auto"
-                    filter-limit="10">
+                    filter-limit="10"
+                    render-selector="[template]">
                     <cc-option
-                        template="test1"
+                        template
                         class="margin:40px"
                         value="{{document._id}}"
                         document_id="{{document._id}}"
@@ -59,7 +62,7 @@
                 collection="test"
                 document_id="5e8ff00e8c3af32574df80cb"
                 name="selectField0"
-                placeholder="Single Document">
+                placeholder="Single document=">
                 <input placeholder="Search" />
                 <cc-option value="option1" selected>option 1</cc-option>
                 <cc-option value="option2">option 2</cc-option>
@@ -72,7 +75,7 @@
                 collection="test"
                 document_id="5e8ff00e8c3af32574df80cb"
                 name="selectField1"
-                placeholder="Single Document"
+                placeholder="Single document="
                 multiple>
                 <input placeholder="Search" />
 
@@ -87,7 +90,7 @@
                 collection="test"
                 document_id="5e8ff00e8c3af32574df80cb"
                 name="selectField1"
-                placeholder="Single Document"
+                placeholder="Single document="
                 multiple>
                 <input placeholder="Search" />
 
