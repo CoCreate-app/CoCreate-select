@@ -26,31 +26,31 @@
             <option value="3">3</option>
         </select>
 
-        <form class="margin:20px" collection="apples2">
+        <form class="margin:20px" array="apples2">
             <cocreate-select
                 class="floating-label"
                 sortable
                 placeholder="Primary View"
-                collection="test"
-                document_id="5e8ff00e8c3af32574df80cb"
+                array="test"
+                object="5e8ff00e8c3af32574df80cb"
                 name="test1">
                 <input
                     placeholder="Search"
-                    filter-parent="collection"
+                    filter-parent="array"
                     filter-search />
                 <cc-options
-                    collection="files"
+                    array="files"
                     class="overflow:auto"
                     filter-limit="10"
                     render-selector="[template]">
                     <cc-option
                         template
                         class="margin:40px"
-                        value="{{document._id}}"
-                        document_id="{{document._id}}"
+                        value="{{object._id}}"
+                        object="{{object._id}}"
                         render="data">
-                        <h3>{{document.name}}</h3>
-                        <h5>{{document._id}}</h5>
+                        <h3>{{object.name}}</h3>
+                        <h5>{{object._id}}</h5>
                     </cc-option>
                 </cc-options>
             </cocreate-select>
@@ -59,8 +59,8 @@
                 class="floating-label"
                 sortable
                 tabindex="0"
-                collection="test"
-                document_id="5e8ff00e8c3af32574df80cb"
+                array="test"
+                object="5e8ff00e8c3af32574df80cb"
                 name="selectField0"
                 placeholder="Single document=">
                 <input placeholder="Search" />
@@ -72,8 +72,8 @@
                 class="floating-label"
                 sortable
                 tabindex="0"
-                collection="test"
-                document_id="5e8ff00e8c3af32574df80cb"
+                array="test"
+                object="5e8ff00e8c3af32574df80cb"
                 name="selectField1"
                 placeholder="Single document="
                 multiple>
@@ -87,8 +87,8 @@
                 class="floating-label"
                 sortable
                 tabindex="0"
-                collection="test"
-                document_id="5e8ff00e8c3af32574df80cb"
+                array="test"
+                object="5e8ff00e8c3af32574df80cb"
                 name="selectField1"
                 placeholder="Single document="
                 multiple>

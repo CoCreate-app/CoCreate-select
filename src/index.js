@@ -12,12 +12,12 @@ function init() {
 }
 
 function initElements(elements) {
-    for(let element of elements)
+    for (let element of elements)
         initElement(element);
 }
 
 function initElement(element) {
-	CoCreateSelect.init(element);
+    CoCreateSelect.init(element);
 }
 
 
@@ -25,22 +25,22 @@ function initElement(element) {
 // CoCreateSelect.adapter = SelectAdapter;
 
 observer.init({
-	name: 'CoCreateSelectAttributes',
-	observe: ['attributes'],
-	attributeName: crud.getAttributeNames(['collection', 'document_id', 'name']),
-	target: 'cocreate-select',
-	callback: function(mutation) {
-		CoCreateSelect.init(mutation.target);
-	}
+    name: 'CoCreateSelectAttributes',
+    observe: ['attributes'],
+    attributeName: crud.getAttributeNames(['array', 'object', 'name']),
+    target: 'cocreate-select',
+    callback: function (mutation) {
+        CoCreateSelect.init(mutation.target);
+    }
 });
 
 observer.init({
-	name: 'CoCreateSelect',
-	observe: ['addedNodes'],
-	target: 'cocreate-select',
-	callback: function(mutation) {
-		CoCreateSelect.init(mutation.target);
-	}
+    name: 'CoCreateSelect',
+    observe: ['addedNodes'],
+    target: 'cocreate-select',
+    callback: function (mutation) {
+        CoCreateSelect.init(mutation.target);
+    }
 });
 
 // observer.init({

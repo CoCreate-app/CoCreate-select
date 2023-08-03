@@ -218,8 +218,8 @@ CoCreateSelect.prototype = {
                 return this.selectOption(optionC, closeOnMultiple, innerText, doEvent);
             else if (option.match(/^[0-9a-fA-F]{24}$/)) {
                 let template = this.selectContainer.querySelector('.template, [template]')
-                let optionsContainer = this.selectContainer.querySelector('[fetch-collection]')
-                let optionsCollection = optionsContainer.getAttribute('fetch-collection')
+                let optionsContainer = this.selectContainer.querySelector('[fetch-array]')
+                let optionsCollection = optionsContainer.getAttribute('fetch-array')
 
                 if (template) {
                     selectedOption = template.cloneNode(true);
@@ -228,12 +228,12 @@ CoCreateSelect.prototype = {
                     selectedOption.removeAttribute('template');
                 }
 
-                let els = selectedOption.querySelectorAll('[document_id]');
+                let els = selectedOption.querySelectorAll('[object]');
                 for (let el of els) {
-                    el.setAttribute('document_id', option)
-                    let collection = el.getAttribute('collection')
-                    if (collection == '{{document.collection}}') {
-                        el.setAttribute('collection', optionsCollection);
+                    el.setAttribute('object', option)
+                    let array = el.getAttribute('array')
+                    if (array == '{{object.array}}') {
+                        el.setAttribute('array', optionsCollection);
                     }
                 }
             }
