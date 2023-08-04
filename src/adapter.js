@@ -14,7 +14,7 @@ export function initEvents() {
     })
 
     document.addEventListener('input', function (e) {
-        let { name, object, isRealtime } = crud.getAttributes(e.target);
+        let { key, object, isRealtime } = crud.getAttributes(e.target);
         if (e.target.matches(config.containerSelector)) {
 
             if (object === 'null')
@@ -23,7 +23,7 @@ export function initEvents() {
                     rooms: "",
                     message: "select",
                     data: {
-                        name: e.target.getAttribute('name'),
+                        key: e.target.getAttribute('key'),
                         values: self.getValue(e.target)
                     }
                 });
@@ -34,8 +34,8 @@ export function initEvents() {
 
     messageClient.listen('select', function (response) {
         let data = response.data
-        let { name, values } = data;
-        let select = document.querySelector(`[name="${name}"]`);
+        let { key, values } = data;
+        let select = document.querySelector(`[key="${key}"]`);
 
         if (!select || !container.has(select)) return;
         let instance = container.get(select);
@@ -58,9 +58,9 @@ export async function read(selectContainer) {
     let instance = selectContainer.select;
     let data = await crud.read(selectContainer);
     if (data && data.object && data.object[0]) {
-        let name = selectContainer.getAttribute('name');
+        let key = selectContainer.getAttribute('key');
 
-        let options = data.object[0][name];
+        let options = data.object[0][key];
 
         options = Array.isArray(options) ? options : [options];
         options.forEach(op => instance.selectOption(op, true, undefined, false));
@@ -69,19 +69,19 @@ export async function read(selectContainer) {
 
 export function writeSelect(doc, nameInDb) {
     for (let [el, instance] of container) {
-        let { array, object, name, isListen } = crud.getAttributes(el);
+        let { array, object, key, isListen } = crud.getAttributes(el);
         if (isListen == "false") return;
 
-        if (doc['array'] == array && doc['_id'] == object && nameInDb == name) {
+        if (doc['array'] == array && doc['_id'] == object && nameInDb == key) {
 
-            if (doc[name]) {
+            if (doc[key]) {
 
-                let options = [name];
+                let options = [key];
                 options = Array.isArray(options) ? options : [options];
                 options.forEach(op => instance.selectOption(op, true, undefined, false));
 
             }
-            else if (doc[name] === '')
+            else if (doc[key] === '')
                 instance.unselectAll();
 
             break;

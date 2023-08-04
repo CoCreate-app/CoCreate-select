@@ -11,10 +11,10 @@
             sizes="32x32"
             href="https://cocreate.app/images/favicon.ico" />
         <meta
-            name="description"
+            key="description"
             content="A simple HTML5 and pure javascript component. Easy configuration using HTML5 attributes or Javscript api and highly styleable." />
         <meta
-            name="keywords"
+            key="keywords"
             content="helper classes, utility classes, css framework, css library, inline style classes" />
         <meta name="robots" content="index,follow" />
         <meta
@@ -31,7 +31,7 @@
             href="https://ws.cocreate.app/docs.css"
             array="apples"
             object="6069ff5042ef8ff5175a5c8d"
-            name="css"
+            key="css"
             type="text/css" />
         <link rel="manifest" href="/manifest.webmanifest" />
     </head>
@@ -44,7 +44,7 @@
             scroll-down="10"
             array="files"
             object="60395ef42b3ac232657040fd"
-            name="src"></nav>
+            key="src"></nav>
         <sidenav
             id="menuL"
             class="position:fixed top:0px left:0px overflow:hidden background:whitesmoke height:100vh width:0px width:300px@xl"
@@ -55,7 +55,7 @@
             <menu
                 array="files"
                 object="603717b07de7fb350ae9fec8"
-                name="src"></menu>
+                key="src"></menu>
             <div resize="right"></div>
         </sidenav>
         <main
@@ -186,7 +186,7 @@
                                 <code class="language-js">
 ------------ Single Options ------------
 &#x3C;cocreate-select class=&#x22;sortable floating-label&#x22; 
-  name=&#x22;selectField4&#x22; 
+  key=&#x22;selectField4&#x22; 
   placeholder=&#x22;Single Options&#x22;&#x3E;
   &#x3C;input class=&#x22;option-search&#x22; placeholder=&#x22;Search&#x22;&#x3E;
   &#x3C;ul class=&#x22;options  overflow:auto&#x22;&#x3E;
@@ -208,20 +208,20 @@
 ------------ Fetch array _id ------------
 
 &#x3C;cocreate-select class=&#x22;sortable floating-label&#x22; 
-  name=&#x22;selectField6&#x22; array=&#x22;test&#x22; 
+  key=&#x22;selectField6&#x22; array=&#x22;test&#x22; 
   object=&#x22;5e8ff00e8c3af32574df80cb&#x22;  
   placeholder=&#x22;Fetch array _id&#x22; 
   data-limit_option=&#x22;3&#x22; multiple&#x3E;
   &#x3C;input class=&#x22;option-search&#x22; placeholder=&#x22;Search&#x22; template_id=&#x22;tempplate6&#x22;&#x3E;
   &#x3C;ul array=&#x22;test&#x22; 
     object=&#x22;5e8ff00e8c3af32574df80cb&#x22; 
-    name=&#x22;selectField1&#x22; 
+    key=&#x22;selectField1&#x22; 
     id=&#x22;array02&#x22;
     pass_to=&#x22;me1234&#x22; 
     class=&#x22;options overflow:auto&#x22;&#x3E;
     &#x3C;li class=&#x22;option&#x22; pass_id=&#x22;me1234&#x22;&#x3E;
-      &#x3C;h3 array=&#x22;users&#x22; object=&#x22;&#x22; name=&#x22;name&#x22; pass_id=&#x22;me1234&#x22; &#x3E;Organization Name&#x3C;/h3&#x3E;
-      &#x3C;h5 array=&#x22;users&#x22; object=&#x22;&#x22; name=&#x22;_id&#x22; pass_id=&#x22;me1234&#x22; &#x3E;id&#x3C;/h5&#x3E;
+      &#x3C;h3 array=&#x22;users&#x22; object=&#x22;&#x22; key=&#x22;name&#x22; pass_id=&#x22;me1234&#x22; &#x3E;Organization Name&#x3C;/h3&#x3E;
+      &#x3C;h5 array=&#x22;users&#x22; object=&#x22;&#x22; key=&#x22;_id&#x22; pass_id=&#x22;me1234&#x22; &#x3E;id&#x3C;/h5&#x3E;
     &#x3C;/li&#x3E;
   &#x3C;/ul&#x3E;
 &#x3C;/cocreate-select&#x3E;
@@ -330,7 +330,7 @@
                                     lang="html"
                                     array="demos"
                                     object=""
-                                    name="demo"
+                                    key="demo"
                                     save="false"
                                     id="demo"
                                     input-selector=".demopreview"

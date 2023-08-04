@@ -25,9 +25,9 @@ function initElement(element) {
 // CoCreateSelect.adapter = SelectAdapter;
 
 observer.init({
-    name: 'CoCreateSelectAttributes',
+    key: 'CoCreateSelectAttributes',
     observe: ['attributes'],
-    attributeName: crud.getAttributeNames(['array', 'object', 'name']),
+    attributeName: crud.getAttributeNames(['array', 'object', 'key']),
     target: 'cocreate-select',
     callback: function (mutation) {
         CoCreateSelect.init(mutation.target);
