@@ -23,12 +23,12 @@ export function initEvents() {
                     rooms: "",
                     message: "select",
                     data: {
-                        key: e.target.getAttribute('key'),
+                        key,
                         values: self.getValue(e.target)
                     }
                 });
-            else if (isRealtime != "false")
-                save(e.target);
+            else if (isRealtime != "false" && e.target.save)
+                e.target.save(e.target);
         }
     })
 
@@ -43,51 +43,51 @@ export function initEvents() {
         values.forEach(value => instance.selectOption(value, true, value, false))
 
     })
-
-    crud.listen('update.object', function (data) {
-        let doc = data.object[0]
-        if (doc.array == 'crdt-transactions')
-            return
-        for (let key of Object.keys(doc)) {
-            writeSelect(doc, key);
-        }
-    })
 }
 
-export async function read(selectContainer) {
-    let instance = selectContainer.select;
-    let data = await crud.read(selectContainer);
-    if (data && data.object && data.object[0]) {
-        let key = selectContainer.getAttribute('key');
+//     crud.listen('update.object', function (data) {
+//         let doc = data.object[0]
+//         if (doc.array == 'crdt-transactions')
+//             return
+//         for (let key of Object.keys(doc)) {
+//             writeSelect(doc, key, data);
+//         }
+//     })
+// }
 
-        let options = data.object[0][key];
+// export async function read(selectContainer) {
+//     let instance = selectContainer.select;
+//     let data = await selectContainer.read();
+//     if (data && data.object && data.object[0]) {
+//         let key = selectContainer.getAttribute('key');
 
-        options = Array.isArray(options) ? options : [options];
-        options.forEach(op => instance.selectOption(op, true, undefined, false));
-    }
-}
+//         let options = data.object[0][key];
 
-export function writeSelect(doc, nameInDb) {
-    for (let [el, instance] of container) {
-        let { array, object, key, isListen } = crud.getAttributes(el);
-        if (isListen == "false") return;
+//         options = Array.isArray(options) ? options : [options];
+//         options.forEach(op => instance.selectOption(op, true, undefined, false));
+//     }
+// }
 
-        if (doc['array'] == array && doc['_id'] == object && nameInDb == key) {
+// export function writeSelect(doc, nameInDb, data) {
+//     for (let [el, instance] of container) {
+//         let { array, object, key, isListen } = crud.getAttributes(el);
+//         if (isListen == "false" && !data.method.startsWith('read')) return;
 
-            if (doc[key]) {
+//         if (doc['array'] == array && doc['_id'] == object && nameInDb == key) {
 
-                let options = [key];
-                options = Array.isArray(options) ? options : [options];
-                options.forEach(op => instance.selectOption(op, true, undefined, false));
+//             if (doc[key]) {
 
-            }
-            else if (doc[key] === '')
-                instance.unselectAll();
+//                 let options = [key];
+//                 options = Array.isArray(options) ? options : [options];
+//                 options.forEach(op => instance.selectOption(op, true, undefined, false));
 
-            break;
-        }
-    }
-}
+//             }
+//             else if (doc[key] === '')
+//                 instance.unselectAll();
+
+//             break;
+//         }
+//     }
 
 // function getValue(element) {
 // 	let value = Array.from(element.selectedOptions)
@@ -97,11 +97,11 @@ export function writeSelect(doc, nameInDb) {
 // 	return value;
 // }
 
-export async function save(element, isStore = true) {
-    if (!isStore) return;
-    let value = element.getValue();
-    await crud.save(element, value);
-}
+// export async function save(element, isStore = true) {
+//     if (!isStore) return;
+//     let value = element.getValue();
+//     await element.save(value);
+// }
 
 
 // export default SelectAdapter;
