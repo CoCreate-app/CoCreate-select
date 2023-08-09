@@ -70,10 +70,8 @@ CoCreateSelect.prototype = {
     },
 
     init: function (selectContainer) {
-        if (container.has(selectContainer)) {
-            read(selectContainer, selectContainer.select);
+        if (container.has(selectContainer))
             return;
-        }
 
         this.selectContainer = selectContainer;
 
@@ -128,7 +126,7 @@ CoCreateSelect.prototype = {
 
         container.set(selectContainer, this);
         selectContainer.select = this;
-        read(selectContainer, this);
+        selectContainer.read();
 
         selectContainer.getValue = () => {
             let element = this.selectContainer
