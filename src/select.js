@@ -1,5 +1,4 @@
 /*global CustomEvent*/
-import { read } from "./adapter.js";
 import selectedAtt from './selectedAtt';
 import optionsAtt from './optionsAtt';
 import selectedOptionsAtt from './selectedOptionsAtt';
@@ -19,6 +18,7 @@ import {
 selectedAtt((el) => {
     return el.matches(`${optionsSelector} > ${optionSelector}, ${addAttribute(containerSelector, '>' + optionSelector)}`)
 })
+
 optionsAtt((el) => el.matches(containerSelector))
 selectedOptionsAtt((el) => el.matches(containerSelector))
 selectedIndexAtt((el) => el.matches(containerSelector))
@@ -28,6 +28,45 @@ export const optionToSelected = new Map();
 export const selectedToOption = new Map();
 const removeElement = parse(removeMarkup);
 
+document.addEventListener('dndsuccess', function (e) {
+    const { droppedEl, draggedEl } = e.detail;
+    if (droppedEl.matches(containerSelector)) {
+        container.get(droppedEl).__fireSelectedEvent({
+            selectContainer: droppedEl
+        })
+    }
+})
+
+document.addEventListener('input', function (e) {
+    // let { key, object, isRealtime } = getAttributes(e.target);
+    if (e.target.matches(containerSelector)) {
+
+        // if (object === 'null')
+        //     messageClient.send({
+        //         broadcastSender: false,
+        //         rooms: "",
+        //         message: "select",
+        //         data: {
+        //             key,
+        //             values: e.target.getValue()
+        //         }
+        //     });
+        // else if (isRealtime != "false" && e.target.save)
+        e.target.save();
+    }
+})
+
+// messageClient.listen('select', function (response) {
+//     let data = response.data
+//     let { key, values } = data;
+//     let select = document.querySelector(`[key="${key}"]`);
+
+//     if (!select || !container.has(select)) return;
+//     let instance = container.get(select);
+//     instance.unselectAll(false)
+//     values.forEach(value => instance.selectOption(value, true, value, false))
+
+// })
 
 document.addEventListener('click', function (e) {
     let target = e.target;
