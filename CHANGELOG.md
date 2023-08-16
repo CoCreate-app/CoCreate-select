@@ -1,3 +1,24 @@
+# [1.11.0](https://github.com/CoCreate-app/CoCreate-select/compare/v1.10.28...v1.11.0) (2023-08-16)
+
+
+### Bug Fixes
+
+* crud attributes renamed ([b21131b](https://github.com/CoCreate-app/CoCreate-select/commit/b21131bad94ce6ba74f61d79ac4856a555ba835c))
+* Refactor event handling and save method in adapter.js ([d1d0455](https://github.com/CoCreate-app/CoCreate-select/commit/d1d04550a3e6b21f0c61e1aeea04dd418d44ecb7))
+* Removed crud-client and message-client ([16f68c5](https://github.com/CoCreate-app/CoCreate-select/commit/16f68c5272920e7e240a34d21bbbb0f804d64641))
+* render-array and render-object attributes renamed to render ([7ab98af](https://github.com/CoCreate-app/CoCreate-select/commit/7ab98af3cd7403b766a74e32cd7b986bc8b34ed3))
+* replace -target -selector ([51643bf](https://github.com/CoCreate-app/CoCreate-select/commit/51643bfceb9ca3327ed23f562e3528d333557577))
+* updated fetch-limit to filter-limit ([4f46d5b](https://github.com/CoCreate-app/CoCreate-select/commit/4f46d5b6a65706d98761d80a6b30e56b5dd05d40))
+* webpack.config and package.json make use of mode=production instead of process.env ([c78e009](https://github.com/CoCreate-app/CoCreate-select/commit/c78e00955aa5b1fe4226bdac34f233ace9ab4498))
+
+
+### Features
+
+* element.read() ([f8a32fd](https://github.com/CoCreate-app/CoCreate-select/commit/f8a32fdbc084bf7e7096761b369f599360ffa936))
+* name attribute and variable renamed to key ([17bb734](https://github.com/CoCreate-app/CoCreate-select/commit/17bb7346b148b39b242b7e1f8925f1f3257d3113))
+* renamed CRUD attributes and params ([11644d2](https://github.com/CoCreate-app/CoCreate-select/commit/11644d2ea51f0f400931efc54fb7e76733e67914))
+* update template_id to render-selector attribute. update filter attributes to filter selector-attributes ([f60d385](https://github.com/CoCreate-app/CoCreate-select/commit/f60d3851bfae2fb3f9a6deb4d3e1c39766b1551f))
+
 ## [1.10.28](https://github.com/CoCreate-app/CoCreate-select/compare/v1.10.27...v1.10.28) (2023-06-14)
 
 
