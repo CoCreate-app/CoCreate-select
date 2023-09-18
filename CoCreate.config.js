@@ -8,17 +8,16 @@ module.exports = {
             "object": {
                 "_id": "601328e186c0ba24512cca3a",
                 "name": "index.html",
-                "path": "/docs/select/index.html",
+                "path": "/docs/select",
+                "pathname": "/docs/select/index.html",
                 "src": "{{./docs/index.html}}",
                 "host": [
                     "*",
                     "general.cocreate.app"
                 ],
-                "directory": "/docs/select",
-                "parentDirectory": "{{parentDirectory}}",
+                "directory": "select",
                 "content-type": "{{content-type}}",
-                "public": "true",
-                "website_id": "644d4bff8036fb9d1d1fd69c"
+                "public": "true"
             }
         }
     ]
