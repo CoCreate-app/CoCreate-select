@@ -324,7 +324,7 @@ CoCreateSelect.prototype = {
                     // selectedOption.setAttribute('value', value);
                 }
 
-                CoCreate.render.data({
+                CoCreate.render.render({
                     elements: [selectedOption],
                     data: { data: option }
                 });
