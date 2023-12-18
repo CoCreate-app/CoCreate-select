@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/CoCreate-app/CoCreate-select/compare/v1.16.0...v1.16.1) (2023-12-18)
+
+
+### Bug Fixes
+
+* render property ([6c84e6b](https://github.com/CoCreate-app/CoCreate-select/commit/6c84e6b20a37c52ef094047fd3f938328cd8379e))
+
 # [1.16.0](https://github.com/CoCreate-app/CoCreate-select/compare/v1.15.0...v1.16.0) (2023-11-25)
 
 
