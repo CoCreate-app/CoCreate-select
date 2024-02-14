@@ -1,3 +1,10 @@
+## [1.16.3](https://github.com/CoCreate-app/CoCreate-select/compare/v1.16.2...v1.16.3) (2024-02-14)
+
+
+### Bug Fixes
+
+* realtime defaults to false ([5bb141c](https://github.com/CoCreate-app/CoCreate-select/commit/5bb141c7285fe793e2d9780bfc358d98adc3c995))
+
 ## [1.16.2](https://github.com/CoCreate-app/CoCreate-select/compare/v1.16.1...v1.16.2) (2024-02-05)
 
 
