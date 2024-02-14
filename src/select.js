@@ -51,7 +51,7 @@ document.addEventListener('input', function (e) {
         //             values: e.target.getValue()
         //         }
         //     });
-        // else if (isRealtime != "false" && e.target.save)
+        // else if (isRealtime && isRealtime !== "false" && e.target.save)
         e.target.save();
     }
 })
