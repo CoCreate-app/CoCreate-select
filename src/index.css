@@ -15,7 +15,7 @@ cocreate-select:not(.open) > input~* {
 cocreate-select {
   display: flex;
   flex-wrap: wrap;
-  min-height: 40px;
+  min-height: 24px;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 2px;
@@ -45,7 +45,7 @@ cocreate-select selected cc-option {
   padding: 0px 8px;
   background: #dcdcdc;
   width: 100%;
-  margin: 6px;
+  margin: 0px 6px;
   overflow: hidden;
 }
 
@@ -105,6 +105,7 @@ cc-option, .option {
   width: 100%;
   position: relative;
   background: whitesmoke;
+  padding: 1px 5px;
 }
 /*cc-option:hover {*/
 /*  background: #eee;*/
@@ -114,7 +115,6 @@ cc-options, .options {
   max-height: 0;
   width: 100%;
   position: relative;
-  background: whitesmoke;
   overflow: auto;
   list-style: none;
   padding: 0px 5px 0px 5px;
@@ -371,3 +371,13 @@ cocreate-select.open .options, cocreate-select.open cc-options {
 }
 
 /* Dropdown End*/
+
+@media (prefers-color-scheme: dark) {
+    cocreate-select selected cc-option {
+        background: #333;
+    }
+        cc-option,
+        .option {
+            background: #333;
+        }
+}
