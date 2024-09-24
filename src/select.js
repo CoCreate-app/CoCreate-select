@@ -52,7 +52,8 @@ document.addEventListener('input', function (e) {
         //         }
         //     });
         // else if (isRealtime && isRealtime !== "false" && e.target.save)
-        e.target.save();
+        if (e.target.save)
+            e.target.save();
     }
 })
 
@@ -165,7 +166,8 @@ CoCreateSelect.prototype = {
 
         container.set(selectContainer, this);
         selectContainer.select = this;
-        selectContainer.read();
+        if (selectContainer.read)
+            selectContainer.read();
 
         selectContainer.getValue = () => {
             let element = this.selectContainer
