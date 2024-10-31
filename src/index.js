@@ -26,7 +26,7 @@ observer.init({
     key: 'CoCreateSelectAttributes',
     observe: ['attributes'],
     attributeName: getAttributeNames(['array', 'object', 'key']),
-    target: 'cocreate-select',
+    selector: 'cocreate-select',
     callback: function (mutation) {
         CoCreateSelect.init(mutation.target);
     }
@@ -35,7 +35,7 @@ observer.init({
 observer.init({
     name: 'CoCreateSelect',
     observe: ['addedNodes'],
-    target: 'cocreate-select',
+    selector: 'cocreate-select',
     callback: function (mutation) {
         CoCreateSelect.init(mutation.target);
     }
