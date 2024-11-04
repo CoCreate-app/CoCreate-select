@@ -1,3 +1,20 @@
+# [1.17.0](https://github.com/CoCreate-app/CoCreate-select/compare/v1.16.5...v1.17.0) (2024-11-04)
+
+
+### Bug Fixes
+
+* check element for crud functions prior to execution ([5e8fd55](https://github.com/CoCreate-app/CoCreate-select/commit/5e8fd553130a2b04215420fdde16932856422a88))
+* fetch-array has been renameed to array ([abab747](https://github.com/CoCreate-app/CoCreate-select/commit/abab747e44ac4168895220f998216cdb57e5ea1d))
+* improved css ([f341b71](https://github.com/CoCreate-app/CoCreate-select/commit/f341b710b22b7d5964365e7673bfab09b52bdf3f))
+* observer taget has been renamed to selector ([cccbb5f](https://github.com/CoCreate-app/CoCreate-select/commit/cccbb5fae4608a32f94d0f6ca663475f3443e857))
+* pretier.config.js and file formating ([39eefef](https://github.com/CoCreate-app/CoCreate-select/commit/39eefefe3d1090242902886cc2e1558d3aff5ebe))
+
+
+### Features
+
+* add prettier.config.js and format files ([4a20164](https://github.com/CoCreate-app/CoCreate-select/commit/4a2016423a4092bd71628cf1e3422eb3f707eedd))
+* add prettier.config.js and format files ([69f762d](https://github.com/CoCreate-app/CoCreate-select/commit/69f762dd13d10fdf28a93a0757f517c82f654435))
+
 ## [1.16.5](https://github.com/CoCreate-app/CoCreate-select/compare/v1.16.4...v1.16.5) (2024-06-12)
 
 
