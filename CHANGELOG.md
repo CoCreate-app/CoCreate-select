@@ -1,3 +1,10 @@
+## [1.17.1](https://github.com/CoCreate-app/CoCreate-select/compare/v1.17.0...v1.17.1) (2025-01-18)
+
+
+### Bug Fixes
+
+* event handling ([16938c6](https://github.com/CoCreate-app/CoCreate-select/commit/16938c612a3e3bdbc81a2cd919428384c75243b2))
+
 # [1.17.0](https://github.com/CoCreate-app/CoCreate-select/compare/v1.16.5...v1.17.0) (2024-11-04)
 
 
