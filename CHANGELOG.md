@@ -1,3 +1,11 @@
+## [1.17.2](https://github.com/CoCreate-app/CoCreate-select/compare/v1.17.1...v1.17.2) (2025-04-11)
+
+
+### Bug Fixes
+
+* format css ([063e571](https://github.com/CoCreate-app/CoCreate-select/commit/063e571ce9ea57f0fe804f1b07e167a8637de46e))
+* update observer obseve param to type and and attributeName to attributeFilter ([ddd4518](https://github.com/CoCreate-app/CoCreate-select/commit/ddd4518a2a955374f577af0a5cff383a16a4f4a9))
+
 ## [1.17.1](https://github.com/CoCreate-app/CoCreate-select/compare/v1.17.0...v1.17.1) (2025-01-18)
 
 
