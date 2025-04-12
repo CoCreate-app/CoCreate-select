@@ -1,107 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Select | CoCreateJS</title>
+	<head>
+		<title>Select | CoCreateJS</title>
 
-        <!-- CoCreate Favicon -->
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="../assets/favicon.ico" />
-        <!-- CoCreate CSS CDN -->
-        <!--<link rel="stylesheet" href="" type="text/css"/>-->
-        <link rel="manifest" href="/manifest.webmanifest" />
-    </head>
+		<!-- CoCreate Favicon -->
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="../assets/favicon.ico" />
+		<!-- CoCreate CSS CDN -->
+		<!--<link rel="stylesheet" href="" type="text/css"/>-->
+		<link rel="manifest" href="/manifest.webmanifest" />
+	</head>
 
-    <body>
-        <select id="a">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
-        <select id="b" multiple>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
+	<body>
+		<select id="a">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+		</select>
+		<select id="b" multiple>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+		</select>
 
-        <form class="margin:20px" array="apples2">
-            <cocreate-select
-                class="floating-label"
-                sortable
-                placeholder="Primary View"
-                array="test"
-                object="5e8ff00e8c3af32574df80cb"
-                key="test1">
-                <input
-                    placeholder="Search"
-                    filter-parent="array"
-                    filter-search />
-                <cc-options
-                    array="files"
-                    class="overflow:auto"
-                    filter-limit="10"
-                    render-selector="[template]">
-                    <cc-option
-                        template
-                        class="margin:40px"
-                        value="{{object._id}}"
-                        object="{{object._id}}"
-                        render="data">
-                        <h3>{{object.name}}</h3>
-                        <h5>{{object._id}}</h5>
-                    </cc-option>
-                </cc-options>
-            </cocreate-select>
+		<form class="margin:20px" array="apples2">
+			<cocreate-select
+				class="floating-label"
+				sortable
+				placeholder="Primary View"
+				array="test"
+				object="5e8ff00e8c3af32574df80cb"
+				key="test1">
+				<input
+					placeholder="Search"
+					filter-query="$parent array"
+					filter-search />
+				<cc-options
+					array="files"
+					class="overflow:auto"
+					filter-limit="10"
+					render-query="[template]">
+					<cc-option
+						template
+						class="margin:40px"
+						value="{{object._id}}"
+						object="{{object._id}}"
+						render="data">
+						<h3>{{object.name}}</h3>
+						<h5>{{object._id}}</h5>
+					</cc-option>
+				</cc-options>
+			</cocreate-select>
 
-            <cocreate-select
-                class="floating-label"
-                sortable
-                tabindex="0"
-                array="test"
-                object="5e8ff00e8c3af32574df80cb"
-                key="selectField0"
-                placeholder="Single object">
-                <input placeholder="Search" />
-                <cc-option value="option1" selected>option 1</cc-option>
-                <cc-option value="option2">option 2</cc-option>
-            </cocreate-select>
+			<cocreate-select
+				class="floating-label"
+				sortable
+				tabindex="0"
+				array="test"
+				object="5e8ff00e8c3af32574df80cb"
+				key="selectField0"
+				placeholder="Single object">
+				<input placeholder="Search" />
+				<cc-option value="option1" selected>option 1</cc-option>
+				<cc-option value="option2">option 2</cc-option>
+			</cocreate-select>
 
-            <cocreate-select
-                class="floating-label"
-                sortable
-                tabindex="0"
-                array="test"
-                object="5e8ff00e8c3af32574df80cb"
-                key="selectField1"
-                placeholder="Single object"
-                multiple>
-                <input placeholder="Search" />
+			<cocreate-select
+				class="floating-label"
+				sortable
+				tabindex="0"
+				array="test"
+				object="5e8ff00e8c3af32574df80cb"
+				key="selectField1"
+				placeholder="Single object"
+				multiple>
+				<input placeholder="Search" />
 
-                <cc-option value="option1" selected>option 1</cc-option>
-                <cc-option value="option2">option 2</cc-option>
-            </cocreate-select>
+				<cc-option value="option1" selected>option 1</cc-option>
+				<cc-option value="option2">option 2</cc-option>
+			</cocreate-select>
 
-            <cocreate-select
-                class="floating-label"
-                sortable
-                tabindex="0"
-                array="test"
-                object="5e8ff00e8c3af32574df80cb"
-                key="selectField1"
-                placeholder="Single object"
-                multiple>
-                <input placeholder="Search" />
+			<cocreate-select
+				class="floating-label"
+				sortable
+				tabindex="0"
+				array="test"
+				object="5e8ff00e8c3af32574df80cb"
+				key="selectField1"
+				placeholder="Single object"
+				multiple>
+				<input placeholder="Search" />
 
-                <cc-options>
-                    <cc-option value="option1" selected>option 1</cc-option>
-                    <cc-option value="option2">option 2</cc-option>
-                </cc-options>
-            </cocreate-select>
-        </form>
+				<cc-options>
+					<cc-option value="option1" selected>option 1</cc-option>
+					<cc-option value="option2">option 2</cc-option>
+				</cc-options>
+			</cocreate-select>
+		</form>
 
-        <!--<script src="../dist/CoCreate-select.js"></script>-->
-        <script src="https://CoCreate.app/dist/CoCreate.js"></script>
-    </body>
+		<!--<script src="../dist/CoCreate-select.js"></script>-->
+		<script src="https://CoCreate.app/dist/CoCreate.js"></script>
+	</body>
 </html>
