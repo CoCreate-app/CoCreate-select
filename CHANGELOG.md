@@ -1,3 +1,10 @@
+## [1.17.5](https://github.com/CoCreate-app/CoCreate-select/compare/v1.17.4...v1.17.5) (2026-02-04)
+
+
+### Bug Fixes
+
+* update worklow ([761a901](https://github.com/CoCreate-app/CoCreate-select/commit/761a901da779baa074102a3a868be83ccd3d8838))
+
 ## [1.17.4](https://github.com/CoCreate-app/CoCreate-select/compare/v1.17.3...v1.17.4) (2025-05-01)
 
 
